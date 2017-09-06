@@ -1,0 +1,52 @@
+body {
+   background-color: #ade5ff;       
+}
+header, nav, article, footer {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+header {
+    height: 70px;
+    text-align: center;
+}
+h2 {
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+article h2 {
+    background-color: #c9e7fc;
+    color: #000;
+}
+figure img {
+    width: 100px;
+    height: 100px;
+}
+figcaption {
+    color: #799ace;
+    font-style: italic;
+    font-weight: 600;
+}
+figure {
+    float: left;
+}
+nav {
+    height: 50px;
+    padding-top: 20px;
+    text-align: center;
+}
+nav a {
+    text-decoration: none;
+    font-size: 25px;
+}
+nav a:hover {
+    background-color: #6e8493;
+    color: #fff;
+}
+footer {
+    height: 40px;
+    padding-top: 15px;
+    text-align: center;
+}

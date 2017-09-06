@@ -1,0 +1,41 @@
+body {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.asiakkaat {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+    border: 2px solid #7ED9EC; 
+    border-collapse: collapse;
+}
+
+.asiakkaat thead tr {
+    background-color: darkblue;
+    color: #9F9F00; 
+} 
+
+.asiakkaat th {
+    border: 2px solid #67BBF9;
+    height: 1.2em;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.asiakkaat tbody tr:nth-child(odd) {
+    background-color: yellow;
+}
+
+.asiakkaat td {
+    border: 2px solid #67BBF9;
+    padding: 3px;
+}
+
+
+
+
