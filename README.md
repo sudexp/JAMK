@@ -1,2 +1,2 @@
 # JAMK
-My study at Jyväskylän ammattikorkeakoulu
+My study
