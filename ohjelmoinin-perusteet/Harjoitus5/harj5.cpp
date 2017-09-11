@@ -14,5 +14,4 @@ int main()
 		cout << "BINGO " << endl;
 	else
 		cout << "BONGO " << endl;
-	return 0;
 }
