@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+body {
+    margin: 0;
+    background-color: #b4e4e8;
+    font-size: 100%;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Dejavu Sans", Verdana, sans-serif;
+}
+
+#page {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#header {
+    background-color: #575757;
+    color: #f0ebeb;
+    padding: 1em; /* 16px */
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+    letter-spacing: 0.1875em; /* 3px/16px */
+}
+
+#nav, #footer {
+    background-color: #e49a2f;
+    color: #f7f5ee;
+    text-align: center;
+}
+
+#content {
+    background-color: #d8ccaf;
+    /* content-alueen sisältö ei tule yli ympäröivästä content-alueesta */
+    overflow: auto;
+}
+
+#content_left, #content_right {
+    background-color: #f7f5ee;
+    border: 1px solid #ac9675;
+    border-radius: 10px;
+    padding: 1em;
+    width: 40%;
+}
+
+#content_left {
+    float: left;
+    /* TOP RIGHT BOTTOM LEFT */
+    margin: 2em auto 2em 3.5%;
+}
+
+#content_right {
+    float: right;
+    margin: 2em 3.5% 2em auto;
+}
+
+h1, h2 {
+    /*background-color: #b3efc2;*/
+    color: grey;
+    text-align: center;
+}
+
+.p-center {
+    text-align: center;
+}
+
+.center-img {
+    width: 25%;
+    display: block;
+    margin: 0 auto;
+}
+
+address {
+    display: block;
+    text-align: center;
+} 
+
+/* h1 {
+    font-size: 150%;
+    color: #e49a2f;
+    margin-right: 10%;
+    padding-left: 1em;
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 120%;
+    color: #e49a2f;
+    margin-right: 10%;
+    padding-left: 1em;
+    overflow: hidden;    
+} */
+
+img {
+    width: 100%;
+    height: auto;
+    padding: 1em 0; /* top ja bottom 16px, right ja left 0 */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+
+a, a:visited {
+    width: 160px;
+    color: #fff;
+    background-color: #e19607;
+    /* padding: 0 1em */
+    padding-left: 1em;
+    padding-right: 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:hover, a:active {
+    background-color: #bd7d03;
+}
+
+.footer_link {
+    text-transform: none;
+    color: #92260d;
+}
+
+@media only screen and (max-width: 900px) {
+    #content_left, #content_right {
+        float: left;
+        margin: 2em;
+        width: 82%;
+    }
+}
+
