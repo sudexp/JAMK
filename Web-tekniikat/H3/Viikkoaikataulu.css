@@ -1,41 +1,64 @@
+@charset "utf-8";
+
 body {
-    margin-top: 50px;
-    margin-left: 50px;
+    background-color: #D6D3D3;
+    /* font-size: 100%;
+    font-family: Arial, Helvetica, sans-serif; */
+    margin: 0 auto;
+}
+
+#page {
+    background-color: white;
+    height: 95%;
+    width: 95%;
+    margin: 0 auto;
 }
 
 table {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-.asiakkaat {
+    /* border: 3px solid black;
+    border-collapse: collapse; */
+    /* box-shadow: 4px 4px 4px #555; */
+    background-color: white;
+    width: 95%;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #C7EFFC;
-    border: 2px solid #047DD7; 
-    border-collapse: collapse;
+    text-align: center;
+    margin: 10px auto;
 }
 
-.asiakkaat thead tr {
-    background-color: lightblue;
-    color: #9F9F00; 
+thead tr {
+    background-color: blue;
+    color: white; 
 } 
 
-.asiakkaat th {
-    border: 2px solid #047DD7;
-    height: 1.2em;
+th {
+    /* border: 3px solid black; */
     padding-bottom: 5px;
     padding-top: 5px;
 }
 
-.asiakkaat tbody tr:nth-child(odd) {
-    background-color: #EDED7B;
+table td:first-child {
+    background-color: blue;
+    color: white;
 }
 
-.asiakkaat td {
-    border: 2px solid #047DD7;
+td {
+    /* border: 3px solid black; */
     padding: 3px;
 }
 
+.kokous {
+    background-color: green;
+}
 
+.luento {
+    background-color: red;
+}
 
+.demot {
+    background-color: yellow;
+}
 
+.letter {
+    font-size: 75%;
+    font-style: italic; 
+}
