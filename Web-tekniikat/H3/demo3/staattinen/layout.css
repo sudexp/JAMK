@@ -1,0 +1,115 @@
+/* Jos käytetään muita kuin ASCII-merkkejä CSS-määrityksissä */
+@charset "utf-8";
+
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, sans-serif;
+    background-color: #444547;    
+}
+
+#page {
+    width: 960px;
+    /* margin: 0 auto; */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #9c9;
+}
+
+#header {
+    width: 960px;
+    height: 80px;
+    background-color: #fff;
+}
+
+#header_logo, #header_center, #header_right {
+    background-color: #000;
+    color: #fff;
+    float: left;
+    width: 310px;
+    height: 70px;
+    margin: 5px;
+}
+
+#header_logo img{
+    width: 50px;
+    height: 60px;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+#header_center {
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+#header_right p {
+    /* margin: 23 px 0 0 7px */
+    margin-top: 23px;
+    margin-left: 7px; 
+}
+
+#menu {
+    width: 960px;
+    height: 30px;
+    padding-top: 5px;
+    background-color: #aaa;
+}
+
+#menu p{
+    text-align: center;
+    margin: 0;
+}
+
+#content {
+    width: 960px;
+    float: left;
+    background-color: #fff;
+}
+
+#content_left, #content_right {
+    margin: 20px;
+    padding: 5px;
+    width: 400px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+#content_left {
+    float: left;
+}
+
+#content_right {
+    float: right;
+}
+
+#content_left img {
+    float: left;
+    margin: 5px;
+    /* vaakasuuntainen varjo, pystysuuntainen varjo, varjon levinneisyys, varjon väri */
+    box-shadow: 4px 4px 4px #555;
+}
+
+#content_right img {
+    float: right;
+    margin: 5 px;
+    box-shadow: -4px -4px 4px #555;
+}
+
+#content_left p, #content_right p {
+    color: #696b70;
+    font-size: 12px;
+}
+#content img {
+    width: 80px;
+    height: 100px;
+}
+
+#footer {
+    width: 960px;
+    height: 25px;
+    background-color: #aaa;
+    color: #fff;
+    text-align: center;
+    float: left;
+}
