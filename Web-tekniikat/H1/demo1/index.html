@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ensimmäinen demosivu</title>
+        <meta charset="utf-8"/>
+        
+        <style>
+            /* CCS-kommentointi */
+            body {
+                background-color: #c2f9d5;
+            }
+            h1 {
+                background-color: aliceblue;
+            color: white
+            text-aligh: center;
+            }
+            h2 {
+                background-color: dimgray;
+            }
+            h1,h2 {
+                font-family: garamond;
+            }
+            img {
+                width: 20%
+            }
+            a {
+                background-color: darkgray
+                color: white;
+                text-decoration: none;
+            }
+            a:hover {background-color: red;
+                color: yellow;
+            }
+            table, th, td {
+                border: 3px solid gray;
+                border-collapse: collapse
+                padding: 40px;
+                font-size: 20px;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <h1 style="background-color: blue">Ensimmäinen demosivu</h1>
+        <h2>Tekstikappalet</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</p>
+        <p>Vivamus placerat lacus vel vehicula scelerisque, dui enim adipiscing lacus sit amet sagittis, libero enim vitae mi. In neque magna posuere, euismod ac tincidunt tempor est. Ut suscipit nisi eu purus. Proin ut pede mauris eget ipsum. Integer vel quam nunc commodo consequat. Integer ac eros eu tellus dignissim viverra. Maecenas erat aliquam erat volutpat. Ut venenatis ipsum quis turpis. Integer cursus scelerisque lorem. Sed nec mauris id quam blandit consequat. Cras nibh mi hendrerit vitae, dapibus et aliquam et magna. Nulla vitae elit. Mauris consectetuer odio vitae augue.</p>
+        <h2>Linkkilista</h2>
+        <a target="_blank"
+        href="https://www.google.com">Googlen hakukone</a>
+        <a target="_blank"
+           href="https://www.techradar.com">Techradar</a>
+        <a target="_blank"
+           href="https://www.slashgear.com">Slashgear</a>
+        <h2>Kuvat</h2>
+        <img src="https://cdn.pixabay.com/photo/2015/09/02/12/27/matterhorn-918442_960_720.jpg" alt="Vuoristo"/>
+        <img src="Kuvat/matterhorn.jpg" alt="Toinen vuoristo"/>
+        <h2>Muotoilu teksti</h2>
+        <p>Lihavoitu <b>teksti</b></p>
+          <p>Lihavoitu <strong>teksti</strong></p>
+        <p>Kursivoitu <i>teksti</i></p>
+        <p>Alleviivattu <u>teksti</u></p>
+        <p>Poistettu <del>teksti</del></p>
+        <h2>Kommentointi</h2>
+        <!-- Kommentti -->
+        <!-- useamman rivin
+            kommenti -->
+        <h2>Taulut</h2>
+        <table>
+            <tr>
+                <th colspan="4">1</th>
+            </tr>
+            <tr>
+                <td rowspan="3">2</td><td>2</td><td>2</td><td>2</td>
+            </tr>
+            <tr>
+                <td>2</td><td>2</td><td>2</td>
+            </tr>
+            <tr>
+                <td>2</td><td>2</td><td>2</td>
+            </tr>
+        </table>
+        <h2>Listat</h2>
+        <h3>Järjestemätön lista</h3>
+        <ul>
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ul>
+        <h3>Järjestetty lista</h3>
+        <ol>    
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ol>
+        <h3>Sisäkkäinen lista</h3>
+        <ul>    
+            <li>A</li>
+            <li>B
+                <ol>    
+                    <li>A</li>
+                    <li>B</li>
+                    <li>C</li>
+                </ol>
+            </li>
+            <li>C</li>
+        </ul>
+    </body>
+</html>
