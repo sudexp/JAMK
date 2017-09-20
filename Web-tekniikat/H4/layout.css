@@ -1,71 +1,45 @@
 @charset "utf-8";
 
 body {
-    background-color: white;
+    background-color: #E8E9EA;
     font-size: 100%;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0 auto;
 }
 
 #outer {
-    /*width: 100%;*/
+    width: 90%;
     background-color: #fff;
-    border: 3px dashed black;
-    /*padding-top: 50px;*/
+    padding-top: 10px;
     margin: 0 auto;
 }
 
 #inner {
-    /*background-color: #A9A9A9;*/
     background-color: black;
-    border: 3px dashed green;
     margin: 0 auto;
-    /*position: relative;*/
     width: 80%;
-    /*top: 0;*/
-    /*height: 700px;*/
 }
 
 #top {
     background-color: #8DD6FF;
-    border: 3px dashed blue;
     text-align: center;
-    letter-spacing: 7px;
     margin: 0;
-    /*position: absolute;*/
-    /*width: 100%;*/
-    /*top: 0;*/
     height: 120px;
 }
 
 #menu {
-    /*background-color: #000;*/
-    border: 2px dotted red;
-    width: 150px;
+    width: 120px;
     float: left;
-    /*position: relative;*/
-    /*top: 120px;
-    left: 0;*/
-    /*height: 530px;*/
 }
 
 #content {
     padding: 10px;
     background-color: #A9A9A9;
-    border: 3px dashed darkred;
-    margin-left: 150px;
-    /*position: absolute;*/
-    /*width: 85%;*/
-    /*top: 120px;
-    right: 0;*/
-    /*height: 530px;*/
-    /*float: right;*/
+    margin-left: 120px;
 }
 
 #bottom {
     background-color: #8DD6FF;
-    border: 2px dotted violet;
-    color: #fff;
     text-align: center;
     margin: 0 auto;   
     height: 50px;
@@ -74,22 +48,50 @@ body {
 .content-box {
     background-color: #F4F7DB;
     width: 80%;
-    border: 3px dashed gray;
     border-radius: 20px;
-    margin: 0 auto;
+    margin: 10px auto;
+    padding: 5px;
 }
 
 h1, h2, h3 {
     color: white;
     text-align: center;
-    overflow: hidden;
+    margin: 0;
 }
 
+h1 {
+    letter-spacing: 7px;
+    padding: 40px;
+}
+
+h2 {
+    margin-top: 10px;
+}
+
+h3 {
+    padding: 15px;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    margin: 5px;
+    padding: 0;
+}
+
+li {
+    padding: 5px;
+}
+
+a {
+    color: white;
+}
+
+
 @media only screen and (max-width: 1000px) {
-    /* Tänne kapean ruudun määritykset */
     #menu {
         float: none;
-        width: auto;
+        width: 100%; /* width: auto; - toimii samalla tavalla*/ 
     }
     #menu li {
         display: inline;
@@ -98,81 +100,3 @@ h1, h2, h3 {
         margin-left: 0;
     }
 }
-
-
-
-/*
-
-#content_left, #content_right {
-    background-color: #f7f5ee;
-    border: 1px #ac9675 solid;
-    border-radius: 10px;
-    padding: 1em;
-    width: 40%;
-}
- 
-#content_left {
-    float: left;
-   
-    margin: 2em auto 2em 3.5%;
-}
- 
-#content_right {
-    float: right;
-    margin: 2em 3.5% 2em auto;
-}
-
-h1, h2 {
-    color: #e49a2f;
-    margin-right: 10%;
-    padding-left: 1em;
-    overflow: hidden;
-}
- 
-h1 {
-    font-size: 150%;
-}
- 
-h2 {
-    font-size: 120%;
-}
- 
-img {
-    width: 100%;
-    padding: 1em 0; /* top ja bottom on 16px, right ja left on 0 
-}
- 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
- 
-li {
-    display: inline;
-}
- 
-a, a:visited {
-    width: 160px;
-    color: #fff;
-    background-color: #e19607;
-    padding-left: 1em;
-    padding-right: 1em;
-    text-decoration: none;
-    text-transform: uppercase;
-}
- 
-a:hover, a:active {
-    background-color: #bd7d03;
-}
- 
-.footer_link {
-    text-transform: none;
-    color: #92260d;
-}
-
-@media only screen and (max-width: 900px) {
-    #content_left, #content_right {
-        margin: 2em;
-        float: left;
-        width: 82%; */
