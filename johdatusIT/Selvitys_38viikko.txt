@@ -1,0 +1,238 @@
+
+Dmitry Sklyarov
+l5568
+19.09.2017
+
+
+Olen käyttänyt näitä linkkejä:
+https://developer.mozilla.org/
+https://en.wikipedia.org/
+http://restcookbook.com/
+
+
+
+HTTP request methods:
+
+1. GET
+
+The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
+
+2. HEAD
+
+The HEAD method asks for a response identical to that of a GET request, but without the response body.
+
+3. POST
+
+The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server
+
+4. PUT
+
+The PUT method replaces all current representations of the target resource with the request payload.
+
+5. DELETE
+
+The DELETE method deletes the specified resource.
+
+6. CONNECT
+
+The CONNECT method establishes a tunnel to the server identified by the target resource.
+
+7. OPTIONS
+
+The OPTIONS method is used to describe the communication options for the target resource.
+
+8. TRACE
+
+The TRACE method performs a message loop-back test along the path to the target resource.
+
+9. PATCH
+
+The PATCH method is used to apply partial modifications to a resource.
+
+
+
+
+HTTP headers:
+
+HTTP headers allow the client and the server to pass additional information with the request or the response. A request header consists of its case-insensitive name followed by a colon ':', then by its value (without line breaks). Leading white space before the value is ignored.
+
+Headers can be grouped according to their contexts:
+
+
+
+General header: Headers applying to both requests and responses but with no relation to the data eventually transmitted in the body.
+
+A general header is an HTTP header that can be used for both, request and response messages, but don't apply to the content itself. Depending on the context they are used in, general headers are either response or request headers. However, they are not entity headers.
+
+The most common general headers are Date, Cache-Control or Connection.
+
+
+
+
+Request header: Headers containing more information about the resource to be fetched or about the client itself.
+
+A request header is an HTTP header that can be used in an HTTP request, and that doesn't relate to the content of the message. Request headers, like Accept, Accept-*, or If-* allow to perform conditional requests; others like Cookie, User-Agent or Referer precise the context so that the server can tailor the answer.
+
+Not all headers appearing in a request are request headers. For example, the Content-Length appearing in a POST request is actually an entity header referring to the size of the body of the request message. However, these entity headers are often called request headers in such a context.
+
+In addition, CORS defines a subset of request headers as simple headers, request headers that are always considered authorized and are not explicitly listed in responses to preflight requests.
+
+A few request headers after a GET request:
+
+GET /home.html HTTP/1.1
+Host: developer.mozilla.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://developer.mozilla.org/testpage.html
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Mon, 18 Jul 2016 02:36:04 GMT
+If-None-Match: "c561c68d0ba92bbeb8b0fff2a9199f722e3a621a"
+Cache-Control: max-age=0
+Strictly speaking, the Content-Length header in this example is not a request header like the others, but an entity header:
+
+POST /myform.html HTTP/1.1
+Host: developer.mozilla.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Content-Length: 128
+	
+
+
+
+Response header: Headers with additional information about the response, like its location or about the server itself (name and version etc.).
+
+A response header is an HTTP header that can be used in an HTTP response and that doesn't relate to the content of the message. Response headers, like Age, Location or Server are used to give a more detailed context of the response.
+
+Not all headers appearing in a response are response headers. For example, the Content-Length header is an entity header referring to the size of the body of the request message. However, these entity requests are usually called responses headers in such a context.
+
+The following shows a few response headers after a GET request. Note that strictly speaking, the Content-Encoding and Content-Type headers are entity headers:
+
+200 OK
+Access-Control-Allow-Origin: *
+Connection: Keep-Alive
+Content-Encoding: gzip
+Content-Type: text/html; charset=utf-8
+Date: Mon, 18 Jul 2016 16:06:00 GMT
+Etag: "c561c68d0ba92bbeb8b0f612a9199f722e3a621a"
+Keep-Alive: timeout=5, max=997
+Last-Modified: Mon, 18 Jul 2016 02:36:04 GMT
+Server: Apache
+Set-Cookie: mykey=myvalue; expires=Mon, 17-Jul-2017 16:06:00 GMT; Max-Age=31449600; Path=/; secure
+Transfer-Encoding: chunked
+Vary: Cookie, Accept-Encoding
+X-Backend-Server: developer2.webapp.scl3.mozilla.com
+X-Cache-Info: not cacheable; meta data too large
+X-kuma-revision: 1085259
+x-frame-options: DENY
+
+
+
+
+Entity header: Headers containing more information about the body of the entity, like its content length or its MIME-type.
+
+An entity header is an HTTP header describing the content of the body of the message. Entity headers are used in both, HTTP requests and responses. Headers like Content-Length, Content-Language, Content-Encoding are entity headers.
+
+Even if entity headers are neither request nor response headers, they are often included with these terms.
+
+In the following example, Content-Length is an entity header, while Host and User-Agent are request headers:
+
+POST /myform.html HTTP/1.1
+Host: developer.mozilla.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Content-Length: 128
+
+
+
+
+Request HTTP-header:
+
+GET /wiki/HTTP HTTP/1.1 Host: fi.wikipedia.org User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; fi-FI; rv:1.6) Gecko/20040206 Firefox/0.8 Accept: application/x-shockwave-flash,text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1 Accept-Language: fi,en;q=0.7,en-us;q=0.3 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300 Proxy-Connection: keep-alive Referer: http://fi.wikipedia.org/w/wiki.phtml?title=HTTP Cache-Control: max-age=0
+
+Response HTTP-header: HTTP/1.1 200 OK Date: Tue, 06 Jul 2004 17:59:22 GMT Expires: Thu, 01 Jan 1970 00:00:00 GMT Cache-Control: private, must-revalidate Via: 1.0 cthulhu Server: Apache/1.3.29 (Unix) PHP/4.3.4 X-Powered-By: PHP/4.3.4 Set-Cookie: fiwikiSession=a8015bd32eee4e5bd46fd83aea40f159; path=/ Vary: Accept-Encoding,Cookie Content-Language: fi Content-Type: text/html; charset=utf-8 X-Cache: MISS from wikipedia.org Transfer-Encoding: chunked Connection: keep-aliveResponse body.	
+The response message consists of the following:
+
+A status line which includes the status code and reason message (e.g., HTTP/1.1 200 OK, which indicates that the client's request succeeded).
+Response header fields (e.g., Content-Type: text/html).
+An empty line.
+An optional message body.HTTP Message Body is the data bytes transmitted in an HTTP transaction message immediately following the headers if there is any (in the case of HTTP/0.9 no headers are transmitted).The request/response message consists of the following:
+
+Request line, such as GET /logo.gif HTTP/1.1 or Status line, such as HTTP/1.1 200 OK,
+Headers
+An empty line
+Optional HTTP message body data
+The request/status line and headers must all end with <CR><LF> (that is, a carriage return followed by a line feed). The empty line must consist of only <CR><LF> and no other whitespace.
+
+The "optional HTTP message body data" is what this article defines.
+
+Response example[edit]
+This could be a response from the web server:
+
+HTTP/1.1 200 OK
+Date: Sun, 10 Oct 2010 23:26:07 GMT
+Server: Apache/2.2.8 (Ubuntu) mod_ssl/2.2.8 OpenSSL/0.9.8g
+Last-Modified: Sun, 26 Sep 2010 22:04:35 GMT
+ETag: "45b6-834-49130cc1182c0"
+Accept-Ranges: bytes
+Content-Length: 13
+Connection: close
+Content-Type: text/html
+
+Hello world!
+
+HTTP	RFC  Request 	Response  Safe	Idempotent Cacheable
+method	     has body   has body
+	
+GET     7231	No	  Yes	  Yes	  Yes         Yes
+HEAD	7231	No	  No	  Yes	  Yes	      Yes
+POST	7231	No	  Yes	  No	  Yes	       No	      
+PUT	7231	No	  Yes	  Yes	  Yes	       No	     
+DELETE	7231	Optional  Yes	  Yes	  Yes	      No	       
+CONNECT	7231	Yes	  Yes	  No	  No	      Yes
+OPTIONS	7231	Yes	  Yes	  No	  Yes	       No
+TRACE	7231	Yes	  Yes	  No	  No	       No
+PATCH	5789	Yes	  Yes	  No	  No	       No
+
+1. Safe methods.
+
+Safe methods are HTTP methods that do not modify resources. For instance, using GET or HEAD on a resource URL, should NEVER change the resource. However, this is not completely true. It means: it won't change the resource representation. It is still possible, that safe methods do change things on a server or resource, but this should not reflect in a different representation.
+
+This means the following is incorrect, if this would actually delete the blogpost:
+
+GET /blog/1234/delete HTTP/1.1
+Safe methods are methods that can be cached, prefetched without any repercussions to the resource.2. Idempotent methodsAn idempotent HTTP method is a HTTP method that can be called many times without different outcomes. It would not matter if the method is called only once, or ten times over. The result should be the same. Again, this only applies to the result, not the resource itself. This still can be manipulated (like an update-timestamp, provided this information is not shared in the (current) resource representation.
+
+Consider the following examples:
+
+  a = 4;
+  a++;
+
+The first example is idempotent: no matter how many times we execute this statement, a will always be 4. The second example is not idempotent. Executing this 10 times will result in a different outcome as when running 5 times. Since both examples are changing the value of a, both are non-safe methods.
+
+Idempotency is important in building a fault-tolerant API. Suppose a client wants to update a resource through POST. Since POST is not a idempotent method, calling it multiple times can result in wrong updates. What would happen if you sent out the POST request to the server, but you get a timeout. Is the resource actually updated? Does the timeout happened during sending the request to the server, or the response to the client? Can we safely retry again, or do we need to figure out first what has happened with the resource? By using idempotent methods, we do not have to answer this question, but we can safely resend the request until we actually get a response back from the server.3. Overview of (some) HTTP methods.
+
+HTTP Method		Idempotent		Safe
+OPTIONS			yes			yes
+GET			yes			yes
+HEAD			yes			yes
+PUT			yes			no
+POST			no			no
+DELETE			yes			no
+PATCH			no			no
+Status codes.
+
+In HTTP/1.0 and since, the first line of the HTTP response is called the status line and includes a numeric status code (such as "404") and a textual reason phrase (such as "Not Found"). The way the user agent handles the response primarily depends on the code and secondarily on the other response header fields. Custom status codes can be used since, if the user agent encounters a code it does not recognize, it can use the first digit of the code to determine the general class of the response.[24]
+
+The standard reason phrases are only recommendations and can be replaced with "local equivalents" at the web developer's discretion. If the status code indicated a problem, the user agent might display the reason phrase to the user to provide further information about the nature of the problem. The standard also allows the user agent to attempt to interpret the reason phrase, though this might be unwise since the standard explicitly specifies that status codes are machine-readable and reason phrases are human-readable. HTTP status code is primarily divided into five groups for better explanation of request and responses between client and server as named: Informational 1XX, Successful 2XX, Redirection 3XX, Client Error 4XX and Server Error 5XX.
+
+List of HTTP status codes can see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes.Computer Network Ports.
+In the internet protocol suite, a port is an endpoint of communication in an operating system. While the term is also used for female connectors on hardware devices (see computer port), in software it is a logical construct that identifies a specific process or a type of network service.
+
+A port is always associated with an IP address of a host and the protocol type of the communication, and thus completes the destination or origination network address of a communication session. A port is identified for each address and protocol by a 16-bit number, commonly known as the port number. For example, an address may be "protocol: TCP, IP address: 1.2.3.4, port number: 80", which may be written 1.2.3.4:80 when the protocol is known from context.
+
+Specific port numbers are often used to identify specific services. Of the thousands of enumerated ports, 1024 well-known port numbers are reserved by convention to identify specific service types on a host. In the client–server model of application architecture, the ports that network clients connect to for service initiation provide a multiplexing service. After initial communication binds to the well-known port number, this port is freed by switching each instance of service requests to a dedicated, connection-specific port number, so that additional clients can be serviced. The protocols that primarily use ports are the transport layer protocols, such as the Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP).
+
+Ports were unnecessary on direct point-to-point links when the computers at each end could only run one program at a time. Ports became necessary after computers became capable of executing more than one program at a time and were connected to modern networks.
+
+Port numbers range from 0 to 65535, but only port numbers 0 to 1023 are reserved for privileged services and designated as well-known ports. For example, official http-port is 80; https-port is 443.
