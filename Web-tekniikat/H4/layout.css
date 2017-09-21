@@ -24,10 +24,9 @@ body {
     background-color: #8DD6FF;
     text-align: center;
     margin: 0;
-    height: 120px;
 }
 
-#menu {
+#menu { /* musta väri innerista */
     width: 120px;
     float: left;
 }
@@ -35,14 +34,13 @@ body {
 #content {
     padding: 10px;
     background-color: #A9A9A9;
-    margin-left: 120px;
+    margin-left: 120px; /* riippuu menu-widthista */
 }
 
 #bottom {
     background-color: #8DD6FF;
     text-align: center;
     margin: 0 auto;   
-    height: 50px;
 }
 
 .content-box {
@@ -87,11 +85,10 @@ a {
     color: white;
 }
 
-
 @media only screen and (max-width: 1000px) {
     #menu {
         float: none;
-        width: 100%; /* width: auto; - toimii samalla tavalla*/ 
+        width: 100%; /* width: auto; - toimii samalla tavalla */ 
     }
     #menu li {
         display: inline;
