@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+}
+ 
+#wrapper {
+    width: 60%;
+    margin: 0 auto;
+    background-color: #d8d8d8;
+    margin-top: 80px;
+}
+
+#header {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    width: 60%;
+    top: 0;
+    height: 80px;
+    z-index: 1;
+}
+ 
+#content {
+    padding: 2.5em;
+    position: relative;
+}
+ 
+.text {
+    color: #fff;
+    margin: 10px 0;
+    padding: 1em;
+}
+ 
+.pos_s {
+    /* Elementin oletustila (sama kuin jos ei annettaisi lainkaan position-määrettä). Elementin sijaintiin ei voida vaikuttaa määreillä TOP, BOTTOM, LEFT ja RIGHT */
+    position: static;
+    background-color: #0c5403;
+}
+ 
+.pos_r {
+    /* Elementti sijoitetaan suhteutettuna sen oletuspaikkaan sivupohjalla. Sijaintia voidaan ohjata määreillä TOP, RIGHT, BOTTOM ja LEFT */
+    position: relative;
+    background-color: #005d6d;
+    right: 255px;
+}
+ 
+.pos_a {
+    /* Ympäröivän elementin tulee olla absolute- tai relative-määrityksellä. Tämän jälkeen elementti sijoitetaan suhteutettuna ympäröivään elementtiin. Voidaan käyttää ohjaukseen määreitä TOP, RIGHT, BOTTOM ja LEFT. Absolute ei tottele yleistä flowta sivupohjalla ja voi jäädä ympäröivän elementin ulkopuolelle. */
+    position: absolute;
+    background-color: #9e5c00;
+    right: 255px;
+}

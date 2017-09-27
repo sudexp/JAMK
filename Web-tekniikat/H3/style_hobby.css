@@ -31,13 +31,13 @@ body {
     padding: 10px 0;
 } 
 
-#image {
+.img {
     text-align: center;
     margin: 0 auto;
     padding: 10px 0;
 }
 
-#content {
+.content {
     width: 90%;
     margin: 0 auto;
 }

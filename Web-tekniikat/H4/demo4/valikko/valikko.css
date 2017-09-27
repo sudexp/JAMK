@@ -1,0 +1,58 @@
+/* Yleiset määritykset molemmille valikoille */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ 
+li {
+    float:left;
+}
+ 
+#left_nav {
+    margin-bottom: 300px;
+}
+
+a {
+    display: block;
+    width: 120px;
+    font-size: 120%;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+}
+ 
+a:hover, a:active {
+    background-color: #caeefa;
+    color: #000;
+}
+ 
+/* Piilotetaan alavalikot näkyvistä */
+.sublinks li {
+    display: none;
+}
+ 
+/* Näytetään alavalikko, kun hiiren kursori on ylätason linkin päällä */
+.sublinks:hover li {
+    display: block;
+    float: none;
+}
+ 
+/* Valikko, jossa tehosteet mukana */
+.sublinks2 li {
+    visibility: hidden;
+    opacity: 0;
+    /* Animaatio */
+    transition: 1000ms ease;
+    float: none;
+    /* Varjostus */
+    box-shadow: 0 8px 16px -6px black;
+}
+ 
+.sublinks2:hover li {
+    visibility: visible;
+    float: none;
+    opacity: 1;
+}

@@ -1,0 +1,159 @@
+@font-face {
+    font-family: Quicksand-Light;
+    src: url(quicksand/Quicksand-Light.otf);
+}
+
+@font-face {
+    font-family: Quicksand-Regular;
+    src: url(quicksand/Quicksand-Regular.otf);
+}
+
+body {
+    font-size: 100%;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+page {
+    margin: 0 auto;
+    width: 90%;
+}
+
+header {
+    background-color: #575757;
+    color: #F0EBEB;
+    padding: 1em; /* 1em = 16px */
+    text-align: center;
+    font-size: 200%; /* 200% = 32px */
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    font-family: 'Kaushan Script', cursive;
+}
+
+footer, nav {
+    background-color: #E49A2F;
+    color: #F7F5EE;
+    text-align: center;
+}
+
+footer {
+    font-family: 'Kalam', cursive;
+}
+
+section {
+    background-color: #D8CCAF;
+    overflow: auto;
+}
+
+#content_left {
+    background-color: #F7F5EE;
+    border: 1px #AC9675 solid;
+    border-radius: 10px;
+    float: left;
+    margin: 2em auto 2em 3.5%; /* TOP, RIGHT, BOTTOM, LEFT */
+    padding: 1em;
+    width: 40%;
+    font-family: Quicksand-Regular;
+}
+
+#content_right {
+    background-color: #F7F5EE;
+    border: 1px #AC9675 solid;
+    border-radius: 10px;
+    float: right;
+    margin: 2em 3.5% 2em auto; /* TOP, RIGHT, BOTTOM, LEFT */
+    padding: 1em;
+    width: 40%;
+    font-family: Quicksand-Light;
+}
+
+h1 {
+    font-size: 120%;
+    color: #E49A2F;
+    margin: 0;
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 120%;
+    color: #E49A2F;
+    margin-right: 10%;
+    padding-left: 1em;
+    overflow: hidden;   
+}
+
+img {
+    width: 100%;
+    height: auto;
+    padding: 1em 0; /* top ja bottom 16px, right ja left 0px */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+}
+
+li {
+    display: inline;
+}
+
+a:link, a:visited {
+    width: 160px;
+    color: white;
+    background-color: #E19607;
+    padding: 0 1em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:active {
+    background-color: black;
+    color: white;
+}
+
+a.footer_link {
+    text-transform: none;
+    color: #92260D;
+}
+
+@media only screen and (max-width: 900px) {
+    #content_left, #content_right {
+        margin: 2em;
+        float: left;
+        width: 82%;
+    }
+    body {
+        background-color: black;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
