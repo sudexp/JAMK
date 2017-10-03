@@ -33,7 +33,20 @@ int main(void)
         cout << "Syötä luku." << endl;
         cin >> luku;
     }
-
+    // Kaksi toimivaa vaihtoehtoa.
+    // Ensimmäinen "while" vaihtoehto:
+    int i=1;
+    while (i <= luku) {
+        int j = 1;
+        while (j <= i) {
+            cout << i;
+            j++;
+        }
+        cout << endl;
+        i++;
+	}
+    
+    /* Toinen "for" vaihtoehto:
     int i;
     for (i = 1; i <= luku; i++) {
         int j;
@@ -41,5 +54,6 @@ int main(void)
             cout << i;
         }
         cout << endl;
-    }
+    } */
+    return 0; 
 }

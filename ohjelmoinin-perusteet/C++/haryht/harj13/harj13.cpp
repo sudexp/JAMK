@@ -16,21 +16,26 @@ Anna etunimi: Aku
 Anna sukunimi: Ankka
 Nimesi oli: Aku Ankka
 
-Pvm: 29.9.2017
+Pvm: 03.10.2017
 Versio: 1.0
 ******************************************/
 
 #include <iostream> 
+#include <cstring>
 using namespace std;
 int main(void)
 {
-	char nimi[32];
+	char etunimi[64];
 	cout << "Syötä etunimi: ";
-	cin.get(nimi, 32);
+	cin.get(etunimi, 64);
+
 	char sukunimi[32];
 	cout << "Syötä sukunimi: ";
 	cin.get();
 	cin.get(sukunimi, 32);
-	cout << "Nimesi oli: " << nimi << " " << sukunimi << endl;
+
+	strcat(etunimi, " ");
+	strcat(etunimi, sukunimi);
+	cout << "Nimesi oli: " << etunimi << endl;
 	return 0;
 }
