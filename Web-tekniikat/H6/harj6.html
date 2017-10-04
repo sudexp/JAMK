@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Media Platform</title>
+        <link rel="stylesheet" type="text/css" href="platform_styles.css"/>
+        <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/>
+    </head>
+    <body>
+        <div id=media_platform>
+            <div id=header>
+                <h1>Media Platform</h1>
+            </div>
+            <div id=media_content>
+                <h2>kuvagalleria</h2>
+                <div id="gallery">
+                    <a href="kuvat/IMG_2784.jpg" data-lightbox="group" data-title="Kuva1"><img src="kuvat/IMG_2784_thumb.png" class="mini_img" alt="Kuva1"/></a>
+                    <a href="kuvat/IMG_2785.jpg" data-lightbox="group" data-title="Kuva2"><img src="kuvat/IMG_2785_thumb.png" class="mini_img" alt="Kuva2"/></a>
+                    <a href="kuvat/IMG_2796.jpg" data-lightbox="group" data-title="Kuva3"><img src="kuvat/IMG_2796_thumb.png" class="mini_img" alt="Kuva3"/></a>
+                    <a href="kuvat/IMG_2798.jpg" data-lightbox="group" data-title="Kuva4"><img src="kuvat/IMG_2798_thumb.png" class="mini_img" alt="Kuva4"/></a>
+                    <a href="kuvat/IMG_2803.jpg" data-lightbox="group" data-title="Kuva5"><img src="kuvat/IMG_2803_thumb.png" class="mini_img" alt="Kuva5"/></a>
+                </div>
+                <h2>videon toistaminen</h2>
+                <video width="320" height="240" controls>
+                    <source src="videos/bunny_sample.mp4" type="video/mp4">
+                    Your browser does not support the video element!
+                    <track src="track.vtt" kind="subtitles" default/>
+                </video>
+                <h2>äänen toistaminen</h2>
+                <audio controls>
+                    <source src="audio/kalimba.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element!
+                </audio> 
+            </div>
+            <div id=footer>
+                <h2>Dmitry Sklyarov, 05.10.2017</h2>
+            </div>
+        </div>
+        <script src="lightbox2-master/dist/js/lightbox-plus-jquery.js"></script>
+    </body>
+</html>

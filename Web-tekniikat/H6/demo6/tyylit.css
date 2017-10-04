@@ -1,0 +1,65 @@
+html {
+    background: linear-gradient(90deg, #37ddb2, #dd8237); /* 1. suunta 2-3 color */ /* color: voi käyttää enemmän värejä esim. #000, #fff, red, green, yellow */
+    height: 100%;
+    background-size: 400% 100%; /* vaakasuuntainen koko, pystysuuntainen koko */
+    animation: vieritys 30s linear infinite; /* animation name, animation-duration, animation-timing-function*, animation-iteration count */
+}
+/* väliaikapisteiden määrittäminen animaatiolle */ 
+@keyframes vieritys {
+    0% {background-position: 0% 100%}
+    50% {background-position: 100% 100%}
+    100% {background-position: 0% 100%}
+}
+ 
+#wrap {
+    width: 60%;
+    margin: 40px auto;
+    background-color: white;
+    opacity: 0.8;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 15px 15px 15px black;
+}
+ 
+#header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 80px;
+    padding-top: 30px;
+    font-size: 2.5em;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+ 
+#footer {
+    background-color: black;
+    color: white;
+    height: 40px;
+    font-size: 1.2em;
+    padding-top: 10px;
+    text-align: center;
+}
+ 
+#content {
+    background-color: #a4b7d6;
+    padding: 20px;
+}
+ 
+#content h1 {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    font-size: 1.4em;
+}
+ 
+.mini_img {
+    width: 150px;
+    height: 100px;
+    filter: grayscale(100%); /* change kuvat color - grey*/
+    transition: 1000ms ease; /* nopeus? izmenenya tsveta */
+}
+ 
+.mini_img:hover {
+    filter: grayscale(0%); /* kun kursori päällä - color kuvat*/
+}

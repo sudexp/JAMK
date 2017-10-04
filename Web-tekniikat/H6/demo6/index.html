@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Demo6: Mediademo</title>
+    <link rel="stylesheet" type="text/css" href="tyylit.css"/>
+    <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            Mediademo
+        </div>
+        <div id="content">
+            <h1>Kuvagalleria</h1>
+            <div id="gallery">
+                <a href="kuvat/1.jpg" data-lightbox="group" data-title="Kuva1"><img src="kuvat/1_thumb.jpg" class="mini_img" alt="Kuva1"/></a>
+                <a href="kuvat/2.jpg" data-lightbox="group" data-title="Kuva2"><img src="kuvat/2_thumb.jpg" class="mini_img" alt="Kuva2"/></a>
+                <a href="kuvat/3.jpg" data-lightbox="group" data-title="Kuva3"><img src="kuvat/3_thumb.jpg" class="mini_img" alt="Kuva3"/></a>
+                <a href="kuvat/4.jpg" data-lightbox="group" data-title="Kuva4"><img src="kuvat/4_thumb.jpg" class="mini_img" alt="Kuva4"/></a>
+                <a href="kuvat/5.jpg" data-lightbox="group" data-title="Kuva5"><img src="kuvat/5_thumb.jpg" class="mini_img" alt="Kuva5"/></a>
+            </div>
+        </div> 
+        <div id="footer">
+            Yhteystiedot
+        </div>
+    </div>
+    <script src="lightbox2-master/src/js/lightbox.js"></script>
+    <script>
+        lightbox.option({
+            'wrapAround': true, /* Mahdollisuus kiertää kuvat ympäri */
+            'resizeDuration': 300 /* Kuvakoon muuttamiseen käytetty aika */
+        }) 
+    </script>
+</body>
+</html>
