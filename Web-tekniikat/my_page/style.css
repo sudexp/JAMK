@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: Quicksand-Light;
+    src: url(quicksand/Quicksand-Light.otf);
+}
+
+body {
+    background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    /*margin: 0 auto;*/
+}
+
+article {
+    width: 95%;
+    background-color: blue;
+    margin: 0 auto;
+    /*padding-top: 10px;*/
+}
+
+figure {
+    background-color: yellowgreen;
+    float: left;
+    width: 250px;
+    margin: 0;
+}
+
+img {
+    height: 80px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+header {
+    background-color: white;
+    font-family: 'Abel', sans-serif;
+    text-align: left;
+    margin-left: 250px;
+    padding: 50px 0 50px 5px;
+}
+
+nav {
+    width: 100%;
+    background-color: brown;
+    text-align: center;
+    margin-left: 250px;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+nav a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #727272;
+    margin: 5px;    
+}
+
+section {
+    width: 100%;
+    background-color: grey;
+}
+
+footer {
+    background-color: orange;
+    text-align: center;
+    margin: 0 auto;   
+}
+
+.content_left {
+    color: #727272;
+    width: 250px;
+    float: left;
+}
+
+.content_right {
+    background-color: red;
+    color: #939393;
+    text-align: justify;
+    margin-left: 250px;
+}
+
+content_1 {
+    background-color: green;
+}
+
+content_1 .content_right {
+    background-color: orange;
+}
+
+content_2 {
+    background-color: darkcyan;
+}
+
+content_2 .content_right {
+    background-color: darkgrey;
+}
+
+h1 {
+    text-transform: uppercase;
+    color: #FFBC00;
+    letter-spacing: 0.25em;
+    font-size: 32px;
+    margin: 0;
+}
+header p {
+    letter-spacing: 0.1em;
+    font-size: 24px;
+    padding: 0; 
+}
+
+p {
+    margin: 0 auto;
+    padding: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+    figure, .content_left {
+        float: none;
+        width: 100%;
+        background-color: #fff;
+        text-align: center;
+    }
+   
+    header, nav, .content_right {
+        margin-left: 0;
+    }
+}
