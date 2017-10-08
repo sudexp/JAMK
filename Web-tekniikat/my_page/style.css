@@ -49,16 +49,19 @@ nav a {
 }
 
 .flag-icons {
-  /*  color: #939393 !important; не работает*/
     height: 2em !important;
     width: 2.66667em !important;
     line-height: 2em !important;
 }
 
-/*
 .flag a:hover {
-    color: #FFBC00;
-} не работает */
+    filter: grayscale(0%); /* при наведении курсора флаги принимают свои цвета*/
+}
+
+.flag a {
+    filter: grayscale(100%); /* изменение цвета флагов на серый*/
+    transition: 500ms ease; /* скорость изменения цвета флагов */
+}
 
 .icon {
     float: right;
@@ -126,6 +129,18 @@ header .content-right {
     font-size: 18px;
     color: #939393;
     padding-top: 25px;
+}
+
+.cv {
+    float: right;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-right: 5px;
+}
+
+.cv a {
+    text-decoration: none;
+    color: #939393;
 }
 
 .text-header-bottom {
@@ -221,7 +236,7 @@ figure:hover {
     background-color: #fcfcfc;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
     .content-left {
         float: none;
         width: 100%;
@@ -252,7 +267,7 @@ section .content-left {
     }
 
     header .content-right {
-        height: 260px;    
+        height: 300px;    
     }
 
     .text-header-top, .text-header-bottom {
@@ -264,7 +279,7 @@ section .content-left {
     }
 
     .text-header-bottom {
-        margin: 30px auto;
+        margin: 70px auto;
     }
 
     .etunimi, .sukunimi, .koulu {
@@ -282,6 +297,10 @@ section .content-left {
     
     .koulu {
         font-size: 14.4px; /* 18px-20%*/
+    }
+
+    .cv {
+        padding-top: 35px;
     }
 
     p {
