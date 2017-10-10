@@ -7,14 +7,15 @@
 
 body {
     background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
 }
 
 nav {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #fff;
+   /* background-color: rgba(255, 255, 255, 0.5);*/
     text-align: center;
-    padding-top: 10px;
+    padding: 5px 0;
     position: fixed;
     top: 0;
     z-index: 1;
@@ -30,13 +31,12 @@ nav a {
 .content-left {
     float: left;
     width: 32%;
-    font-size: 24px;
     text-transform: uppercase;
-    font-weight: bold;
     text-align: right;
     color: #727272;
     margin: 0;
 }
+
 .content-right {
     margin-left: 32%;
     text-align: justify;
@@ -48,19 +48,29 @@ nav a {
     padding-left: 5px;
 }
 
+/*zoom-instruction for rectangle:
 .flag-icons {
     height: 2em !important;
     width: 2.66667em !important;
     line-height: 2em !important;
+  }
+*/
+
+.flag-icons {
+    height: 1.7em !important;
+    width: 2.26667em !important;
+    line-height: 1.7em !important;
 }
 
 .flag a:hover {
-    filter: grayscale(0%); /* при наведении курсора флаги принимают свои цвета*/
+    filter: grayscale(0%);
+    opacity: 1.0; /* при наведении курсора флаги принимают свои цвета*/
 }
 
 .flag a {
     filter: grayscale(100%); /* изменение цвета флагов на серый*/
     transition: 500ms ease; /* скорость изменения цвета флагов */
+    opacity: 0.7; /* в данном случае изменяет оттенок greyscale с черно-белого на серый */
 }
 
 .icon {
@@ -93,10 +103,6 @@ img {
     height: 250px;
     margin-top: 30px;
 }
-/*
-header {
-   font-family: 'Abel', sans-serif;
-} */
 
 header .content-right {
     height: 650px;    
@@ -107,8 +113,10 @@ header .content-right {
 }
 
 .etunimi {
+    text-transform: lowercase;
     letter-spacing: 0.02em;
     font-size: 58px;
+  /*  font-weight: 300; */
     color: #939393;
     line-height: 0.2em; 
     margin: 0 auto;
@@ -120,13 +128,14 @@ header .content-right {
     letter-spacing: 0.01em;
     color: #FFBC00;
     font-size: 64px;
-    font-weight: bold;
+    font-weight: bold; /* !? font-weight: 700; */
     margin: 0;
     padding: 0 0 0 70px;
 }
 
 .koulu {
     font-size: 18px;
+ /*   font-weight: 300; */
     color: #939393;
     padding-top: 25px;
 }
@@ -178,9 +187,84 @@ section {
     background-color: blue;
 }
 
+.skill {
+    width: 49.5%;
+    display: inline-block;
+}
+
+.last {
+    margin-bottom: 60px;
+}
+
+.text-skill {
+    text-transform: uppercase;
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+
+.text-skill right {  
+    padding-right: 0;
+    padding-left: 20px;
+}
+
+.text-skill left {  
+    padding-left: 60px;
+}
+
+.first {  
+    padding-top: 60px;
+}
+
+.scale {    
+    height: 5px;
+    width: 85%;
+    display: inline-block;
+}
+
+.s1, .s3, .s5 { 
+    margin-left: 60px;
+}
+
+.s2, .s4, .s6{ 
+    margin-left: 60px;
+}
+
+.s1 { 
+    background-image: linear-gradient(90deg, #FFBC00 70%, #939393 30%);    
+}
+
+.s2 {
+    background-image: linear-gradient(-90deg, #939393 90%, #FFBC00 10%);    
+}
+
+.s3 {
+    background-image: linear-gradient(-90deg, #939393 90%, #FFBC00 10%);    
+}
+
+.s4 {
+    background-image: linear-gradient(-90deg, #939393 95%, #FFBC00 5%);    
+}
+
+.s5 {
+    background-image: linear-gradient(-90deg, #939393 90%, #FFBC00 10%);    
+}
+
+.s6 { 
+    background-image: linear-gradient(-90deg, #939393 98%, #FFBC00 2%);    
+}
+
 p {
     color: #939393;
     font-size: 18px;
+    line-height: 1.6em;
+    margin: 0 auto;
+    padding: 60px;
+}
+
+h2 {
+    color: #727272;
+    font-size: 18px;
+    font-weight: 400;
     line-height: 1.6em;
     margin: 0 auto;
     padding: 60px;
@@ -236,6 +320,7 @@ figure:hover {
     background-color: #fcfcfc;
 }
 
+/* прописать минимум */
 @media only screen and (max-width: 900px) {
     .content-left {
         float: none;
@@ -336,4 +421,7 @@ section .content-left {
     article {
         padding-top: 35px;
     }
-} */
+} 
+
+
+*/
