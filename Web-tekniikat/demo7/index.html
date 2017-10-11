@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Demo 7: Javascript</title>
+        <link rel="stylesheet" type="text/css" href="dark.css" id="theme" class="dark"/>
+    </head>
+    <body>
+        <div id="top" class="color">
+            <div id="logo" class="color"><img src="kuvat/Javascript.png" alt="js logo"/></div>
+            <div id="title">Demo 7: Javascript</div>
+            <div id="buttons">
+                <label>Teemavalitsin</label>
+                <div id="change_styles">
+                    <div id="cube"></div>
+                </div>
+            </div>
+        </div>
+        <div id="side_nav" class="color">
+            <h2>Tekstilaatikoiden hallinta</h2>
+            <div id="first" class="menu_button">Pienennä tekstilaatikot</div>
+            <div id="second" class="menu_button">Tekstilaatikoiden ominaisuudet</div>
+            <ul id="drop_down" class="off" style="display:none;">
+                <li>
+                    <label>Fontin väri</label><br/>
+                    <input type="text" name="font_color" id="font_color"/>
+                </li>
+                <li>
+                    <label>Fonttikoko</label><br/>
+                    <form id="font_size_selection">
+                        <input type="radio" name="font_size" id="size_s"/>Small<br/> <!-- ne vazhno kakoe mane - lyuboe -->
+                        <input type="radio" name="font_size" id="size_m" checked/>Medium<br/>
+                        <input type="radio" name="font_size" id="size_l"/>Big<br/>
+                    </form>
+                </li>
+                <li>
+                    <label>Taustan värimääritys (RGB)</label><br/>
+                    <label>R (red)</label>
+                    <input type="range" id="slider_red" min="0" max="255" step="1" value="0" oninput="changeBgColor()"/><br/>
+                    <label>G (green)</label>
+                    <input type="range" id="slider_green" min="0" max="255" step="1" value="0" oninput="changeBgColor()"/><br/>
+                    <label>B (blue)</label>
+                    <input type="range" id="slider_blue" min="0" max="255" step="1" value="0" oninput="changeBgColor()"/>
+                </li>
+            </ul>
+        </div>
+        <div id="content" class="color2">
+            <!-- HUOM: JS toimii vasta toisella klikkauksella jos tyylit eivät ole inline CSS:llä! -->
+            <div class="textbox" id="1" style="width: 60%;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</div>
+            <div class="textbox" id="2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</div>
+            <div class="textbox" id="3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt et eleifend nec lacus. Donec ultricies nisl ut felis, suspendisse potenti. Lorem ipsum ligula ut hendrerit mollis, ipsum erat vehicula risus, eu suscipit sem libero nec erat. Aliquam erat volutpat. Sed congue augue vitae neque. Nulla consectetuer porttitor pede. Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</div>
+        </div>
+        <script type="text/javascript">
+            // Teemanvalitsin
+                var teema = document.getElementById('theme'),
+                    nappi = document.getElementById('cube'),
+                    nappialue = document.getElementById('change_styles');
+                nappialue.onclick = function(){
+                   if (teema.className == 'light') {
+                       teema.className = 'dark';
+                       teema.href = 'dark.css';
+                       nappi.style.left = '0';
+                   } else {
+                       teema.className = 'light';
+                       teema.href = 'light.css';
+                       nappi.style.left = '30px';
+                   }
+                };            
+                // Nappi 1 (laatikoiden koon hallinta)
+                var tekstilaatikot = document.getElementsByClassName('textbox'),
+                    firstButton = document.getElementById('first');
+                firstButton.onclick = function() {
+                    if (tekstilaatikot[0].style.width == '60%') {
+                        // Käydään tekstilaatikko (array) läpi
+                        for(var i = 0; i < tekstilaatikot.length; i++) {
+                            tekstilaatikot[i].style.width = '40%';
+                        }
+                        firstButton.innerHTML = 'Suurenna tekstilaatikot';
+                    } else {
+                        // Käydään tekstilaatikko (array) läpi
+                        for(var j = 0; j < tekstilaatikot.length; j++) {
+                            tekstilaatikot[j].style.width = '60%';
+                        }
+                        firstButton.innerHTML = 'Pienennä tekstilaatikot';
+                    }
+                };
+                // Nappi 2 (laatikoiden ominaisuuksien hallinta)
+                var secondButton = document.getElementById('second'),
+                    dropDownMenu = document.getElementById('drop_down');
+                secondButton.onclick = function() {
+                    if (dropDownMenu.className == "off") {
+                        dropDownMenu.className = "on";
+                        dropDownMenu.style.display = "block";
+                    } else {
+                        dropDownMenu.className = "off";
+                        dropDownMenu.style.display = "none";
+                    }
+                };
+                // Napin 2 alatoiminnot
+                // Toiminto #1: Fontin värin valinta
+                var fontColorInput = document.getElementById('font_color');
+                fontColorInput.addEventListener("keyup", function(event) {
+                   event.preventDefault();
+                   if (event.keyCode == 13) {
+                       for (var k = 0; k < tekstilaatikot.length; k++) {
+                          tekstilaatikot[k].style.color = this.value;
+                       }
+                       // Tyhjennetään kenttä lähetyksen jälkeen
+                       fontColorInput.value = ''; // '' = "" 
+                   }
+                });
+                // Toiminto #2: Fonttikoon valinta
+                var fontSelectionArea = document.getElementById('font_size_selection'),
+                    fontSizeS = document.getElementById('size_s'),
+                    fontSizeM = document.getElementById('size_m'),
+                    fontSizeL = document.getElementById('size_l');
+                fontSelectionArea.onclick = function() {
+                    var size = "";
+                    if (fontSizeS.checked) {
+                        size = "0.8em";
+                    } else if (fontSizeL.checked) {
+                        size = "1.2em";
+                    } else {
+                        size = "1.0em";
+                    }
+                    for(var l = 0; l < tekstilaatikot.length; l++) {
+                       tekstilaatikot[l].style.fontSize = size;
+                    }
+                };
+                // Toiminto #3: Tekstilaatikon taustavärin muuttaminen
+                var sliderRed = document.getElementById('slider_red'),
+                    sliderGreen = document.getElementById('slider_green'),
+                    sliderBlue = document.getElementById('slider_blue');
+                window.changeBgColor = function() {
+                    var rgbMap = "rgb(" + sliderRed.value + "," + sliderGreen.value + "," + sliderBlue.value + ")";
+                    for (var m = 0; m < tekstilaatikot.length; m++) {
+                        tekstilaatikot[m].style.backgroundColor = rgbMap;
+                    }
+                };
+        </script>
+    </body>
+</html>

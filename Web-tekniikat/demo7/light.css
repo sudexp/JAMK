@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    overflow: auto;
+}
+
+/* light teeman mukaiset värimääritykset */
+.color {
+    background-color: #e6e9ef;
+    color: #000;
+}
+ 
+.color2 {
+    background-color: #f2f2f2;
+    color: #000;
+}
+ 
+#top {
+    height: 100px;
+    width: 85%;
+    position: fixed;
+    top: 0;
+    left: 15%;
+}
+ 
+#logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15%;
+}
+ 
+#logo img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 10px auto;
+}
+ 
+#title {
+    width: 90%;
+    margin-top: 20px;
+    float: left;
+    font-size: 3em;
+    text-align: center;
+}
+ 
+#buttons {
+    float: left;
+    width: 10%;
+    padding-top: 15px;
+    text-align: center;
+}
+ 
+#change_styles {
+    width: 60px;
+    height: 30px;
+    background-color: #8e8e8e;
+    margin: 0 auto;
+    padding: 3px;
+}
+ 
+#cube {
+    background-color: #fff;
+    width: 29px;
+    height: 29px;
+    transition: 400ms;
+    position: relative;
+    left: 30px; 
+}
+ 
+#side_nav {
+    width: 15%;
+    text-align: center;
+    position: fixed;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+}
+ 
+.menu_button {
+    background-color: #397077;
+    color: #fff;
+    width: 100%;
+    height: 40px;
+    padding-top: 15px;
+    margin: 20px auto;
+}
+ 
+.menu_button:hover {
+    background-color: #1c3438;
+}
+ 
+#content {
+    width: 85%;
+    position: fixed;
+    bottom: 0;
+    left: 15%;
+    top: 100px;
+}
+ 
+.textbox {
+    width: 60%;
+    margin: 50px auto;
+    color: #000;
+    background-color: #edbb89;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 500ms;
+}
+ 
+#drop_down {
+    width: 100%;
+    background-color: #3c5e6d;
+    padding: 0;
+    margin: -20px auto 0 auto;
+    list-style-type: none;
+}
+ 
+#drop_down li {
+    margin: 10px 0;
+    transition: 500ms;
+}
+ 
+#drop_down li:hover {
+    background-color: #bababa;
+    color: #000;
+}
