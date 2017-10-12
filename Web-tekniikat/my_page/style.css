@@ -45,7 +45,7 @@ nav a {
 }
 
 .flag, .icon {
-    height: 5vh;
+    height: 8vh;
 }
 
 .flag {
@@ -95,14 +95,29 @@ article {
 }
 
 figure {
+    position: absolute;
+    top: 50%;
+    left: calc(16% - 120px);
+    transform: translate(0, -50%);
     background-color: black;
     height: 240px;
     width: 240px;
     overflow: hidden;
     border-radius: 120px;
-    margin: 40% auto;
+    margin: 0;
 }
-
+/* криво стала работать
+figure {
+    Animaation määrittäminen hover-toimintoa varten 
+    transition: 400ms ease;
+}
+ 
+figure:hover {
+    Skaalautuvuuden kerroin, jossa 1.0 on normaali koko
+    transform: scale(1.01);
+    box-shadow: 6px 6px 4px #727272;
+}
+*/
 img {
     position: relative;
     left: -70px;
@@ -111,19 +126,18 @@ img {
 }
 
 header .content-right {
-	height: 90vh; /* высота секции равна высоте области просмотра */
-    position: relative; /* нужно для absolute header-bottom */
+	height: 87vh; /* высота секции равна высоте области просмотра */
+    position: relative; /* нужно для absolute header-bottom и <p> */
 }
 
-.header-top {
-    position: relative; /* нужно для absolute header-bottom https://css-tricks.com/snippets/sass/centering-mixin/ */
+.nimi {
+    position: absolute;
+    top: 40%;
+    transform: translate(0, -50%);
 }
 
 .etunimi, .sukunimi {
     text-shadow: 2px 2px 1px #939393;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
 }
 
 .etunimi {
@@ -132,14 +146,15 @@ header .content-right {
     font-size: 58px;
   /*  font-weight: 300; */
     color: #939393;
-    line-height: 0.2em; 
-    padding-left: 70px;
+    line-height: 0.9em; 
+    padding: 0 0 0 70px;
 }
 
 .sukunimi {
     text-transform: uppercase;
     letter-spacing: 0.01em;
     color: #FFBC00;
+    line-height: 0.9em; 
     font-size: 64px;
     font-weight: bold; /* !? font-weight: 700; */
     margin: 0;
@@ -147,13 +162,20 @@ header .content-right {
 }
 
 .koulu {
+    position: absolute;
+    top: 55%;
+    transform: translate(0, -50%);
     font-size: 18px;
  /*   font-weight: 300; */
-    padding: 25px 0 0 70px;
+    line-height: 1.0em;
+    padding: 70px 0 0 70px;
 }
 
 .cv {
-    float: right;
+    position: absolute;
+    top: 70%;
+    right: 10px; 
+    transform: translate(0, -50%);
     text-transform: uppercase;
     font-size: 14px;
     padding: 40px 10px 0 0;
@@ -173,9 +195,12 @@ header .content-right {
     padding-top: 20px;*/
 
     position: absolute;
-    bottom: 50px;
+    top: 85%;
+    transform: translate(0, -50%);
+    
+   /* bottom: 50px; */
     left: 0;
-    right: 0;
+    right: 0; 
 }
 
 /*
@@ -321,17 +346,6 @@ a:hover, a:active {
     color: #FFBC00;
 }
 
-figure {
-    /* Animaation määrittäminen hover-toimintoa varten */
-    transition: 400ms ease;
-}
- 
-figure:hover {
-    /* Skaalautuvuuden kerroin, jossa 1.0 on normaali koko */
-    transform: scale(1.01);
-    box-shadow: 6px 6px 4px #727272;
-}
-
 .color-0 {
     background-color: #fbfbfb;
 }
@@ -352,7 +366,7 @@ figure:hover {
     background-color: #fcfcfc;
 }
 
-@media only screen and (min-width: 600px) and (max-width: 900px) {
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
     .content-left {
         float: none;
         width: 100%;
@@ -369,6 +383,8 @@ figure:hover {
     }
 
     figure {
+        top: 25%;
+        left: calc(50% - 96px);
         height: 192px; /* 240px-20%*/
         width: 192px; /* 240px-20%*/
         border-radius: 96px; /* 120px-20% */
@@ -387,19 +403,16 @@ figure:hover {
     }
 
     header .content-right {
-        height: 61vh;    
-    }
-
-    .header-top, .header-bottom {
-        text-align: center;
-    }
-
-    .header-top {
-        padding-top: 25px;
+        height: 57vh;    
     }
 
     .header-bottom {
-        margin: 70px auto;
+        top: 80%;
+    }
+
+    .nimi {
+        top: 20%;
+        left: calc(50% - 128px);
     }
 
     .etunimi, .sukunimi, .koulu {
@@ -411,20 +424,30 @@ figure:hover {
     }
     
     .sukunimi {
-
         font-size: 51.2px; /* 64px-20%*/
     }
     
     .koulu {
         font-size: 14.4px; /* 18px-20%*/
+        top: 45%;
+        left: calc(50% - 128px);
     }
 
     .cv {
-        padding-top: 35px;
+        top: 55%;
+        right: 10px;
+    }
+
+    section .content-right {
+        padding: 20px;
+    }
+
+    h2 {
+        padding: 30px;
     }
 
     p {
-        padding: 40px;
+        padding: 20px;
     }
 
     .color-0 {
