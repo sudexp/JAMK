@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <title>My page: Dmitry Sklyarov</title>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">        <link rel="stylesheet" href="flag-css/flag-icons.css">
+        <link rel="stylesheet" type="text/css" href="style-light.css" id="theme" class="light"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">        <link rel="stylesheet" href="flag-css/flag-icons.css">
         <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
     <!--
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-
+        <link media="screen" rel="stylesheet" href="main.css">
+        
         Teemanvalitsin
         <link rel="stylesheet" type="text/css" href="dark.css" id="theme" class="dark"/>
 
@@ -79,6 +79,12 @@
                     <div class="cv">
                         <a href="CV.docx" title="CV"><i class="fa fa-download" aria-hidden="true"></i> Download my resume</a>
                     </div>
+                    <div id="button">
+                        <label>Change theme</label>
+                        <div id="change_styles">
+                            <div id="cube"></div>
+                        </div>
+                    </div>        
                     <div class="header-bottom">
                         <div class="bottom">
                             <p class="font-72">Location</p> 
@@ -121,32 +127,32 @@
                 </div>
                 <div class="content-right color-4">
                     <div class="skills">
-                        <p>70% Microsoft Office</p>
+                        <p><span class="orange">70</span><span class="little">%</span> Microsoft Office</p>
                         <div class="scale scale-70">
                         </div>
                     </div>
                     <div class="skills">
-                        <p>10% HTML:5</p>
+                        <p><span class="orange">10</span><span class="little">%</span> HTML:5</p>
                         <div class="scale scale-10">
                         </div>
                     </div>
                     <div class="skills">
-                        <p>10% CSS</p>
+                        <p><span class="orange">10</span><span class="little">%</span> CSS</p>
                         <div class="scale scale-10">
                         </div>
                     </div>
                     <div class="skills">
-                        <p>5% C++</p>
+                        <p><span class="orange">5</span><span class="little">%</span> C++</p>
                         <div class="scale scale-5">
                         </div>
                     </div>
                     <div class="skills">
-                        <p>10% networks</p>
+                        <p><span class="orange">10</span><span class="little">%</span> networks</p>
                         <div class="scale scale-10">
                         </div>
                     </div>
                     <div class="skills">
-                        <p>2% JavaScript</p>
+                        <p><span class="orange">2</span><span class="little">%</span> JavaScript</p>
                         <div class="scale scale-2">
                         </div>
                     </div>
@@ -314,23 +320,22 @@
                 </div>
             </footer>
         </article>
-       <!-- Teemanvalitsin
+       <!-- Teemanvalitsin -->
        <script type="text/javascript">
             var teema = document.getElementById('theme'),
                 nappi = document.getElementById('cube'),
                 nappialue = document.getElementById('change_styles');
             nappialue.onclick = function(){
-                if (teema.className == 'light') {
-                    teema.className = 'dark';
-                    teema.href = 'dark.css';
+                if (teema.className == 'dark') {
+                    teema.className = 'light';
+                    teema.href = 'style-light.css';
                     nappi.style.left = '0';
                 } else {
-                    teema.className = 'light';
-                    teema.href = 'light.css';
-                    nappi.style.left = '30px';
+                    teema.className = 'dark';
+                    teema.href = 'style-dark.css';
+                    nappi.style.left = '15px';
                 }
             };            
         </script>
-        -->
     </body>
 </html>
