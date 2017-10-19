@@ -79,6 +79,38 @@ nav a {
     opacity: 0.7; /* в данном случае изменяет оттенок greyscale с черно-белого на серый */
 }
 
+#button {
+    display: inline-block;
+    color: #727272;
+    margin-left: 5px;
+    position: relative;
+    top: 7px;
+}
+
+#button label {
+    position: absolute;
+    font-size: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#button #change_styles {
+    width: 30px;
+    height: 21px;
+    background-color: #939393;
+    padding: 2px;
+}
+
+#button #change_styles #cube {
+    background-color: #fff;
+    width: 14px;
+    height: 21px;
+    transition: 400ms;
+    position: relative;
+    left: 0; 
+}
+
 .icon {
     float: right;
     padding-top: 5px;
@@ -130,17 +162,17 @@ header .content-right {
     position: relative; /* нужно для absolute header-bottom и <p> */
 }
 
-.nimi {
+header .nimi {
     position: absolute;
     top: 40%;
     transform: translate(0, -50%);
 }
 
-.etunimi, .sukunimi {
+header .nimi .etunimi, header .nimi .sukunimi {
     text-shadow: 2px 2px 1px #939393;
 }
 
-.etunimi {
+header .nimi .etunimi {
     text-transform: lowercase;
     letter-spacing: 0.02em;
     font-size: 58px;
@@ -150,7 +182,7 @@ header .content-right {
     padding: 0 0 0 70px;
 }
 
-.sukunimi {
+header .nimi .sukunimi {
     text-transform: uppercase;
     letter-spacing: 0.01em;
     color: #ffbc00;
@@ -161,7 +193,7 @@ header .content-right {
     padding: 0 0 0 70px;
 }
 
-.koulu {
+header .koulu {
     position: absolute;
     top: 55%;
     transform: translate(0, -50%);
@@ -171,9 +203,9 @@ header .content-right {
     padding: 70px 0 0 70px;
 }
 
-.cv {
+header .cv {
     position: absolute;
-    top: 65%;
+    top: 70%;
     right: 10px; 
     transform: translate(0, -50%);
     text-transform: uppercase;
@@ -181,41 +213,12 @@ header .content-right {
     padding: 40px 10px 0 0;
 }
 
-.cv a {
+header .cv a {
     text-decoration: none;
     color: #939393;
 }
 
-#button {
-    width: 10%;
-    color: #727272;
-    font-size: 12px;
-    text-align: center;
-    position: absolute;
-    top: 70%;
-    right: 10px;
-}
-
-
-#change_styles {
-    width: 30px;
-    height: 15px;
-    background-color: #939393;
-    margin: 0 auto;
-    padding: 1.5px;
-}
-
-#cube {
-    background-color: #fff;
-    width: 14px;
-    height: 14px;
-    transition: 400ms;
-    position: relative;
-    left: 0; 
-}
-
-
-.header-bottom {
+header .header-bottom {
     border-top: solid 1px #ececec;
     white-space: nowrap;
     padding-top: 20px;
@@ -228,8 +231,8 @@ header .content-right {
     transform: translate(0, -50%);
     
    /* bottom: 50px; */
-    left: 0;
-    right: 0; 
+    left: 50px;
+    right: 50px; 
 }
 
 /*
@@ -238,7 +241,7 @@ header .content-right {
   }
   */
 
-.bottom {
+header .header-bottom .bottom {
     display: inline-block;
     text-align: center;
     width: 24.5%;
@@ -373,6 +376,15 @@ h2 {
     display: inline-block;
     text-align: center;
     width: 24%;
+}
+
+.copyright p {
+    color: #727272;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    line-height: 0;
+    padding: 20px;
 }
 
 a, a:visited {

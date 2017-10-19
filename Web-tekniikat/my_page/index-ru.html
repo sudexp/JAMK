@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>My page: Dmitry Sklyarov</title>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-        <link rel="stylesheet" href="flag-css/flag-icons.css">
+        <title>Моя страница: Дмитрий Скляров</title>
+        <link rel="stylesheet" type="text/css" href="style-light.css" id="theme" class="light"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">        <link rel="stylesheet" href="flag-css/flag-icons.css">
         <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
     <!--
+        <link media="screen" rel="stylesheet" href="main.css">
+        
+        Teemanvalitsin
+        <link rel="stylesheet" type="text/css" href="dark.css" id="theme" class="dark"/>
+
         <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/>
         <script src="js/jquery-3.2.1.min.js"></script>
-
 
         <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
@@ -23,11 +26,11 @@
         <nav>
             <a href="#one">One</a>
             <a href="#two">Two</a>
-            <a href="#three">Three</a>
-            <a href="#four">Four</a>
-            <a href="#five">Five</a>
+            <a href="#three">Skills</a>
+            <a href="#four">Experience</a>
+            <a href="#five">Education</a>
             <a href="#six">Six</a>               
-            <a href="#seven">Seven</a>  
+            <a href="#seven">Contact</a>  
         </nav>
         <article>
             <div class="color-0">
@@ -66,28 +69,36 @@
                     </figure>
                 </div>
                 <div class="content-right color-2">
-                    <div class="text-header-top">
-                        <p class="etunimi">dmitry</p>
-                        <p class="sukunimi">Sklyarov</p>
-                        <p class="koulu">Jyväskylän ammattikorkeakoulu / tieto- ja viestintätekniikka</p>
+                    <div class="header-top">
+                        <div class="nimi">
+                            <p class="etunimi">дмитрий</p>
+                            <p class="sukunimi">Скляров</p>
+                        </div>
+                        <p class="koulu">Институт прикладных наук г. Ювяскюля</p>
                     </div>
                     <div class="cv">
-                        <a href="CV.docx" title="CV"><i class="fa fa-download" aria-hidden="true"></i> Download my resume</a>
+                        <a href="CV.docx" title="CV"><i class="fa fa-download" aria-hidden="true"></i> Скачать мое резюме</a>
                     </div>
-                    <div class="text-header-bottom">
-                        <div class="block">
-                            <p class="font-72">Location</p> 
+                    <div id="button">
+                        <label>Смена темы</label>
+                        <div id="change_styles">
+                            <div id="cube"></div>
+                        </div>
+                    </div>        
+                    <div class="header-bottom">
+                        <div class="bottom">
+                            <p class="font-72">Место жительства</p> 
                             <p class="font-93"><i class="fa fa-location-arrow" aria-hidden="true"></i><a class="header-link" href="https://www.google.com/maps/@60.7913374,27.2554699,6z" title="location" target="_blank"> Jyväskylä, Finland</a></p>
                         </div>
-                        <div class="block">
-                            <p class="font-72">Phone</p> 
+                        <div class="bottom">
+                            <p class="font-72">Телефон</p> 
                             <p class="font-93"><i class="fa fa-phone" aria-hidden="true"></i><a class="header-link" href="tel:+358404180540" title="phone" target="_blank"> +358404180540</a></p>
                         </div>
-                        <div class="block">
+                        <div class="bottom">
                             <p class="font-72">Web</p> 
                             <p class="font-93"><i class="fa fa-globe" aria-hidden="true"></i><a class="header-link" href="https://www.jamk.fi/fi/Etusivu/" title="website" target="_blank"> dmitry_sklyarov.com</a></p>
                         </div>
-                        <div class="block">
+                        <div class="bottom">
                             <p class="font-72">Email</p> 
                             <p class="font-93"><i class="fa fa-envelope-o" aria-hidden="true"></i><a class="header-link" href="mailto:l5568@student.jamk.fi" title="email" target="_blank"> l5568@student.jamk.fi</a></p>
                         </div>
@@ -96,7 +107,7 @@
             </header>
             <section class="color-3">
                 <div class="content-left">
-                    <p id="one">One</p>
+                    <h2 id="one">One</h2>
                 </div>
                 <div class="content-right color-4">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
@@ -104,7 +115,7 @@
             </section>            
             <section class="color-1">
                 <div class="content-left">
-                    <p id="two">Two</p>
+                    <h2 id="two">Two</h2>
                 </div>
                 <div class="content-right color-2">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
@@ -112,31 +123,172 @@
             </section>
             <section class="color-3">
                 <div class="content-left">
-                    <p id="three">Three</p>
+                    <h2 id="three">Skills</h2>
                 </div>
                 <div class="content-right color-4">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
+                    <div class="skills">
+                        <p><span class="orange">70</span><span class="little">%</span> Microsoft Office</p>
+                        <div class="scale scale-70">
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <p><span class="orange">10</span><span class="little">%</span> HTML:5</p>
+                        <div class="scale scale-10">
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <p><span class="orange">10</span><span class="little">%</span> CSS</p>
+                        <div class="scale scale-10">
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <p><span class="orange">5</span><span class="little">%</span> C++</p>
+                        <div class="scale scale-5">
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <p><span class="orange">10</span><span class="little">%</span> networks</p>
+                        <div class="scale scale-10">
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <p><span class="orange">2</span><span class="little">%</span> JavaScript</p>
+                        <div class="scale scale-2">
+                        </div>
+                    </div>
                 </div>
             </section>
             <section class="color-1">
                 <div class="content-left">
-                    <p id="four">Four</p>
+                    <h2 id="four">Experience</h2>
                 </div>
                 <div class="content-right color-2">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
+                    <div class="experience">
+                        <div class="top">
+                            <div class="circle">
+                                
+                            </div>
+                            <div class="year">
+                                <p>2006-2014</p>  
+                            </div>
+                        </div>
+                        <div class="down">
+                            <div class="place">
+                                <p>Northwest Regional Forensic Expertise Center (Petrozavodsk department)</p> 
+                            </div>
+                        
+                            <div class="process">
+                                <p>Investigation of circumstances of road traffic accidents.- Investigation of the technical condition of vehicles.- Assessment of the value of vehicles.- Determination of the cost of repair of vehicles.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience">
+                        <div class="top">
+                            <div class="circle">
+                                
+                            </div>
+                            <div class="year">
+                                <p>2006-2014</p>  
+                            </div>
+                        </div>
+                        <div class="down">
+                            <div class="place">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p> 
+                            </div>
+                        
+                            <div class="process">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="experience">
+                        <div class="top">
+                            <div class="circle">
+                                
+                            </div>
+                            <div class="year">
+                                <p>2006-2014</p>  
+                            </div>
+                        </div>
+                        <div class="down">
+                            <div class="place">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p> 
+                            </div>
+                        
+                            <div class="process">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience">
+                        <div class="top">
+                            <div class="circle">
+                                
+                            </div>
+                            <div class="year">
+                                <p>2006-2014</p>  
+                            </div>
+                        </div>
+                        <div class="down">
+                            <div class="place">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p> 
+                            </div>
+                        
+                            <div class="process">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p>
+                            </div>
+                        </div>
+                    </div>                
                 </div>
-            </div>
+            </section>
             <section class="color-3">
                 <div class="content-left">
-                    <p id="five">Five</p>
+                    <h2 id="five">Education</h2>
                 </div>
                 <div class="content-right color-4">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
+                    <div class="experience">
+                        <div class="top">
+                            <div class="circle">
+                                
+                            </div>
+                            <div class="year">
+                                <p>2000-2005</p>  
+                            </div>
+                        </div>
+                        <div class="down">
+                            <div class="place">
+                                <p>Petrozavodsk state univercity</p> 
+                            </div>
+                        
+                            <div class="process">
+                                <p>Engineering .</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience">
+                        <div class="top">
+                            <div class="circle">
+                                
+                            </div>
+                            <div class="year">
+                                <p>1990-2000</p>  
+                            </div>
+                        </div>
+                        <div class="down">
+                            <div class="place">
+                                <p>School #1.</p> 
+                            </div>
+                        
+                            <div class="process">
+                                <p>Schoolboy.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section class="color-1">
                 <div class="content-left">
-                    <p id="six">Six</p>
+                    <h2 id="six">Six</h2>
                 </div>
                 <div class="content-right color-2">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
@@ -144,23 +296,23 @@
             </section>         
             <footer class="color-3">
                 <div class="content-left">
-                    <p id="seven">Contact</p>
+                    <h2 id="seven">Contact</h2>
                 </div>
                 <div class="content-right color-4">
-                    <div class="text-footer">
-                        <div class="block-footer">
+                    <div class="footer">
+                        <div class="footer-text">
                             <p class="font-72">Location</p> 
                             <p class="font-93"><i class="fa fa-location-arrow" aria-hidden="true"></i><a class="header-link" href="https://www.google.com/maps/@60.7913374,27.2554699,6z" title="location" target="_blank"> Jyväskylä, Finland</a></p>
                         </div>
-                        <div class="block-footer">
+                        <div class="footer-text">
                             <p class="font-72">Phone</p> 
                             <p class="font-93"><i class="fa fa-phone" aria-hidden="true"></i><a class="header-link" href="tel:+358404180540" title="phone" target="_blank"> +358404180540</a></p>
                         </div>
-                        <div class="block-footer">
+                        <div class="footer-text">
                             <p class="font-72">Web</p> 
                             <p class="font-93"><i class="fa fa-globe" aria-hidden="true"></i><a class="header-link" href="https://www.jamk.fi/fi/Etusivu/" title="website" target="_blank"> dmitry_sklyarov.com</a></p>
                         </div>
-                        <div class="block-footer">
+                        <div class="footer-text">
                             <p class="font-72">Email</p> 
                             <p class="font-93"><i class="fa fa-envelope-o" aria-hidden="true"></i><a class="header-link" href="mailto:l5568@student.jamk.fi" title="email" target="_blank"> l5568@student.jamk.fi</a></p>
                         </div>
@@ -168,5 +320,22 @@
                 </div>
             </footer>
         </article>
+       <!-- Teemanvalitsin -->
+       <script type="text/javascript">
+            var teema = document.getElementById('theme'),
+                nappi = document.getElementById('cube'),
+                nappialue = document.getElementById('change_styles');
+            nappialue.onclick = function(){
+                if (teema.className == 'dark') {
+                    teema.className = 'light';
+                    teema.href = 'style-light.css';
+                    nappi.style.left = '0';
+                } else {
+                    teema.className = 'dark';
+                    teema.href = 'style-dark.css';
+                    nappi.style.left = '15px';
+                }
+            };            
+        </script>
     </body>
 </html>

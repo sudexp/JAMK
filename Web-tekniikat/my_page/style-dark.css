@@ -226,8 +226,8 @@ header .content-right {
     transform: translate(0, -50%);
     
    /* bottom: 50px; */
-    left: 0;
-    right: 0; 
+    left: 50px;
+    right: 50px; 
 }
 
 /*
