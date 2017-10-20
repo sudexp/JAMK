@@ -16,7 +16,6 @@ nav {
     line-height: 5vh;
     width: 100%;
     background-color: #2b2c2c;
-   /* background-color: rgba(255, 255, 255, 0.5);*/
     text-align: center;
     position: fixed;
     top: 0;
@@ -28,6 +27,10 @@ nav a {
     text-transform: uppercase;
     color: #a4a5a6;
     margin: 5px;    
+}
+
+article {
+    padding-top: 5vh;
 }
 
 .content-left {
@@ -43,6 +46,38 @@ nav a {
     text-align: justify;
 }
 
+#button {
+    display: inline-block;
+    color: #a4a5a6;
+    margin-left: 5px;
+    position: relative;
+    top: 7px;
+}
+
+label {
+    position: absolute;
+    font-size: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#change_styles {
+    width: 30px;
+    height: 21px;
+    background-color: #a4a5a6;
+    padding: 2px;
+}
+
+#cube {
+    background-color: #2d2e2e;
+    width: 14px;
+    height: 21px;
+    transition: 400ms;
+    position: relative;
+    left: 15px; 
+}
+
 .flag, .icon {
     height: 8vh;
 }
@@ -53,14 +88,6 @@ nav a {
     padding-left: 5px;
 }
 
-/*zoom-instruction for rectangle:
-.flag-icons {
-    height: 2em !important;
-    width: 2.66667em !important;
-    line-height: 2em !important;
-  }
-*/
-
 .flag-icons {
     height: 1.7em !important;
     width: 2.26667em !important;
@@ -69,13 +96,13 @@ nav a {
 
 .flag a:hover {
     filter: grayscale(0%);
-    opacity: 1.0; /* при наведении курсора флаги принимают свои цвета*/
+    opacity: 1.0;
 }
 
 .flag a {
-    filter: grayscale(100%); /* изменение цвета флагов на серый*/
-    transition: 500ms ease; /* скорость изменения цвета флагов */
-    opacity: 0.7; /* в данном случае изменяет оттенок greyscale с черно-белого на серый */
+    filter: grayscale(100%);
+    transition: 500ms ease;
+    opacity: 0.7;
 }
 
 .icon {
@@ -105,18 +132,7 @@ figure {
     border-radius: 120px;
     margin: 0;
 }
-/* криво стала работать
-figure {
-    Animaation määrittäminen hover-toimintoa varten 
-    transition: 400ms ease;
-}
- 
-figure:hover {
-    Skaalautuvuuden kerroin, jossa 1.0 on normaali koko
-    transform: scale(1.01);
-    box-shadow: 6px 6px 4px #727272;
-}
-*/
+
 img {
     position: relative;
     left: -70px;
@@ -125,8 +141,8 @@ img {
 }
 
 header .content-right {
-	height: 87vh; /* высота секции равна высоте области просмотра */
-    position: relative; /* нужно для absolute header-bottom и <p> */
+	height: 87vh;
+    position: relative;
 }
 
 .nimi {
@@ -171,7 +187,7 @@ header .content-right {
 
 .cv {
     position: absolute;
-    top: 65%;
+    top: 70%;
     right: 10px; 
     transform: translate(0, -50%);
     text-transform: uppercase;
@@ -184,64 +200,21 @@ header .content-right {
     text-decoration: none;
 }
 
-#button {
-    width: 10%;
-    color: #a4a5a6;
-    font-size: 12px;
-    text-align: center;
-    position: absolute;
-    top: 70%;
-    right: 10px;
-}
-
-
-#change_styles {
-    width: 30px;
-    height: 15px;
-    background-color: #a4a5a6;
-    margin: 0 auto;
-    padding: 1.5px;
-}
-
-#cube {
-    background-color: #fff;
-    width: 14px;
-    height: 14px;
-    transition: 400ms;
-    position: relative;
-    left: 15px; 
-}
-
-
 .header-bottom {
     border-top: solid 1px #ececec;
     white-space: nowrap;
     padding-top: 20px;
-    
-    /* margin: 130px 10px auto;
-    padding-top: 20px;*/
-
     position: absolute;
     top: 85%;
     transform: translate(0, -50%);
-    
-   /* bottom: 50px; */
     left: 50px;
     right: 50px; 
 }
-
-/*
-  .content {
-    min-height: calc(100vh - 80px);
-  }
-  */
 
 .bottom {
     display: inline-block;
     text-align: center;
     width: 24.5%;
-   /* margin-left: 20px;
-    margin-right: 20px; */
 }
 
 .font-72 {
@@ -343,6 +316,25 @@ section .content-right {
     display: inline-block;
 }
 
+.footer {
+    margin:  0 auto;
+    padding: 60px;
+}
+
+.footer-text {
+    display: inline-block;
+    text-align: center;
+    width: 24%;
+}
+
+.copyright p {
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    line-height: 0;
+    padding: 20px;
+}
+
 p {
     color: #a4a5a6;
     font-size: 18px;
@@ -360,19 +352,8 @@ h2 {
     padding: 60px;
 }
 
-.footer {
-    margin:  0 auto;
-    padding: 60px;
-}
-
-.footer-text {
-    display: inline-block;
-    text-align: center;
-    width: 24%;
-}
-
 a, a:visited {
-    transition: 500ms; /* плавность смены цвета */
+    transition: 500ms;
 }
  
 a:hover, a:active {
@@ -397,209 +378,4 @@ a:hover, a:active {
 
 .color-4 {
     background-color: #2b2c2c;
-}
-
-@media only screen and (min-width: 600px) and (max-width: 1000px) {
-    .content-left {
-        float: none;
-        width: 100%;
-        text-align: center;
-    }
-    
-    section .content-left {
-    border-top: 1px solid #ececec;
-    border-bottom: 1px solid #ececec;
-}
-
-    .content-right {
-        margin-left: 0;
-    }
-
-    figure {
-        top: 25%;
-        left: calc(50% - 96px);
-        height: 192px; /* 240px-20%*/
-        width: 192px; /* 240px-20%*/
-        border-radius: 96px; /* 120px-20% */
-        margin: 30px auto;
-    }
-
-    img {
-        position: relative;
-        left: -70px;
-        height: 200px; /* 250px-20%*/
-        margin-top: 30px;
-    }
-
-    header .content-left {
-        height: 30vh;    
-    }
-
-    header .content-right {
-        height: 57vh;    
-    }
-
-    .header-bottom {
-        top: 80%;
-    }
-
-    .nimi {
-        top: 20%;
-        left: calc(50% - 128px);
-    }
-
-    .etunimi, .sukunimi, .koulu {
-        padding: 0;
-    }
-
-    .etunimi {
-        font-size: 44.6px; /* 58px-20%*/
-    }
-    
-    .sukunimi {
-        font-size: 51.2px; /* 64px-20%*/
-    }
-    
-    .koulu {
-        font-size: 14.4px; /* 18px-20%*/
-        top: 45%;
-        left: calc(50% - 128px);
-    }
-
-    .cv {
-        top: 55%;
-        right: 10px;
-    }
-
-    section .content-right {
-        padding: 20px;
-    }
-
-    h2 {
-        padding: 30px;
-    }
-
-    p {
-        padding: 20px;
-    }
-
-    .color-0 {
-        background-color: #fff;
-    }
-
-    .color-1 {
-        background-color: #fafafa;
-    }
-
-    .color-2 {
-        background-color: #fff;
-    }
-
-    .color-3 {
-        background-color: #fafafa;
-    }
-
-    .color-4 {
-        background-color: #fff;
-    }
-}
-
-@media only screen and (max-width: 599px) {
-   .skill {
-    display: block;
-}
-
-    article {
-        padding-top: 35px;
-    }
-
-    .content-left {
-        float: none;
-        width: 100%;
-        text-align: center;
-    }
-    
-    section .content-left {
-    border-top: 1px solid #ececec;
-    border-bottom: 1px solid #ececec;
-}
-
-    .content-right {
-        margin-left: 0;
-    }
-
-    figure {
-        height: 192px; 
-        width: 192px; 
-        border-radius: 96px; 
-        margin: 30px auto;
-    }
-
-    img {
-        position: relative;
-        left: -70px;
-        height: 200px; 
-        margin-top: 30px;
-    }
-
-    header .content-right {
-        height: 300px;    
-    }
-
-    .text-header-top, .text-header-bottom {
-        text-align: center;
-    }
-
-    .text-header-top {
-        padding-top: 25px;
-    }
-
-    .text-header-bottom {
-        margin: 70px auto;
-    }
-
-    .etunimi, .sukunimi, .koulu {
-        padding: 0;
-    }
-
-    .etunimi {
-        font-size: 44.6px; 
-    }
-    
-    .sukunimi {
-
-        font-size: 51.2px;
-    }
-    
-    .koulu {
-        font-size: 14.4px; 
-    }
-
-    .cv {
-        padding-top: 35px;
-    }
-
-    p {
-        padding: 40px;
-    }
-
-    .color-0 {
-        background-color: #fff;
-    }
-
-    .color-1 {
-        background-color: #fafafa;
-    }
-
-    .color-2 {
-        background-color: #fff;
-    }
-
-    .color-3 {
-        background-color: #fafafa;
-    }
-
-    .color-4 {
-        background-color: #fff;
-    }
 }

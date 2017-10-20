@@ -30,6 +30,10 @@ nav a {
     margin: 5px;    
 }
 
+article {
+    padding-top: 5vh;
+}
+
 .content-left {
     float: left;
     width: 32%;
@@ -42,6 +46,38 @@ nav a {
 .content-right {
     margin-left: 32%;
     text-align: justify;
+}
+
+#button {
+    display: inline-block;
+    color: #727272;
+    margin-left: 5px;
+    position: relative;
+    top: 7px;
+}
+
+label {
+    position: absolute;
+    font-size: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#change_styles {
+    width: 30px;
+    height: 21px;
+    background-color: #939393;
+    padding: 2px;
+}
+
+#cube {
+    background-color: #fff;
+    width: 14px;
+    height: 21px;
+    transition: 400ms;
+    position: relative;
+    left: 0; 
 }
 
 .flag, .icon {
@@ -79,38 +115,6 @@ nav a {
     opacity: 0.7; /* в данном случае изменяет оттенок greyscale с черно-белого на серый */
 }
 
-#button {
-    display: inline-block;
-    color: #727272;
-    margin-left: 5px;
-    position: relative;
-    top: 7px;
-}
-
-#button label {
-    position: absolute;
-    font-size: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
-
-#button #change_styles {
-    width: 30px;
-    height: 21px;
-    background-color: #939393;
-    padding: 2px;
-}
-
-#button #change_styles #cube {
-    background-color: #fff;
-    width: 14px;
-    height: 21px;
-    transition: 400ms;
-    position: relative;
-    left: 0; 
-}
-
 .icon {
     float: right;
     padding-top: 5px;
@@ -120,10 +124,6 @@ nav a {
 .icon a {
     padding: 0 3px;
     color: #939393;
-}
-
-article {
-    padding-top: 5vh;
 }
 
 figure {
@@ -150,7 +150,7 @@ figure:hover {
     box-shadow: 6px 6px 4px #727272;
 }
 */
-img {
+figure img {
     position: relative;
     left: -70px;
     height: 250px;
@@ -162,17 +162,17 @@ header .content-right {
     position: relative; /* нужно для absolute header-bottom и <p> */
 }
 
-header .nimi {
+.nimi {
     position: absolute;
     top: 40%;
     transform: translate(0, -50%);
 }
 
-header .nimi .etunimi, header .nimi .sukunimi {
+.etunimi, .sukunimi {
     text-shadow: 2px 2px 1px #939393;
 }
 
-header .nimi .etunimi {
+.etunimi {
     text-transform: lowercase;
     letter-spacing: 0.02em;
     font-size: 58px;
@@ -182,7 +182,7 @@ header .nimi .etunimi {
     padding: 0 0 0 70px;
 }
 
-header .nimi .sukunimi {
+.sukunimi {
     text-transform: uppercase;
     letter-spacing: 0.01em;
     color: #ffbc00;
@@ -193,7 +193,7 @@ header .nimi .sukunimi {
     padding: 0 0 0 70px;
 }
 
-header .koulu {
+.koulu {
     position: absolute;
     top: 55%;
     transform: translate(0, -50%);
@@ -203,7 +203,7 @@ header .koulu {
     padding: 70px 0 0 70px;
 }
 
-header .cv {
+.cv {
     position: absolute;
     top: 70%;
     right: 10px; 
@@ -213,24 +213,18 @@ header .cv {
     padding: 40px 10px 0 0;
 }
 
-header .cv a {
+.cv a {
     text-decoration: none;
     color: #939393;
 }
 
-header .header-bottom {
+.header-bottom {
     border-top: solid 1px #ececec;
     white-space: nowrap;
     padding-top: 20px;
-    
-    /* margin: 130px 10px auto;
-    padding-top: 20px;*/
-
     position: absolute;
     top: 85%;
     transform: translate(0, -50%);
-    
-   /* bottom: 50px; */
     left: 50px;
     right: 50px; 
 }
@@ -241,12 +235,10 @@ header .header-bottom {
   }
   */
 
-header .header-bottom .bottom {
+.bottom {
     display: inline-block;
     text-align: center;
     width: 24.5%;
-   /* margin-left: 20px;
-    margin-right: 20px; */
 }
 
 .font-72 {
@@ -350,21 +342,21 @@ section .content-right {
     display: inline-block;
 }
 
-p {
-    color: #939393;
-    font-size: 18px;
-    line-height: 1.6em;
-    margin: 0 auto;
-    padding: 30px;
+.photo {
+    text-align: left;
+    margin: 25px;
 }
 
-h2 {
-    color: #727272;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.6em;
-    margin: 0 auto;
-    padding: 60px;
+.mini-img {
+    width: 210px;
+    height: 140px;
+    filter: grayscale(100%); /* change kuvat color - grey*/
+    transition: 1000ms ease; /* nopeus? izmenenya tsveta */
+    padding: 5px;
+}
+
+.mini-img:hover {
+    filter: grayscale(0%); /* kun kursori päällä - color kuvat*/
 }
 
 .footer {
@@ -385,6 +377,23 @@ h2 {
     text-align: center;
     line-height: 0;
     padding: 20px;
+}
+
+p {
+    color: #939393;
+    font-size: 18px;
+    line-height: 1.6em;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+h2 {
+    color: #727272;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6em;
+    margin: 0 auto;
+    padding: 60px;
 }
 
 a, a:visited {
@@ -413,209 +422,4 @@ a:hover, a:active {
 
 .color-4 {
     background-color: #fcfcfc;
-}
-
-@media only screen and (min-width: 600px) and (max-width: 1000px) {
-    .content-left {
-        float: none;
-        width: 100%;
-        text-align: center;
-    }
-    
-    section .content-left {
-    border-top: 1px solid #ececec;
-    border-bottom: 1px solid #ececec;
-}
-
-    .content-right {
-        margin-left: 0;
-    }
-
-    figure {
-        top: 25%;
-        left: calc(50% - 96px);
-        height: 192px; /* 240px-20%*/
-        width: 192px; /* 240px-20%*/
-        border-radius: 96px; /* 120px-20% */
-        margin: 30px auto;
-    }
-
-    img {
-        position: relative;
-        left: -70px;
-        height: 200px; /* 250px-20%*/
-        margin-top: 30px;
-    }
-
-    header .content-left {
-        height: 30vh;    
-    }
-
-    header .content-right {
-        height: 57vh;    
-    }
-
-    .header-bottom {
-        top: 80%;
-    }
-
-    .nimi {
-        top: 20%;
-        left: calc(50% - 128px);
-    }
-
-    .etunimi, .sukunimi, .koulu {
-        padding: 0;
-    }
-
-    .etunimi {
-        font-size: 44.6px; /* 58px-20%*/
-    }
-    
-    .sukunimi {
-        font-size: 51.2px; /* 64px-20%*/
-    }
-    
-    .koulu {
-        font-size: 14.4px; /* 18px-20%*/
-        top: 45%;
-        left: calc(50% - 128px);
-    }
-
-    .cv {
-        top: 55%;
-        right: 10px;
-    }
-
-    section .content-right {
-        padding: 20px;
-    }
-
-    h2 {
-        padding: 30px;
-    }
-
-    p {
-        padding: 20px;
-    }
-
-    .color-0 {
-        background-color: #fff;
-    }
-
-    .color-1 {
-        background-color: #fafafa;
-    }
-
-    .color-2 {
-        background-color: #fff;
-    }
-
-    .color-3 {
-        background-color: #fafafa;
-    }
-
-    .color-4 {
-        background-color: #fff;
-    }
-}
-
-@media only screen and (max-width: 599px) {
-   .skill {
-    display: block;
-}
-
-    article {
-        padding-top: 35px;
-    }
-
-    .content-left {
-        float: none;
-        width: 100%;
-        text-align: center;
-    }
-    
-    section .content-left {
-    border-top: 1px solid #ececec;
-    border-bottom: 1px solid #ececec;
-}
-
-    .content-right {
-        margin-left: 0;
-    }
-
-    figure {
-        height: 192px; 
-        width: 192px; 
-        border-radius: 96px; 
-        margin: 30px auto;
-    }
-
-    img {
-        position: relative;
-        left: -70px;
-        height: 200px; 
-        margin-top: 30px;
-    }
-
-    header .content-right {
-        height: 300px;    
-    }
-
-    .text-header-top, .text-header-bottom {
-        text-align: center;
-    }
-
-    .text-header-top {
-        padding-top: 25px;
-    }
-
-    .text-header-bottom {
-        margin: 70px auto;
-    }
-
-    .etunimi, .sukunimi, .koulu {
-        padding: 0;
-    }
-
-    .etunimi {
-        font-size: 44.6px; 
-    }
-    
-    .sukunimi {
-
-        font-size: 51.2px;
-    }
-    
-    .koulu {
-        font-size: 14.4px; 
-    }
-
-    .cv {
-        padding-top: 35px;
-    }
-
-    p {
-        padding: 40px;
-    }
-
-    .color-0 {
-        background-color: #fff;
-    }
-
-    .color-1 {
-        background-color: #fafafa;
-    }
-
-    .color-2 {
-        background-color: #fff;
-    }
-
-    .color-3 {
-        background-color: #fafafa;
-    }
-
-    .color-4 {
-        background-color: #fff;
-    }
 }
