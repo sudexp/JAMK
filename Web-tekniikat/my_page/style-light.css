@@ -304,8 +304,8 @@ section .content-right {
     font-size: 14px;
 }
 
-.experience { 
-   margin-left: 30px;
+.wrap {
+    margin: 30px;
 }
  
 .top p { 
@@ -340,6 +340,10 @@ section .content-right {
     width: 49.5%;
     vertical-align: top;
     display: inline-block;
+}
+
+.process p { 
+    padding-right: 0;
 }
 
 .photo {

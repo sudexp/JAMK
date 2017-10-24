@@ -133,7 +133,7 @@ figure {
     margin: 0;
 }
 
-img {
+figure img {
     position: relative;
     left: -70px;
     height: 250px;
@@ -278,8 +278,8 @@ section .content-right {
     font-size: 14px;
 }
 
-.experience { 
-   margin-left: 30px;
+.wrap {
+    margin: 30px;
 }
  
 .top p { 
@@ -314,6 +314,27 @@ section .content-right {
     width: 49.5%;
     vertical-align: top;
     display: inline-block;
+}
+
+.process p { 
+    padding-right: 0;
+}
+
+.photo {
+    text-align: left;
+    margin: 25px;
+}
+
+.mini-img {
+    width: 210px;
+    height: 140px;
+    filter: grayscale(100%); /* change kuvat color - grey*/
+    transition: 1000ms ease; /* nopeus? izmenenya tsveta */
+    padding: 5px;
+}
+
+.mini-img:hover {
+    filter: grayscale(0%); /* kun kursori päällä - color kuvat*/
 }
 
 .footer {

@@ -1,0 +1,236 @@
+
+@media only screen and (min-width: 660px) and (max-width: 1000px) {
+    .content-left {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    
+    section .content-left, footer .content-left {
+        border-top: 1px solid #ececec;
+        border-bottom: 1px solid #ececec;
+    }
+
+    .content-right {
+        margin-left: 0;
+    }
+
+    figure {
+        top: 25%;
+        left: calc(50% - 96px);
+        height: 192px; /* 240px-20%*/
+        width: 192px; /* 240px-20%*/
+        border-radius: 96px; /* 120px-20% */
+        margin: 30px auto;
+    }
+
+    img {
+        position: relative;
+        left: -70px;
+        height: 200px; /* 250px-20%*/
+        margin-top: 30px;
+    }
+
+    header .content-left {
+        height: 30vh;    
+    }
+
+    header .content-right {
+        height: 57vh;    
+    }
+
+    .header-bottom {
+        top: 80%;
+    }
+
+    .nimi {
+        top: 20%;
+        left: calc(50% - 128px);
+    }
+
+    .etunimi, .sukunimi, .koulu {
+        padding: 0;
+    }
+
+    .etunimi {
+        font-size: 44.6px; /* 58px-20%*/
+    }
+    
+    .sukunimi {
+        font-size: 51.2px; /* 64px-20%*/
+    }
+    
+    .koulu {
+        font-size: 14.4px; /* 18px-20%*/
+        top: 45%;
+        left: calc(50% - 128px);
+    }
+
+    .cv {
+        top: 55%;
+        right: 10px;
+    }
+
+    section .content-right {
+        padding: 20px;
+    }
+
+    .footer {
+        margin:  0 auto;
+        padding: 30px;
+    }
+
+    .copyright {
+        border-top: 1px solid #ececec;
+    }
+
+    h2 {
+        padding: 30px;
+    }
+
+    p {
+        padding: 20px;
+    }
+
+    .color-0 {
+        background-color: #fff;
+    }
+
+    .color-1 {
+        background-color: #fafafa;
+    }
+
+    .color-2 {
+        background-color: #fff;
+    }
+
+    .color-3 {
+        background-color: #fafafa;
+    }
+
+    .color-4 {
+        background-color: #fff;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 659px) {
+    .content-left {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    
+    section .content-left, footer .content-left {
+        border-top: 1px solid #ececec;
+        border-bottom: 1px solid #ececec;
+    }
+
+    .content-right {
+        margin-left: 0;
+    }
+
+    figure {
+        top: 25%;
+        left: calc(50% - 96px);
+        height: 192px; /* 240px-20%*/
+        width: 192px; /* 240px-20%*/
+        border-radius: 96px; /* 120px-20% */
+        margin: 30px auto;
+    }
+
+    img {
+        position: relative;
+        left: -70px;
+        height: 200px; /* 250px-20%*/
+        margin-top: 30px;
+    }
+
+    header .content-left {
+        height: 30vh;    
+    }
+
+    header .content-right {
+        height: 57vh;    
+    }
+
+    .header-bottom {
+        top: 80%;
+    }
+
+    .nimi {
+        top: 20%;
+        left: calc(50% - 128px);
+    }
+
+    .etunimi, .sukunimi, .koulu {
+        padding: 0;
+    }
+
+    .etunimi {
+        font-size: 44.6px; /* 58px-20%*/
+    }
+    
+    .sukunimi {
+        font-size: 51.2px; /* 64px-20%*/
+    }
+    
+    .koulu {
+        font-size: 14.4px; /* 18px-20%*/
+        top: 45%;
+        left: calc(50% - 128px);
+    }
+
+    .cv {
+        top: 55%;
+        right: 10px;
+    }
+
+    section .content-right {
+        padding: 20px;
+    }
+
+    .footer {
+        margin:  0 auto;
+        padding: 30px;
+    }
+
+    .copyright {
+        border-top: 1px solid #ececec;
+    }
+    
+    h2 {
+        padding: 30px;
+    }
+
+    p {
+        padding: 20px;
+    }
+
+    .color-0 {
+        background-color: #fff;
+    }
+
+    .color-1 {
+        background-color: #fafafa;
+    }
+
+    .color-2 {
+        background-color: #fff;
+    }
+
+    .color-3 {
+        background-color: #fafafa;
+    }
+
+    .color-4 {
+        background-color: #fff;
+    }
+}
