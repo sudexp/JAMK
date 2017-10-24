@@ -65,9 +65,9 @@ label {
 }
 
 #change_styles {
+    background-color: #939393;
     width: 30px;
     height: 21px;
-    background-color: #939393;
     padding: 2px;
 }
 
@@ -326,7 +326,8 @@ section .content-right {
     margin-left: 30px;
 }
 
-.down { border-left: solid 1px #727272;
+.down { 
+    border-left: solid 1px #727272;
     margin-left: 4px;
     padding: 10px 0 30px 0;
 }
