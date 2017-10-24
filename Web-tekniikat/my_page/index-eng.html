@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>My page: Dmitry Sklyarov</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="stylesheet" type="text/css" href="style-light.css" id="theme" class="light"/>
-        <link media="screen" rel="stylesheet" href="media-light.css" id="theme" class="light"/>        
+        <link media="screen" rel="stylesheet" href="media.css"/>        
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"/>        
         <link rel="stylesheet" href="flag-css/flag-icons.css">
         <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
@@ -316,13 +317,11 @@
             nappialue.onclick = function(){
                 if (teema.className == 'dark') {
                     teema.className = 'light';
-                    teema.href = 'style-light.css';
-                    media.href = 'media-light.css'; 
+                    teema.href = 'style-light.css'; 
                     nappi.style.left = '0';
                 } else {
                     teema.className = 'dark';
                     teema.href = 'style-dark.css';
-                    media.href = 'media-dark.css';
                     nappi.style.left = '15px';
                 }
             };            
