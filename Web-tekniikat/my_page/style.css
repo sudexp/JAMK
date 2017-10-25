@@ -80,7 +80,8 @@ label {
     left: 0; 
 }
 
-.flag, .icon {
+.flag,
+.icon {
     height: 8vh;
 }
 
@@ -168,7 +169,8 @@ header .content-right {
     transform: translate(0, -50%);
 }
 
-.etunimi, .sukunimi {
+.etunimi,
+.sukunimi {
     text-shadow: 2px 2px 1px #939393;
 }
 
@@ -263,47 +265,6 @@ section .content-right {
     padding: 30px;
 }
 
-.skills {
-    width: 49.5%;
-    margin: 20px 0;
-    display: inline-block;
-}
-
-.skills p, .skills .scale {
-    margin: 0 30px;
-    padding: 0;
-}
-
-.scale {    
-    height: 5px;
-    display: block;
-}
-
-.scale-70 { 
-    background-image: linear-gradient(90deg, #ffbc00 70%, #939393 70%);    
-}
-
-.scale-10 {
-    background-image: linear-gradient(90deg, #ffbc00 10%, #939393 10%);    
-}
-
-.scale-5 {
-    background-image: linear-gradient(90deg, #ffbc00 5%, #939393 5%);    
-}
-
-.scale-2 {
-    background-image: linear-gradient(90deg, #ffbc00 2%, #939393 2%);    
-}
-
-.orange {
-    color: #ffbc00;
-}
-
-.little {
-    color: #ffbc00;
-    font-size: 14px;
-}
-
 .wrap {
     margin: 30px;
 }
@@ -337,7 +298,8 @@ section .content-right {
     padding: 0 25px;
 }
 
-.place, .process { 
+.place,
+.process { 
     width: 49.5%;
     vertical-align: top;
     display: inline-block;
@@ -345,6 +307,48 @@ section .content-right {
 
 .process p { 
     padding-right: 0;
+}
+
+.skills {
+    width: 49.5%;
+    margin: 20px 0;
+    display: inline-block;
+}
+
+.skills p,
+.skills .scale {
+    margin: 0 30px;
+    padding: 0;
+}
+
+.scale {    
+    height: 5px;
+    display: block;
+}
+
+.scale-70 { 
+    background-image: linear-gradient(90deg, #ffbc00 70%, #939393 70%);    
+}
+
+.scale-10 {
+    background-image: linear-gradient(90deg, #ffbc00 10%, #939393 10%);    
+}
+
+.scale-5 {
+    background-image: linear-gradient(90deg, #ffbc00 5%, #939393 5%);    
+}
+
+.scale-2 {
+    background-image: linear-gradient(90deg, #ffbc00 2%, #939393 2%);    
+}
+
+.orange {
+    color: #ffbc00;
+}
+
+.little {
+    color: #ffbc00;
+    font-size: 14px;
 }
 
 .photo {
@@ -405,7 +409,8 @@ a, a:visited {
     transition: 500ms; /* плавность смены цвета */
 }
  
-a:hover, a:active {
+a:hover,
+a:active {
     color: #ffbc00;
 }
 

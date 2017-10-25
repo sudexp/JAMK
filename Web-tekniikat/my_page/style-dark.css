@@ -21,7 +21,8 @@ body.dark #cube {
     left: 15px; 
 }
 
-body.dark .etunimi, body.dark .sukunimi {
+body.dark .etunimi,
+body.dark .sukunimi {
     text-shadow: 2px 2px 1px #a4a5a6;
 }
 
@@ -35,6 +36,14 @@ body.dark .header-bottom {
 
 body.dark .header-link {
     color: #a4a5a6;
+}
+
+body.dark .circle { 
+    background-color: #e0a82c;
+}
+
+body.dark .down { 
+    border-left: solid 1px #404242;
 }
 
 body.dark .scale-70 { 
@@ -58,14 +67,6 @@ body.dark .little,
 body.dark a:hover,
 body.dark a:active {
     color: #e0a82c;
-}
-
-body.dark .circle { 
-    background-color: #e0a82c;
-}
-
-body.dark .down { 
-    border-left: solid 1px #404242;
 }
 
 body.dark p,
