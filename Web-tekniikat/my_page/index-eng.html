@@ -5,14 +5,14 @@
         <title>My page: Dmitry Sklyarov</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link media="screen" rel="stylesheet" href="media.css"/>        
-        <link rel="stylesheet" type="text/css" href="style-light.css" id="theme" class="light"/>
+        <link rel="stylesheet" type="text/css" href="style-dark.css"/>
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"/>        
         <link rel="stylesheet" href="flag-css/flag-icons.css">
         <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/>
         <script src="js/jquery-3.2.1.min.js"></script>
     </head>
-    <body>
+    <body class="light">
         <nav>
             <a href="#one">One</a>
             <a href="#two">Two</a>
@@ -311,17 +311,20 @@
         </article>
        <!-- Teemanvalitsin -->
        <script type="text/javascript">
-            var teema = document.getElementById('theme'),
-                nappi = document.getElementById('cube'),
-                nappialue = document.getElementById('change_styles');
+            // var teema = document.getElementById('theme');
+            var body = document.getElementsByTagName('body')[0];
+            var nappi = document.getElementById('cube');
+            var nappialue = document.getElementById('change_styles');
             nappialue.onclick = function(){
-                if (teema.className == 'dark') {
-                    teema.className = 'light';
-                    teema.href = 'style-light.css'; 
+                if (body.className == 'dark') {
+                    // teema.className = 'light';
+                    // teema.href = 'style-light.css'; 
+                    body.className = 'light';
                     nappi.style.left = '0';
                 } else {
-                    teema.className = 'dark';
-                    teema.href = 'style-dark.css';
+                    // teema.className = 'dark';
+                    // teema.href = 'style-dark.css';
+                    body.className = 'dark';
                     nappi.style.left = '15px';
                 }
             };            

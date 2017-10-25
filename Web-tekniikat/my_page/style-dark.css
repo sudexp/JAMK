@@ -1,114 +1,122 @@
 @charset "utf-8";
 
-body {
+body.dark {
     background-color: #2d2e2e;
 } 
 
-nav {
+body.dark nav {
     background-color: #2b2c2c;
 }
 
-#button {
+body.dark #button {
     color: #a4a5a6;
 }
 
-#change_styles {
+body.dark #change_styles {
     background-color: #a4a5a6;
 }
 
-#cube {
+body.dark #cube {
     background-color: #2d2e2e;
     left: 15px; 
 }
 
-.etunimi, .sukunimi {
+body.dark .etunimi, body.dark .sukunimi {
     text-shadow: 2px 2px 1px #a4a5a6;
 }
 
-.sukunimi {
+body.dark .sukunimi {
     color: #e0a82c;
 }
 
-.header-bottom {
+body.dark .header-bottom {
     border-top: solid 1px #ececec;
 }
 
-.header-link {
+body.dark .header-link {
     color: #a4a5a6;
 }
 
-.scale-70 { 
+body.dark .scale-70 { 
     background-image: linear-gradient(90deg, #e0a82c 70%, #404242 70%);    
 }
 
-.scale-10 {
+body.dark .scale-10 {
     background-image: linear-gradient(90deg, #e0a82c 10%, #404242 10%);    
 }
 
-.scale-5 {
+body.dark .scale-5 {
     background-image: linear-gradient(90deg, #e0a82c 5%, #404242 5%);    
 }
 
-.scale-2 {
+body.dark .scale-2 {
     background-image: linear-gradient(90deg, #e0a82c 2%, #404242 2%);    
 }
 
-.orange, .little, a:hover, a:active {
+body.dark .orange, 
+body.dark .little,
+body.dark a:hover,
+body.dark a:active {
     color: #e0a82c;
 }
 
-.circle { 
+body.dark .circle { 
     background-color: #e0a82c;
 }
 
-.down { 
+body.dark .down { 
     border-left: solid 1px #404242;
 }
 
-p, a, h2 {
+body.dark p,
+body.dark a,
+body.dark h2 {
     color: #a4a5a6;
 }
  
-.color-0, .color-1, .color-4 {
+body.dark .color-0,
+body.dark .color-1,
+body.dark .color-4 {
     background-color: #2b2c2c;
 }
 
-.color-2 {
+body.dark .color-2 {
     background-color: #2d2e2e;
 }
 
-.color-3 {
+body.dark .color-3 {
     background-color: #292a2a;
 }
 
 @media only screen and (min-width: 660px) and (max-width: 1000px) {
     
-    section .content-left, footer .content-left {
+    body.dark section .content-left,
+    body.dark footer .content-left {
         border-top: 1px solid #404242;
         border-bottom: 1px solid #404242;
     }
 
-    .copyright {
+    body.dark .copyright {
         border-top: 1px solid #404242;
     }
 
-    .color-0 {
+    body.dark .color-0 {
         background-color: #2d2e2e;
     }
 
-    .color-1 {
+    body.dark .color-1 {
         background-color: #282929;
     }
 
-    .color-2 {
+    body.dark .color-2 {
         background-color: #2d2e2e;
     }
 
-    .color-3 {
+    body.dark .color-3 {
         background-color: #282929;
     }
 
-    .color-4 {
+    body.dark .color-4 {
         background-color: #2d2e2e;
     }
 }
