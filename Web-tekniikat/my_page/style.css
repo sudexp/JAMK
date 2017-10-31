@@ -23,10 +23,10 @@ nav {
     z-index: 1;
 }
 
-nav a {
+nav a, nav a:visited {
     text-decoration: none;
     text-transform: uppercase;
-    /* color: #727272; */
+    color: #727272;
     margin: 5px;
 }
 
@@ -250,6 +250,10 @@ header .content-right {
     padding: 60px;
 }
 
+.small {
+    text-transform: none;
+    font-size: 13px;
+}
 
 section .content-right {
     padding: 30px;
@@ -258,7 +262,13 @@ section .content-right {
 .wrap-right {
     padding: 30px;
 }
- 
+
+.big {
+    text-transform: uppercase;
+    color: #727272;
+    font-weight: 600;
+}
+
 ul {
     list-style-type: disc;
     color: #939393;
@@ -269,19 +279,11 @@ li {
     padding-top: 10px;
 }
 
-#nav a, #nav a:visited { 
-    color: grey;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 0 10px;
-}
-
 .chess {
     color: #ffbc00!important;
 }
 
-.top p { 
-    font-size: 10px;
+.top p {
     padding: 0;
     color: #bebebe;
 }
@@ -295,8 +297,9 @@ li {
     margin-top: 3px;
 }
 
-.year { 
+.year p { 
     margin-left: 30px;
+    font-size: 10px;
 }
 
 .down { 
@@ -305,22 +308,21 @@ li {
     padding: 10px 0 30px 0;
 }
 
-.down p { 
-    font-size: 12px;
+.down p {
+    text-align: left;
     padding: 0 25px;
 }
 
 .place,
 .process { 
-    width: 49.5%;
+    width: 49.7%;
     vertical-align: top;
     display: inline-block;
 }
 
-.place p { 
-    color: #727272;
-    font-weight: 600;
-    text-transform: uppercase;
+.city {
+    font-size: 12px;
+    line-height: 3.5em;
 }
 
 .process p { 
@@ -339,7 +341,7 @@ li {
 } */
 
 .skills {
-    width: 49.5%;
+    width: 49.8%;
     margin: 20px 0;
     display: inline-block;
 }
@@ -354,7 +356,7 @@ li {
 }
 
 .scale {    
-    height: 5px;
+    height: 4px;
     display: block;
 }
 
@@ -428,8 +430,8 @@ li {
     padding: 20px;
 }
 
+h2,
 p {
-    color: #939393;
     font-size: 18px;
     line-height: 1.6em;
     margin: 0 auto;
@@ -437,10 +439,11 @@ p {
 
 h2 {
     color: #727272;
-    font-size: 18px;
     font-weight: 600;
-    line-height: 1.6em;
-    margin: 0 auto;
+}
+
+p {
+    color: #939393;
 }
 
 a, a:visited {

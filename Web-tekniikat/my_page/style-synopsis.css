@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: Quicksand-Light;
+    src: url(quicksand/Quicksand-Light.otf);
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    margin: 0;
+} 
+
+header {
+	height: 100vh;
+    position: relative;
+}
+
+.header-top {
+	padding-left: 15px;
+}
+
+.content-left {
+    float: left;
+    width: 33%;
+    text-transform: uppercase;
+    text-align: right;
+    color: #727272;
+    margin: 0;
+}
+
+.content-right {
+    margin-left: 33%;
+    text-align: justify;
+}
+
+#button {
+    display: inline-block;
+    color: #727272;
+    margin-left: 5px;
+    position: relative;
+    top: 7px;
+}
+
+label {
+    position: absolute;
+    font-size: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#change_styles {
+    background-color: #939393;
+    width: 30px;
+    height: 21px;
+    padding: 2px;
+}
+
+#cube {
+    background-color: #fff;
+    width: 14px;
+    height: 21px;
+    transition: 400ms;
+    position: relative;
+    left: 0; 
+}
+
+.flag {
+    display: inline-block;
+    padding-top: 15px;
+    padding-left: 5px;
+}
+
+.flag-icons {
+    height: 1.7em !important;
+    width: 2.26667em !important;
+    line-height: 1.7em !important;
+}
+
+.flag a:hover {
+    filter: grayscale(0%);
+    opacity: 1.0; /* при наведении курсора флаги принимают свои цвета*/
+}
+
+.flag a {
+    filter: grayscale(100%); /* изменение цвета флагов на серый*/
+    transition: 500ms ease; /* скорость изменения цвета флагов */
+    opacity: 0.7; /* в данном случае изменяет оттенок greyscale с черно-белого на серый */
+}
+
+.back {
+    float: right;
+    padding: 15px 0 30px;
+    margin-right: 15px;
+}
+
+.back a {
+    font-size: 18px;
+}
+
+
+.otsikko {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.otsikko p {
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: #727272;
+    font-size: 100px;
+    font-weight: 600;
+}
+
+.wrap-left,
+.wrap-right {
+    padding: 60px;
+}
+
+h2, p {
+    font-size: 18px;
+    line-height: 1.6em;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #727272;
+    font-weight: 600;
+}
+
+p {
+    color: #939393;
+}
+
+a, a:visited {
+    color: #727272;
+    text-decoration: none;
+    transition: 500ms; /* плавность смены цвета */
+}
+ 
+a:hover,
+a:active {
+    color: #ffbc00;
+}
+
+.color-1 {
+    background-color: #fbfbfb;
+}
+
+.color-2 {
+    background-color: #fff;
+}
+
+.color-3 {
+    background-color: #f8f8f8;
+}
+
+.color-4 {
+    background-color: #fcfcfc;
+}

@@ -21,11 +21,6 @@ body.dark #cube {
     left: 15px; 
 }
 
-body.dark .etunimi,
-body.dark .sukunimi {
-    text-shadow: 2px 2px 1px #a4a5a6;
-}
-
 body.dark .sukunimi {
     color: #e0a82c;
 }
