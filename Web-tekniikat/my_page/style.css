@@ -139,18 +139,7 @@ figure {
     border-radius: 120px;
     margin: 0;
 }
-/* криво стала работать
-figure {
-    Animaation määrittäminen hover-toimintoa varten 
-    transition: 400ms ease;
-}
- 
-figure:hover {
-    Skaalautuvuuden kerroin, jossa 1.0 on normaali koko
-    transform: scale(1.01);
-    box-shadow: 6px 6px 4px #727272;
-}
-*/
+
 figure img {
     position: relative;
     left: -70px;
@@ -339,6 +328,10 @@ li {
 /* .process li {
     padding-top: 10px;
 } */
+
+.p30 {
+    padding: 30px 0 0 30px;
+}
 
 .skills {
     width: 49.8%;

@@ -120,6 +120,10 @@ label {
     padding: 60px;
 }
 
+.wrap-left {
+    padding-bottom: 0;
+}
+
 h2, p {
     font-size: 18px;
     line-height: 1.6em;
