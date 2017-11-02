@@ -252,7 +252,11 @@ section .content-right {
     padding: 30px;
 }
 
-.big {
+.welcome {
+    padding-bottom: 20px;
+}
+
+.welcome, .big {
     text-transform: uppercase;
     color: #727272;
     font-weight: 600;
@@ -261,7 +265,7 @@ section .content-right {
 ul {
     list-style-type: disc;
     color: #939393;
-    margin: 0 0 20px;
+    margin: 0 0 30px;
 }
 
 li {
@@ -433,6 +437,11 @@ p {
 h2 {
     color: #727272;
     font-weight: 600;
+}
+
+.content-right h2 {
+    padding-top: 20px;
+    padding-bottom: 5px;
 }
 
 p {
