@@ -1,4 +1,55 @@
-@media only screen and (min-width: 660px) and (max-width: 1000px) {
+/* Large desktops and laptops */
+@media only screen and (min-width: 1200px) {
+    nav {
+        font-size: 18px;
+    }
+
+    figure {
+        height: 264px; /* 240px+10%*/
+        width: 264px; /* 240px+10%*/
+        border-radius: 132px; /* 120px+10% */
+        left: calc(18% - 132px);
+    }
+
+    .etunimi {
+        font-size: 69.6px; /* 58p+20%*/
+    }
+    
+    .sukunimi {
+        font-size: 76.8px; /* 64px+20%*/
+    }
+    
+    .koulu {
+        font-size: 21.6px; /* 18px+20%*/
+    }
+
+    .cv, .font-72 {
+        font-size: 15px;
+    }
+
+    .font-93 {
+        font-size: 13px;
+    }
+
+    .mini-img {
+        width: 240px;
+        height: 170px;
+    }
+}
+    
+/* Portrait tablets and medium desktops */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .footer {
+        padding: 60px 55px;
+    } 
+}
+
+/* Portrait tablets and small desktops */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    nav {
+        font-size: 14px;
+    }
+
     .content-left {
         float: none;
         width: 100%;
@@ -17,13 +68,13 @@
     figure {
         top: 25%;
         left: calc(50% - 96px);
-        height: 192px; /* 240px-20%*/
-        width: 192px; /* 240px-20%*/
-        border-radius: 96px; /* 120px-20% */
+        height: 216px; /* 240px-10%*/
+        width: 216px; /* 240px-10%*/
+        border-radius: 108px; /* 120px-10% */
         margin: 30px auto;
     }
 
-    img {
+    figure img {
         position: relative;
         left: -70px;
         height: 200px; /* 250px-20%*/
@@ -38,12 +89,351 @@
         height: 57vh;    
     }
 
+    .nimi {
+        top: 10%;
+        left: calc(50% - 128px);
+    }
+
+    .etunimi, .sukunimi, .koulu {
+        padding: 0;
+    }
+
+    .etunimi {
+        font-size: 44.6px; /* 58px-20%*/
+    }
+    
+    .sukunimi {
+        font-size: 51.2px; /* 64px-20%*/
+    }
+    
+    .koulu {
+        font-size: 16px;
+        top: 30%;
+        left: calc(50% - 128px);
+    }
+
+    .cv {
+        top: 67%;
+        font-size: 14px;
+    }
+
     .header-bottom {
-        top: 80%;
+        top: 85%;
+    }
+    section .content-right {
+        padding: 0;
+    }
+
+    .wrap-left {
+        padding: 30px;
+    }
+
+    .down p {
+        padding: 0 15px;
+    }
+
+    .photo {
+        text-align: center;
+        margin: 0;
+        padding: 30px;
+    }
+    
+    .mini-img {
+        width: 180px;
+        height: 120px;
+    }
+
+    .footer {
+        margin:  0 auto;
+        padding: 30px;
+    }
+
+    .copyright {
+        border-top: 1px solid #ececec;
+    }
+
+    section .content-left p {
+        padding-top: 5px;
+    }
+
+    .p30 {
+        padding: 30px 30px 0;
+    }
+
+    h2,
+    p {
+        font-size: 16px;
+    }
+
+    .color-0 {
+        background-color: #fff;
+    }
+
+    .color-1 {
+        background-color: #fafafa;
+    }
+
+    .color-2 {
+        background-color: #fff;
+    }
+
+    .color-3 {
+        background-color: #fafafa;
+    }
+
+    .color-4 {
+        background-color: #fff;
+    }
+}
+
+/* Landscape phones and portrait tablets */
+@media only screen and (min-width: 665px) and (max-width: 767px) {
+nav {
+        font-size: 12px;
+    }
+
+    .content-left {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    #change_styles {
+        background-color: #939393;
+        width: 30px;
+        height: 21px;
+        padding: 2px;
+    }
+    
+    section .content-left, footer .content-left {
+        border-top: 1px solid #ececec;
+        border-bottom: 1px solid #ececec;
+    }
+
+    .content-right {
+        margin-left: 0;
+    }
+
+    label {
+        font-size: 9px;
+    }
+
+    figure {
+        top: 25%;
+        left: calc(50% - 96px);
+        height: 192px; /* 240px-20%*/
+        width: 192px; /* 240px-20%*/
+        border-radius: 96px; /* 120px-20% */
+        margin: 30px auto;
+    }
+
+    figure img {
+        position: relative;
+        left: -70px;
+        height: 200px; /* 250px-20%*/
+        margin-top: 30px;
+    }
+
+    header .content-left {
+        height: 30vh;    
+    }
+
+    header .content-right {
+        height: 57vh;    
     }
 
     .nimi {
-        top: 20%;
+        top: 10%;
+        left: calc(50% - 128px);
+    }
+
+    .etunimi, .sukunimi, .koulu {
+        padding: 0;
+    }
+
+    .etunimi {
+        font-size: 44.6px; /* 58px-20%*/
+    }
+    
+    .sukunimi {
+        font-size: 51.2px; /* 64px-20%*/
+    }
+    
+    .koulu {
+        font-size: 16px;
+        top: 30%;
+        left: calc(50% - 128px);
+    }
+
+    .cv {
+        top: 67%;
+        font-size: 14px;
+    }
+
+    .header-bottom {
+        top: 85%;
+    }
+
+    .font-72 {
+        font-size: 14px;
+    }
+
+    .font-93 {
+        font-size: 12px;
+    }
+
+    section .content-right {
+        padding: 0;
+    }
+
+    .wrap-left {
+        padding: 20px;
+    }
+
+    .wrap-right {
+        padding: 20px;
+    }
+
+    .welcome {
+        padding-bottom: 10px;
+    }
+    .down p {
+        padding: 0 10px;
+    }
+
+    .photo {
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .mini-img {
+        width: 180px;
+        height: 120px;
+    }
+
+    .footer {
+        margin:  0 auto;
+        padding: 20px;
+    }
+
+    .copyright {
+        border-top: 1px solid #ececec;
+    }
+
+    .content-right h2 {
+        padding-top: 15px;
+    }
+
+    section .content-left p {
+        padding-top: 5px;
+    }
+
+    .p30 {
+        padding: 30px 30px 0;
+    }
+
+    .download {
+        font-size: 16px;
+    }
+
+    h2,
+    p {
+        font-size: 16px;
+    }
+
+    .color-0 {
+        background-color: #fff;
+    }
+
+    .color-1 {
+        background-color: #fafafa;
+    }
+
+    .color-2 {
+        background-color: #fff;
+    }
+
+    .color-3 {
+        background-color: #fafafa;
+    }
+
+    .color-4 {
+        background-color: #fff;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 664px) {
+    nav {
+        height: 6vh;
+        line-height: 1.0vh;
+        font-size: 12px;
+        padding-top: 5px;
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    nav a {
+        display: inline-block;
+    }
+    
+    article {
+        padding-top: 6vh;
+    }
+
+    .content-left {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    #change_styles {
+        background-color: #939393;
+        width: 30px;
+        height: 21px;
+        padding: 2px;
+    }
+    
+    section .content-left, footer .content-left {
+        border-top: 1px solid #ececec;
+        border-bottom: 1px solid #ececec;
+    }
+
+    .content-right {
+        margin-left: 0;
+    }
+
+    label {
+        font-size: 9px;
+    }
+
+    figure {
+        top: 25%;
+        left: calc(50% - 96px);
+        height: 192px; /* 240px-20%*/
+        width: 192px; /* 240px-20%*/
+        border-radius: 96px; /* 120px-20% */
+        margin: 30px auto;
+    }
+
+    figure img {
+        position: relative;
+        left: -70px;
+        height: 200px; /* 250px-20%*/
+        margin-top: 30px;
+    }
+
+    header .content-left {
+        height: 30vh;    
+    }
+
+    header .content-right {
+        height: 56vh;    
+    }
+
+    .nimi {
+        top: 10%;
         left: calc(50% - 128px);
     }
 
@@ -61,34 +451,361 @@
     
     .koulu {
         font-size: 14.4px; /* 18px-20%*/
-        top: 45%;
+        top: 30%;
         left: calc(50% - 128px);
     }
 
     .cv {
-        top: 55%;
-        right: 10px;
+        top: 60%;
+        font-size: 13px;
+    }
+
+    .header-bottom {
+        top: 82%;
+        white-space: normal;
+        left: 20px;
+        right: 20px;
+        padding-top: 10px;
+    }
+
+    .bottom {
+        display: inline-block;
+        text-align: center;
+        width: 49.5%;
+        padding-top: 10px;
+    }
+
+    .font-72 {
+        font-size: 13px;
+        padding-bottom: 5px;
+    }
+
+    .font-93 {
+        font-size: 11px;
     }
 
     section .content-right {
+        padding: 0;
+    }
+
+    .wrap-left {
         padding: 20px;
+    }
+
+    .wrap-right {
+        padding: 20px;
+    }
+
+    .welcome {
+        padding-bottom: 10px;
+    }
+    .down p {
+        padding: 0 10px;
+    }
+
+    .place,
+    .process { 
+        width: 49.5%;
+    }
+
+    .photo {
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .mini-img {
+        width: 180px;
+        height: 120px;
     }
 
     .footer {
         margin:  0 auto;
-        padding: 30px;
+        padding: 10px;
+    }
+
+    .footer-text {
+        display: inline-block;
+        text-align: center;
+        width: 49.5%;
+        padding-top: 10px;
     }
 
     .copyright {
         border-top: 1px solid #ececec;
     }
 
-    h2 {
-        padding: 30px;
+    .content-right h2 {
+        padding-top: 15px;
     }
 
+    section .content-left p {
+        padding-top: 5px;
+    }
+
+    .p30 {
+        padding: 30px 30px 0;
+    }
+
+    .skills {
+        width: 100%;
+        margin: 20px 0;
+        display: block;
+    }
+
+    .download {
+        font-size: 14px;
+    }
+
+    h2,
     p {
+        font-size: 14px;
+    }
+
+    .color-0 {
+        background-color: #fff;
+    }
+
+    .color-1 {
+        background-color: #fafafa;
+    }
+
+    .color-2 {
+        background-color: #fff;
+    }
+
+    .color-3 {
+        background-color: #fafafa;
+    }
+
+    .color-4 {
+        background-color: #fff;
+    }
+}
+
+/* Landscape phones and smaller */
+@media only screen and (max-width: 479px) {
+    nav {
+        display: none;
+    }
+    
+    article {
+        padding-top: 0;
+    }
+
+    .content-left {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    #change_styles {
+        background-color: #939393;
+        width: 30px;
+        height: 21px;
+        padding: 2px;
+    }
+    
+    section .content-left, footer .content-left {
+        border-top: 1px solid #ececec;
+        border-bottom: 1px solid #ececec;
+    }
+
+    .content-right {
+        margin-left: 0;
+    }
+
+    #button {
+        top: 15px;
+        margin-left: 15px;
+    }
+
+    label {
+        font-size: 8px;
+    }
+    
+    #change_styles {
+        width: 20px;
+        height: 14px;
+        padding: 1px;
+    }
+    
+    #cube {
+        width: 9.5px;
+        height: 14px;
+    }
+
+    .flag-icons {
+        height: 1em !important;
+        width: 1.333335em !important;
+        line-height: 1em !important;
+    }
+
+    .flag {
+        height: 5vh;
+        padding-top: 10px;
+        padding-right: 15px;
+        display: block;
+        float: right;
+
+    }
+
+    .icon {
+        display: none;
+    }
+
+    figure {
+        top: 25%;
+        left: calc(50% - 96px);
+        height: 192px; /* 240px-20%*/
+        width: 192px; /* 240px-20%*/
+        border-radius: 96px; /* 120px-20% */
+        margin: 30px auto;
+    }
+
+    figure img {
+        position: relative;
+        left: -70px;
+        height: 200px; /* 250px-20%*/
+        margin-top: 30px;
+    }
+
+    header .content-left {
+        height: 30vh;    
+    }
+
+    header .content-right {
+        height: 65vh;    
+    }
+
+    .nimi {
+        top: 10%;
+        left: calc(50% - 128px);
+    }
+
+    .etunimi, .sukunimi, .koulu {
+        padding: 0;
+    }
+
+    .etunimi {
+        font-size: 44.6px; /* 58px-20%*/
+    }
+    
+    .sukunimi {
+        font-size: 51.2px; /* 64px-20%*/
+    }
+    
+    .koulu {
+        font-size: 14.4px; /* 18px-20%*/
+        top: 30%;
+        left: calc(50% - 128px);
+    }
+
+    .cv {
+        top: 55%;
+        font-size: 13px;
+    }
+
+    .header-bottom {
+        top: 80%;
+        white-space: normal;
+        left: 20px;
+        right: 20px;
+        padding-top: 10px;
+    }
+
+    .bottom {
+        display: inline-block;
+        text-align: center;
+        width: 49.5%;
+        padding-top: 10px;
+    }
+
+    .font-72 {
+        font-size: 13px;
+        padding-bottom: 5px;
+    }
+
+    .font-93 {
+        font-size: 11px;
+    }
+
+    section .content-right {
+        padding: 0;
+    }
+
+    .wrap-left {
         padding: 20px;
+    }
+
+    .wrap-right {
+        padding: 20px;
+    }
+
+    .welcome {
+        padding-bottom: 10px;
+    }
+    .down p {
+        padding: 0 10px;
+    }
+
+    .place,
+    .process { 
+        width: 49.5%;
+    }
+
+    .photo {
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .mini-img {
+        width: 180px;
+        height: 120px;
+    }
+
+    .footer {
+        margin:  0 auto;
+        padding: 10px;
+    }
+
+    .footer-text {
+        display: inline-block;
+        text-align: center;
+        width: 49.5%;
+        padding-top: 10px;
+    }
+
+    .copyright {
+        border-top: 1px solid #ececec;
+    }
+
+    .content-right h2 {
+        padding-top: 15px;
+    }
+
+    section .content-left p {
+        padding-top: 5px;
+    }
+
+    .p30 {
+        padding: 30px 30px 0;
+    }
+
+    .skills {
+        width: 100%;
+        margin: 20px 0;
+        display: block;
+    }
+
+    .download {
+        font-size: 14px;
+    }
+
+    h2,
+    p {
+        font-size: 14px;
     }
 
     .color-0 {
@@ -116,120 +833,7 @@
 
 
 
-
-
-
-
-@media only screen and (max-width: 659px) {
-    .content-left {
-        float: none;
-        width: 100%;
-        text-align: center;
-    }
     
-    section .content-left, footer .content-left {
-        border-top: 1px solid #ececec;
-        border-bottom: 1px solid #ececec;
-    }
 
-    .content-right {
-        margin-left: 0;
-    }
 
-    figure {
-        top: 25%;
-        left: calc(50% - 96px);
-        height: 192px; /* 240px-20%*/
-        width: 192px; /* 240px-20%*/
-        border-radius: 96px; /* 120px-20% */
-        margin: 30px auto;
-    }
 
-    img {
-        position: relative;
-        left: -70px;
-        height: 200px; /* 250px-20%*/
-        margin-top: 30px;
-    }
-
-    header .content-left {
-        height: 30vh;    
-    }
-
-    header .content-right {
-        height: 57vh;    
-    }
-
-    .header-bottom {
-        top: 80%;
-    }
-
-    .nimi {
-        top: 20%;
-        left: calc(50% - 128px);
-    }
-
-    .etunimi, .sukunimi, .koulu {
-        padding: 0;
-    }
-
-    .etunimi {
-        font-size: 44.6px; /* 58px-20%*/
-    }
-    
-    .sukunimi {
-        font-size: 51.2px; /* 64px-20%*/
-    }
-    
-    .koulu {
-        font-size: 14.4px; /* 18px-20%*/
-        top: 45%;
-        left: calc(50% - 128px);
-    }
-
-    .cv {
-        top: 55%;
-        right: 10px;
-    }
-
-    section .content-right {
-        padding: 20px;
-    }
-
-    .footer {
-        margin:  0 auto;
-        padding: 30px;
-    }
-
-    .copyright {
-        border-top: 1px solid #ececec;
-    }
-    
-    h2 {
-        padding: 30px;
-    }
-
-    p {
-        padding: 20px;
-    }
-
-    .color-0 {
-        background-color: #fff;
-    }
-
-    .color-1 {
-        background-color: #fafafa;
-    }
-
-    .color-2 {
-        background-color: #fff;
-    }
-
-    .color-3 {
-        background-color: #fafafa;
-    }
-
-    .color-4 {
-        background-color: #fff;
-    }
-}
