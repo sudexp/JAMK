@@ -2,70 +2,55 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Minun sivuni: Dmitry Sklyarov</title>
-        <link rel="stylesheet" type="text/css" href="style-light.css" id="theme" class="light"/>
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">        <link rel="stylesheet" href="flag-css/flag-icons.css">
+        <title>My page: Dmitry Sklyarov</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link media="screen" rel="stylesheet" href="media.css"/>        
+        <link rel="stylesheet" type="text/css" href="style-dark.css"/>
+        <link rel="icon" href="images/icon.png"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"/>        
+        <link rel="stylesheet" href="flag-css/flag-icons.css">
         <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
-    <!--
-        <link media="screen" rel="stylesheet" href="main.css">
-        
-        Teemanvalitsin
-        <link rel="stylesheet" type="text/css" href="dark.css" id="theme" class="dark"/>
-
         <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/>
         <script src="js/jquery-3.2.1.min.js"></script>
-
-        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
-        <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/>
-        <script src="js/jquery-3.2.1.min.js"></script>   
--->     
     </head>
-    <body>
+    <body class="light">
         <nav>
-            <a href="#one">One</a>
-            <a href="#two">Two</a>
-            <a href="#three">Skills</a>
-            <a href="#four">Experience</a>
-            <a href="#five">Education</a>
-            <a href="#six">Six</a>               
-            <a href="#seven">Contact</a>  
+            <a href="#Intro">Intro</a>
+            <a href="#Hobbies">Hobbies</a>
+            <a href="#Education">Education</a>
+            <a href="#Experience">Experience</a>
+            <a href="#Expertise">Expertise</a>
+            <a href="#Skills">Skills</a>
+            <a href="#Gallery">Gallery</a>
+            <a href="#Documentation">Documentation</a>
+            <a href="#Contact">Contact</a>  
         </nav>
         <article>
             <div class="color-0">
                 <div class="content-right color-2">
+                    <div id="button">
+                        <div id="change_styles">
+                            <div id="cube"></div>
+                        </div>
+                        <label>theme</label>
+                    </div>                
                     <div class="flag">
                         <a href="index-fi.html" title="Suomeksi"><i class="flag-icons FI"></i></a>
                         <a href="index-eng.html" title="In English"><i class="flag-icons GB"></i></a>
                         <a href="index-ru.html" title="По-русски"><i class="flag-icons RU"></i></a>
                     </div>
-                    <!--
-                    <script src="lightbox2-master/src/js/lightbox.js"></script>
-                    <script>
-                        lightbox.option({
-                            'wrapAround': true, /* Mahdollisuus kiertää kuvat ympäri */
-                            'resizeDuration': 300 /* Kuvakoon muuttamiseen käytetty aika */
-                        }) 
-                    </script> 
-                -->
                     <div class="icon">
                         <a href="https://www.linkedin.com/in/dmitry-sklyarov-120183/" target="_blank" title="Linkedin"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
                         <a href="https://github.com/sudexp" target="_blank" title="Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>  
                         <a href="https://www.slack.com" target="_blank" title="Slack"><i class="fa fa-slack fa-2x" aria-hidden="true"></i></a>
                         <a href="https://www.facebook.com/dmitry.sklyarov.120183" target="_blank" title="Facebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a> <!-- http://www.facebook.com/profile.php?id=100011920477763 -->
-                        <!--
-                        <a href="https://www.skype.com" target="_blank" title="Skype"><i class="fa fa-skype fa-2x" aria-hidden="true"></i></a>
-                        <a href="https://www.whatsapp.com" target="_blank" title="WhatsApp"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i></a>
-                        <a href="https://www.telegram.com" target="_blank" title="Telegram"><i class="fa fa-telegram fa-2x" aria-hidden="true"></i></a>
-                        -->
                     </div>
                 </div>
             </div>
             <header class="color-0">
                 <div class="content-left">
                     <figure>
-                        <img src="pictures/1.jpg" alt="Terminator"/>
+                        <img src="images/terminator.jpg" alt="Terminator"/>
                     </figure>
                 </div>
                 <div class="content-right color-2">
@@ -74,268 +59,348 @@
                             <p class="etunimi">Dmitry</p>
                             <p class="sukunimi">Sklyarov</p>
                         </div>
-                        <p class="koulu">Jyväskylän ammattikorkeakoulu / tieto- ja viestintätekniikka</p>
+                        <p class="koulu">JAMK University of Applied Sciences</p>
                     </div>
                     <div class="cv">
-                        <a href="CV.docx" title="CV"><i class="fa fa-download" aria-hidden="true"></i> Download my resume</a>
+                        <a href="CV.docx" title="Resume"><i class="fa fa-download" aria-hidden="true"></i> Download my resume</a>
                     </div>
-                    <div id="button">
-                        <label>Change theme</label>
-                        <div id="change_styles">
-                            <div id="cube"></div>
-                        </div>
-                    </div>        
                     <div class="header-bottom">
                         <div class="bottom">
                             <p class="font-72">Location</p> 
-                            <p class="font-93"><i class="fa fa-location-arrow" aria-hidden="true"></i><a class="header-link" href="https://www.google.com/maps/@60.7913374,27.2554699,6z" title="location" target="_blank"> Jyväskylä, Finland</a></p>
+                            <p class="font-93"><i class="fa fa-location-arrow" aria-hidden="true"></i><a class="header-link" href="https://www.google.com/maps/@60.7913374,27.2554699,6z" title="Location" target="_blank"> Jyväskylä, Finland</a></p>
                         </div>
                         <div class="bottom">
                             <p class="font-72">Phone</p> 
-                            <p class="font-93"><i class="fa fa-phone" aria-hidden="true"></i><a class="header-link" href="tel:+358404180540" title="phone" target="_blank"> +358404180540</a></p>
+                            <p class="font-93"><i class="fa fa-phone" aria-hidden="true"></i><a class="header-link" href="tel:+358404180540" title="Phone" target="_blank"> +358404180540</a></p>
                         </div>
                         <div class="bottom">
                             <p class="font-72">Web</p> 
-                            <p class="font-93"><i class="fa fa-globe" aria-hidden="true"></i><a class="header-link" href="https://www.jamk.fi/fi/Etusivu/" title="website" target="_blank"> dmitry_sklyarov.com</a></p>
+                            <p class="font-93"><i class="fa fa-globe" aria-hidden="true"></i><a class="header-link" href="https://www.jamk.fi/fi/Etusivu/" title="Website" target="_blank"> dmitry_sklyarov.com</a></p>
                         </div>
                         <div class="bottom">
                             <p class="font-72">Email</p> 
-                            <p class="font-93"><i class="fa fa-envelope-o" aria-hidden="true"></i><a class="header-link" href="mailto:l5568@student.jamk.fi" title="email" target="_blank"> l5568@student.jamk.fi</a></p>
+                            <p class="font-93"><i class="fa fa-envelope-o" aria-hidden="true"></i><a class="header-link" href="mailto:l5568@student.jamk.fi" title="Email" target="_blank"> l5568@student.jamk.fi</a></p>
                         </div>
                     </div>
                 </div>
             </header>
             <section class="color-3">
-                <div class="content-left">
-                    <h2 id="one">One</h2>
+                <div id="Intro" class="content-left">
+                    <div class="wrap-left">
+                        <h2>Intro</h2>
+                        <p class="small">A little about me.</p>
+                    </div>
                 </div>
                 <div class="content-right color-4">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
+                    <div class="wrap-right">
+                        <p class="welcome">Welcome to my page!</p>                        
+                        <p>My name is Dmitry, I'm 34 years old. I'm from Russia, but I live in Finland already for about 3 years. I'm married and I have 2 children. I have a higher education in mechanical engineer, experience as a state forensic expert for more than 8 years. At the moment, I'm interested in changing my profession: I study at the JAMK University of Applied Sciences in Jyväskylä on the IT department.</p>
+                    </div>  
                 </div>
             </section>            
             <section class="color-1">
-                <div class="content-left">
-                    <h2 id="two">Two</h2>
+                <div id="Hobbies" class="content-left">
+                    <div class="wrap-left">    
+                        <h2>Hobbies</h2>
+                        <p class="small">Main hobbies.</p>                        
+                    </div>
                 </div>
                 <div class="content-right color-2">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
+                    <div class="wrap-right">
+                        <p>I am a versatile person and I have many different hobbies. I will adduce at least 3 of them:</p>
+                        <h2>Chess.</h2> 
+                        <p>I play chess since childhood. This is the main hobby in my life. I am an international master (since 2012). At the moment I play chess rarely (basically for the Jyväskylä club in Finland's team championship).</p>
+                        <p>The best achievements in chess were:</p>
+                        <ul>
+                            <li>the multiple champion of the Republic of Karelia;</li>
+                            <li>champion of the Barents Region (2002);</li>
+                            <li>champion of the North-West of Russia (rapid chess, 2014).</li>
+                        </ul>
+                        <p>In my spare time I prefer cycling and table tennis from active sports.</p>
+                        <h2>Сycling.</h2>
+                        <p>In Finland people have excellent conditions for cycling - bicycle infrastructure is recognized as one of the best in the world! We ride bicycles with pleasure the whole family!</p>
+                        <h2>Table tennis.</h2>
+                        <p>I like to play table tennis. It develops, for example, agility, reaction speed, ability to concentrate attention, vision, etc.</p>
+                    </div>
                 </div>
             </section>
             <section class="color-3">
-                <div class="content-left">
-                    <h2 id="three">Skills</h2>
+                <div id="Education" class="content-left">
+                    <div class="wrap-left">    
+                        <h2>Education</h2>
+                    </div>
                 </div>
                 <div class="content-right color-4">
+                    <div class="wrap-right">                                
+                        <div class="experience">
+                            <div class="top">
+                                <div class="circle">
+                                    
+                                </div>
+                                <div class="year">
+                                    <p>2017-</p>  
+                                </div>
+                            </div>
+                            <div class="down">
+                                <div class="place">
+                                    <p class="big">JAMK University of Applied Sciences</p> 
+                                    <p class="city">Jyväskylä, Finland</p>                                    
+                                </div>           
+                                <div class="process">
+                                    <p>Higher education: Bachelor of Engineering, Information and Communication Technologies (first-year student).</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="experience">
+                            <div class="top">
+                                <div class="circle">
+                                    
+                                </div>
+                                <div class="year">
+                                    <p>2000-2005</p>  
+                                </div>
+                            </div>
+                            <div class="down">
+                                <div class="place">
+                                    <p class="big">Petrozavodsk state univercity</p> 
+                                    <p class="city">Petrozavodsk, Russia</p>                                    
+                                </div>           
+                                <div class="process">
+                                    <p>Higher education: specialization "Technical management", specialty "Forestry machinery and equipment" (Forest Engineering Department).</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience">
+                            <div class="top">
+                                <div class="circle">
+                                    
+                                </div>
+                                <div class="year">
+                                    <p>1990-2000</p>  
+                                </div>
+                            </div>
+                            <div class="down">
+                                <div class="place">
+                                    <p class="big">Lyceum № 1</p>
+                                    <p class="city">Petrozavodsk, Russia</p>
+                                </div>
+                                <div class="process">
+                                    <p>Basic 11-year school education with in-depth study of physics and mathematics.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="color-1">
+                <div id="Experience" class="content-left">
+                        <div class="wrap-left">
+                            <h2>Experience</h2>
+                        </div>        
+                    </div>
+                <div class="content-right color-2">
+                    <div class="wrap-right">
+                        <div class="experience">
+                            <div class="top">
+                                <div class="circle">
+                                    
+                                </div>
+                                <div class="year">
+                                    <p>2006-2014</p>  
+                                </div>
+                            </div>
+                            <div class="down">
+                                <div class="place">
+                                    <p class="big">Northwest Regional Forensic Expertise Center (Petrozavodsk department)</p> 
+                                    <p class="city">Petrozavodsk, Russia</p>                                 </div>
+                            
+                                <div class="process">
+                                    <p>Senior forensic expert in specialties:</p>
+                                    <ul>
+                                        <li>investigation of circumstances of road traffic accidents;</li>
+                                        <li>investigation of the technical condition of vehicles;</li>
+                                        <li>assessment of the value of vehicles;</li>
+                                        <li>determination of the cost of repair of vehicles.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="experience">
+                            <div class="top">
+                                <div class="circle">
+                                    
+                                </div>
+                                <div class="year">
+                                    <p>2006-2014</p>  
+                                </div>
+                            </div>
+                            <div class="down">
+                                <div class="place">
+                                    <p class="big">Northern Fleet, Military unit 15010, 694 guard company.</p> 
+                                    <p class="city">Zaozersk, Russia.</p>
+                                </div>
+                            
+                                <div class="process">
+                                    <p>Military service on conscription, sergeant.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="color-3">
+                <div id="Expertise" class="content-left">
+                    <div class="wrap-left">
+                        <h2>Expertise</h2>
+                        <p class="small">In the IT-field.</p>
+                    </div>
+                </div>
+                <div class="content-right color-4">
+                    <div class="wrap-right">
+                        <p>Of course, I have a lot of experience in the investigation of traffic accidents and their consequences, but in this section I try to tell about my competence in IT technology.</p>
+                        <p>In this field I'm just starting out and therefore I'm still offering to evaluate my skills in HTML5, CSS and JavaScript at the moment, based on my personal page.</p>                        
+                    </div>  
+                </div>
+            </section>
+            <section class="color-1">
+                <div id="Skills" class="content-left">
+                    <div class="wrap-left">
+                        <h2>Skills</h2>
+                        <p class="small">In the IT-field.</p>                        
+                    </div>        
+                </div>
+                <div class="content-right color-2">
+                    <p class="p30">In this section I will try to evaluate my knowledge of the subjects that were given in the first semester. For 100% I will consider the knowledge of an advanced programmer.</p>
                     <div class="skills">
                         <p><span class="orange">70</span><span class="little">%</span> Microsoft Office</p>
                         <div class="scale scale-70">
+
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">10</span><span class="little">%</span> HTML:5</p>
                         <div class="scale scale-10">
+
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">10</span><span class="little">%</span> CSS</p>
                         <div class="scale scale-10">
+
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">5</span><span class="little">%</span> C++</p>
                         <div class="scale scale-5">
+
                         </div>
                     </div>
                     <div class="skills">
-                        <p><span class="orange">10</span><span class="little">%</span> networks</p>
+                        <p><span class="orange">10</span><span class="little">%</span> Networks</p>
                         <div class="scale scale-10">
+
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">2</span><span class="little">%</span> JavaScript</p>
                         <div class="scale scale-2">
+
                         </div>
                     </div>
-                </div>
-            </section>
-            <section class="color-1">
-                <div class="content-left">
-                    <h2 id="four">Experience</h2>
-                </div>
-                <div class="content-right color-2">
-                    <div class="experience">
-                        <div class="top">
-                            <div class="circle">
-                                
-                            </div>
-                            <div class="year">
-                                <p>2006-2014</p>  
-                            </div>
-                        </div>
-                        <div class="down">
-                            <div class="place">
-                                <p>Northwest Regional Forensic Expertise Center (Petrozavodsk department)</p> 
-                            </div>
-                        
-                            <div class="process">
-                                <p>Investigation of circumstances of road traffic accidents.- Investigation of the technical condition of vehicles.- Assessment of the value of vehicles.- Determination of the cost of repair of vehicles.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="experience">
-                        <div class="top">
-                            <div class="circle">
-                                
-                            </div>
-                            <div class="year">
-                                <p>2006-2014</p>  
-                            </div>
-                        </div>
-                        <div class="down">
-                            <div class="place">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p> 
-                            </div>
-                        
-                            <div class="process">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="experience">
-                        <div class="top">
-                            <div class="circle">
-                                
-                            </div>
-                            <div class="year">
-                                <p>2006-2014</p>  
-                            </div>
-                        </div>
-                        <div class="down">
-                            <div class="place">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p> 
-                            </div>
-                        
-                            <div class="process">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="experience">
-                        <div class="top">
-                            <div class="circle">
-                                
-                            </div>
-                            <div class="year">
-                                <p>2006-2014</p>  
-                            </div>
-                        </div>
-                        <div class="down">
-                            <div class="place">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p> 
-                            </div>
-                        
-                            <div class="process">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla.</p>
-                            </div>
-                        </div>
-                    </div>                
                 </div>
             </section>
             <section class="color-3">
-                <div class="content-left">
-                    <h2 id="five">Education</h2>
+                <div id="Gallery" class="content-left">
+                    <div class="wrap-left">
+                        <h2>Gallery</h2>
+                        <p class="small">Some pictures with me.</p>
+                    </div>        
                 </div>
                 <div class="content-right color-4">
-                    <div class="experience">
-                        <div class="top">
-                            <div class="circle">
-                                
-                            </div>
-                            <div class="year">
-                                <p>2000-2005</p>  
-                            </div>
-                        </div>
-                        <div class="down">
-                            <div class="place">
-                                <p>Petrozavodsk state univercity</p> 
-                            </div>
-                        
-                            <div class="process">
-                                <p>Engineering .</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="experience">
-                        <div class="top">
-                            <div class="circle">
-                                
-                            </div>
-                            <div class="year">
-                                <p>1990-2000</p>  
-                            </div>
-                        </div>
-                        <div class="down">
-                            <div class="place">
-                                <p>School #1.</p> 
-                            </div>
-                        
-                            <div class="process">
-                                <p>Schoolboy.</p>
-                            </div>
-                        </div>
+                    <div class="photo">
+                        <a href="images/1.jpg" data-lightbox="group" data-title="Image1"><img src="images/1_thumb.jpg" class="mini-img" alt="Image1"/></a>
+                        <a href="images/2.jpg" data-lightbox="group" data-title="Image2"><img src="images/2_thumb.jpg" class="mini-img" alt="Image2"/></a>
+                        <a href="images/3.jpg" data-lightbox="group" data-title="Image3"><img src="images/3_thumb.jpg" class="mini-img" alt="Image3"/></a>
+                        <a href="images/4.jpg" data-lightbox="group" data-title="Image4"><img src="images/4_thumb.jpg" class="mini-img" alt="Image4"/></a>
+                        <a href="images/5.jpg" data-lightbox="group" data-title="Image5"><img src="images/5_thumb.jpg" class="mini-img" alt="Image5"/></a>    
                     </div>
                 </div>
             </section>
             <section class="color-1">
                 <div class="content-left">
-                    <h2 id="six">Six</h2>
+                    <div class="wrap-left">
+                        <h2 id="Documentation">Documentation</h2>
+                    </div>        
                 </div>
                 <div class="content-right color-2">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis nunc quam, vel scelerisque ex imperdiet non. Sed et odio ut mi tincidunt fringilla. Aenean cursus ac tortor sed hendrerit. Aliquam erat volutpat. Mauris porttitor, augue sit amet vestibulum rutrum, mauris mi viverra lorem, a aliquet dolor mi condimentum diam. Nam venenatis nisl vel interdum pulvinar. Quisque a consequat turpis. Sed at dolor vitae risus consequat suscipit eget non neque. Donec sit amet lorem placerat dui maximus laoreet. Aliquam erat volutpat. Vestibulum et lectus ex. Aenean finibus velit eu lorem consequat sodales. Ut eu condimentum neque, ac tincidunt mi. Nunc laoreet, neque fermentum commodo gravida, arcu turpis iaculis mi, rutrum maximus nisi diam eget ipsum. In non purus in lacus aliquet cursus nec a lacus. Praesent venenatis varius ex ac ultricies.</p>
+                    <div class="wrap-right">                    
+                        <p>This section contains a documentation for the site (for educational purposes). Select the section you are interested in and click it to view.</p>
+                        <div class="wrap-2">
+                            <div class="download">
+                                <a href="synopsis.html" title="Synopsis"><i class="fa fa-file-text-o" aria-hidden="true"></i> Synopsis</a>
+                            </div>
+                            <div class="download">
+                                <a href="documentation/rakennekaavio/rakennekaavio.html" title="Structure diagram"><i class="fa fa-tree" aria-hidden="true"></i> Structure diagram</a>
+                            </div>
+                            <div class="download">
+                                <a href="documentation/layout-suunnitelma/layout.png" title="Layout design"><i class="fa fa-picture-o" aria-hidden="true"></i> Layout design</a>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
-            </section>         
+            </section>              
             <footer class="color-3">
-                <div class="content-left">
-                    <h2 id="seven">Contact</h2>
-                </div>
+                <div id="Contact" class="content-left">
+                        <div class="wrap-left">
+                            <h2>Contact</h2>
+                        </div>        
+                     </div>
                 <div class="content-right color-4">
                     <div class="footer">
                         <div class="footer-text">
                             <p class="font-72">Location</p> 
-                            <p class="font-93"><i class="fa fa-location-arrow" aria-hidden="true"></i><a class="header-link" href="https://www.google.com/maps/@60.7913374,27.2554699,6z" title="location" target="_blank"> Jyväskylä, Finland</a></p>
+                            <p class="font-93"><i class="fa fa-location-arrow" aria-hidden="true"></i><a class="header-link" href="https://www.google.com/maps/@60.7913374,27.2554699,6z" title="Location" target="_blank"> Jyväskylä, Finland</a></p>
                         </div>
                         <div class="footer-text">
                             <p class="font-72">Phone</p> 
-                            <p class="font-93"><i class="fa fa-phone" aria-hidden="true"></i><a class="header-link" href="tel:+358404180540" title="phone" target="_blank"> +358404180540</a></p>
+                            <p class="font-93"><i class="fa fa-phone" aria-hidden="true"></i><a class="header-link" href="tel:+358404180540" title="Phone" target="_blank"> +358404180540</a></p>
                         </div>
                         <div class="footer-text">
                             <p class="font-72">Web</p> 
-                            <p class="font-93"><i class="fa fa-globe" aria-hidden="true"></i><a class="header-link" href="https://www.jamk.fi/fi/Etusivu/" title="website" target="_blank"> dmitry_sklyarov.com</a></p>
+                            <p class="font-93"><i class="fa fa-globe" aria-hidden="true"></i><a class="header-link" href="https://www.jamk.fi/fi/Etusivu/" title="Website" target="_blank"> dmitry_sklyarov.com</a></p>
                         </div>
                         <div class="footer-text">
                             <p class="font-72">Email</p> 
-                            <p class="font-93"><i class="fa fa-envelope-o" aria-hidden="true"></i><a class="header-link" href="mailto:l5568@student.jamk.fi" title="email" target="_blank"> l5568@student.jamk.fi</a></p>
+                            <p class="font-93"><i class="fa fa-envelope-o" aria-hidden="true"></i><a class="header-link" href="mailto:l5568@student.jamk.fi" title="Email" target="_blank"> l5568@student.jamk.fi</a></p>
                         </div>
                     </div>
+                </div>
+                <div class="copyright">
+                    <p>Copyright © Dmitry Sklyarov 2017</p>
                 </div>
             </footer>
         </article>
        <!-- Teemanvalitsin -->
        <script type="text/javascript">
-            var teema = document.getElementById('theme'),
-                nappi = document.getElementById('cube'),
-                nappialue = document.getElementById('change_styles');
+            var body = document.getElementsByTagName('body')[0];
+            var nappi = document.getElementById('cube');
+            var nappialue = document.getElementById('change_styles');
             nappialue.onclick = function(){
-                if (teema.className == 'dark') {
-                    teema.className = 'light';
-                    teema.href = 'style-light.css';
+                if (body.className == 'dark') {
+                    body.className = 'light';
                     nappi.style.left = '0';
                 } else {
-                    teema.className = 'dark';
-                    teema.href = 'style-dark.css';
+                    body.className = 'dark';
                     nappi.style.left = '15px';
                 }
             };            
-        </script>
+        </script>      
+        <script src="lightbox2-master/src/js/lightbox.js"></script>
+        <script>
+            lightbox.option({
+                'wrapAround': true, /* Mahdollisuus kiertää kuvat ympäri */
+                'resizeDuration': 300 /* Kuvakoon muuttamiseen käytetty aika */
+            }) 
+        </script> 
     </body>
 </html>
