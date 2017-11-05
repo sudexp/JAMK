@@ -11,6 +11,14 @@ body {
     margin: 0;
 } 
 
+nav {
+    display: none!important;
+}
+
+article {
+    padding-top: 0!important;
+}
+
 header {
 	height: 100vh;
     position: relative;
@@ -80,25 +88,26 @@ label {
 
 .flag a:hover {
     filter: grayscale(0%);
-    opacity: 1.0; /* при наведении курсора флаги принимают свои цвета*/
+    opacity: 1.0;
 }
 
 .flag a {
-    filter: grayscale(100%); /* изменение цвета флагов на серый*/
-    transition: 500ms ease; /* скорость изменения цвета флагов */
-    opacity: 0.7; /* в данном случае изменяет оттенок greyscale с черно-белого на серый */
+    filter: grayscale(100%);
+    transition: 500ms ease;
+    opacity: 0.7;
 }
 
-.back {
+.back-top,
+.back-bottom {
     float: right;
     padding: 15px 0 30px;
     margin-right: 15px;
 }
 
-.back a {
+.back-top a,
+.back-top a {
     font-size: 18px;
 }
-
 
 .synopsis {
     position: absolute;
@@ -142,7 +151,7 @@ p {
 a, a:visited {
     color: #727272;
     text-decoration: none;
-    transition: 500ms; /* плавность смены цвета */
+    transition: 500ms;
 }
  
 a:hover,

@@ -21,7 +21,7 @@ body.dark #cube {
     left: 15px; 
 }
 
-body.dark .sukunimi {
+body.dark .surname {
     color: #e0a82c;
 }
 
@@ -31,6 +31,19 @@ body.dark .header-bottom {
 
 body.dark .header-link {
     color: #a4a5a6;
+}
+
+body.dark a.chess,
+body.dark a.chess:visited {
+    color: #e0a82c !important;
+}
+
+body.dark a.chess:hover {
+    color: #ffbc00 !important;
+}
+
+body.dark a.chess:active {
+    color: #e0a82c !important;
 }
 
 body.dark .circle { 

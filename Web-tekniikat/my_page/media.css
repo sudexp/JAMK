@@ -11,19 +11,25 @@
         left: calc(18% - 132px);
     }
 
-    .etunimi {
+    figure img {
+        height: 350px;
+        top: 1px;
+    }
+
+    .firstname {
         font-size: 69.6px; /* 58p+20%*/
     }
     
-    .sukunimi {
+    .surname {
         font-size: 76.8px; /* 64px+20%*/
     }
     
-    .koulu {
+    .school {
         font-size: 21.6px; /* 18px+20%*/
     }
 
-    .cv, .font-72 {
+    .resume,
+    .font-72 {
         font-size: 15px;
     }
 
@@ -35,10 +41,18 @@
         width: 240px;
         height: 170px;
     }
+
+    .synopsis p {
+        font-size: 120px;
+    }
 }
     
 /* Portrait tablets and medium desktops */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    figure img {
+        top: 5px;
+    }
+
     .footer {
         padding: 60px 55px;
     }
@@ -56,7 +70,8 @@
         text-align: center;
     }
     
-    section .content-left, footer .content-left {
+    section .content-left,
+    footer .content-left {
         border-top: 1px solid #ececec;
         border-bottom: 1px solid #ececec;
     }
@@ -76,9 +91,9 @@
 
     figure img {
         position: relative;
-        left: -70px;
-        height: 200px; /* 250px-20%*/
-        margin-top: 30px;
+        height: 283.5px; /* 315px-10%*/
+        top: 5px;
+        left: 0;
     }
 
     header .content-left {
@@ -89,30 +104,32 @@
         height: 57vh;    
     }
 
-    .nimi {
+    .name {
         top: 10%;
         left: calc(50% - 128px);
     }
 
-    .etunimi, .sukunimi, .koulu {
+    .firstname,
+    .surname,
+    .school {
         padding: 0;
     }
 
-    .etunimi {
+    .firstname {
         font-size: 44.6px; /* 58px-20%*/
     }
     
-    .sukunimi {
+    .surname {
         font-size: 51.2px; /* 64px-20%*/
     }
     
-    .koulu {
+    .school {
         font-size: 16px;
         top: 30%;
         left: calc(50% - 128px);
     }
 
-    .cv {
+    .resume {
         top: 67%;
         font-size: 14px;
     }
@@ -125,6 +142,10 @@
     }
 
     .wrap-left {
+        padding: 30px;
+    }
+
+    .wrap-right {
         padding: 30px;
     }
 
@@ -160,12 +181,14 @@
         padding-top: 5px;
     }
 
-    .p30 {
+    .p-top_and_side30 {
         padding: 30px 30px 0;
     }
 
     h2,
-    p {
+    p,
+    .back-top a,
+    .back-bottom a {
         font-size: 16px;
     }
 
@@ -213,7 +236,8 @@ nav {
         padding: 2px;
     }
     
-    section .content-left, footer .content-left {
+    section .content-left,
+    footer .content-left {
         border-top: 1px solid #ececec;
         border-bottom: 1px solid #ececec;
     }
@@ -237,9 +261,9 @@ nav {
 
     figure img {
         position: relative;
-        left: -70px;
-        height: 200px; /* 250px-20%*/
-        margin-top: 30px;
+        height: 252px; /* 315px-20%*/
+        top: 5px;
+        left: 0;
     }
 
     header .content-left {
@@ -250,30 +274,32 @@ nav {
         height: 57vh;    
     }
 
-    .nimi {
+    .name {
         top: 10%;
         left: calc(50% - 128px);
     }
 
-    .etunimi, .sukunimi, .koulu {
+    .firstname,
+    .surname,
+    .school {
         padding: 0;
     }
 
-    .etunimi {
+    .firstname {
         font-size: 44.6px; /* 58px-20%*/
     }
     
-    .sukunimi {
+    .surname {
         font-size: 51.2px; /* 64px-20%*/
     }
     
-    .koulu {
+    .school {
         font-size: 16px;
         top: 30%;
         left: calc(50% - 128px);
     }
 
-    .cv {
+    .resume {
         top: 67%;
         font-size: 14px;
     }
@@ -302,7 +328,7 @@ nav {
         padding: 20px;
     }
 
-    .welcome {
+    .p-bottom20 {
         padding-bottom: 10px;
     }
 
@@ -342,7 +368,7 @@ nav {
         padding-top: 5px;
     }
 
-    .p30 {
+    .p-top_and_side30 {
         padding: 30px 30px 0;
     }
 
@@ -351,12 +377,18 @@ nav {
     }
 
     h2,
-    p {
+    p,
+    .back-top a,
+    .back-bottom a {
         font-size: 16px;
     }
 
     ul {
         font-size: 15px;
+    }
+
+    .synopsis p {
+        font-size: 80px;
     }
 
     .color-0 {
@@ -412,7 +444,8 @@ nav {
         padding: 2px;
     }
     
-    section .content-left, footer .content-left {
+    section .content-left,
+    footer .content-left {
         border-top: 1px solid #ececec;
         border-bottom: 1px solid #ececec;
     }
@@ -436,9 +469,9 @@ nav {
 
     figure img {
         position: relative;
-        left: -70px;
-        height: 200px; /* 250px-20%*/
-        margin-top: 30px;
+        height: 252px; /* 315px-20%*/
+        top: 5px;
+        left: 0;
     }
 
     header .content-left {
@@ -449,30 +482,32 @@ nav {
         height: 56vh;    
     }
 
-    .nimi {
+    .name {
         top: 10%;
         left: calc(50% - 128px);
     }
 
-    .etunimi, .sukunimi, .koulu {
+    .firstname,
+    .surname,
+    .school {
         padding: 0;
     }
 
-    .etunimi {
+    .firstname {
         font-size: 44.6px; /* 58px-20%*/
     }
     
-    .sukunimi {
+    .surname {
         font-size: 51.2px; /* 64px-20%*/
     }
     
-    .koulu {
+    .school {
         font-size: 14.4px; /* 18px-20%*/
         top: 30%;
         left: calc(50% - 128px);
     }
 
-    .cv {
+    .resume {
         top: 60%;
         font-size: 13px;
     }
@@ -513,8 +548,15 @@ nav {
         padding: 20px;
     }
 
-    .welcome {
+    .p-bottom20 {
         padding-bottom: 10px;
+    }
+
+    .circle {
+        height: 8px;
+        width: 8px;
+        border-radius: 4px;
+        margin-top: 5px;
     }
 
     .down p {
@@ -573,7 +615,7 @@ nav {
         padding-top: 5px;
     }
 
-    .p30 {
+    .p-top_and_side30 {
         padding: 20px 20px 0;
     }
 
@@ -588,12 +630,18 @@ nav {
     }
 
     h2,
-    p {
+    p,
+    .back-top a,
+    .back-bottom a {
         font-size: 14px;
     }
 
     ul {
         font-size: 13px;
+    }
+
+    .synopsis p {
+        font-size: 60px;
     }
 
     .color-0 {
@@ -640,7 +688,8 @@ nav {
         padding: 2px;
     }
     
-    section .content-left, footer .content-left {
+    section .content-left,
+    footer .content-left {
         border-top: 1px solid #ececec;
         border-bottom: 1px solid #ececec;
     }
@@ -690,7 +739,7 @@ nav {
     figure {
         top: 25%;
         left: calc(50% - 75px);
-        height: 150px; 
+        height: 150px; /* 37,5% */
         width: 150px;
         border-radius: 75px;
         margin: 0 auto;
@@ -698,9 +747,9 @@ nav {
 
     figure img {
         position: relative;
-        left: -70px;
-        height: 150px;
-        margin: 30px 0 0 30px;
+        top: 5px;
+        left: 0;
+        height: 197px; /* 315px-37,5%*/
     }
 
     header .content-left {
@@ -711,30 +760,32 @@ nav {
         height: 60vh;    
     }
 
-    .nimi {
+    .name {
         top: 5%;
         left: calc(50% - 100px);
     }
 
-    .etunimi, .sukunimi, .koulu {
+    .firstname,
+    .surname, 
+    .school {
         padding: 0;
     }
 
-    .etunimi {
+    .firstname {
         font-size: 32px;
     }
     
-    .sukunimi {
+    .surname {
         font-size: 36px;
     }
     
-    .koulu {
+    .school {
         font-size: 12px;
         top: 20%;
         left: calc(50% - 100px);
     }
 
-    .cv {
+    .resume {
         top: 63%;
         font-size: 10px;
         right: 20px; 
@@ -776,8 +827,16 @@ nav {
         padding: 15px;
     }
 
-    .welcome {
+    .p-bottom20 {
         padding-bottom: 10px;
+    }
+
+    .circle {
+        height: 7px;
+        width: 7px;
+        border-radius: 3.5px;
+        margin-top: 5px;
+        margin-left: 0.5px;
     }
 
     .down p {
@@ -836,7 +895,7 @@ nav {
         padding-top: 5px;
     }
 
-    .p30 {
+    .p-top_and_side30 {
         padding: 15px 15px 0;
     }
 
@@ -851,12 +910,21 @@ nav {
     }
 
     h2,
-    p {
+    p,
+    .back-bottom a {
         font-size: 12px;
     }
 
     ul {
         font-size: 11px;
+    }
+
+    .synopsis p {
+        font-size: 40px;
+    }
+
+    .back-top {
+        display: none;
     }
 
     .color-0 {
@@ -902,7 +970,8 @@ nav {
         padding: 2px;
     }
     
-    section .content-left, footer .content-left {
+    section .content-left,
+    footer .content-left {
         border-top: 1px solid #ececec;
         border-bottom: 1px solid #ececec;
     }
@@ -960,9 +1029,9 @@ nav {
 
     figure img {
         position: relative;
-        left: -70px;
-        height: 150px;
-        margin: 30px 0 0 30px;
+        top: 5px;
+        left: 0;
+        height: 197px; /* 315px-37,5%*/
     }
 
     header .content-left {
@@ -973,30 +1042,30 @@ nav {
         height: 60vh;    
     }
 
-    .nimi {
+    .name {
         top: 5%;
         left: calc(50% - 100px);
     }
 
-    .etunimi, .sukunimi, .koulu {
+    .firstname, .surname, .school {
         padding: 0;
     }
 
-    .etunimi {
+    .firstname {
         font-size: 32px;
     }
     
-    .sukunimi {
+    .surname {
         font-size: 36px;
     }
     
-    .koulu {
+    .school {
         font-size: 12px;
         top: 20%;
         left: calc(50% - 100px);
     }
 
-    .cv {
+    .resume {
         top: 45%;
         font-size: 10px;
         right: 20px; 
@@ -1038,10 +1107,18 @@ nav {
         padding: 15px;
     }
 
-    .welcome {
+    .p-bottom20 {
         padding-bottom: 10px;
     }
 
+    .circle {
+        height: 7px;
+        width: 7px;
+        border-radius: 3.5px;
+        margin-top: 5px;
+        margin-left: 0.5px;
+    }
+    
     .down p {
         padding: 0 10px;
     }
@@ -1098,7 +1175,7 @@ nav {
         padding-top: 5px;
     }
 
-    .p30 {
+    .p-top_and_side30 {
         padding: 15px 15px 0;
     }
 
@@ -1114,12 +1191,21 @@ nav {
     }
 
     h2,
-    p {
+    p,
+    .back-bottom a {
         font-size: 11px;
     }
 
     ul {
         font-size: 10px;
+    }
+
+    .synopsis p {
+        font-size: 30px;
+    }
+
+    .back-top {
+        display: none;
     }
 
     .color-0 {
