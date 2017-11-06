@@ -358,7 +358,7 @@ a.chess:active {
 }
 
 .skills p,
-.skills .wrapper {
+.progressbar {
     margin: 0 30px;
 }
 
@@ -369,31 +369,44 @@ a.chess:active {
     padding: 0 0 5px;
 }
 
-.skills .wrapper {
+/* 
+1) .scale --> .progressbar (media!)
+2) check colors in dark theme! - полоса сейчас белая */
+.progressbar {
+    height: 4px;
     padding: 0;
 }
 
-.wrapper {    
-    height: 4px;
-    display: block;
-}
-
-.progress-bar progress {
-	background-color: #ececec;
+.scalebar {
+    background-color: #ececec;
 	width: 100%;
 	height: 4px;
 }
 
-.progress-bar progress::-webkit-progress-bar {
-	background-color: #ececec;
+progress::-webkit-progress-bar {
+    background-color: #ececec; /* цвет фона */
 }
 
-.progress-bar progress::-webkit-progress-value {
+progress::-webkit-progress-value {
 	background: #ffbc00;
+	/* background: -moz-linear-gradient(top,  #ffbc00  0%, #ffbc00  100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffbc00), color-stop(100%,#ffbc00));
+	background: -webkit-linear-gradient(top,  #ffbc00  0%,#ffbc00  100%);
+	background: -o-linear-gradient(top,  #ffbc00 0%,#ffbc00  100%);
+	background: -ms-linear-gradient(top,  #ffbc00  0%,#ffbc00  100%);
+	background: linear-gradient(to bottom,  #ffbc00 0%,#ffbc00 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbc00', endColorstr='#ffbc00',GradientType=0 ); */
 }
 
-.progress-bar progress::-moz-progress-bar {
+progress::-moz-progress-bar {
 	background: #ffbc00;
+	/* background: -moz-linear-gradient(top,  #ffbc00 0%, #ffbc00 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffbc00), color-stop(100%, #ffbc00));
+	background: -webkit-linear-gradient(top,  #ffbc00 0%,#ffbc00 100%);
+	background: -o-linear-gradient(top,  #ffbc00 0%,#ffbc00  100%);
+	background: -ms-linear-gradient(top,  #ffbc00 0%,#ffbc00 100%);
+	background: linear-gradient(to bottom,  #ffbc00 0%,#ffbc00 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbc00', endColorstr='#ffbc00',GradientType=0 ); */
 }
 
 .orange {

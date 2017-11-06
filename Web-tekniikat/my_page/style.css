@@ -369,13 +369,9 @@ a.chess:active {
     padding: 0 0 5px;
 }
 
-.skills .scale {
-    padding: 0;
-}
-
-.scale {    
+.scale {
     height: 4px;
-    display: block;
+    padding: 0;
 }
 
 .scale-75 { 

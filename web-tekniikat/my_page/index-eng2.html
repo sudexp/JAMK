@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>My page: Dmitry Sklyarov</title>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="style2.css"/>
         <link media="screen" rel="stylesheet" href="media.css"/>        
         <link rel="stylesheet" type="text/css" href="style-dark.css"/>
         <link rel="icon" href="images/icon.png"/>
@@ -279,37 +279,37 @@
                     <p class="p-top_and_side30">In this section I will try to experiment and evaluate my knowledge of the subjects that were given in the first semester. For 100% I will consider the knowledge of an advanced programmer. This is a very subjective evaluation, which rather shows how much knowledge has yet to be mastered so that the orange indicator approaches the right side.</p>
                     <div class="skills">
                         <p><span class="orange">75</span><span class="little">%</span> Microsoft Office</p>
-                        <div class="wrapper progress-bar">
+                        <div class="progressbar">
                             <progress class="scalebar" value="0" max="100" end="75"></progress>
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">20</span><span class="little">%</span> HTML:5</p>
-                        <div class="wrapper progress-bar">
+                        <div class="progressbar">
                             <progress class="scalebar" value="0"  max="100" end="20"></progress>
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">20</span><span class="little">%</span> CSS</p>
-                        <div class="wrapper progress-bar">
+                        <div class="progressbar">
                             <progress class="scalebar" value="0" max="100" end="20"></progress>
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">10</span><span class="little">%</span> C++</p>
-                        <div class="wrapper progress-bar">
+                        <div class="progressbar">
                             <progress class="scalebar" value="0" max="100" end="10"></progress>
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">10</span><span class="little">%</span> Networks</p>
-                        <div class="wrapper progress-bar">
+                        <div class="progressbar">
                             <progress class="scalebar" value="0" max="100" end="10"></progress>
                         </div>
                     </div>
                     <div class="skills">
                         <p><span class="orange">5</span><span class="little">%</span> JavaScript</p>
-                        <div class="wrapper progress-bar">
+                        <div class="progressbar">
                             <progress class="scalebar" value="0" max="100" end="10"></progress>
                         </div>
                     </div>
@@ -320,31 +320,25 @@
                     if(!Modernizr.meter){
                         alert('Извините, но Ваш браузер не поддерживает HTML5 прогресс бар!');
                     } else {
-
-                        //document.documentElement.scrollTop
-                        //2838
                         var started = false
                         window.onscroll = function () {
-                            if (!started && document.documentElement.scrollTop >= 2838) {
+                            if (!started && document.documentElement.scrollTop >= 2650) {
                                 started = true
                                 console.log('started!')
                                 startProgress()
                             }
                         }
-
                         function startProgress () {
                             var progressbars = $('.scalebar')
                             var value = 0
                             var max = 100
-                            var time = 100
+                            var time = 40
             
                             var loading = function() {
                                 value += 1;
-    
                                 for(var i = 0; i < progressbars.length; i++) {
                                     setProgress(progressbars[i], value)
-                                }
-            
+                                }           
                                 if (value == max) {
                                     clearInterval(animate);			           
                                 }
@@ -353,8 +347,6 @@
                                 loading();
                             }, time);
                         }
-
-
                     };
                     function setProgress (el, value) {
                         var $el = $(el)
