@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/>
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/jquery.js" type="text/javascript"></script>
-        <script src="js/modernizr.js" type="text/javascript"></script>    
+        <script src="lightbox2-master/src/js/lightbox.js"></script>        
     </head>
     <body class="light">
         <nav>
@@ -315,48 +315,6 @@
                     </div>
                 </div>
             </section>
-            <script>
-                $(document).ready(function() {
-                    if(!Modernizr.meter){
-                        alert('Извините, но Ваш браузер не поддерживает HTML5 прогресс бар!');
-                    } else {
-                        var started = false
-                        window.onscroll = function () {
-                            if (!started && document.documentElement.scrollTop >= 2650) {
-                                started = true
-                                console.log('started!')
-                                startProgress()
-                            }
-                        }
-                        function startProgress () {
-                            var progressbars = $('.scalebar')
-                            var value = 0
-                            var max = 100
-                            var time = 40
-            
-                            var loading = function() {
-                                value += 1;
-                                for(var i = 0; i < progressbars.length; i++) {
-                                    setProgress(progressbars[i], value)
-                                }           
-                                if (value == max) {
-                                    clearInterval(animate);			           
-                                }
-                            };
-                            var animate = setInterval(function() {
-                                loading();
-                            }, time);
-                        }
-                    };
-                    function setProgress (el, value) {
-                        var $el = $(el)
-                        var end = $el.attr('end')
-                        if (value < end) {
-                            $el.val(value)
-                        }
-                    }
-                });
-            </script>
             <section class="color-3">
                 <div id="Gallery" class="content-left">
                     <div class="wrap-left">
@@ -444,8 +402,48 @@
                     nappi.style.left = '15px';
                 }
             };            
-        </script>      
-        <script src="lightbox2-master/src/js/lightbox.js"></script>
+        </script>
+        <!-- http://www.sitehere.ru/sozdanie-i-oformlenie-progress-bara-s-pomoshhyu-css3-i-html5 -->
+        <!-- http://htmlbook.ru/blog/sozdanie-i-stilizaciya-indikatora-vypolneniya-v-html5 -->
+        <!-- http://css-live.ru/tricks/krossbrauzernyj-progress-bar.html -->
+        <script>
+            $(document).ready(function() {
+                var started = false
+                window.onscroll = function () {
+                    if (!started && document.documentElement.scrollTop >= 2650) {
+                        started = true
+                        console.log('started!')
+                        startProgress()
+                    }
+                }
+                function startProgress () {
+                    var progressbars = $('.scalebar')
+                    var value = 0
+                    var max = 100
+                    var time = 40
+    
+                    var loading = function() {
+                        value += 1;
+                        for(var i = 0; i < progressbars.length; i++) {
+                            setProgress(progressbars[i], value)
+                        }           
+                        if (value == max) {
+                            clearInterval(animate);			           
+                        }
+                    };
+                    var animate = setInterval(function() {
+                        loading();
+                    }, time);
+                }
+                function setProgress (el, value) {
+                    var $el = $(el)
+                    var end = $el.attr('end')
+                    if (value < end) {
+                        $el.val(value)
+                    }
+                }
+            });
+        </script>     
         <script>
             lightbox.option({
                 'wrapAround': true, /* Mahdollisuus kiertää kuvat ympäri */
