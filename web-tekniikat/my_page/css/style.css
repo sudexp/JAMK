@@ -127,7 +127,8 @@ label {
     color: #939393;
 }
 
-figure {
+figure,
+#figure {
     position: absolute;
     top: 50%;
     left: calc(18% - 120px);
@@ -140,7 +141,8 @@ figure {
     margin: 0;
 }
 
-figure img {
+figure img,
+#figure img {
     position: relative;
     left: -6px;
     height: 315px;

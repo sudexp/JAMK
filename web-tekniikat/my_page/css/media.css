@@ -16,6 +16,10 @@
         top: 1px;
     }
 
+    #figure {
+        display: none;
+    }
+
     .firstname {
         font-size: 69.6px; /* 58p+20%*/
     }
@@ -53,6 +57,10 @@
         top: 5px;
     }
 
+    #figure {
+        display: none;
+    }
+
     .footer {
         padding: 60px 55px;
     }
@@ -81,36 +89,43 @@
     }
 
     figure {
-        top: 25%;
-        left: calc(50% - 108px);
+       display: none;
+    }
+
+    header .content-left {
+        height: 0vh;    
+    }
+
+    header .content-right {
+        height: 87vh;    
+    }
+
+    .wrap-name {
+        top: 30%;
+        left: calc(50% - 130.665px);
+        text-align: center;
+    }
+
+    #figure {
+        position: static;
+        transform: none;
         height: 216px; /* 240px-10%*/
         width: 216px; /* 240px-10%*/
         border-radius: 108px; /* 120px-10% */
-        margin: 30px auto;
+        margin: 0 auto;
     }
 
-    figure img {
+    #figure img {
         position: relative;
         height: 283.5px; /* 315px-10%*/
         top: 5px;
         left: 0;
     }
 
-    header .content-left {
-        height: 30vh;    
+    .name {
+        padding: 30px 0 0;
     }
-
-    header .content-right {
-        height: 57vh;    
-    }
-
-    .wrap-name {
-        top: 20%;
-        left: calc(50% - 130.7px);
-        text-align: center;
-    }
-
-    .name,
+    
     .school {
         padding: 0;
     }
@@ -121,6 +136,7 @@
     
     .surname {
         font-size: 51.2px; /* 64px-20%*/
+        padding-bottom: 45px;
     }
     
     .school {
@@ -128,7 +144,7 @@
     }
 
     .wrap-bottom {
-        top: 77%;
+        top: 85%;
     }
 
     section .content-right {
@@ -240,41 +256,48 @@ nav {
         margin-left: 0;
     }
 
+    figure {
+        display: none;
+     }
+
     label {
         font-size: 9px;
     }
 
-    figure {
-        top: 25%;
-        left: calc(50% - 96px);
+    header .content-left {
+        height: 0;    
+    }
+
+    header .content-right {
+        height: 87vh;    
+    }
+
+    .wrap-name {
+        top: 30%;
+        left: calc(50% - 130.665px);
+        text-align: center;
+    }
+
+    #figure {
+        position: static;
+        transform: none;
         height: 192px; /* 240px-20%*/
         width: 192px; /* 240px-20%*/
         border-radius: 96px; /* 120px-20% */
-        margin: 30px auto;
+        margin: 0 auto;
     }
 
-    figure img {
+    #figure img {
         position: relative;
         height: 252px; /* 315px-20%*/
         top: 5px;
         left: 0;
     }
 
-    header .content-left {
-        height: 30vh;    
+    .name {
+        padding: 30px 0 0;
     }
-
-    header .content-right {
-        height: 57vh;    
-    }
-
-    .wrap-name {
-        top: 20%;
-        left: calc(50% - 130.7px);
-        text-align: center;
-    }
-
-    .name,
+    
     .school {
         padding: 0;
     }
@@ -285,6 +308,7 @@ nav {
     
     .surname {
         font-size: 51.2px; /* 64px-20%*/
+        padding-bottom: 40px;
     }
     
     .school {
@@ -293,10 +317,11 @@ nav {
 
     .resume {
         font-size: 14px;
+        padding-bottom: 25px; 
     }
 
     .wrap-bottom {
-        top: 77%;
+        top: 85%;
     }
 
     .font-72 {
@@ -445,41 +470,48 @@ nav {
         margin-left: 0;
     }
 
+    figure {
+        display: none;
+     }
+
     label {
         font-size: 9px;
     }
 
-    figure {
-        top: 20%;
-        left: calc(50% - 96px);
+    header .content-left {
+        height: 0;    
+    }
+
+    header .content-right {
+        height: 86vh;    
+    }
+
+    .wrap-name {
+        top: 30%;
+        left: calc(50% - 114.335px);
+        text-align: center;
+    }
+
+    #figure {
+        position: static;
+        transform: none;
         height: 192px; /* 240px-20%*/
         width: 192px; /* 240px-20%*/
         border-radius: 96px; /* 120px-20% */
-        margin: 30px auto;
+        margin: 0 auto;
     }
 
-    figure img {
+    #figure img {
         position: relative;
         height: 252px; /* 315px-20%*/
         top: 5px;
         left: 0;
     }
 
-    header .content-left {
-        height: 30vh;    
+    .name {
+        padding: 25px 0 0;
     }
-
-    header .content-right {
-        height: 56vh;    
-    }
-
-    .wrap-name {
-        top: 10%;
-        left: calc(50% - 114.33px);
-        text-align: center;
-    }
-
-    .name,
+    
     .school {
         padding: 0;
     }
@@ -499,17 +531,21 @@ nav {
 
     .resume {
         font-size: 13px;
+        padding-bottom: 25px; 
     }
 
     .wrap-bottom {
-        top: 65%;
+        top: 77%;
+    }
+
+    .header-bottom {
+        white-space: normal;
     }
 
     .bottom {
-        /* display: inline-block; */
-        float: left;
+        display: inline-block;
         text-align: center;
-        width: 50%;
+        width: 49.5%;
         padding-top: 10px;
     }
 
@@ -684,6 +720,10 @@ nav {
         margin-left: 0;
     }
 
+    figure {
+        display: none;
+    }
+
     #button {
         height: 5vh;
         top: 15px;
@@ -722,37 +762,40 @@ nav {
         display: none;
     }
 
-    figure {
-        top: 25%;
-        left: calc(50% - 75px);
+    header .content-left {
+        height: 0;    
+    }
+
+    header .content-right {
+        height: 95vh;    
+    }
+
+    .wrap-name {
+        top: 30%;
+        left: calc(50% - 93.56px);
+        text-align: center;
+    }
+
+    #figure {
+        position: static;
+        transform: none;
         height: 150px; /* 37,5% */
         width: 150px;
         border-radius: 75px;
         margin: 0 auto;
     }
 
-    figure img {
+    #figure img {
         position: relative;
+        height: 197px; /* 315px-37,5%*/        
         top: 5px;
         left: 0;
-        height: 197px; /* 315px-37,5%*/
     }
 
-    header .content-left {
-        height: 35vh;    
+    .name {
+        padding: 20px 0 0;
     }
-
-    header .content-right {
-        height: 60vh;    
-    }
-
-    .wrap-name {
-        top: 10%;
-        left: calc(50% - 98.56px);
-        text-align: center;
-    }
-
-    .name,
+    
     .school {
         padding: 0;
     }
@@ -763,26 +806,30 @@ nav {
     
     .surname {
         font-size: 36px;
+        padding-bottom: 40px;
     }
     
     .school {
         font-size: 12px;
-        padding-bottom: 25px;
     }
 
     .resume {
         font-size: 10px;
+        padding-bottom: 20px;
     }
 
     .wrap-bottom {
-        top: 65%;
+        top: 82%;
+    }
+
+    .header-bottom {
+        white-space: normal;
     }
 
     .bottom {
-        /* display: inline-block; */
-        float: left;
+        display: inline-block;
         text-align: center;
-        width: 50%;
+        width: 49.4%;
         padding-top: 10px;
     }
 
@@ -960,6 +1007,10 @@ nav {
         margin-left: 0;
     }
 
+    figure {
+        display: none;
+    }
+
     #button {
         height: 5vh;
         top: 15px;
@@ -998,36 +1049,41 @@ nav {
         display: none;
     }
 
-    figure {
-        top: 25%;
-        left: calc(50% - 75px);
+    header .content-left {
+        height: 0;    
+    }
+
+    header .content-right {
+        height: 95vh;    
+    }
+
+    .wrap-name {
+        top: 30%;
+        left: calc(50% - 93.56px);
+        text-align: center;
+    }
+
+    #figure {
+        position: static;
+        transform: none;
         height: 150px; 
         width: 150px;
         border-radius: 75px;
         margin: 0 auto;
     }
 
-    figure img {
+    #figure img {
         position: relative;
+        height: 197px; /* 315px-37,5%*/        
         top: 5px;
         left: 0;
-        height: 197px; /* 315px-37,5%*/
-    }
-
-    header .content-left {
-        height: 35vh;    
-    }
-
-    header .content-right {
-        height: 60vh;    
     }
 
     .name {
-        top: 5%;
-        left: calc(50% - 100px);
+        padding: 15px 0 0;
     }
-
-    .firstname, .surname, .school {
+    
+    .school {
         padding: 0;
     }
 
@@ -1037,26 +1093,24 @@ nav {
     
     .surname {
         font-size: 36px;
+        padding-bottom: 30px;
     }
     
     .school {
         font-size: 12px;
-        top: 20%;
-        left: calc(50% - 100px);
     }
 
     .resume {
-        top: 45%;
         font-size: 10px;
-        right: 20px; 
+        padding-bottom: 15px; 
+    }
+
+    .wrap-bottom {
+        top: 71%;
     }
 
     .header-bottom {
-        top: 75%;
         white-space: normal;
-        left: 20px;
-        right: 20px;
-        padding-top: 10px;
     }
 
     .bottom {
