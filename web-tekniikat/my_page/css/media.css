@@ -444,7 +444,7 @@ nav {
     }
     
     article {
-        padding-top: 6vh;
+        padding-top: 7vh;
     }
 
     .content-left {
@@ -474,16 +474,12 @@ nav {
         display: none;
      }
 
-    label {
-        font-size: 9px;
-    }
-
     header .content-left {
         height: 0;    
     }
 
     header .content-right {
-        height: 86vh;    
+        height: 85vh;    
     }
 
     .wrap-name {
@@ -724,14 +720,16 @@ nav {
         display: none;
     }
 
+    .wrap-icons {
+        margin-top: 1vh;
+    }
+
     #button {
-        height: 5vh;
-        top: 15px;
-        margin-left: 15px;
+        margin-left: 40px;
     }
 
     label {
-        font-size: 8px;
+        font-size: 9px;
     }
     
     #change_styles {
@@ -745,17 +743,15 @@ nav {
         height: 14px;
     }
 
+    .flag {
+        float: right;
+        margin-right: 40px;
+    }
+
     .flag-icons {
         height: 1em !important;
         width: 1.333335em !important;
         line-height: 1em !important;
-    }
-
-    .flag {
-        padding-top: 10px;
-        padding-right: 15px;
-        display: block;
-        float: right;
     }
 
     .icon {
@@ -767,7 +763,7 @@ nav {
     }
 
     header .content-right {
-        height: 95vh;    
+        height: 91vh;    
     }
 
     .wrap-name {
@@ -819,7 +815,7 @@ nav {
     }
 
     .wrap-bottom {
-        top: 82%;
+        top: 78%;
     }
 
     .header-bottom {
@@ -1011,10 +1007,12 @@ nav {
         display: none;
     }
 
+    .wrap-icons {
+        margin-top: 1vh;
+    }
+
     #button {
-        height: 5vh;
-        top: 15px;
-        margin-left: 15px;
+        margin-left: 40px;
     }
 
     label {
@@ -1032,17 +1030,15 @@ nav {
         height: 14px;
     }
 
+    .flag {
+        float: right;
+        margin-right: 40px;
+    }
+
     .flag-icons {
         height: 1em !important;
         width: 1.333335em !important;
         line-height: 1em !important;
-    }
-
-    .flag {
-        padding-top: 10px;
-        padding-right: 15px;
-        display: block;
-        float: right;
     }
 
     .icon {
@@ -1054,7 +1050,7 @@ nav {
     }
 
     header .content-right {
-        height: 95vh;    
+        height: 91vh;    
     }
 
     .wrap-name {

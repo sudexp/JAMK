@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="css/style-dark.css"/>
         <link rel="icon" href="images/icon.png"/>
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"/>        
-        <link rel="stylesheet" href="flag-css/flag-icons.css">
+        <link rel="stylesheet" href="css/flag-icons.css">
         <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/> <!-- css для картинок -->
         <link rel="stylesheet" href="css/animate.css"> <!-- css для анимации -->
@@ -36,22 +36,24 @@
             <div class="color-0">
                 <div class="content-right color-2">
                     <!-- может объединить в один блок кнопку, флаги и иконки?! -->
-                    <div id="button" class="wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.0s">
-                        <div id="change_styles">
-                            <div id="cube"></div>
+                    <div class="wrap-icons">
+                        <div id="button" class="wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.0s">
+                            <div id="change_styles">
+                                <div id="cube"></div>
+                            </div>
+                            <label>theme</label>
+                        </div>                
+                        <div class="flag wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.0s">
+                            <a href="index-fi.html" title="Suomeksi"><i class="flag-icons FI"></i></a>
+                            <a href="index-eng.html" title="In English"><i class="flag-icons GB"></i></a>
+                            <a href="index-ru.html" title="По-русски"><i class="flag-icons RU"></i></a>
                         </div>
-                        <label>theme</label>
-                    </div>                
-                    <div class="flag wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.0s">
-                        <a href="index-fi.html" title="Suomeksi"><i class="flag-icons FI"></i></a>
-                        <a href="index-eng.html" title="In English"><i class="flag-icons GB"></i></a>
-                        <a href="index-ru.html" title="По-русски"><i class="flag-icons RU"></i></a>
-                    </div>
-                    <div class="icon wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.5s">
-                        <a href="https://www.linkedin.com/in/dmitry-sklyarov-120183/" target="_blank" title="Linkedin"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
-                        <a href="https://github.com/sudexp" target="_blank" title="Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>  
-                        <a href="https://www.slack.com" target="_blank" title="Slack"><i class="fa fa-slack fa-2x" aria-hidden="true"></i></a>
-                        <a href="https://www.facebook.com/dmitry.sklyarov.120183" target="_blank" title="Facebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a> <!-- http://www.facebook.com/profile.php?id=100011920477763 -->
+                        <div class="icon wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1.5s">
+                            <a href="https://www.linkedin.com/in/dmitry-sklyarov-120183/" target="_blank" title="Linkedin"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                            <a href="https://github.com/sudexp" target="_blank" title="Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>  
+                            <a href="https://www.slack.com" target="_blank" title="Slack"><i class="fa fa-slack fa-2x" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/dmitry.sklyarov.120183" target="_blank" title="Facebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a> <!-- http://www.facebook.com/profile.php?id=100011920477763 -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -297,9 +299,9 @@
                         </div>
                     </div>
                     <div class="skills">
-                        <p><span class="orange">20</span><span class="little">%</span> HTML:5</p>
+                        <p><span class="orange">30</span><span class="little">%</span> HTML:5</p>
                         <div class="progressbar">
-                            <progress class="scalebar" value="0"  max="100" end="20"></progress>
+                            <progress class="scalebar" value="0"  max="100" end="30"></progress>
                         </div>
                     </div>
                     <div class="skills">

@@ -48,20 +48,21 @@ article {
     text-align: justify;
 }
 
+.wrap-icons {
+    height: 8vh;
+}
+
 #button {
-    display: inline-block;
+    float: left;
     color: #727272;
-    margin-left: 30px;
-    position: relative;
-    top: 7px;
+    text-align: center;
+    margin-left: 50px;
+    padding-top: 2px;
 }
 
 label {
-    position: absolute;
     font-size: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
+    padding-top: 0;
 }
 
 #change_styles {
@@ -80,24 +81,10 @@ label {
     left: 0; 
 }
 
-.flag,
-.icon {
-    height: 8vh;
-}
-
 .flag {
-    display: inline-block;
-    padding-top: 5px;
+    float: left;
     padding-left: 5px;
 }
-
-/*zoom-instruction for rectangle:
-.flag-icons {
-    height: 2em !important;
-    width: 2.66667em !important;
-    line-height: 2em !important;
-}
-*/
 
 .flag-icons {
     height: 1.7em !important;
@@ -118,8 +105,7 @@ label {
 
 .icon {
     float: right;
-    margin-right: 30px;
-    padding-top: 5px;
+    margin-right: 50px;
 }
 
 .icon a {
