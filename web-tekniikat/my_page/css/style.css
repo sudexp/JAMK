@@ -22,10 +22,11 @@ nav {
     z-index: 1;
 }
 
-nav a, nav a:visited {
+nav a,
+nav a:visited {
     text-decoration: none;
     text-transform: uppercase;
-    color: #727272;
+    /* color: #727272; */
     margin: 5px;
 }
 
@@ -477,6 +478,7 @@ p {
     color: #939393;
 }
 
+/* ?!может удалить цвет отсюда чтобы nav сделать #727272: */
 a,
 a:visited {
     color: #939393;
