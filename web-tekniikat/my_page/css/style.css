@@ -1,9 +1,9 @@
 @charset "utf-8";
 
-@font-face {
+/* @font-face {
     font-family: Quicksand-Light;
     src: url(quicksand/Quicksand-Light.otf);
-}
+} */
 
 body {
     background-color: #fff;
@@ -358,7 +358,7 @@ a.chess:active {
 }
 
 .skills p,
-.skills .scale {
+.progressbar {
     margin: 0 30px;
 }
 
@@ -369,25 +369,30 @@ a.chess:active {
     padding: 0 0 5px;
 }
 
-.scale {
-    height: 4px;
+/* 
+1) .scale --> .progressbar (media!)
+2) check colors in dark theme! - полоса сейчас белая */
+.progressbar {
     padding: 0;
 }
 
-.scale-75 { 
-    background-image: linear-gradient(90deg, #ffbc00 75%, #ececec 75%);    
+/* или progress!? - вроде равнозначно */
+.scalebar {
+    background-color: #ececec; /* цвет фона для firefox */
+	width: 100%;
+	height: 4px;
 }
 
-.scale-20 {
-    background-image: linear-gradient(90deg, #ffbc00 20%, #ececec 20%);    
+progress::-webkit-progress-bar {
+    background-color: #ececec; /* цвет фона для остальных браузеров*/
 }
 
-.scale-10 {
-    background-image: linear-gradient(90deg, #ffbc00 10%, #ececec 10%);    
+progress::-webkit-progress-value {
+	background: #ffbc00; /* цвет бенунка для остальных браузеров */
 }
 
-.scale-5 {
-    background-image: linear-gradient(90deg, #ffbc00 5%, #ececec 5%);    
+progress::-moz-progress-bar {
+	background: #ffbc00; /* цвет бенунка для firefox */
 }
 
 .orange {
