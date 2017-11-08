@@ -54,20 +54,20 @@ body.dark .down {
     border-left: solid 1px #404242;
 }
 
-body.dark .scale-70 { 
-    background-image: linear-gradient(90deg, #e0a82c 70%, #404242 70%);    
+body.dark .scalebar {
+    background-color: #404242;
 }
 
-body.dark .scale-10 {
-    background-image: linear-gradient(90deg, #e0a82c 10%, #404242 10%);    
+body.dark progress::-webkit-progress-bar {
+    background-color: #404242;
 }
 
-body.dark .scale-5 {
-    background-image: linear-gradient(90deg, #e0a82c 5%, #404242 5%);    
+body.dark progress::-webkit-progress-value {
+	background: #e0a82c;
 }
 
-body.dark .scale-2 {
-    background-image: linear-gradient(90deg, #e0a82c 2%, #404242 2%);    
+body.dark progress::-moz-progress-bar {
+	background: #e0a82c;
 }
 
 body.dark .orange, 

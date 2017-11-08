@@ -193,7 +193,7 @@ header .content-right {
 
 .wrap-bottom {
     position: absolute;
-    top: 85%;
+    top: 84%;
     transform: translate(0, -50%);
     left: 50px;
     right: 50px; 

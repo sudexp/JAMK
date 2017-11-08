@@ -82,7 +82,7 @@
 
     figure {
         top: 25%;
-        left: calc(50% - 96px);
+        left: calc(50% - 108px);
         height: 216px; /* 240px-10%*/
         width: 216px; /* 240px-10%*/
         border-radius: 108px; /* 120px-10% */
@@ -104,13 +104,13 @@
         height: 57vh;    
     }
 
-    .name {
-        top: 10%;
-        left: calc(50% - 128px);
+    .wrap-name {
+        top: 20%;
+        left: calc(50% - 130.7px);
+        text-align: center;
     }
 
-    .firstname,
-    .surname,
+    .name,
     .school {
         padding: 0;
     }
@@ -125,18 +125,12 @@
     
     .school {
         font-size: 16px;
-        top: 30%;
-        left: calc(50% - 128px);
     }
 
-    .resume {
-        top: 67%;
-        font-size: 14px;
+    .wrap-bottom {
+        top: 77%;
     }
 
-    .header-bottom {
-        top: 85%;
-    }
     section .content-right {
         padding: 0;
     }
@@ -274,13 +268,13 @@ nav {
         height: 57vh;    
     }
 
-    .name {
-        top: 10%;
-        left: calc(50% - 128px);
+    .wrap-name {
+        top: 20%;
+        left: calc(50% - 130.7px);
+        text-align: center;
     }
 
-    .firstname,
-    .surname,
+    .name,
     .school {
         padding: 0;
     }
@@ -295,17 +289,14 @@ nav {
     
     .school {
         font-size: 16px;
-        top: 30%;
-        left: calc(50% - 128px);
     }
 
     .resume {
-        top: 67%;
         font-size: 14px;
     }
 
-    .header-bottom {
-        top: 85%;
+    .wrap-bottom {
+        top: 77%;
     }
 
     .font-72 {
@@ -459,7 +450,7 @@ nav {
     }
 
     figure {
-        top: 25%;
+        top: 20%;
         left: calc(50% - 96px);
         height: 192px; /* 240px-20%*/
         width: 192px; /* 240px-20%*/
@@ -482,48 +473,43 @@ nav {
         height: 56vh;    
     }
 
-    .name {
+    .wrap-name {
         top: 10%;
-        left: calc(50% - 128px);
+        left: calc(50% - 114.33px);
+        text-align: center;
     }
 
-    .firstname,
-    .surname,
+    .name,
     .school {
         padding: 0;
     }
 
     .firstname {
-        font-size: 44.6px; /* 58px-20%*/
+        font-size: 40.6px; /* 58px-30%*/
     }
     
     .surname {
-        font-size: 51.2px; /* 64px-20%*/
+        font-size: 44.8px; /* 64px-30%*/
+        padding-bottom: 35px;
     }
     
     .school {
-        font-size: 14.4px; /* 18px-20%*/
-        top: 30%;
-        left: calc(50% - 128px);
+        font-size: 12.6px; /* 18px-30%*/
     }
 
     .resume {
-        top: 60%;
         font-size: 13px;
     }
 
-    .header-bottom {
-        top: 82%;
-        white-space: normal;
-        left: 20px;
-        right: 20px;
-        padding-top: 10px;
+    .wrap-bottom {
+        top: 65%;
     }
 
     .bottom {
-        display: inline-block;
+        /* display: inline-block; */
+        float: left;
         text-align: center;
-        width: 49.5%;
+        width: 50%;
         padding-top: 10px;
     }
 
@@ -760,13 +746,13 @@ nav {
         height: 60vh;    
     }
 
-    .name {
-        top: 5%;
-        left: calc(50% - 100px);
+    .wrap-name {
+        top: 10%;
+        left: calc(50% - 98.56px);
+        text-align: center;
     }
 
-    .firstname,
-    .surname, 
+    .name,
     .school {
         padding: 0;
     }
@@ -781,28 +767,22 @@ nav {
     
     .school {
         font-size: 12px;
-        top: 20%;
-        left: calc(50% - 100px);
+        padding-bottom: 25px;
     }
 
     .resume {
-        top: 63%;
         font-size: 10px;
-        right: 20px; 
     }
 
-    .header-bottom {
-        top: 82%;
-        white-space: normal;
-        left: 20px;
-        right: 20px;
-        padding-top: 10px;
+    .wrap-bottom {
+        top: 65%;
     }
 
     .bottom {
-        display: inline-block;
+        /* display: inline-block; */
+        float: left;
         text-align: center;
-        width: 49.5%;
+        width: 50%;
         padding-top: 10px;
     }
 
