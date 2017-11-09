@@ -11,10 +11,6 @@
     #figure {
         display: none;
     }
-
-    .synopsis p {
-        font-size: 120px;
-    }
 }
     
 /* Portrait tablets and medium desktops */
@@ -90,10 +86,6 @@
     
     .school {
         padding: 0;
-    }
-    
-    .surname {
-        padding-bottom: 45px;
     }
     
     .wrap-bottom {
@@ -198,10 +190,6 @@
     
     .school {
         padding: 0;
-    }
-    
-    .surname {
-        padding-bottom: 40px;
     }
     
     .wrap-bottom {
@@ -321,10 +309,6 @@
     
     .school {
         padding: 0;
-    }
-    
-    .surname {
-        padding-bottom: 35px;
     }
 
     .wrap-bottom {
@@ -481,10 +465,6 @@
     
     .school {
         padding: 0;
-    }
-    
-    .surname {
-        padding-bottom: 30px;
     }
     
     .wrap-bottom {
@@ -644,15 +624,6 @@
     
     .school {
         padding: 0;
-    }
-    
-    .surname {
-        padding-bottom: 30px;
-    }
-    
-    .resume {
-        font-size: 10px;
-        padding-bottom: 15px; 
     }
 
     .wrap-bottom {
