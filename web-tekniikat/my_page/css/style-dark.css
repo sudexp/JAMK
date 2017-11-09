@@ -18,7 +18,7 @@ body.dark #change_styles {
 
 body.dark #cube {
     background-color: #2d2e2e;
-    left: 15px; 
+    left: 0.9375em; 
 }
 
 body.dark .surname {
@@ -26,7 +26,7 @@ body.dark .surname {
 }
 
 body.dark .header-bottom {
-    border-top: solid 1px #ececec;
+    border-top: solid 0.0625 #ececec;
 }
 
 body.dark .header-link {
@@ -51,7 +51,7 @@ body.dark .circle {
 }
 
 body.dark .down { 
-    border-left: solid 1px #404242;
+    border-left: solid 0.0625em #404242;
 }
 
 body.dark .scalebar {
@@ -101,12 +101,12 @@ body.dark .color-3 {
     
     body.dark section .content-left,
     body.dark footer .content-left {
-        border-top: 1px solid #404242;
-        border-bottom: 1px solid #404242;
+        border-top: 0.0625em solid #404242;
+        border-bottom: 0.0625em solid #404242;
     }
 
     body.dark .copyright {
-        border-top: 1px solid #404242;
+        border-top: 0.0625em solid #404242;
     }
 
     body.dark .color-0 {
@@ -133,12 +133,12 @@ body.dark .color-3 {
 @media only screen and (max-width: 479px) {
     body.dark section .content-left,
     body.dark footer .content-left {
-        border-top: 1px solid #404242;
-        border-bottom: 1px solid #404242;
+        border-top: 0.0625em solid #404242;
+        border-bottom: 0.0625em solid #404242;
     }
 
     body.dark .copyright {
-        border-top: 1px solid #404242;
+        border-top: 0.0625em solid #404242;
     }
 
     body.dark .color-0 {
@@ -162,6 +162,6 @@ body.dark .color-3 {
     }
     
     body.dark #cube {
-        left: 10px!important; 
+        left: 0.9375em!important; 
     }
 }

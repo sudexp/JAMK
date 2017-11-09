@@ -11,6 +11,12 @@
     #figure {
         display: none;
     }
+
+    .mini-img {
+        width: 8.4em;
+        height: 5.6em;
+    }
+    
 }
     
 /* Portrait tablets and medium desktops */
@@ -89,7 +95,7 @@
     }
     
     .wrap-bottom {
-        top: 85%;
+        top: 88%;
     }
 
     section .content-right {
@@ -101,6 +107,15 @@
     .footer {
         padding: 1.875em;
     }
+
+    .wrap-photo {
+        width: 19.5%;
+    }
+
+    .mini-img {
+        width: 8.4em;
+        height: 5.6em;
+        }  
 
     .copyright {
         border-top: 0.0625em solid #ececec;
@@ -193,7 +208,7 @@
     }
     
     .wrap-bottom {
-        top: 85%;
+        top: 88%;
     }
 
     section .content-right {
@@ -204,6 +219,11 @@
     .wrap-right,
     .footer {
         padding: 1.875em;
+    }
+
+    .mini-img {
+        width: 10.08em;
+        height: 6.72em;
     }
     
     .copyright {
@@ -312,7 +332,7 @@
     }
 
     .wrap-bottom {
-        top: 80%;
+        top: 83%;
     }
 
     .header-bottom {
@@ -339,11 +359,11 @@
     .p-bottom20 {
         padding-bottom: 0.625em;
     }
-    
-    .footer {
-        margin:  0 auto;
-        padding: 0.625em;
-    }
+
+    .mini-img {
+        width: 7.98em;
+        height: 5.32em;
+    }  
 
     .footer-text {
         display: inline-block;
@@ -468,7 +488,7 @@
     }
     
     .wrap-bottom {
-        top: 80%;
+        top: 85%;
     }
 
     .header-bottom {
@@ -495,12 +515,12 @@
     .p-bottom20 {
         padding-bottom: 0.625em;
     }
-    
-    .footer {
-        margin:  0 auto;
-        padding: 0.625em;
-    }
 
+    .mini-img {
+        width: 7.14em;
+        height: 4.76em;
+    }  
+    
     .footer-text {
         display: inline-block;
         text-align: center;
@@ -584,6 +604,10 @@
         margin-top: 1vh;
     }
 
+    #change_styles {
+        padding: 0.1em;
+    }
+
     .flag {
         float: right;
     }
@@ -627,7 +651,7 @@
     }
 
     .wrap-bottom {
-        top: 72%;
+        top: 85%;
     }
 
     .header-bottom {
@@ -637,7 +661,7 @@
     .bottom {
         display: inline-block;
         text-align: center;
-        width: 100%;
+        width: 49.5%;
         padding-top: 0.625em;
     }
 
@@ -655,9 +679,13 @@
         padding-bottom: 0.625em;
     }
 
-    .footer {
-        margin:  0 auto;
-        padding: 0.625em;
+    .wrap-photo {
+        width: 49.5%;
+    }
+
+    .mini-img {
+        width: 10.08em;
+        height: 6.72em;
     }
 
     .footer-text {
@@ -683,6 +711,167 @@
 
     .download {
         width: 100%;
+    }
+
+    .back-top {
+        display: none;
+    }
+
+    .color-0 {
+        background-color: #fff;
+    }
+
+    .color-1 {
+        background-color: #fafafa;
+    }
+
+    .color-2 {
+        background-color: #fff;
+    }
+
+    .color-3 {
+        background-color: #fafafa;
+    }
+
+    .color-4 {
+        background-color: #fff;
+    }
+}
+
+@media screen and (max-width: 260px) {
+    body {
+        width: 260px;		
+    }
+}
+
+@media screen and (max-height: 500px) {
+    body {
+        font-size: 70%;
+    } 
+
+    nav {
+        display: none;
+    }
+    
+    article {
+        padding-top: 0;
+    }
+
+    .content-left {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    section .content-left,
+    footer .content-left {
+        border-top: 0.0625em solid #ececec;
+        border-bottom: 0.0625em solid #ececec;
+    }
+
+    .content-right {
+        margin-left: 0;
+    }
+
+    figure {
+        display: none;
+    }
+
+    .wrap-icons {
+        margin-top: 3vh;
+        height: 10vh;
+    }
+
+    header .content-left {
+        height: 0;    
+    }
+
+    header .content-right {
+        height: 87vh;    
+    }
+
+    .wrap-name {
+        top: 30%;
+        left: calc(50% - 10em);
+        text-align: center;
+    }
+
+    #figure {
+        height: 10em;
+        width: 10em; 
+        border-radius: 5em;
+        position: static;
+        transform: none;
+        margin: 0 auto;
+    }
+
+    #figure img {
+        height: 13.125em;        
+        position: relative;
+        top: 0.3125em;
+        left: 0;
+    }
+    
+    .firstname {
+        font-size: 2.32em;
+    }
+    
+    .surname {
+        font-size: 2.56em;
+        padding-bottom: 0.75em;
+    }
+
+    .name {
+        padding: 1em 0 0;
+    }
+    
+    .school {
+        padding: 0;
+    }
+
+    .wrap-bottom {
+        top: 80%;
+    }
+
+    .resume {
+        padding-bottom: 1.5em;
+    }
+
+    .bottom {
+        display: inline-block;
+        text-align: center;
+        width: 24.5%;
+    }
+
+    section .content-right {
+        padding: 0;
+    }
+
+    .wrap-left,
+    .wrap-right,
+    .footer {
+        padding: 1.875em;
+    }
+    
+    .footer-text {
+        display: inline-block;
+        text-align: center;
+        width: 24.5%;
+        padding-top: 0.625em;
+    }
+
+    .copyright {
+        border-top: 0.0625em solid #ececec;
+    }
+
+    section .content-left p {
+        padding-top: 0.3125em;
+    }
+
+    .skills {
+        width: 49.5%;
+        margin: 0.9375em 0;
+        display: inline-block;
     }
 
     .back-top {

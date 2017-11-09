@@ -181,7 +181,7 @@ header .content-right {
 
 .wrap-bottom {
     position: absolute;
-    top: 84%;
+    top: 85%;
     transform: translate(0, -50%);
     left: 3.125em;
     right: 3.125em; 
@@ -388,20 +388,22 @@ progress::-moz-progress-bar {
     font-weight: 400;
 }
 
-.photo {
+.wrap-photo {
     text-align: center;
+    display: inline-block;
+    width: 24.5%;
+    margin-bottom: 0.5em;
 }
 
-.photo a {
+.wrap-photo a {
     display: inline-block;
 }
 
 .mini-img {
-    width: 13.125em;
-    height: 8.75em;
+    width: 7.56em;
+    height: 5.04em;
     filter: grayscale(100%); /* change kuvat color - grey*/
     transition: 1000ms ease; /* nopeus? izmenenya tsveta */
-    padding: 0.3125em;
 }
 
 .mini-img:hover {
@@ -432,7 +434,7 @@ progress::-moz-progress-bar {
     font-size: 0.875em;
     text-align: center;
     line-height: 0;
-    padding: 1.25em;
+    padding: 1.5em;
 }
 
 h2,
