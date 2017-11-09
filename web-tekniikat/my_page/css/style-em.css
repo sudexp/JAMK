@@ -10,7 +10,7 @@ body {
     font-family: 'Lato', Helvetica, Arial, sans-serif;
     font-size: 100%;
     margin: 0;
-} 
+}
 
 nav {
     height: 5vh;
@@ -202,12 +202,6 @@ header .content-right {
     right: 3.125em; 
 }
 
-/*
-  .content {
-    min-height: calc(100vh - 80px);
-  }
-  */
-
 .bottom {
     display: inline-block;
     text-align: center;
@@ -329,18 +323,15 @@ a.chess:active {
 }
 
 .process ul {
-    /* list-style-type: disc; */
-    /* color: #939393; */
     font-size: 0.75em;
-    /* margin: 0 0 20px; */
 }
 
-/* .process li {
-    padding-top: 10px;
-} */
+.wrap-skill {
+    margin: 1.875em 1.875em 0;
+}
 
-.p-top_and_side30 {
-    padding: 1.875em 1.875em 0;
+.wrap-progress {
+    margin: 0;
 }
 
 .skills {
@@ -432,7 +423,7 @@ progress::-moz-progress-bar {
 .footer-text {
     display: inline-block;
     text-align: center;
-    width: 24.4%;
+    width: 24.2%;
 }
 
 .copyright p {
