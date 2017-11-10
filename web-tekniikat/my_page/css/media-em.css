@@ -272,7 +272,10 @@
     nav a {
         display: inline-block;
     }
-    
+
+    a.anchor {
+        top: -6vh;
+    }
     article {
         padding-top: 7vh;
     }
@@ -413,7 +416,8 @@
         font-size: 65%;
     } 
 
-    nav {
+    nav,
+    a.anchor {
         display: none;
     }
     
@@ -572,7 +576,8 @@
         font-size: 60%;
     } 
 
-    nav {
+    nav,
+    a.anchor {
         display: none;
     }
     
@@ -749,7 +754,8 @@
         font-size: 70%;
     } 
 
-    nav {
+    nav,
+    a.anchor {
         display: none;
     }
     
