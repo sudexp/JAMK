@@ -310,7 +310,7 @@ a.chess:active {
 
 .down p {
     text-align: left;
-    padding: 0 1.5625em;
+    padding-left: 1.5rem;
 }
 
 .place,
@@ -334,11 +334,11 @@ a.chess:active {
 }
 
 .wrap-skill {
-    margin: 1.875em 1.875em 0;
+    padding: 1.875em 1.875em 0;
 }
 
 .wrap-progress {
-    margin: 0;
+    padding-bottom: 1.875em;
 }
 
 .skills {
@@ -359,9 +359,6 @@ a.chess:active {
     padding: 0 0 0.3125em;
 }
 
-/* 
-1) .scale --> .progressbar (media!)
-2) check colors in dark theme! - полоса сейчас белая */
 .progressbar {
     padding: 0;
 }
