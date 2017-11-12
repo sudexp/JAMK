@@ -284,7 +284,6 @@ a.chess:active {
 }
 
 .top p {
-    padding: 0;
     color: #bebebe;
 }
 
@@ -297,8 +296,11 @@ a.chess:active {
     margin-top: 0.1875em;
 }
 
+.year { 
+    margin-left: 1.82rem;
+}
+
 .year p { 
-    margin-left: 1.875em;
     font-size: 0.625em;
 }
 
@@ -310,7 +312,7 @@ a.chess:active {
 
 .down p {
     text-align: left;
-    padding-left: 1.5rem;
+    padding-left: 1.5625rem;
 }
 
 .place,
