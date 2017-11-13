@@ -407,7 +407,6 @@ progress::-moz-progress-bar {
 
 .mini-img {
     width: 7.56em;
-    height: 5.04em;
     filter: grayscale(100%); /* change kuvat color - grey*/
     transition: 1000ms ease; /* nopeus? izmenenya tsveta */
 }
