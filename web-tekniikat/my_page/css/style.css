@@ -1,59 +1,52 @@
-@charset "utf-8";
-
-/* @font-face {
-    font-family: Quicksand-Light;
-    src: url(quicksand/Quicksand-Light.otf);
-} */
+@charset "utf-8"; /* кодировка сайта */
 
 body {
-    background-color: #fff;
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
-    font-size: 100%;
-    margin: 0;
+    background-color: #fff; /* цвет фона */
+    font-family: 'Lato', Helvetica, Arial, sans-serif; /* выбор шрифтов */
+    font-size: 100%; /* размер шрифта (1em = 16px) */
+    margin: 0; /* отступом - пространство от границы элемента до внутренней границы его "родителя" */
 }
 
 nav {
-    height: 5vh;
-    line-height: 5vh;
-    width: 100%;
+    height: 5vh; /* относительная высота, эквивалентно 5% высоты окна браузера */
+    line-height: 5vh; /* устанавливает межстрочный интервал для текста*/
+    width: 100%; /* относительная ширина */
     background-color: #fff;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    z-index: 1;
+    text-align: center; /* выравнивание текста */
+    position: fixed; /* положение к точке экрана */
+    top: 0; /* положение от верхнего края */
+    z-index: 1; /* ось z (наложение) */
 }
 
 nav a,
 nav a:visited {
-    text-decoration: none;
-    text-transform: uppercase;
-    /* color: #727272; */
+    text-transform: uppercase; /* заглавные символы */
     margin: 0.315em;
 }
 
-a.anchor {
-    display: block;
-    position: relative;
+a.anchor { /* якорь для компенсации высоты nav переходе на раздел */
+    display: block; /* элемент показывается как блочный */
+    position: relative; /* положение относительно исходного места */
     top: -5vh;
-    visibility: hidden;
+    visibility: hidden; /* отображение элемента - элемент невидим */
 }
 
 #article {
-    padding-top: 5vh;
+    padding-top: 5vh; /* поле - расстояние от внутреннего края рамки элемента до воображаемого прямоугольника, ограничивающего его содержимое */
 }
 
 .content-left {
-    float: left;
+    float: left;  /* выравнивает элемент по левому краю, а все остальные элементы, вроде текста, обтекают его по правой стороне */
     width: 33%;
     text-transform: uppercase;
     text-align: right;
-    color: #727272;
+    color: #727272; /* цвет текста элемента */
     margin: 0;
 }
 
 .content-right {
     margin-left: 33%;
-    text-align: justify;
+    text-align: justify; /* выравнивание по ширине */
 }
 
 .wrap-icons {
@@ -76,17 +69,17 @@ label {
 #change_styles {
     background-color: #939393;
     width: 1.875em;
-    height: 1.3125em;
+    height: 1.3125em; 
     padding: 0.125em;
 }
 
 #cube {
     background-color: #fff;
     width: 0.875em;
-    height: 1.3125em;
-    transition: 400ms;
+    height: 1.3125em; /* высота элемента */
+    transition: 400ms; /* скорость изменения значения стилевого свойства, для которого применяется эффект перехода */
     position: relative;
-    left: 0; 
+    left: 0; /* положение относительно левого края исходного положения элемента */
 }
 
 .flag {
@@ -101,13 +94,13 @@ label {
 }
 
 .flag a:hover {
-    filter: grayscale(0%);
-    opacity: 1.0; /* при наведении курсора флаги принимают свои цвета*/
+    filter: grayscale(0%); /* Значение 100% или 1 превращает изображение в чёрно-белое. Значение 0 оставляет изображение исходно цветным. Значения меньше 100% (или меньше 1) линейно меняют цветность картинки. */
+    opacity: 1.0; /* при наведении курсора флаги принимают свои цвета */
 }
 
 .flag a {
-    filter: grayscale(100%); /* изменение цвета флагов на серый*/
-    transition: 500ms ease; /* скорость изменения цвета флагов */
+    filter: grayscale(100%);
+    transition: 500ms ease; /* aнимация начинается медленно, затем ускоряется и к концу движения опять замедляется */
     opacity: 0.7; /* в данном случае изменяет оттенок greyscale с черно-белого на серый */
 }
 
@@ -122,25 +115,23 @@ label {
 
 figure,
 #figure {
-    position: absolute;
+    position: absolute; /* если у родителя значение position установлено как static или родителя нет, то отсчет координат ведется от края окна браузера. Если у родителя значение position задано как fixed, relative или absolute, то отсчет координат ведется от края родительского элемента */
     top: 50%;
-    left: calc(18% - 7.5em);
-    transform: translate(0, -50%);
+    left: calc(18% - 7.5em); /* calc - используется для указания вычисляемого значения свойств, которые в качестве значений используют размер */
+    transform: translate(0, -50%); /* Сдвигает элемент по вертикали на указанное значение: положительное значение сдвигает вниз, отрицательное - вверх */
     background-color: #fff;
     height: 15em;
     width: 15em; 
-    border-radius: 7.5em;
-    overflow: hidden;
-    margin: 0;
+    border-radius: 7.5em; /* радиус элемента */
+    overflow: hidden; /* overflow - управляет отображением содержания блочного элемента, если оно целиком не помещается и выходит за область заданных размеров. */
+    margin: 0; /* hidden - Отображается только область внутри элемента, остальное будет скрыто. */
 }
 
 figure img,
 #figure img {
     position: relative;
-    left: -0.375em;
     height: 19.6875em;
     filter: grayscale(100%);
-    transition: 500ms ease;
 }
 
 header .content-right {
@@ -148,7 +139,7 @@ header .content-right {
     position: relative; /* нужно для absolute header-bottom и <p> */
 }
 
-.wrap-name {
+.wrap-top {
     position: absolute;
     top: 43%;
     transform: translate(0, -50%);
@@ -160,8 +151,8 @@ header .content-right {
 }
 
 .firstname {
-    text-transform: lowercase;
-    letter-spacing: 0.02em;
+    text-transform: lowercase; /* прописные буквы */
+    letter-spacing: 0.02em; /* интервал между символами */
     font-size: 3.625em;
     font-weight: 300;
     color: #939393;
@@ -210,7 +201,7 @@ header .content-right {
 }
 
 .bottom {
-    display: inline-block;
+    display: inline-block; /* генерирует блочный элемент, который обтекается другими элементами веб-страницы подобно встроенному элементу */
     text-align: center;
     width: 24.5%;
 }
@@ -256,13 +247,13 @@ section .content-right {
     font-weight: 600;
 }
 
-ul {
-    list-style-type: disc;
+ul { /* тег маркерованного списка */
+    list-style-type: disc; /* Свойство изменяет типа маркера или удаляет маркер для маркированного и нумерованного списков. Наследуется. */
     color: #939393;
     margin: 0 0 1.875em;
 }
 
-li {
+li { /* тег для формирования элемента списка */
     padding-top: 0.625em;
 }
 
@@ -365,7 +356,6 @@ a.chess:active {
     padding: 0;
 }
 
-/* или progress!? - вроде равнозначно */
 .scalebar {
     background-color: #ececec; /* цвет фона для firefox */
 	width: 100%;
@@ -407,12 +397,12 @@ progress::-moz-progress-bar {
 
 .mini-img {
     width: 7.56em;
-    filter: grayscale(100%); /* change kuvat color - grey*/
-    transition: 1000ms ease; /* nopeus? izmenenya tsveta */
+    filter: grayscale(100%); 
+    transition: 1000ms ease;
 }
 
-.mini-img:hover {
-    filter: grayscale(0%); /* kun kursori päällä - color kuvat*/
+.mini-img:hover { /* при наведении курсора */
+    filter: grayscale(0%);
 }
 
 .download {
@@ -423,7 +413,7 @@ progress::-moz-progress-bar {
 }
 
 .footer {
-    margin:  0 auto;
+    margin: 0 auto;
     padding: 3.75em;
 }
 
@@ -444,14 +434,14 @@ progress::-moz-progress-bar {
 
 h2,
 p {
-    font-size: 1.125em;
+    font-size: 1.125em; /* em - относительная единица, body = 100% = 16px (по умолчанию) */
     line-height: 1.6em;
     margin: 0 auto;
 }
 
 h2 {
     color: #727272;
-    font-weight: 600;
+    font-weight: 600; /* normal = 400, bold = 700 */
 }
 
 .content-right h2 {
@@ -467,16 +457,15 @@ ul {
     font-size: 0.9375em;
 }
 
-/* ?!может удалить цвет отсюда чтобы nav сделать #727272: */
 a,
-a:visited {
+a:visited { /* задаёт для них стиль уже посещённым ссылкам */
     color: #939393;
-    text-decoration: none;
+    text-decoration: none; /* отменяет подчеркивание ссылки (все эффекты!), заданное по умолчанию */
     transition: 500ms; /* плавность смены цвета */
 }
  
-a:hover,
-a:active {
+a:hover, /* стиль элемента при наведении на него курсора мыши (но при этом элемент еще не активирован, иными словами кнопка мыши не нажата) */
+a:active { /* определяет стиль для активной ссылки (активной ссылка становится при нажатии на нее) */
     color: #ffbc00;
 }
 

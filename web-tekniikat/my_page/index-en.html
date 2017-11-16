@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8"/>
         <title>My page: Dmitry Sklyarov</title>
         <meta name="keywords" lang="en" content="Dmitry Sklyarov, JAMK University of Applied Sciences, IT department, Jyvaskyla, Finland"/>
         <meta name="description" lang="en" content="Dmitry Sklyarov's personal page"/>
@@ -9,17 +9,17 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link media="screen" rel="stylesheet" href="css/media.css"/>        
         <link rel="stylesheet" type="text/css" href="css/style-dark.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>        
         <link rel="icon" href="images/icon.png"/>
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"/>        
-        <link rel="stylesheet" href="css/flag-icons.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"/>
+        <link rel="stylesheet" href="css/flag-icons.css"/>
         <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
-        <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/> <!-- css для картинок -->
-        <link rel="stylesheet" href="css/animate.css"> <!-- css для анимации -->
-        <script src="js/jquery-3.2.1.min.js"></script> <!-- скрипт для картинок -->
-        <script src="js/jquery.js" type="text/javascript"></script> <!-- скрипт для прогресса -->
-        <script src="lightbox2-master/src/js/lightbox.js"></script> <!-- ? -->
-        <script type="text/javascript" src="js/wow.min.js"></script> <!-- скрипт для анимации -->
+        <link rel="stylesheet" type="text/css" href="lightbox2-master/src/css/lightbox.css"/>
+        <link rel="stylesheet" href="css/animate.css"/>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="lightbox2-master/src/js/lightbox.js"></script>
+        <script type="text/javascript" src="js/wow.min.js"></script>
     </head>
     <body class="light">
         <nav class="wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
@@ -58,23 +58,19 @@
                 </div>
             </div>
             <header class="color-0">
-                <div class="content-left">
-                    <figure class="show-lg wow zoomIn" data-wow-duration="1.5s" data-wow-delay="2.0s">
-                        <img src="images/dmitry.png" alt="Dmitry Sklyarov"/>
-                    </figure>
-                </div>
+                <figure class="show-lg wow zoomIn" data-wow-duration="1.5s" data-wow-delay="2.0s">
+                    <img src="images/dmitry.png" alt="Dmitry Sklyarov"/>
+                </figure>
                 <div class="content-right color-2">
-                    <div class="header-top">
-                        <div class="wrap-name">
-                            <div id="figure" class="show-sm wow zoomIn" data-wow-duration="1.5s" data-wow-delay="2.0s">
-                                <img src="images/dmitry.png" alt="Dmitry Sklyarov"/>
-                            </div>              
-                            <div class="name wow zoomIn" data-wow-duration="1.5s" data-wow-delay="2.5s">
-                                <p class="firstname">Dmitry</p>
-                                <p class="surname">Sklyarov</p>
-                            </div>
-                            <p class="school wow zoomIn" data-wow-duration="1.5s" data-wow-delay="3.0s">JAMK University of Applied Sciences</p>
+                    <div class="wrap-top">
+                        <div id="figure" class="show-sm wow zoomIn" data-wow-duration="1.5s" data-wow-delay="2.0s">
+                            <img src="images/dmitry.png" alt="Dmitry Sklyarov"/>
+                        </div>              
+                        <div class="name wow zoomIn" data-wow-duration="1.5s" data-wow-delay="2.5s">
+                            <p class="firstname">Dmitry</p>
+                            <p class="surname">Sklyarov</p>
                         </div>
+                        <p class="school wow zoomIn" data-wow-duration="1.5s" data-wow-delay="3.0s">JAMK University of Applied Sciences</p>
                     </div>
                     <div class="wrap-bottom">
                         <div class="resume wow zoomIn" data-wow-duration="1.5s" data-wow-delay="3.5s">
@@ -392,10 +388,10 @@
                 </div>
                 <div class="content-right color-2">
                     <div class="wrap-right">                    
-                        <p>This section contains a documentation for the website (for educational purposes). Select the section you are interested in and click it to view.</p>
+                        <p>This section contains a documentation for the website (for educational purposes and therefore only in Finnish). Select the section you are interested in and click it to view.</p>
                         <div class="wrap-2">
                             <div class="download">
-                                <a href="synopsis-en.html" title="Synopsis"><i class="fa fa-file-text-o" aria-hidden="true"></i> Synopsis</a>
+                                <a href="synopsis.html" title="Synopsis"><i class="fa fa-file-text-o" aria-hidden="true"></i> Synopsis</a>
                             </div>
                             <div class="download">
                                 <a href="documentation/rakennekaavio/rakennekaavio.html" title="Structure diagram"><i class="fa fa-tree" aria-hidden="true"></i> Structure diagram</a>
@@ -440,17 +436,12 @@
                 </div>
             </footer>
         </div>
-        <!-- Подключение анимации -->
-        <!-- https://impuls-web.ru/css-animaciya-poyavleniya-bez-plaginov/ -->
-        <!-- https://daneden.github.io/animate.css/ -->
         <script>
             jQuery(document).ready(function($) {
                 new WOW().init();
                 $().addClass('wow animated');
             });
         </script> 
-       <!-- Подключение темы -->
-       <!-- Лекции, Demo7 -->
        <script type="text/javascript">
             var body = document.getElementsByTagName('body')[0];
             var nappi = document.getElementById('cube');
@@ -465,10 +456,6 @@
                 }
             };            
         </script>
-        <!-- Подключение прогресса -->
-        <!-- http://www.sitehere.ru/sozdanie-i-oformlenie-progress-bara-s-pomoshhyu-css3-i-html5 -->
-        <!-- http://htmlbook.ru/blog/sozdanie-i-stilizaciya-indikatora-vypolneniya-v-html5 -->
-        <!-- http://css-live.ru/tricks/krossbrauzernyj-progress-bar.html -->
         <script>
             $(document).ready(function() {
                 var started = false
@@ -507,12 +494,10 @@
                 }
             });
         </script>
-        <!-- Подключение темы -->
-        <!-- Лекции, Demo6 -->
         <script>
             lightbox.option({
-                'wrapAround': true, /* Mahdollisuus kiertää kuvat ympäri */
-                'resizeDuration': 300 /* Kuvakoon muuttamiseen käytetty aika */
+                'wrapAround': true,
+                'resizeDuration': 300
             }) 
         </script> 
     </body>
