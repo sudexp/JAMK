@@ -1,10 +1,5 @@
 @charset "utf-8";
 
-@font-face {
-    font-family: Quicksand-Light;
-    src: url(quicksand/Quicksand-Light.otf);
-}
-
 body {
     background-color: #fff;
     font-family: 'Lato', Helvetica, Arial, sans-serif;
