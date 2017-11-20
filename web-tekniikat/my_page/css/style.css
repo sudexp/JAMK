@@ -228,6 +228,10 @@ header .content-right {
     font-size: 0.8125em;
 }
 
+.p-top15 {
+    padding-top: 0.9375em;
+}
+
 section .content-right {
     padding: 1.875em;
 }
