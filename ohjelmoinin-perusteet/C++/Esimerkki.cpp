@@ -236,4 +236,21 @@ int main()
     cout << "\nLauseessa oli yhteensä " << lkm << " kirjainta";
     return 0;
 }*/
-
+/* Esimerkkki 10-27
+#include <iostream>
+using namespace std;
+int luku = 3; // globaali (julkinen) muuttuja
+void Aliohjelma(void); // aliohjalman esittely
+int main()
+{
+    Aliohjelma();
+    cout<<"\nLuku on pŠŠohjelmassa: "<<luku;
+    return 0;
+}
+void Aliohjelma(void)
+{
+    int luku = 5; // paikallinen muuttuja
+    cout<<"\nAliohjelman luku on: "<<luku;
+    cout<<"\nGlobaali luku on: "<<::luku;
+}
+ */
