@@ -32,7 +32,7 @@ function setupTheme($) { // функция присваивает обработ
 };
 
 // Тоже самое с использованием JQuery:
-// function setupTheme($) { // функция присваивает обработчик кнопке для смены темы
+// function setupTheme($) {
 //     var body = $('body')
 //     var nappi = $('#cube')
 //     var nappialue = $('#change_styles')
@@ -50,18 +50,20 @@ function setupTheme($) { // функция присваивает обработ
 // };
 
 // Тоже самое, но короче:
-// function setupTheme($) { // функция присваивает обработчик кнопке для смены темы
+// function setupTheme($) {
 //     var body = $('body')
 //     $('#change_styles').click(function changeThemeClass() {
-//         if (body.hasClass('dark')){
-//             body.removeClass('dark').addClass('light');
+//          body.toggleClass('dark').toggleClass('light')      
+//          if (body.hasClass('dark')){
 //             $('#cube').style({left: '0'});
-//         } else {
-//             body.removeClass('light').addClass('dark');
+//          } else {
 //             $('#cube').style({left: '0.9375em'});
-//         }
+//          }
 //     })           
 // };
+
+// CSS: body.dark #cube{ left: 0.9375em }
+// CSS: body.light #cube{ left: 0 }
 
 // Подключение прогресс-бара
 // http://www.sitehere.ru/sozdanie-i-oformlenie-progress-bara-s-pomoshhyu-css3-i-html5
