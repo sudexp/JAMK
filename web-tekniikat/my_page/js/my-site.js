@@ -17,7 +17,6 @@ function activateAnimation($) {
 // Лекции, Demo7
 function setupTheme($) { // функция присваивает обработчик кнопке для смены темы
     var bodyElements = document.getElementsByTagName('body'); // достаем все элементы (массив!) с именем "body" и присваиваем переменной bodyElements. В результате этого bodyElements - это массив элементов body (один элемент).
-
     var body = bodyElements[0]; // создаем переменную body и присваиваем ей первый элемент из массива bodyElements (переменная body хранит в себе эмемент (тег) body)
     var nappi = document.getElementById('cube'); // создаем переменную nappi и присваем ей элемент с id=cube
     var nappialue = document.getElementById('change_styles'); // создаем переменную nappialue и присваем ей элемент с id=change_styles
@@ -32,7 +31,7 @@ function setupTheme($) { // функция присваивает обработ
     }            
 };
 
-// Тоже самое с использованием JQuery
+// Тоже самое с использованием JQuery:
 // function setupTheme($) { // функция присваивает обработчик кнопке для смены темы
 //     var body = $('body')
 //     var nappi = $('#cube')
@@ -46,6 +45,20 @@ function setupTheme($) { // функция присваивает обработ
 //             body.removeClass('light');
 //             body.addClass('dark');
 //             nappi.style({left: '0.9375em'});
+//         }
+//     })           
+// };
+
+// Тоже самое, но короче:
+// function setupTheme($) { // функция присваивает обработчик кнопке для смены темы
+//     var body = $('body')
+//     $('#change_styles').click(function changeThemeClass() {
+//         if (body.hasClass('dark')){
+//             body.removeClass('dark').addClass('light');
+//             $('#cube').style({left: '0'});
+//         } else {
+//             body.removeClass('light').addClass('dark');
+//             $('#cube').style({left: '0.9375em'});
 //         }
 //     })           
 // };
