@@ -17,6 +17,7 @@ function activateAnimation($) {
 // Лекции, Demo7
 function setupTheme($) { // функция присваивает обработчик кнопке для смены темы
     var bodyElements = document.getElementsByTagName('body'); // достаем все элементы (массив!) с именем "body" и присваиваем переменной bodyElements. В результате этого bodyElements - это массив элементов body (один элемент).
+
     var body = bodyElements[0]; // создаем переменную body и присваиваем ей первый элемент из массива bodyElements (переменная body хранит в себе эмемент (тег) body)
     var nappi = document.getElementById('cube'); // создаем переменную nappi и присваем ей элемент с id=cube
     var nappialue = document.getElementById('change_styles'); // создаем переменную nappialue и присваем ей элемент с id=change_styles
@@ -30,6 +31,24 @@ function setupTheme($) { // функция присваивает обработ
         }
     }            
 };
+
+// Тоже самое с использованием JQuery
+// function setupTheme($) { // функция присваивает обработчик кнопке для смены темы
+//     var body = $('body')
+//     var nappi = $('#cube')
+//     var nappialue = $('#change_styles')
+//     nappialue.click(function changeThemeClass() {
+//         if (body.hasClass('dark')){
+//             body.removeClass('dark');
+//             body.addClass('light');
+//             nappi.style({left: '0'});
+//         } else {
+//             body.removeClass('light');
+//             body.addClass('dark');
+//             nappi.style({left: '0.9375em'});
+//         }
+//     })           
+// };
 
 // Подключение прогресс-бара
 // http://www.sitehere.ru/sozdanie-i-oformlenie-progress-bara-s-pomoshhyu-css3-i-html5
