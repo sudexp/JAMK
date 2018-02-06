@@ -1,0 +1,19 @@
+@charset "utf-8"; /* кодировка сайта */
+
+body {
+    background: #333;
+}
+
+#gameName {
+    color: #fff;
+    font-family: Courier New, Courier, monospace;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
+
+#map {
+    display: block;
+    background: #fff;
+    margin: 1em auto;
+}
