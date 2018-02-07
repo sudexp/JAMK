@@ -19,6 +19,8 @@ var folke = new Image();
 folke.src = 'images/folke.jpg';
 
 var player;
+var enemy;
+// var enemy2;
 
 function init() {
     map = document.getElementById('map'); // инициализация переменных в функции init
@@ -40,6 +42,8 @@ function init() {
     clearButton.addEventListener('click', clearRectangle, false);
 
     player = new Player();
+    enemy = new Enemy();
+    // enemy2 = new Enemy();
 
     drawBackground();
     // drawPlayer();
@@ -65,6 +69,7 @@ function drawBackground() {
 //         0, 0, 150, 175);
 // }
 
+// Объекты:
 function Player() { // this --> Player
     // часть, связанная с рисованием
     this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
@@ -77,11 +82,29 @@ function Player() { // this --> Player
     this.speed = 5;
 }
 
+function Enemy() {
+    this.srcX = 0;
+    this.srcY = 100;
+    this.drawX = 900;
+    this.drawY = 100;
+    this.width = 100;
+    this.height = 100;
+
+    this.speed = 10;
+}
+
 Player.prototype.draw = function() {
+    ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+        this.drawX, this.drawY, this.width, this.height);
+}
+
+Enemy.prototype.draw = function() {
     ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
         this.drawX, this.drawY, this.width, this.height);
 }
 
 function draw() {
     player.draw();
+    enemy.draw();
+    // enemy2.draw();
 }
