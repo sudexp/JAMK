@@ -3,8 +3,8 @@ window.onload = init; // метод, который будет вызывать�
 var map; // переменная для карты map
 var ctxMap; // переменная, через которую взаимодействуем с полотном игры
 
-var player;
-var ctxPlayer;
+var pl;
+var ctxPl;
 
 var drawButton; // переменная для кнопки draw
 var clearButton; // переменная для кнопки clear
@@ -18,17 +18,19 @@ background.src = 'images/forest.jpg';
 var folke = new Image();
 folke.src = 'images/folke.jpg';
 
+var player;
+
 function init() {
     map = document.getElementById('map'); // инициализация переменных в функции init
     ctxMap = map.getContext('2d');
-    player = document.getElementById('player');
-    ctxPlayer = player.getContext('2d');
+    pl = document.getElementById('player');
+    ctxPl = pl.getContext('2d');
 
 
     map.width = gameWidth;
     map.height = gameHeight;
-    player.width = gameWidth;
-    player.height = gameHeight;
+    pl.width = gameWidth;
+    pl.height = gameHeight;
 
     drawButton = document.getElementById('drawButton');
     clearButton = document.getElementById('clearButton');
@@ -37,8 +39,11 @@ function init() {
     // drawRect.onclick = 
     clearButton.addEventListener('click', clearRectangle, false);
 
+    player = new Player();
+
     drawBackground();
-    drawPlayer();
+    // drawPlayer();
+    draw();
 }
 
 function drawRectangle() {
@@ -55,7 +60,28 @@ function drawBackground() {
         0, 0, gameWidth, gameHeight); // размер на экране
 }
 
-function drawPlayer() {
-    ctxMap.drawImage(folke, 0, 0, 150, 175, // размер c ajust_size (mac)
-        0, 0, 150, 175);
+// function drawPlayer() {
+//     ctxMap.drawImage(folke, 0, 0, 150, 175, // размер c ajust_size (mac)
+//         0, 0, 150, 175);
+// }
+
+function Player() { // this --> Player
+    // часть, связанная с рисованием
+    this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
+    this.srcY = 0;
+    this.drawX = 0; // рисование объекта
+    this.drawY = 0;
+    this.width = 150; // проверить после смены рисунка
+    this.height = 175;
+    // часть, связанная с апдэйтом
+    this.speed = 5;
+}
+
+Player.prototype.draw = function() {
+    ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+        this.drawX, this.drawY, this.width, this.height);
+}
+
+function draw() {
+    player.draw();
 }
