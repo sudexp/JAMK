@@ -22,6 +22,8 @@ var player;
 var enemy;
 // var enemy2;
 
+var isPlaying; // переменная типа boolean (играем или нет?!)
+
 // поддержка браузеров - переменная отвечает за обновление игры
 var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.webkitRequestAnimationFrame || // chrome, safari, yandex...
@@ -55,27 +57,37 @@ function init() {
 
     drawBackground();
     // drawPlayer();
-    draw();
+    // draw();
+
+    startLoop();
 }
 
-function drawRectangle() {
-    ctxMap.fillStyle = '#3D3D3D';
-    ctxMap.fillRect(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
+function loop() {
+    if(isPlaying) {
+        draw();
+        update();
+        requestAnimationFrame(loop);
+    }
 }
 
-function clearRectangle() {
-    ctxMap.clearRect(0, 0, 1024, 768);
+function startLoop() {
+    isPlaying = true;
+    loop(); // запускаем цикл
 }
 
-function drawBackground() {
-    ctxMap.drawImage(background, 0, 0, 1024, 768, // размер именно картинки
-        0, 0, gameWidth, gameHeight); // размер на экране
+function stopLoop() {
+    isPlaying = false;
 }
 
-// function drawPlayer() {
-//     ctxMap.drawImage(folke, 0, 0, 150, 175, // размер c ajust_size (mac)
-//         0, 0, 150, 175);
-// }
+function draw() {
+    player.draw();
+    enemy.draw();
+    // enemy2.draw();
+}
+
+function update() {
+    console.log('loop');
+}
 
 // Объекты:
 function Player() { // this --> Player
@@ -111,8 +123,21 @@ Enemy.prototype.draw = function() {
         this.drawX, this.drawY, this.width, this.height);
 }
 
-function draw() {
-    player.draw();
-    enemy.draw();
-    // enemy2.draw();
+function drawRectangle() {
+    ctxMap.fillStyle = '#3D3D3D';
+    ctxMap.fillRect(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
 }
+
+function clearRectangle() {
+    ctxMap.clearRect(0, 0, 1024, 768);
+}
+
+function drawBackground() {
+    ctxMap.drawImage(background, 0, 0, 1024, 768, // размер именно картинки
+        0, 0, gameWidth, gameHeight); // размер на экране
+}
+
+// function drawPlayer() {
+//     ctxMap.drawImage(folke, 0, 0, 150, 175, // размер c ajust_size (mac)
+//         0, 0, 150, 175);
+// }
