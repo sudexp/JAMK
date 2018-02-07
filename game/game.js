@@ -3,43 +3,59 @@ window.onload = init; // метод, который будет вызывать�
 var map; // переменная для карты map
 var ctxMap; // переменная, через которую взаимодействуем с полотном игры
 
-var drawBtn; // переменная для кнопки draw
-var clearBtn; // переменная для кнопки clear
+var player;
+var ctxPlayer;
+
+var drawButton; // переменная для кнопки draw
+var clearButton; // переменная для кнопки clear
 
 var gameWidth = 1024;
 var gameHeight = 768;
 
 var background = new Image();
-background.src = 'forest.jpg';
+background.src = 'images/forest.jpg';
 
-// инициализация переменных в функции init
+var folke = new Image();
+folke.src = 'images/folke.jpg';
+
 function init() {
-    map = document.getElementById('map');
+    map = document.getElementById('map'); // инициализация переменных в функции init
     ctxMap = map.getContext('2d');
+    player = document.getElementById('player');
+    ctxPlayer = player.getContext('2d');
+
 
     map.width = gameWidth;
     map.height = gameHeight;
+    player.width = gameWidth;
+    player.height = gameHeight;
 
-    drawBtn = document.getElementById('drawBtn');
-    clearBtn = document.getElementById('clearBtn');
+    drawButton = document.getElementById('drawButton');
+    clearButton = document.getElementById('clearButton');
 
-    drawBtn.addEventListener('click', drawRect, false);
+    drawButton.addEventListener('click', drawRectangle, false);
     // drawRect.onclick = 
-    clearBtn.addEventListener('click', clearRect, false);
+    clearButton.addEventListener('click', clearRectangle, false);
 
-    drawBg();
+    drawBackground();
+    drawPlayer();
 }
 
-function drawRect() {
+function drawRectangle() {
     ctxMap.fillStyle = '#3D3D3D';
-    ctxMap.fillRect(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
+    ctxMap.fillRectangle(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
 }
 
-function clearRect() {
-    ctxMap.clearRect(0, 0, 1024, 768);
+function clearRectangle() {
+    ctxMap.clearRectangle(0, 0, 1024, 768);
 }
 
-function drawBg() {
+function drawBackground() {
     ctxMap.drawImage(background, 0, 0, 1024, 768, // размер именно картинки
         0, 0, gameWidth, gameHeight); // размер на экране
+}
+
+function drawPlayer() {
+    ctxMap.drawImage(folke, 0, 0, 150, 175, // размер c ajust_size (mac)
+        0, 0, 150, 175);
 }

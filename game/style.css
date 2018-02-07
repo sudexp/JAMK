@@ -17,3 +17,8 @@ body {
     background: #fff;
     margin: 1em auto;
 }
+
+#player {
+    display: block;
+    margin: -49em auto 0;
+}
