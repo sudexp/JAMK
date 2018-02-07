@@ -22,22 +22,30 @@ var player;
 var enemy;
 // var enemy2;
 
+// поддержка браузеров - переменная отвечает за обновление игры
+var requestAnimationFrame = window.requestAnimationFrame || // unknown
+                            window.webkitRequestAnimationFrame || // chrome, safari, yandex...
+                            window.mozRequestAnimationFrame || // mozilla
+                            window.oRequestAnimationFrame || // opera
+                            window.msRequestAnimationFrame; // IE
+
 function init() {
+    console.log('init');
     map = document.getElementById('map'); // инициализация переменных в функции init
     ctxMap = map.getContext('2d');
-    pl = document.getElementById('player');
-    ctxPl = pl.getContext('2d');
-
+    playerCanvas = document.getElementById('player');
+    ctxPlayerCanvas = playerCanvas.getContext('2d');
 
     map.width = gameWidth;
     map.height = gameHeight;
-    pl.width = gameWidth;
-    pl.height = gameHeight;
+    playerCanvas.width = gameWidth;
+    playerCanvas.height = gameHeight;
 
     drawButton = document.getElementById('drawButton');
     clearButton = document.getElementById('clearButton');
 
     drawButton.addEventListener('click', drawRectangle, false);
+    // jQuery --> drawButton.click(drawRectangle)
     // drawRect.onclick = 
     clearButton.addEventListener('click', clearRectangle, false);
 
@@ -52,11 +60,11 @@ function init() {
 
 function drawRectangle() {
     ctxMap.fillStyle = '#3D3D3D';
-    ctxMap.fillRectangle(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
+    ctxMap.fillRect(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
 }
 
 function clearRectangle() {
-    ctxMap.clearRectangle(0, 0, 1024, 768);
+    ctxMap.clearRect(0, 0, 1024, 768);
 }
 
 function drawBackground() {
