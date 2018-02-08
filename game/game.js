@@ -24,7 +24,7 @@ var enemy;
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 
-// поддержка браузеров - переменная отвечает за обновление игры
+// поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
 var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.webkitRequestAnimationFrame || // chrome, safari, yandex...
                             window.mozRequestAnimationFrame || // mozilla
@@ -79,6 +79,7 @@ function stopLoop() {
     isPlaying = false;
 }
 
+// draw() и update() взаимодлействуют с основным циклом игры и выполняются последовательно
 function draw() {
     player.draw();
     enemy.draw();
@@ -87,6 +88,7 @@ function draw() {
 
 function update() {
     console.log('loop');
+    player.update();
 }
 
 // Объекты:
@@ -114,13 +116,26 @@ function Enemy() {
 }
 
 Player.prototype.draw = function() {
-    ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+    clearCtxPlayer(); // удаление предыдущих изображений при движении
+    ctxPlayerCanvas.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
         this.drawX, this.drawY, this.width, this.height);
+}
+
+// функция для перемещения объекта-игрока по сцене (взаимодейтсвует с координатами объекта по сцене drawX и drawY)
+Player.prototype.update = function() {
+    // this.drawX += 1;
+    this.drawY += 3; // движение по вертикали
 }
 
 Enemy.prototype.draw = function() {
     ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
         this.drawX, this.drawY, this.width, this.height);
+}
+
+// очищаем прямоугольную область в координатах 0, 0, gameWidth, gameHeight
+// метод вызывается перед передвижением изображения в Player.prototype.draw
+function clearCtxPlayer() {
+    ctxPlayerCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
 
 function drawRectangle() {
