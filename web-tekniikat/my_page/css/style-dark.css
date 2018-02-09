@@ -21,6 +21,11 @@ body.dark #cube {
     left: 0.9375em; 
 }
 
+body.dark figure,
+body.dark #figure {
+    background-color: #2b2c2c;
+}
+
 body.dark .surname {
     color: #e0a82c;
 }
@@ -98,6 +103,12 @@ body.dark .color-3 {
 }
 
 @media only screen and (max-width: 991px) {
+
+    body.dark figure,
+    body.dark #figure {
+    background-color: #2d2e2e;
+    }
+
     body.dark section .content-left,
     body.dark footer .content-left {
         border-top: 0.0625em solid #404242;
