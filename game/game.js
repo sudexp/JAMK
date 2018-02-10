@@ -60,6 +60,9 @@ function init() {
     // draw();
 
     startLoop();
+
+    document.addEventListener("keydown", checkKeyDown, false);
+    document.addEventListener("keyup", checkKeyUp, false);
 }
 
 function loop() {
@@ -102,6 +105,12 @@ function Player() { // this --> Player
     this.height = 175;
     // часть, связанная с апдэйтом
     this.speed = 5;
+    // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
+    // важно установить их значения на false, так как объект не должен перемещаться без воздействия на него
+    this.isUp = false;
+    this.isDown = false;
+    this.isRight = false;
+    this.isLeft = false;
 }
 
 function Enemy() {
@@ -116,7 +125,7 @@ function Enemy() {
 }
 
 Player.prototype.draw = function() {
-    clearCtxPlayer(); // удаление предыдущих изображений при движении
+    clearCtxPlayer(); // удаление предыдущих кадров (изображений) при движении
     ctxPlayerCanvas.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
         this.drawX, this.drawY, this.width, this.height);
 }
@@ -124,7 +133,69 @@ Player.prototype.draw = function() {
 // функция для перемещения объекта-игрока по сцене (взаимодейтсвует с координатами объекта по сцене drawX и drawY)
 Player.prototype.update = function() {
     // this.drawX += 1;
-    this.drawY += 3; // движение по вертикали
+    // this.drawY += 3; // движение по вертикали
+    this.chooseDirection();
+}
+
+Player.prototype.chooseDirection = function() {
+    if(this.isUp) {
+        this.drawY -= this.speed; // при перемещении вверх уменьшается координата Y
+    }
+    if(this.isDown) {
+        this.drawY += this.speed;
+    }
+    if(this.isRight) {
+        this.drawX += this.speed;
+    }
+    if(this.isLeft) {
+        this.drawX -= this.speed;
+    }
+}
+
+// функция, отвечающая за нажатие клавиши клавиатуры
+function checkKeyDown(e){ // переменная e отвечает за: какая клавиша была нажата
+    var keyID = e.keyCode || e.which; // переменная поддержски старых браузеров
+    var keyChar = String.fromCharCode(keyID); // преобразуем значение в стринг для облечения оперирования данными
+
+    if(keyChar == "W") {
+        player.isUp = true;
+        e.preventDefault();// функция устанавливает значение нажатой клавиши в состояние, в котором она была до этого
+    }
+    if(keyChar == "S") {
+        player.isDown = true;
+        e.preventDefault();
+    }
+    if(keyChar == "D") {
+        player.isRight = true;
+        e.preventDefault();
+    }
+    if(keyChar == "A") {
+        player.isLeft = true;
+        e.preventDefault();
+    }
+}
+
+// функция, отвечающая за отпускание клавиши клавиатуры
+function checkKeyUp(e){
+    var keyID = e.keyCode || e.which;
+    var keyChar = String.fromCharCode(keyID);
+
+    if(keyChar == "W") {
+        player.isUp = false;
+        e.preventDefault();
+    }
+    if(keyChar == "S") {
+        player.isDown = false;
+        e.preventDefault();
+    }
+    if(keyChar == "D") {
+        player.isRight = false;
+        e.preventDefault();
+    }
+    if(keyChar == "A") {
+        player.isLeft = false;
+        e.preventDefault();
+    }
 }
 
 Enemy.prototype.draw = function() {
