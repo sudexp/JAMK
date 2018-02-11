@@ -3,8 +3,12 @@ window.onload = init; // метод, который будет вызывать�
 var map; // переменная для карты map
 var ctxMap; // переменная, через которую взаимодействуем с полотном игры
 
-var pl;
-var ctxPl;
+var playerCanvas;
+var ctxPlayerCanvas; // context Player
+
+var enemyCanvas;
+var ctxEnemyCanvas; // context Enemy
+
 
 var drawButton; // переменная для кнопки draw
 var clearButton; // переменная для кнопки clear
@@ -31,17 +35,25 @@ var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.oRequestAnimationFrame || // opera
                             window.msRequestAnimationFrame; // IE
 
+// функция инициализации переменных
 function init() {
     console.log('init');
     map = document.getElementById('map'); // инициализация переменных в функции init
     ctxMap = map.getContext('2d');
-    playerCanvas = document.getElementById('player');
+    
+    playerCanvas = document.getElementById('player'); // переменная, отвечающая за канвас долдна иметь в себе тег
     ctxPlayerCanvas = playerCanvas.getContext('2d');
+
+    enemyCanvas = document.getElementById('enemy');
+    ctxEnemyCanvas = enemyCanvas.getContext('2d');
 
     map.width = gameWidth;
     map.height = gameHeight;
     playerCanvas.width = gameWidth;
     playerCanvas.height = gameHeight;
+    enemyCanvas.width = gameWidth;
+    enemyCanvas.height = gameHeight;
+    
 
     drawButton = document.getElementById('drawButton');
     clearButton = document.getElementById('clearButton');
@@ -92,6 +104,7 @@ function draw() {
 function update() {
     console.log('loop');
     player.update();
+    enemy.update();
 }
 
 // Объекты:
@@ -115,9 +128,9 @@ function Player() { // this --> Player
 
 function Enemy() {
     this.srcX = 0;
-    this.srcY = 100;
-    this.drawX = 900;
-    this.drawY = 100;
+    this.srcY = 0;
+    this.drawX = 1024;
+    this.drawY = 0  ;
     this.width = 100;
     this.height = 100;
 
@@ -150,6 +163,20 @@ Player.prototype.chooseDirection = function() {
     if(this.isLeft) {
         this.drawX -= this.speed;
     }
+}
+
+Enemy.prototype.draw = function() {
+    clearCtxEnemy(); // удаление предыдущих кадров (изображений) при движении
+    // ctxMap. - отрисовка объекта на карте
+    // ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+    //     this.drawX, this.drawY, this.width, this.height);
+    // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
+    ctxEnemyCanvas.drawImage(folke, this.srcX, this.srcY, this.width, this.height,
+        this.drawX, this.drawY, this.width, this.height);
+}
+
+Enemy.prototype.update = function() {
+    this.drawX -= 1;
 }
 
 // функция, отвечающая за нажатие клавиши клавиатуры
@@ -198,15 +225,14 @@ function checkKeyUp(e){
     }
 }
 
-Enemy.prototype.draw = function() {
-    ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
-        this.drawX, this.drawY, this.width, this.height);
-}
-
 // очищаем прямоугольную область в координатах 0, 0, gameWidth, gameHeight
 // метод вызывается перед передвижением изображения в Player.prototype.draw
 function clearCtxPlayer() {
     ctxPlayerCanvas.clearRect(0, 0, gameWidth, gameHeight);
+}
+
+function clearCtxEnemy() {
+    ctxEnemyCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
 
 function drawRectangle() {

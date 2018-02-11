@@ -8,17 +8,18 @@ body {
     color: #fff;
     font-family: Courier New, Courier, monospace;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 24px;
     text-align: center;
 }
 
 #map {
     display: block;
     background: #fff;
-    margin: 1em auto;
+    margin: 0 auto;
 }
 
-#player {
+#player,
+#enemy {
     display: block;
-    margin: -49em auto 0;
+    margin: -768px auto 0;
 }
