@@ -29,6 +29,11 @@ var enemies = []; // массив переменных enemy
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 
+// переменные для создания объектов-врагов
+var createInterval; // интервал создания объектов
+var createTime = 20000; // время, через которое вызывается функция startCreatingEnemies() (задается в милисекундах, 1с = 1000мс)
+var createAmount = 7; // количество объектов, которое будет появляться, когда проходит определенное время
+
 // поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
 var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.webkitRequestAnimationFrame || // chrome, safari, yandex...
@@ -80,10 +85,23 @@ function init() {
 
 // функция создания обхектов enemy (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
 // объекты содержатся на канвасе Emeny
-function spawnEnemy(count) {
+function createEnemy(count) {
     for(var i = 0; i < count; i++) {
         enemies[i] = new Enemy(); // для каждого элемента массива enemies[] создается новый объект Enemy
     }
+}
+
+function startCreatingEnemies() {
+    stopCreatingEnemies(); // вызывается для того, чтобы удалить все предыдущие объекты со сцены каждые 20с (createTime) 
+                            // иначе будет создано слишком много объектов --> сказывается на производительности
+    createInterval = setInterval(function(){createEnemy(createAmount)}, createTime); // инициализация переменной createInterval с помощью встроенной функции js 
+    // первый параметр (аргумент) setInterval - это функция, которая должна вызываться через определенный отрезок времени
+    // createEnemy - \то та самая функция, которую нужно вызвать, чтобы создать определенное количество объектов
+    // второй парамент createAmount - время , через которое будет все это вызываться
+}
+
+function stopCreatingEnemies() {
+    clearInterval(createInterval); // очищаем интервал - с помощью этой функции удаляются все объекты на сцене 
 }
 
 function loop() {
@@ -97,6 +115,7 @@ function loop() {
 function startLoop() {
     isPlaying = true;
     loop(); // запускаем цикл
+    startCreatingEnemies(); // вызываем функцию создания врагов (можно вызвать в init или в цикле игры)
 }
 
 function stopLoop() {
