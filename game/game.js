@@ -23,7 +23,8 @@ var folke = new Image();
 folke.src = 'images/folke.jpg';
 
 var player;
-var enemy;
+var enemies = []; // массив переменных enemy
+// var enemy;
 // var enemy2;
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
@@ -64,7 +65,7 @@ function init() {
     clearButton.addEventListener('click', clearRectangle, false);
 
     player = new Player();
-    enemy = new Enemy();
+    // enemy = new Enemy();
     // enemy2 = new Enemy();
 
     drawBackground();
@@ -75,6 +76,14 @@ function init() {
 
     document.addEventListener("keydown", checkKeyDown, false);
     document.addEventListener("keyup", checkKeyUp, false);
+}
+
+// функция создания обхектов enemy (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
+// объекты содержатся на канвасе Emeny
+function spawnEnemy(count) {
+    for(var i = 0; i < count; i++) {
+        enemies[i] = new Enemy(); // для каждого элемента массива enemies[] создается новый объект Enemy
+    }
 }
 
 function loop() {
@@ -97,14 +106,24 @@ function stopLoop() {
 // draw() и update() взаимодлействуют с основным циклом игры и выполняются последовательно
 function draw() {
     player.draw();
-    enemy.draw();
+
+    clearCtxEnemy();
+    for(var i = 0; i < enemies.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
+        enemies[i].draw(); // для каждого элемента массива enemies[] создается новый объект Enemy
+    }
+    // enemy.draw();
     // enemy2.draw();
 }
 
 function update() {
     console.log('loop');
     player.update();
-    enemy.update();
+
+    // по аналогии с draw():
+    for(var i = 0; i < enemies.length; i++) {
+        enemies[i].update();
+    }
+    // enemy.update();
 }
 
 // Объекты:
@@ -129,7 +148,7 @@ function Player() { // this --> Player
 function Enemy() {
     this.srcX = 0;
     this.srcY = 0;
-    this.drawX = Math.floor(Math.random() * 10) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
+    this.drawX = Math.floor(Math.random() * gameWidth) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
     // gameWidth=1024 - появление объекта по координате X
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
     this.drawY = Math.floor(Math.random() * gameHeight); // появление объекта по оси Y на случайной позиции
@@ -185,7 +204,7 @@ Player.prototype.chooseDirection = function() {
 }
 
 Enemy.prototype.draw = function() {
-    clearCtxEnemy(); // удаление предыдущих кадров (изображений) при движении
+    // clearCtxEnemy(); // удаление предыдущих кадров (изображений) при движении
     // ctxMap. - отрисовка объекта на карте
     // ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
@@ -198,7 +217,7 @@ Enemy.prototype.update = function() {
     this.drawX -= 5; // ~ скорость объекта ("-" слева-направо)
     if(this.drawX < 0) { // т.е. если объект вышел за рамки канваса с левой стороны
         // возвращаем его на начальную позицию со случайными координатами X и Y
-        this.drawX = Math.floor(Math.random() * 10) + gameWidth; 
+        this.drawX = Math.floor(Math.random() * gameWidth) + gameWidth; 
         this.drawY = Math.floor(Math.random() * gameHeight);
     }
 }
