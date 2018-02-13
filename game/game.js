@@ -129,8 +129,10 @@ function Player() { // this --> Player
 function Enemy() {
     this.srcX = 0;
     this.srcY = 0;
-    this.drawX = 1024;
-    this.drawY = 0  ;
+    this.drawX = Math.floor(Math.random() * 10) + gameWidth; // появление объекта за правой частью канваса на случайном расстоянии
+    // gameWidth=1024 - появление объекта по координате X
+    // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
+    this.drawY = Math.floor(Math.random() * gameHeight);
     this.width = 100;
     this.height = 100;
 
