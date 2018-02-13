@@ -129,10 +129,10 @@ function Player() { // this --> Player
 function Enemy() {
     this.srcX = 0;
     this.srcY = 0;
-    this.drawX = Math.floor(Math.random() * 10) + gameWidth; // появление объекта за правой частью канваса на случайном расстоянии
+    this.drawX = Math.floor(Math.random() * 10) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
     // gameWidth=1024 - появление объекта по координате X
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
-    this.drawY = Math.floor(Math.random() * gameHeight);
+    this.drawY = Math.floor(Math.random() * gameHeight); // появление объекта по оси Y на случайной позиции
     this.width = 100;
     this.height = 100;
 
@@ -150,6 +150,23 @@ Player.prototype.update = function() {
     // this.drawX += 1;
     // this.drawY += 3; // движение по вертикали
     this.chooseDirection();
+    if(this.drawX < 0) { // если координата X объекта меньше нуля (объект выходит за рамки канваса с левой стороны)
+        this.drawX = 0; // устанавливаем эту координату равной нулю (объект после этого не переместить влево за канвас)
+    }
+    // аналогично вышеизложенному для других координат:
+    if(this.drawX > gameWidth - this.width) {
+        this.drawX = gameWidth - this.width; // необходимо вычесть, так как начало координат объекта в левой верхней точке
+    } 
+    if(this.drawY < 0) {
+        this.drawY = 0;
+    } 
+    if(this.drawY > gameHeight - this.height) {
+        this.drawY = gameHeight - this.height; // необходимо вычесть, так как начало координат объекта в левой верхней точке
+    }
+    // !!! на будущее: чтобы ограничить объект по перемещению вперед
+    // if(this.drawX > gameWidth - this.width - 300) {
+    //     this.drawX = gameWidth - this.width - 300;
+    // }
 }
 
 Player.prototype.chooseDirection = function() {
@@ -178,7 +195,12 @@ Enemy.prototype.draw = function() {
 }
 
 Enemy.prototype.update = function() {
-    this.drawX -= 1;
+    this.drawX -= 5; // ~ скорость объекта ("-" слева-направо)
+    if(this.drawX < 0) { // т.е. если объект вышел за рамки канваса с левой стороны
+        // возвращаем его на начальную позицию со случайными координатами X и Y
+        this.drawX = Math.floor(Math.random() * 10) + gameWidth; 
+        this.drawY = Math.floor(Math.random() * gameHeight);
+    }
 }
 
 // функция, отвечающая за нажатие клавиши клавиатуры
