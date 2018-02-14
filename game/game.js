@@ -30,6 +30,7 @@ var enemies = []; // массив переменных enemy
 // var enemy2;
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
+var health; // переменная, отвечающая за здоровье игрока
 
 // переменные для создания объектов-врагов
 var createInterval; // интервал создания объектов
@@ -68,7 +69,7 @@ function init() {
     statsCanvas.height = gameHeight;
     
     ctxStatsCanvas.fillStyle = '#3d3d3d'; // задаем стиль для отображения надписей с помощью встроенной переменной fillStyle
-    ctxStatsCanvas.font = 'bold 16px Arial'; // задаем шрифт надписей с помощью встроенной переменной font
+    ctxStatsCanvas.font = 'bold 24px Arial'; // задаем шрифт надписей с помощью встроенной переменной font
 
     drawButton = document.getElementById('drawButton');
     clearButton = document.getElementById('clearButton');
@@ -82,15 +83,21 @@ function init() {
     // enemy = new Enemy();
     // enemy2 = new Enemy();
 
+    // health = 100; // статичное здоровье
+    resetHealth();
+
     drawBackground();
     // drawPlayer();
     // draw();
 
     startLoop();
-    updateStats();
 
     document.addEventListener("keydown", checkKeyDown, false);
     document.addEventListener("keyup", checkKeyUp, false);
+}
+
+function resetHealth() {
+    health = 100;
 }
 
 // функция создания обхектов enemy (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
@@ -146,6 +153,7 @@ function draw() {
 
 function update() {
     console.log('loop');
+    updateStats();
     player.update();
 
     // по аналогии с draw():
@@ -215,6 +223,18 @@ Player.prototype.update = function() {
     // if(this.drawX > gameWidth - this.width - 300) {
     //     this.drawX = gameWidth - this.width - 300;
     // }
+    if(health <= 0) {
+        resetHealth();
+    }
+    // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
+    for(var i = 0; i < enemies.length; i++) {
+        if(this.drawX >= enemies[i].drawX && // ограничение игрока слева
+            this.drawY >= enemies[i].drawY && // ограничение игрока сверху
+            this.drawX <= enemies[i].drawX + enemies[i].width && // ограничение игрока справа
+            this.drawY <= enemies[i].drawY + enemies[i].height) {// ограничение игрока справа
+            health--;
+        }
+    }        
 }
 
 Player.prototype.chooseDirection = function() {
@@ -320,7 +340,7 @@ function clearCtxEnemy() {
 // ~ функция обновления информации
 function updateStats() {
     ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
-    ctxStatsCanvas.fillText("Folke-test", 30, 30);
+    ctxStatsCanvas.fillText("Heath: " + health, 30, 30);
 }
 
 function drawRectangle() {
