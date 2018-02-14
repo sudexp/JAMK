@@ -9,6 +9,8 @@ var ctxPlayerCanvas; // context Player
 var enemyCanvas;
 var ctxEnemyCanvas; // context Enemy
 
+var statsCanvas;
+var ctxStatsCanvas;
 
 var drawButton; // переменная для кнопки draw
 var clearButton; // переменная для кнопки clear
@@ -41,7 +43,7 @@ var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.oRequestAnimationFrame || // opera
                             window.msRequestAnimationFrame; // IE
 
-// функция инициализации переменных
+// функция инициализации переменных / вызова функций
 function init() {
     console.log('init');
     map = document.getElementById('map'); // инициализация переменных в функции init
@@ -53,13 +55,20 @@ function init() {
     enemyCanvas = document.getElementById('enemy');
     ctxEnemyCanvas = enemyCanvas.getContext('2d');
 
+    statsCanvas = document.getElementById('stats');
+    ctxStatsCanvas = statsCanvas.getContext('2d');
+
     map.width = gameWidth;
     map.height = gameHeight;
     playerCanvas.width = gameWidth;
     playerCanvas.height = gameHeight;
     enemyCanvas.width = gameWidth;
     enemyCanvas.height = gameHeight;
+    statsCanvas.width = gameWidth;
+    statsCanvas.height = gameHeight;
     
+    ctxStatsCanvas.fillStyle = '#3d3d3d'; // задаем стиль для отображения надписей с помощью встроенной переменной fillStyle
+    ctxStatsCanvas.font = 'bold 16px Arial'; // задаем шрифт надписей с помощью встроенной переменной font
 
     drawButton = document.getElementById('drawButton');
     clearButton = document.getElementById('clearButton');
@@ -78,6 +87,7 @@ function init() {
     // draw();
 
     startLoop();
+    updateStats();
 
     document.addEventListener("keydown", checkKeyDown, false);
     document.addEventListener("keyup", checkKeyUp, false);
@@ -305,6 +315,12 @@ function clearCtxPlayer() {
 
 function clearCtxEnemy() {
     ctxEnemyCanvas.clearRect(0, 0, gameWidth, gameHeight);
+}
+
+// ~ функция обновления информации
+function updateStats() {
+    ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
+    ctxStatsCanvas.fillText("Folke-test", 30, 30);
 }
 
 function drawRectangle() {

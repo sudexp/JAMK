@@ -1,4 +1,4 @@
-@charset "utf-8"; /* кодировка сайта */
+@charset "utf-8";
 
 body {
     background: #333;
@@ -12,14 +12,14 @@ body {
     text-align: center;
 }
 
-#map {
+canvas {
     display: block;
-    background: #fff;
     margin: 0 auto;
 }
 
 #player,
-#enemy {
+#enemy,
+#stats {
     display: block;
     margin: -768px auto 0;
 }
