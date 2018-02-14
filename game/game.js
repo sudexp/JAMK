@@ -18,8 +18,12 @@ var clearButton; // переменная для кнопки clear
 var gameWidth = 1024;
 var gameHeight = 768;
 
-var background = new Image();
-background.src = 'images/forest.jpg';
+var background = new Image(); // переменная, отвечающая за фон
+background.src = 'images/forest.jpg'; // путь к этому изображению
+
+var background1 = new Image(); // 
+background1.src = 'images/forest.jpg'; // 
+
 
 var folke = new Image();
 folke.src = 'images/folke.jpg';
@@ -31,6 +35,10 @@ var enemies = []; // массив переменных enemy
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 var health; // переменная, отвечающая за здоровье игрока
+
+// инициализация переменных движения фона по оси Х
+var mapX = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
+var map1X = gameWidth; // второй background появится справа от канваса (не будет виден)
 
 // переменные для создания объектов-врагов
 var createInterval; // интервал создания объектов
@@ -86,7 +94,7 @@ function init() {
     // health = 100; // статичное здоровье
     resetHealth();
 
-    drawBackground();
+    // drawBackground(); // статическая функция: загружается и не повторяется
     // drawPlayer();
     // draw();
 
@@ -153,6 +161,8 @@ function draw() {
 
 function update() {
     console.log('loop');
+    moveBackground();
+    drawBackground();
     updateStats();
     player.update();
 
@@ -162,6 +172,18 @@ function update() {
     }
     // enemy.update();
 }
+
+ function moveBackground() {
+     var vel = 4; // переменнная, отвечающая за скорость двивждения фона
+     mapX -= 4;
+     map1X -=4;
+     if(mapX + gameWidth < 0) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
+        mapX = gameWidth - 5; // вычитаем 5px, чтобы не было видно полос при соединии бэкграундов
+     }
+     if(map1X + gameWidth < 0) { // аналогично первому фону
+        map1X = gameWidth - 5;
+     }
+ }
 
 // Объекты:
 function Player() { // this --> Player
@@ -343,6 +365,20 @@ function updateStats() {
     ctxStatsCanvas.fillText("Heath: " + health, 30, 30);
 }
 
+function drawBackground() {
+    ctxMap.clearRect(0, 0, gameWidth, gameHeight); // стираем предыдущий кадр, которым было прошлое изображение
+    ctxMap.drawImage(background, 0, 0, 1024, 768, // размер именно картинки
+        mapX, 0, gameWidth, gameHeight); // 0, 0, gameWidth, gameHeight - размер на экране
+    ctxMap.drawImage(background1, 0, 0, 1024, 768,
+        map1X, 0, gameWidth, gameHeight); // mapX (map1X), 0, gameWidth, gameHeight - для того, чтобы была возможность перемещать по Х координате (по Y движение фона не нужно)
+
+}
+
+// function drawPlayer() {
+//     ctxMap.drawImage(folke, 0, 0, 150, 175, // размер c ajust_size (mac)
+//         0, 0, 150, 175);
+// }
+
 function drawRectangle() {
     ctxMap.fillStyle = '#3D3D3D';
     ctxMap.fillRect(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
@@ -351,13 +387,3 @@ function drawRectangle() {
 function clearRectangle() {
     ctxMap.clearRect(0, 0, 1024, 768);
 }
-
-function drawBackground() {
-    ctxMap.drawImage(background, 0, 0, 1024, 768, // размер именно картинки
-        0, 0, gameWidth, gameHeight); // размер на экране
-}
-
-// function drawPlayer() {
-//     ctxMap.drawImage(folke, 0, 0, 150, 175, // размер c ajust_size (mac)
-//         0, 0, 150, 175);
-// }
