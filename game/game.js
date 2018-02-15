@@ -45,6 +45,11 @@ var createInterval; // интервал создания объектов
 var createTime = 5000; // время, через которое вызывается функция startCreatingEnemies() (задается в милисекундах, 1с = 1000мс)
 var createAmount = 7; // количество объектов, которое будет появляться, когда проходит определенное время
 
+// переменные для использования мыши
+var mouseX;
+var mouseY;
+var mouseControl = true;
+
 // поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
 var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.webkitRequestAnimationFrame || // chrome, safari, yandex...
@@ -99,9 +104,35 @@ function init() {
     // draw();
 
     startLoop();
-
+    // как правило, эвенты добавляются в самый конец, чтобы остальные переменные были уже инициализированы
     document.addEventListener("keydown", checkKeyDown, false);
     document.addEventListener("keyup", checkKeyUp, false);
+    document.addEventListener("mousemove", mouseMove, false);
+    document.addEventListener("click", mouseClick, false); // "mouseclick" уже работать не будет!
+}
+
+// функции управления мышью
+function mouseMove(e) { // здесь передается объект event, который будет отвечать за движение мыши
+    // !!! Сделать изменения координат игрока со временем (8:56)
+    if(!mouseControl)
+        return;
+    mouseX = e.pageX - map.offsetLeft; // каждый раз обновляем координату Х, которая будет считавается по оси Х со всей вэб-страцницы (канвас не имеет определенных координат), даже когда мышь за пределами канваса
+    mouseY = e.pageY - map.offsetTop; // при этом необходимо компенсировать расстояние, на которое смещен канвас от левого верхнего угла вэб-страцницы
+    // добавляем координаты мыши в название игры (изменяем последнее)
+    document.getElementById('gameName').innerHTML = 'X: '+mouseX+' Y: '+mouseY;
+
+    // при перемещении из function mouseClick(e) в данную функцию игрок постоянно "следит за курсором"
+    player.drawX = mouseX - player.width/2;
+    player.drawY = mouseY - player.height/2;
+}
+
+function mouseClick(e) { // здесь в параметрах передается объект event, который будет отвечать за клик мыши
+    if(!mouseControl)
+        return;
+    // player.drawX = mouseX - player.width/2; // присваиваем значение координате игрока по Х
+    // player.drawY = mouseY - player.height/2;
+    // добавляем клик в название игры (изменяем последнее)
+    document.getElementById('gameName').innerHTML = 'Clicked';
 }
 
 function resetHealth() {
