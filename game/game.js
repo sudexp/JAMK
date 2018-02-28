@@ -1,4 +1,5 @@
 window.onload = init; // метод, который будет вызываться при запуске игры 
+// cобытие window.onload JavaScript запускается после полной загрузки страницы, включая стили, изображения и другие ресурсы.
 
 var map; // переменная для карты map
 var ctxMap; // переменная, через которую взаимодействуем с полотном игры
@@ -15,8 +16,8 @@ var ctxStatsCanvas;
 var drawButton; // переменная для кнопки draw
 var clearButton; // переменная для кнопки clear
 
-var gameWidth = 1024;
-var gameHeight = 768;
+var gameWidth = 1280;
+var gameHeight = 720;
 // Take the size of the viewport minus the top div with we show mouse coordinates (#gameName):
 // var gameHeight = document.documentElement.clientHeight - 34;
 
