@@ -7,6 +7,9 @@ var ctxMap; // переменная, через которую взаимоде�
 var playerCanvas;
 var ctxPlayerCanvas; // context Player
 
+var bearCanvas;
+var ctxBearCanvas; // context Bear
+
 var enemyCanvas;
 var ctxEnemyCanvas; // context Enemy
 
@@ -27,11 +30,15 @@ background.src = 'images/forest.jpg'; // путь к этому изображе
 var background1 = new Image(); // 
 background1.src = 'images/forest.jpg'; // 
 
+var playerImg = new Image();
+playerImg.src = 'images/folke.jpg';
 
-var folke = new Image();
-folke.src = 'images/folke.jpg';
+var bearImg = new Image();
+bearImg.src = 'images/bear.jpg';
 
 var player;
+var bear;
+
 var enemies = []; // массив переменных enemy
 window.enemies = enemies; // to access enemies from console for debugging
 // var enemy;
@@ -47,7 +54,7 @@ var map1X = gameWidth; // второй background появится справа 
 // переменные для создания объектов-врагов
 var createInterval; // интервал создания объектов
 var createTime = 1000; // время, через которое вызывается функция startCreatingEnemies() (задается в милисекундах, 1с = 1000мс)
-var createAmount = 3; // количество объектов, которое будет появляться, когда проходит определенное время
+var createAmount = 8; // количество объектов, которое будет появляться, когда проходит определенное время
 
 // переменные для использования мыши
 var mouseX;
@@ -55,6 +62,8 @@ var mouseY;
 var mouseControl = true;
 
 // поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
+// window.requestAnimationFrame указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации.
+// В качестве параметра метод получает функцию, которая будет вызвана перед перерисовкой.
 var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.webkitRequestAnimationFrame || // chrome, safari, yandex...
                             window.mozRequestAnimationFrame || // mozilla
@@ -63,12 +72,16 @@ var requestAnimationFrame = window.requestAnimationFrame || // unknown
 
 // функция инициализации переменных / вызова функций
 function init() {
-    console.log('init');
-    map = document.getElementById('map'); // инициализация переменных в функции init
-    ctxMap = map.getContext('2d');
+    // console.log('init');
+    // https://professorweb.ru/my/html/html5/level4/4_1.php - canvas
+    map = document.getElementById('map'); // первым делом сценарий должен получить объект холста, для чего используется метод document.getElementById.
+    ctxMap = map.getContext('2d'); // затем метод getContext() генерирует двумерный контекст рисования, который будет связан с указанным холстом.
     
-    playerCanvas = document.getElementById('player'); // переменная, отвечающая за канвас долдна иметь в себе тег
+    playerCanvas = document.getElementById('player'); // переменная, отвечающая за канвас должна иметь в себе тег
     ctxPlayerCanvas = playerCanvas.getContext('2d');
+
+    bearCanvas = document.getElementById('bear'); // переменная, отвечающая за канвас должна иметь в себе тег
+    ctxBearCanvas = bearCanvas.getContext('2d');
 
     enemyCanvas = document.getElementById('enemy');
     ctxEnemyCanvas = enemyCanvas.getContext('2d');
@@ -80,6 +93,8 @@ function init() {
     map.height = gameHeight;
     playerCanvas.width = gameWidth;
     playerCanvas.height = gameHeight;
+    bearCanvas.width = gameWidth;
+    bearCanvas.height = gameHeight;
     enemyCanvas.width = gameWidth;
     enemyCanvas.height = gameHeight;
     statsCanvas.width = gameWidth;
@@ -91,12 +106,17 @@ function init() {
     drawButton = document.getElementById('drawButton');
     clearButton = document.getElementById('clearButton');
 
-    drawButton.addEventListener('click', drawRectangle, false);
+    drawButton.addEventListener('click', drawRectangle, false); // методы addEventListener и removeEventListener являются современным способом назначить или удалить обработчик, 
+    // и при этом позволяют использовать сколько угодно любых обработчиков.
+    // event - имя события, например click
+    // handler - ссылка на функцию, которую надо поставить обработчиком.
+    // phase - необязательный аргумент, «фаза», на которой обработчик должен сработать. 
     // jQuery --> drawButton.click(drawRectangle)
     // drawRect.onclick = 
     clearButton.addEventListener('click', clearRectangle, false);
 
     player = new Player();
+    bear = new Bear();
     // enemy = new Enemy();
     // enemy2 = new Enemy();
 
@@ -143,25 +163,25 @@ function resetHealth() {
     health = 100;
 }
 
-// функция создания обхектов enemy (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
+// функция создания объектов enemy (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
 // объекты содержатся на канвасе Enemy
 function createEnemy(count) {
-    // to keep the amount not more than "createAmount"
+    // чтобы иметь количество объектов не более чем в "createAmount"
     var newCount = count - enemies.length;
     for(var i = 0; i < newCount; i++) {
-        // every time we call this function we need to add new elements to the end of "enemies" array
-        // (and keep all existing)
+        // каждый раз, когда мы вызываем эту функцию, мы добавляем новые элементы в конец массива enemies
+        // (и сохраняем все существующие)
         var newEnemy = new Enemy()
         enemies.push(newEnemy); // для каждого элемента массива enemies[] создается новый объект Enemy
     }
 }
 
 function startCreatingEnemies() {
-    stopCreatingEnemies(); // вызывается для того, чтобы удалить все предыдущие объекты со сцены каждые 5с (createTime) 
+    stopCreatingEnemies(); // вызывается для того, чтобы удалить все предыдущие объекты со сцены каждые 1с (createTime) 
                             // иначе будет создано слишком много объектов --> сказывается на производительности
     createInterval = setInterval(function(){createEnemy(createAmount)}, createTime); // инициализация переменной createInterval с помощью встроенной функции js 
     // первый параметр (аргумент) setInterval - это функция, которая должна вызываться через определенный отрезок времени
-    // createEnemy - \то та самая функция, которую нужно вызвать, чтобы создать определенное количество объектов
+    // createEnemy - это та самая функция, которую нужно вызвать, чтобы создать определенное количество объектов
     // второй парамент createAmount - время , через которое будет все это вызываться
 }
 
@@ -169,7 +189,7 @@ function stopCreatingEnemies() {
     clearInterval(createInterval); // очищаем интервал - с помощью этой функции удаляются все объекты на сцене 
 }
 
-// Calls itself recursively, asking browser for whenever its ready to animate (requestAnimationFrame)
+// вызывает себя рекурсивно, запрашивая браузер всякий раз, когда он готов к анимации (requestAnimationFrame)
 function loop() {
     if(isPlaying) {
         draw();
@@ -191,6 +211,7 @@ function stopLoop() {
 // draw() и update() взаимодлействуют с основным циклом игры и выполняются последовательно
 function draw() {
     player.draw();
+    bear.draw();
 
     clearCtxEnemy();
     for(var i = 0; i < enemies.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
@@ -206,6 +227,7 @@ function update() {
     drawBackground();
     updateStats();
     player.update();
+    bear.update();
 
     // по аналогии с draw():
     for(var i = 0; i < enemies.length; i++) {
@@ -231,8 +253,8 @@ function Player() { // this --> Player
     // часть, связанная с рисованием
     this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
     this.srcY = 0;
-    this.drawX = 0; // рисование объекта
-    this.drawY = 0;
+    this.drawX = 200; // рисование объекта
+    this.drawY = 200;
     this.width = 150; // проверить после смены рисунка
     this.height = 175;
     // часть, связанная с апдэйтом
@@ -245,39 +267,55 @@ function Player() { // this --> Player
     this.isLeft = false;
 }
 
+function Bear() { 
+    this.srcX = 0; 
+    this.srcY = 200;
+    this.drawX = 0;
+    this.drawY = 0;
+    this.width = 150; 
+    this.height = 100;
+    this.speed = 5;
+}
+
 function Enemy() {
     this.srcX = 0;
     this.srcY = 0;
     this.drawX = Math.floor(Math.random() * gameWidth / 2) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
     // this.drawX = gameWidth;
-    // gameWidth=1024 - появление объекта по координате X
+    // gameWidth=1280 - появление объекта по координате X
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
     this.drawY = Math.floor(Math.random() * gameHeight); // появление объекта по оси Y на случайной позиции
     this.width = 100;
     this.height = 100;
 
-    // Correct position if its off down the screen:
-    // (double height in case another enemy overlaps with current, so we leave the last space for it)
-    if (this.drawY + 2 * this.height > gameHeight) {
-        this.drawY = gameHeight - 2 * this.height;
+    // Коррекция положения, если появляется ниже экрана
+    // двойная высота в случае, если друной враг перекрывается настоящим, так что оставляем пространство для него 
+    if (this.drawY + this.height > gameHeight) {
+        this.drawY = gameHeight - this.height;
     }
-    // Correct position if its off up the screen:
+    // Коррекция положения, если появляется выше экрана
     if (this.drawY < 67) {
-        this.drawY = 67;  // not sure why its 67px up.
+        this.drawY = 67;  // не уверен, что это 67px
     }
 
     checkOtherEnemies(this)
 
-    // this.speed = 10;
-    // Make speed randomly different (5 to 7)
-    this.speed = Math.floor(3 * Math.random()) + 5;
+    this.speed = 5;
+    // сделать скорость слечайным образом (5 to 7)
+    // this.speed = Math.floor(3 * Math.random()) + 5;
 
     // console.log(`New enemy: ${this.drawY}`);
 }
 
 Player.prototype.draw = function() {
     clearCtxPlayer(); // удаление предыдущих кадров (изображений) при движении
-    ctxPlayerCanvas.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+    ctxPlayerCanvas.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+        this.drawX, this.drawY, this.width, this.height);
+}
+
+Bear.prototype.draw = function() {
+    clearCtxBear();
+    ctxBearCanvas.drawImage(bearImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
 }
 
@@ -342,13 +380,17 @@ Player.prototype.chooseDirection = function() {
     }
 }
 
+Bear.prototype.update = function() {
+    this.drawX += this.speed;      
+}
+
 Enemy.prototype.draw = function() {
     // clearCtxEnemy(); // удаление предыдущих кадров (изображений) при движении
     // ctxMap. - отрисовка объекта на карте
-    // ctxMap.drawImage(folke, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+    // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
-    ctxEnemyCanvas.drawImage(folke, this.srcX, this.srcY, this.width, this.height,
+    ctxEnemyCanvas.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
 }
 
@@ -425,6 +467,10 @@ function clearCtxPlayer() {
     ctxPlayerCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
 
+function clearCtxBear() {
+    ctxBearCanvas.clearRect(0, 0, gameWidth, gameHeight);
+}
+
 function clearCtxEnemy() {
     ctxEnemyCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
@@ -445,7 +491,7 @@ function drawBackground() {
 }
 
 // function drawPlayer() {
-//     ctxMap.drawImage(folke, 0, 0, 150, 175, // размер c ajust_size (mac)
+//     ctxMap.drawImage(playerImg, 0, 0, 150, 175, // размер c ajust_size (mac)
 //         0, 0, 150, 175);
 // }
 
@@ -459,11 +505,11 @@ function clearRectangle() {
 }
 
 function checkOtherEnemies (enemy) {
-    // Sort enemies by Y position:
+    // Сортировка enemies по Y позиции:
     var sorted = enemies.sort(function (a, b) {
         return a.drawY >= b.drawY;
     });
-    // If current enemy overlaps with any of the existing enemies then move it down.
+    // Если текущий enemy накладывается на любого из существующих противников, то перемещаем его вниз
     for (var i = 0; i < sorted.length; i++) {
         if ((enemy.drawY >= sorted[i].drawY && enemy.drawY <= sorted[i].drawY + enemy.height)
           || (enemy.drawY <= sorted[i].drawY && enemy.drawY >= sorted[i].drawY - enemy.height)) {

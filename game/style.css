@@ -19,8 +19,9 @@ canvas {
 }
 
 #player,
+#bear,
 #enemy,
 #stats {
     display: block;
-    margin: -768px auto 0;
+    margin: -720px auto 0;
 }
