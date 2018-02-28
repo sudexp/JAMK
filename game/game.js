@@ -17,6 +17,8 @@ var clearButton; // переменная для кнопки clear
 
 var gameWidth = 1024;
 var gameHeight = 768;
+// Take the size of the viewport minus the top div with we show mouse coordinates (#gameName):
+// var gameHeight = document.documentElement.clientHeight - 34;
 
 var background = new Image(); // переменная, отвечающая за фон
 background.src = 'images/forest.jpg'; // путь к этому изображению
@@ -30,6 +32,7 @@ folke.src = 'images/folke.jpg';
 
 var player;
 var enemies = []; // массив переменных enemy
+window.enemies = enemies; // to access enemies from console for debugging
 // var enemy;
 // var enemy2;
 
@@ -42,8 +45,8 @@ var map1X = gameWidth; // второй background появится справа 
 
 // переменные для создания объектов-врагов
 var createInterval; // интервал создания объектов
-var createTime = 5000; // время, через которое вызывается функция startCreatingEnemies() (задается в милисекундах, 1с = 1000мс)
-var createAmount = 7; // количество объектов, которое будет появляться, когда проходит определенное время
+var createTime = 1000; // время, через которое вызывается функция startCreatingEnemies() (задается в милисекундах, 1с = 1000мс)
+var createAmount = 3; // количество объектов, которое будет появляться, когда проходит определенное время
 
 // переменные для использования мыши
 var mouseX;
@@ -140,10 +143,15 @@ function resetHealth() {
 }
 
 // функция создания обхектов enemy (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
-// объекты содержатся на канвасе Emeny
+// объекты содержатся на канвасе Enemy
 function createEnemy(count) {
-    for(var i = 0; i < count; i++) {
-        enemies[i] = new Enemy(); // для каждого элемента массива enemies[] создается новый объект Enemy
+    // to keep the amount not more than "createAmount"
+    var newCount = count - enemies.length;
+    for(var i = 0; i < newCount; i++) {
+        // every time we call this function we need to add new elements to the end of "enemies" array
+        // (and keep all existing)
+        var newEnemy = new Enemy()
+        enemies.push(newEnemy); // для каждого элемента массива enemies[] создается новый объект Enemy
     }
 }
 
@@ -160,6 +168,7 @@ function stopCreatingEnemies() {
     clearInterval(createInterval); // очищаем интервал - с помощью этой функции удаляются все объекты на сцене 
 }
 
+// Calls itself recursively, asking browser for whenever its ready to animate (requestAnimationFrame)
 function loop() {
     if(isPlaying) {
         draw();
@@ -191,7 +200,7 @@ function draw() {
 }
 
 function update() {
-    console.log('loop');
+    // console.log('loop');
     moveBackground();
     drawBackground();
     updateStats();
@@ -238,14 +247,31 @@ function Player() { // this --> Player
 function Enemy() {
     this.srcX = 0;
     this.srcY = 0;
-    this.drawX = Math.floor(Math.random() * gameWidth) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
+    this.drawX = Math.floor(Math.random() * gameWidth / 2) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
+    // this.drawX = gameWidth;
     // gameWidth=1024 - появление объекта по координате X
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
     this.drawY = Math.floor(Math.random() * gameHeight); // появление объекта по оси Y на случайной позиции
     this.width = 100;
     this.height = 100;
 
-    this.speed = 10;
+    // Correct position if its off down the screen:
+    // (double height in case another enemy overlaps with current, so we leave the last space for it)
+    if (this.drawY + 2 * this.height > gameHeight) {
+        this.drawY = gameHeight - 2 * this.height;
+    }
+    // Correct position if its off up the screen:
+    if (this.drawY < 67) {
+        this.drawY = 67;  // not sure why its 67px up.
+    }
+
+    checkOtherEnemies(this)
+
+    // this.speed = 10;
+    // Make speed randomly different (5 to 7)
+    this.speed = Math.floor(3 * Math.random()) + 5;
+
+    // console.log(`New enemy: ${this.drawY}`);
 }
 
 Player.prototype.draw = function() {
@@ -281,12 +307,22 @@ Player.prototype.update = function() {
     }
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
     for(var i = 0; i < enemies.length; i++) {
-        if(this.drawX >= enemies[i].drawX && // ограничение игрока слева
-            this.drawY >= enemies[i].drawY && // ограничение игрока сверху
-            this.drawX <= enemies[i].drawX + enemies[i].width && // ограничение игрока справа
-            this.drawY <= enemies[i].drawY + enemies[i].height) {// ограничение игрока справа
-            health--;
+        var enemy = enemies[i]
+        if (
+            (this.drawY + this.height >= enemy.drawY && this.drawY <= enemy.drawY + enemy.height) &&
+            (this.drawX + this.width >= enemy.drawX && this.drawX <= enemy.drawX + enemy.width)
+        ) {
+          health--;
+          // Remove the enemy from the scene:
+          enemy.destroy();
         }
+
+        // if (this.drawX >= enemy.drawX && // ограничение игрока слева
+        //     this.drawY >= enemy.drawY && // ограничение игрока сверху
+        //     this.drawX <= enemy.drawX + enemy.width && // ограничение игрока справа
+        //     this.drawY <= enemy.drawY + enemy.height) {// ограничение игрока справа
+        //     health--;
+        // }
     }        
 }
 
@@ -316,8 +352,9 @@ Enemy.prototype.draw = function() {
 }
 
 Enemy.prototype.update = function() {
-    this.drawX -= 5; // ~ скорость объекта ("-" слева-направо)
-    if(this.drawX + this.width < 0) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
+    // this.drawX -= 5; // ~ скорость объекта ("-" слева-направо)
+    this.drawX -= this.speed;
+    if(this.drawX + this.width < 10) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
         // возвращаем его на начальную позицию со случайными координатами X и Y
         // this.drawX = Math.floor(Math.random() * gameWidth) + gameWidth; 
         // this.drawY = Math.floor(Math.random() * gameHeight);
@@ -328,6 +365,7 @@ Enemy.prototype.update = function() {
 
 // функция, которая будет удалять объект с массива
 Enemy.prototype.destroy = function() {
+    // console.log(`- destroying ${enemies.indexOf(this)} of ${enemies.length}`)
     enemies.splice(enemies.indexOf(this),1);// splice - встроенный в js метод (функция), который позволяет удалять любую переменную из массива
     // первый папаметр splice - это та позиция, с которой начинается удаление
     // второй параметр - количество элементов, которое нужно удалить из массива
@@ -336,7 +374,7 @@ Enemy.prototype.destroy = function() {
 
 // функция, отвечающая за нажатие клавиши клавиатуры
 function checkKeyDown(e){ // переменная e отвечает за: какая клавиша была нажата
-    var keyID = e.keyCode || e.which; // переменная поддержски старых браузеров
+    var keyID = e.keyCode || e.which; // переменная поддержки старых браузеров
     var keyChar = String.fromCharCode(keyID); // преобразуем значение в стринг для облечения оперирования данными
 
     if(keyChar == "W") {
@@ -398,9 +436,9 @@ function updateStats() {
 
 function drawBackground() {
     ctxMap.clearRect(0, 0, gameWidth, gameHeight); // стираем предыдущий кадр, которым было прошлое изображение
-    ctxMap.drawImage(background, 0, 0, 1024, 768, // размер именно картинки
+    ctxMap.drawImage(background, 0, 0, gameWidth, gameHeight, // размер именно картинки
         mapX, 0, gameWidth, gameHeight); // 0, 0, gameWidth, gameHeight - размер на экране
-    ctxMap.drawImage(background1, 0, 0, 1024, 768,
+    ctxMap.drawImage(background1, 0, 0, gameWidth, gameHeight,
         map1X, 0, gameWidth, gameHeight); // mapX (map1X), 0, gameWidth, gameHeight - для того, чтобы была возможность перемещать по Х координате (по Y движение фона не нужно)
 
 }
@@ -416,5 +454,19 @@ function drawRectangle() {
 }
 
 function clearRectangle() {
-    ctxMap.clearRect(0, 0, 1024, 768);
+    ctxMap.clearRect(0, 0, gameWidth, gameHeight);
+}
+
+function checkOtherEnemies (enemy) {
+    // Sort enemies by Y position:
+    var sorted = enemies.sort(function (a, b) {
+        return a.drawY >= b.drawY;
+    });
+    // If current enemy overlaps with any of the existing enemies then move it down.
+    for (var i = 0; i < sorted.length; i++) {
+        if ((enemy.drawY >= sorted[i].drawY && enemy.drawY <= sorted[i].drawY + enemy.height)
+          || (enemy.drawY <= sorted[i].drawY && enemy.drawY >= sorted[i].drawY - enemy.height)) {
+            enemy.drawY = sorted[i].drawY + enemy.height + 1
+        }
+    }
 }

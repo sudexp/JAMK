@@ -12,9 +12,9 @@
         display: none;
     }
 
-    .mini-img {
+    /* .mini-img {
         width: 8.4em;
-    }
+    } */
 }
     
 /* Portrait tablets and medium desktops */
@@ -124,9 +124,9 @@
         width: 19.6%;
     }
 
-    .mini-img {
+    /* .mini-img {
         width: 8.4em;
-    }  
+    }   */
 
     .copyright {
         border-top: 0.0625em solid #ececec;
@@ -245,9 +245,9 @@
         padding: 1.875em;
     }
 
-    .mini-img {
+    /* .mini-img {
         width: 10.08em;
-    }
+    } */
     
     .copyright {
         border-top: 0.0625em solid #ececec;
@@ -380,9 +380,9 @@
         padding-bottom: 0.625em;
     }
 
-    .mini-img {
+    /* .mini-img {
         width: 7.98em;
-    }  
+    }   */
 
     .footer-text {
         display: inline-block;
@@ -537,9 +537,9 @@
         padding-bottom: 0.625em;
     }
 
-    .mini-img {
+    /* .mini-img {
         width: 7.14em;
-    }  
+    }   */
     
     .footer-text {
         display: inline-block;
@@ -705,9 +705,9 @@
         width: 49.5%;
     }
 
-    .mini-img {
+    /* .mini-img {
         width: 10.08em;
-    }
+    } */
 
     .footer-text {
         display: inline-block;

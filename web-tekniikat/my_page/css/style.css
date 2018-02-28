@@ -386,17 +386,17 @@ progress::-moz-progress-bar {
 
 .wrap-photo {
     text-align: center;
-    display: inline-block;
-    width: 24.5%;
+    /* display: inline-block; */
+    /* width: 24.5%; */
     margin-bottom: 0.5em;
 }
 
-.wrap-photo a {
+/* .wrap-photo a {
     display: inline-block;
-}
+} */
 
 .mini-img {
-    width: 7.56em;
+    width: 100%;
     filter: grayscale(100%); 
     transition: 1000ms ease;
 }
