@@ -253,8 +253,8 @@ function Player() { // this --> Player
     // часть, связанная с рисованием
     this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
     this.srcY = 0;
-    this.drawX = 200; // рисование объекта
-    this.drawY = 200;
+    this.drawX = 250; // рисование объекта
+    this.drawY = 000;
     this.width = 150; // проверить после смены рисунка
     this.height = 175;
     // часть, связанная с апдэйтом
@@ -271,10 +271,10 @@ function Bear() {
     this.srcX = 0; 
     this.srcY = 0;
     this.drawX = 0;
-    this.drawY = 200;
+    this.drawY = 0;
     this.width = 150; 
     this.height = 100;
-    this.speed = 5;
+    this.speed = player.speed * 0.9;
 }
 
 function Enemy() {
@@ -351,7 +351,7 @@ Player.prototype.update = function() {
             (this.drawY + this.height >= enemy.drawY && this.drawY <= enemy.drawY + enemy.height) &&
             (this.drawX + this.width >= enemy.drawX && this.drawX <= enemy.drawX + enemy.width)
         ) {
-          health--;
+          health = health - 10;
           // Remove the enemy from the scene:
           enemy.destroy();
         }
@@ -381,18 +381,21 @@ Player.prototype.chooseDirection = function() {
 }
 
 Bear.prototype.update = function() {
-    // Сравнить координаты медведя и играка и вычислить новые относительно игрока:
+    // Сравнить координаты медведя и игрока и вычислить новые относительно игрока:
     // if (this.drawX < player.drawX) {
     //   this.drawX += 0.5 * this.speed;
     // } else {
     //   this.drawX -= 0.5 * this.speed;
     // }
+    this.drawX = player.drawX - 250;
+    // this.speed = player.speed * 0.9;
 
     if (this.drawY < player.drawY) {
         this.drawY += 0.5 * this.speed;
     } else {
         this.drawY -= 0.5 * this.speed;
     }
+    // this.drawY = player.drawY;
 }
 
 Enemy.prototype.draw = function() {
