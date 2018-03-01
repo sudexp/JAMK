@@ -25,10 +25,10 @@ var gameHeight = 720;
 // var gameHeight = document.documentElement.clientHeight - 34;
 
 var background = new Image(); // переменная, отвечающая за фон
-background.src = 'images/forest.jpg'; // путь к этому изображению
+background.src = 'images/forest.png'; // путь к этому изображению
 
 var background1 = new Image(); // 
-background1.src = 'images/forest.jpg'; // 
+background1.src = 'images/forest.png'; // 
 
 var playerImg = new Image();
 playerImg.src = 'images/folke.jpg';

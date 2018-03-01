@@ -26,7 +26,7 @@ function setupTheme($) { // функция присваивает обработ
             nappi.style.left = '0'; // устанавливаем смещение элемента nappi (который является cube) от левого края родительского элемента равным 0
         } else { // иначе (если значение класса у элемента body НЕ = dark) 
             body.className = 'dark'; // присваиваем ему dark
-            nappi.style.left = '0.9375em'; // устанавливаем смещение nappi.style.left равным 0.9375em
+            nappi.style.left = '0.75em'; // устанавливаем смещение nappi.style.left равным 0.75em
         }
     }            
 };
@@ -44,7 +44,7 @@ function setupTheme($) { // функция присваивает обработ
 //         } else {
 //             body.removeClass('light');
 //             body.addClass('dark');
-//             nappi.style({left: '0.9375em'});
+//             nappi.style({left: '0.75em'});
 //         }
 //     })           
 // };
@@ -57,12 +57,12 @@ function setupTheme($) { // функция присваивает обработ
 //          if (body.hasClass('dark')){
 //             $('#cube').style({left: '0'});
 //          } else {
-//             $('#cube').style({left: '0.9375em'});
+//             $('#cube').style({left: '0.75em'});
 //          }
 //     })           
 // };
 
-// CSS: body.dark #cube{ left: 0.9375em }
+// CSS: body.dark #cube{ left: 0.75em }
 // CSS: body.light #cube{ left: 0 }
 
 // Подключение прогресс-бара

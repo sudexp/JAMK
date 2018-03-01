@@ -18,7 +18,7 @@ body.dark #change_styles {
 
 body.dark #cube {
     background-color: #2d2e2e;
-    left: 0.9375em; 
+    left: 0.75em; 
 }
 
 body.dark figure,
@@ -140,6 +140,6 @@ body.dark .color-3 {
     }
     
     body.dark #cube {
-        left: 0.9375em!important; 
+        left: 0.75em!important; 
     }
 }
