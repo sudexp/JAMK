@@ -342,7 +342,7 @@ Player.prototype.update = function() {
     //     this.drawX = gameWidth - this.width - 300;
     // }
     if(health <= 0) {
-        resetHealth();
+        alert('GAME OVER');
     }
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
     for(var i = 0; i < enemies.length; i++) {
@@ -493,7 +493,7 @@ function clearCtxEnemy() {
 // ~ функция обновления информации
 function updateStats() {
     ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
-    ctxStatsCanvas.fillText("Heath: " + health, 30, 30);
+    ctxStatsCanvas.fillText("Health: " + health, 30, 30);
 }
 
 function drawBackground() {
