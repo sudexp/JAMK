@@ -31,7 +31,7 @@ var background1 = new Image(); //
 background1.src = 'images/forest.png'; // 
 
 var playerImg = new Image();
-playerImg.src = 'images/folke.jpg';
+playerImg.src = 'images/folke.gif';
 
 var bearImg = new Image();
 bearImg.src = 'images/bear.jpg';
@@ -255,8 +255,8 @@ function Player() { // this --> Player
     this.srcY = 0;
     this.drawX = 250; // рисование объекта
     this.drawY = 000;
-    this.width = 150; // проверить после смены рисунка
-    this.height = 175;
+    this.width = 100; // проверить после смены рисунка
+    this.height = 94;
     // часть, связанная с апдэйтом
     this.speed = 5;
     // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
@@ -405,7 +405,7 @@ Enemy.prototype.draw = function() {
     // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
-    ctxEnemyCanvas.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height,
+    ctxEnemyCanvas.drawImage(bearImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
 }
 
