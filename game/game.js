@@ -387,7 +387,8 @@ Bear.prototype.update = function() {
     // } else {
     //   this.drawX -= 0.5 * this.speed;
     // }
-    this.drawX = player.drawX - 250;
+    this.drawX = player.drawX - 0.5 * (this.width + player.width) - 2.5 * health;
+    
     // this.speed = player.speed * 0.9;
 
     if (this.drawY < player.drawY) {
