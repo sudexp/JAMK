@@ -269,9 +269,9 @@ function Player() { // this --> Player
 
 function Bear() { 
     this.srcX = 0; 
-    this.srcY = 200;
+    this.srcY = 0;
     this.drawX = 0;
-    this.drawY = 0;
+    this.drawY = 200;
     this.width = 150; 
     this.height = 100;
     this.speed = 5;
@@ -381,7 +381,18 @@ Player.prototype.chooseDirection = function() {
 }
 
 Bear.prototype.update = function() {
-    this.drawX += this.speed;      
+    // Сравнить координаты медведя и играка и вычислить новые относительно игрока:
+    // if (this.drawX < player.drawX) {
+    //   this.drawX += 0.5 * this.speed;
+    // } else {
+    //   this.drawX -= 0.5 * this.speed;
+    // }
+
+    if (this.drawY < player.drawY) {
+        this.drawY += 0.5 * this.speed;
+    } else {
+        this.drawY -= 0.5 * this.speed;
+    }
 }
 
 Enemy.prototype.draw = function() {
