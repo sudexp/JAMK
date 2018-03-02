@@ -16,6 +16,12 @@ var ctxEnemyCanvas; // context Enemy
 var statsCanvas;
 var ctxStatsCanvas;
 
+var axCanvas;
+var ctxAxCanvas;
+
+var gameOverCanvas;
+var ctxGameOverCanvas;
+
 var drawButton; // переменная для кнопки draw
 var clearButton; // переменная для кнопки clear
 
@@ -24,11 +30,11 @@ var gameHeight = 720;
 // Take the size of the viewport minus the top div with we show mouse coordinates (#gameName):
 // var gameHeight = document.documentElement.clientHeight - 34;
 
-var background = new Image(); // переменная, отвечающая за фон
-background.src = 'images/forest.png'; // путь к этому изображению
+var background1 = new Image(); // переменная, отвечающая за фон
+background1.src = 'images/forest.png'; // путь к этому изображению
 
-var background1 = new Image(); // 
-background1.src = 'images/forest.png'; // 
+var background2 = new Image(); // 
+background2.src = 'images/forest.png'; // 
 
 var playerImg1 = new Image();
 playerImg1.src = 'images/folke1.png';
@@ -39,8 +45,16 @@ playerImg2.src = 'images/folke2.png';
 var bearImg = new Image();
 bearImg.src = 'images/bear.png';
 
+var axImg = new Image();
+axImg.src = 'images/ax.jpg';
+
+var gameOverImg = new Image();
+gameOverImg.src = 'images/gameover.jpeg';
+
 var player;
 var bear;
+var ax;
+var gameOver;
 
 var enemies = []; // массив переменных enemy
 window.enemies = enemies; // to access enemies from console for debugging
@@ -49,11 +63,11 @@ window.enemies = enemies; // to access enemies from console for debugging
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 var health; // переменная, отвечающая за здоровье игрока
-var timer = 5000;
+var timer = 60000; // переменная, отвечающая за время игры
 
 // инициализация переменных движения фона по оси Х
-var mapX = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
-var map1X = gameWidth; // второй background появится справа от канваса (не будет виден)
+var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
+var map2X = gameWidth; // второй background появится справа от канваса (не будет виден)
 
 // переменные для создания объектов-врагов
 var createInterval; // интервал создания объектов
@@ -93,6 +107,12 @@ function init() {
     statsCanvas = document.getElementById('stats');
     ctxStatsCanvas = statsCanvas.getContext('2d');
 
+    axCanvas = document.getElementById('ax');
+    ctxAxCanvas = axCanvas.getContext('2d');
+
+    gameOverCanvas = document.getElementById('gameOver');
+    ctxGameOverCanvas = gameOverCanvas.getContext('2d');
+
     map.width = gameWidth;
     map.height = gameHeight;
     playerCanvas.width = gameWidth;
@@ -103,6 +123,10 @@ function init() {
     enemyCanvas.height = gameHeight;
     statsCanvas.width = gameWidth;
     statsCanvas.height = gameHeight;
+    axCanvas.width = gameWidth;
+    axCanvas.height = gameHeight;
+    gameOverCanvas.width = gameWidth;
+    gameOverCanvas.height = gameHeight;
     
     ctxStatsCanvas.fillStyle = '#3d3d3d'; // задаем стиль для отображения надписей с помощью встроенной переменной fillStyle
     ctxStatsCanvas.font = 'bold 24px Arial'; // задаем шрифт надписей с помощью встроенной переменной font
@@ -121,6 +145,8 @@ function init() {
 
     player = new Player();
     bear = new Bear();
+    ax = new Ax();
+    gameOver = new GameOver();
     // enemy = new Enemy();
     // enemy2 = new Enemy();
 
@@ -193,7 +219,7 @@ function startCreatingEnemies() {
     createInterval = setInterval(function(){createEnemy(createAmount)}, createTime); // инициализация переменной createInterval с помощью встроенной функции js 
     // первый параметр (аргумент) setInterval - это функция, которая должна вызываться через определенный отрезок времени
     // createEnemy - это та самая функция, которую нужно вызвать, чтобы создать определенное количество объектов
-    // второй парамент createAmount - время , через которое будет все это вызываться
+    // второй парамент createAmount - время, через которое будет все это вызываться
 }
 
 function stopCreatingEnemies() {
@@ -203,12 +229,12 @@ function stopCreatingEnemies() {
 // вызывает себя рекурсивно, запрашивая браузер всякий раз, когда он готов к анимации (requestAnimationFrame)
 function loop() {
     if(isPlaying) {
-        // if (timer <= 0) {
-        //     drawTopor();
-        // }
         draw();
         update();
         requestAnimationFrame(loop);
+        if (timer <= 0) {
+            ax.draw();
+        }
     }
 }
 
@@ -251,14 +277,14 @@ function update() {
 }
 
  function moveBackground() {
-     var vel = 4; // переменнная, отвечающая за скорость двивждения фона
-     mapX -= 4;
-     map1X -=4;
-     if(mapX + gameWidth < 0) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
-        mapX = gameWidth - 5; // вычитаем 5px, чтобы не было видно полос при соединии бэкграундов
+     var vel = 4; // переменнная, отвечающая за скорость движения фона
+     map1X -= 4;
+     map2X -=4;
+     if(map1X + gameWidth < 0) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
+        map1X = gameWidth - 5; // вычитаем 5px, чтобы не было видно полос при соединии бэкграундов
      }
-     if(map1X + gameWidth < 0) { // аналогично первому фону
-        map1X = gameWidth - 5;
+     if(map2X + gameWidth < 0) { // аналогично первому фону
+        map2X = gameWidth - 5;
      }
  }
 
@@ -289,6 +315,24 @@ function Bear() {
     this.width = 150; 
     this.height = 100;
     this.speed = player.speed * 0.9;
+}
+
+function Ax() { 
+    this.srcX = 0; 
+    this.srcY = 0;
+    this.drawX = 1180;
+    this.drawY = 270;
+    this.width = 100; 
+    this.height = 100;
+}
+
+function GameOver() { 
+    this.srcX = 0; 
+    this.srcY = 0;
+    this.drawX = 0;
+    this.drawY = 0;
+    this.width = 1000; 
+    this.height = 900;
 }
 
 function Enemy() {
@@ -341,6 +385,17 @@ Bear.prototype.draw = function() {
         this.drawX, this.drawY, this.width, this.height);
 }
 
+Ax.prototype.draw = function() {
+    ctxAxCanvas.drawImage(axImg, this.srcX, this.srcY, this.width, this.height,
+        this.drawX, this.drawY, this.width, this.height);
+}
+
+
+GameOver.prototype.draw = function() {
+    ctxGameOverCanvas.drawImage(gameOverImg, this.srcX, this.srcY, this.width, this.height,
+        this.drawX, this.drawY, this.width, this.height);
+}
+
 // функция для перемещения объекта-игрока по сцене (взаимодейтсвует с координатами объекта по сцене drawX и drawY)
 Player.prototype.update = function() {
     // this.drawX += 1;
@@ -366,6 +421,7 @@ Player.prototype.update = function() {
     if(health <= 0) {
         stopLoop();
         stopCreatingEnemies();
+        gameOver.draw();
     }
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
     for(var i = 0; i < enemies.length; i++) {
@@ -410,7 +466,7 @@ Bear.prototype.update = function() {
     // } else {
     //   this.drawX -= 0.5 * this.speed;
     // }
-    this.drawX = player.drawX - 0.5 * (this.width + player.width) - 2.5 * health;
+    this.drawX = player.drawX - 0.5 * (this.width + player.width) - 2.0 * health;
     
     // this.speed = player.speed * 0.9;
 
@@ -516,15 +572,16 @@ function clearCtxEnemy() {
 // ~ функция обновления информации
 function updateStats() {
     ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
-    ctxStatsCanvas.fillText("Health: " + health, 30, 30);
+    ctxStatsCanvas.fillText("Health: " + health + "%", 30, 40);
+    ctxStatsCanvas.fillText("Time: " + timer/1000 + "s", 200, 40);
 }
 
 function drawBackground() {
     ctxMap.clearRect(0, 0, gameWidth, gameHeight); // стираем предыдущий кадр, которым было прошлое изображение
-    ctxMap.drawImage(background, 0, 0, gameWidth, gameHeight, // размер именно картинки
-        mapX, 0, gameWidth, gameHeight); // 0, 0, gameWidth, gameHeight - размер на экране
-    ctxMap.drawImage(background1, 0, 0, gameWidth, gameHeight,
-        map1X, 0, gameWidth, gameHeight); // mapX (map1X), 0, gameWidth, gameHeight - для того, чтобы была возможность перемещать по Х координате (по Y движение фона не нужно)
+    ctxMap.drawImage(background1, 0, 0, gameWidth, gameHeight, // размер именно картинки
+        map1X, 0, gameWidth, gameHeight); // 0, 0, gameWidth, gameHeight - размер на экране
+    ctxMap.drawImage(background2, 0, 0, gameWidth, gameHeight,
+        map2X, 0, gameWidth, gameHeight); // map1X (map2X), 0, gameWidth, gameHeight - для того, чтобы была возможность перемещать по Х координате (по Y движение фона не нужно)
 
 }
 

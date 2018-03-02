@@ -21,7 +21,9 @@ canvas {
 #player,
 #bear,
 #enemy,
-#stats {
+#stats,
+#ax,
+#gameOver {
     display: block;
     margin: -720px auto 0;
 }
