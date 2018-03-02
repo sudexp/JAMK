@@ -30,11 +30,14 @@ background.src = 'images/forest.png'; // путь к этому изображе
 var background1 = new Image(); // 
 background1.src = 'images/forest.png'; // 
 
-var playerImg = new Image();
-playerImg.src = 'images/folke.gif';
+var playerImg1 = new Image();
+playerImg1.src = 'images/folke1.png';
+
+var playerImg2 = new Image();
+playerImg2.src = 'images/folke2.png';
 
 var bearImg = new Image();
-bearImg.src = 'images/bear.jpg';
+bearImg.src = 'images/bear.png';
 
 var player;
 var bear;
@@ -46,6 +49,7 @@ window.enemies = enemies; // to access enemies from console for debugging
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 var health; // переменная, отвечающая за здоровье игрока
+var timer = 5000;
 
 // инициализация переменных движения фона по оси Х
 var mapX = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
@@ -133,6 +137,13 @@ function init() {
     document.addEventListener("keyup", checkKeyUp, false);
     document.addEventListener("mousemove", mouseMove, false);
     document.addEventListener("click", mouseClick, false); // "mouseclick" уже работать не будет!
+
+    // setinterval запускает функцию через 1000 мс постоянно
+    setInterval(function(){
+        if (timer > 0) {
+            timer -= 1000;
+        }
+    }, 1000)
 }
 
 // функции управления мышью
@@ -192,6 +203,9 @@ function stopCreatingEnemies() {
 // вызывает себя рекурсивно, запрашивая браузер всякий раз, когда он готов к анимации (requestAnimationFrame)
 function loop() {
     if(isPlaying) {
+        // if (timer <= 0) {
+        //     drawTopor();
+        // }
         draw();
         update();
         requestAnimationFrame(loop);
@@ -307,10 +321,18 @@ function Enemy() {
     // console.log(`New enemy: ${this.drawY}`);
 }
 
+var playerImgNum = 1; // значение либо 1, либо 2
+var count = 1;
+// эта функция вызывается каждый раз из цикла loop
 Player.prototype.draw = function() {
     clearCtxPlayer(); // удаление предыдущих кадров (изображений) при движении
-    ctxPlayerCanvas.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+    var playerImgCurrent = (playerImgNum === 1 ? playerImg1 : playerImg2); // до знака вопроса условие, если это условие true, то подставляется первое значение (после "?""), если false, то второе (после ":") 
+    ctxPlayerCanvas.drawImage(playerImgCurrent, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
         this.drawX, this.drawY, this.width, this.height);
+    if (count % 10 === 0) {
+        playerImgNum = (playerImgNum === 1 ? 2 : 1); // переключает между 1 и 2 (если 1 то 2, если не один то 1)
+    }
+    count++;
 }
 
 Bear.prototype.draw = function() {
@@ -342,7 +364,8 @@ Player.prototype.update = function() {
     //     this.drawX = gameWidth - this.width - 300;
     // }
     if(health <= 0) {
-        alert('GAME OVER');
+        stopLoop();
+        stopCreatingEnemies();
     }
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
     for(var i = 0; i < enemies.length; i++) {
