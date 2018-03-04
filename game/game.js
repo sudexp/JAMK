@@ -85,7 +85,7 @@ var createAmount = 8; // количество объектов, которое �
 // переменные для использования мыши
 var mouseX;
 var mouseY;
-var mouseControl = true;
+var mouseControl = false;
 
 // поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
 // window.requestAnimationFrame указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации.
@@ -291,6 +291,8 @@ function update() {
     // enemy.update();
 
     if(health <= 0) {
+        // player.drawX = bear.drawX; почему-то не рисует
+        // player.drawY = bear.drawY;
         stopLoop();
         stopCreatingEnemies();
         // gameOver.draw();
@@ -343,7 +345,7 @@ function Ax() {
     this.srcX = 0; 
     this.srcY = 0;
     this.drawX = 1180;
-    this.drawY = 270;
+    this.drawY = Math.floor(Math.random() * gameHeight);
     this.width = 100; 
     this.height = 100;
     this.speed = 5;
@@ -508,7 +510,7 @@ Bear.prototype.update = function() {
     // } else {
     //   this.drawX -= 0.5 * this.speed;
     // }
-    this.drawX = player.drawX - 0.5 * (this.width + player.width) - 2.0 * health;
+    this.drawX = player.drawX - 0.8 * player.width - health;
     
     // this.speed = player.speed * 0.9;
 
@@ -522,6 +524,10 @@ Bear.prototype.update = function() {
 
 Ax.prototype.update = function() {
     this.drawX -= this.speed;
+    if(this.drawX + this.width < 10) { 
+        this.destroy();
+        // ax.draw(); не работает?!
+    }
 }
 
 Enemy.prototype.draw = function() {
