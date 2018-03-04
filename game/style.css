@@ -23,6 +23,7 @@ canvas {
 #enemy,
 #stats,
 #ax,
+#win,
 #gameOver {
     display: block;
     margin: -720px auto 0;

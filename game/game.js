@@ -19,6 +19,9 @@ var ctxStatsCanvas;
 var axCanvas;
 var ctxAxCanvas;
 
+var winCanvas;
+var ctxWinCanvas;
+
 var gameOverCanvas;
 var ctxGameOverCanvas;
 
@@ -48,12 +51,17 @@ bearImg.src = 'images/bear.png';
 var axImg = new Image();
 axImg.src = 'images/ax.jpg';
 
+var winImg = new Image();
+winImg.src = 'images/win.jpg';
+
+
 var gameOverImg = new Image();
 gameOverImg.src = 'images/gameover.jpeg';
 
 var player;
 var bear;
 var ax;
+var win;
 var gameOver;
 
 var enemies = []; // массив переменных enemy
@@ -63,7 +71,7 @@ window.enemies = enemies; // to access enemies from console for debugging
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 var health; // переменная, отвечающая за здоровье игрока
-var timer = 60000; // переменная, отвечающая за время игры
+var timer = 20000; // переменная, отвечающая за время игры
 
 // инициализация переменных движения фона по оси Х
 var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
@@ -110,6 +118,9 @@ function init() {
     axCanvas = document.getElementById('ax');
     ctxAxCanvas = axCanvas.getContext('2d');
 
+    winCanvas = document.getElementById('win');
+    ctxWinCanvas = winCanvas.getContext('2d');
+
     gameOverCanvas = document.getElementById('gameOver');
     ctxGameOverCanvas = gameOverCanvas.getContext('2d');
 
@@ -125,6 +136,8 @@ function init() {
     statsCanvas.height = gameHeight;
     axCanvas.width = gameWidth;
     axCanvas.height = gameHeight;
+    winCanvas.width = gameWidth;
+    winCanvas.height = gameHeight;
     gameOverCanvas.width = gameWidth;
     gameOverCanvas.height = gameHeight;
     
@@ -146,12 +159,13 @@ function init() {
     player = new Player();
     bear = new Bear();
     ax = new Ax();
+    win = new Win();
     gameOver = new GameOver();
     // enemy = new Enemy();
     // enemy2 = new Enemy();
 
     // health = 100; // статичное здоровье
-    resetHealth();
+    setHealth();
 
     // drawBackground(); // статическая функция: загружается и не повторяется
     // drawPlayer();
@@ -196,7 +210,7 @@ function mouseClick(e) { // здесь в параметрах передает�
     document.getElementById('gameName').innerHTML = 'Clicked';
 }
 
-function resetHealth() {
+function setHealth() {
     health = 100;
 }
 
@@ -234,6 +248,7 @@ function loop() {
         requestAnimationFrame(loop);
         if (timer <= 0) {
             ax.draw();
+            ax.update();
         }
     }
 }
@@ -274,6 +289,12 @@ function update() {
         enemies[i].update();
     }
     // enemy.update();
+
+    if(health <= 0) {
+        stopLoop();
+        stopCreatingEnemies();
+        gameOver.draw();
+    }
 }
 
  function moveBackground() {
@@ -324,6 +345,16 @@ function Ax() {
     this.drawY = 270;
     this.width = 100; 
     this.height = 100;
+    this.speed = 5;
+}
+
+function Win() { 
+    this.srcX = 0; 
+    this.srcY = 0;
+    this.drawX = 0;
+    this.drawY = 0;
+    this.width = 500; 
+    this.height = 500;
 }
 
 function GameOver() { 
@@ -386,10 +417,15 @@ Bear.prototype.draw = function() {
 }
 
 Ax.prototype.draw = function() {
+    clearCtxAx();
     ctxAxCanvas.drawImage(axImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
 }
 
+Win.prototype.draw = function() {
+    ctxWinCanvas.drawImage(winImg, this.srcX, this.srcY, this.width, this.height,
+        this.drawX, this.drawY, this.width, this.height);
+}
 
 GameOver.prototype.draw = function() {
     ctxGameOverCanvas.drawImage(gameOverImg, this.srcX, this.srcY, this.width, this.height,
@@ -418,11 +454,7 @@ Player.prototype.update = function() {
     // if(this.drawX > gameWidth - this.width - 300) {
     //     this.drawX = gameWidth - this.width - 300;
     // }
-    if(health <= 0) {
-        stopLoop();
-        stopCreatingEnemies();
-        gameOver.draw();
-    }
+    
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
     for(var i = 0; i < enemies.length; i++) {
         var enemy = enemies[i]
@@ -478,6 +510,10 @@ Bear.prototype.update = function() {
     // this.drawY = player.drawY;
 }
 
+Ax.prototype.update = function() {
+    this.drawX -= this.speed;
+}
+
 Enemy.prototype.draw = function() {
     // clearCtxEnemy(); // удаление предыдущих кадров (изображений) при движении
     // ctxMap. - отрисовка объекта на карте
@@ -489,7 +525,7 @@ Enemy.prototype.draw = function() {
 }
 
 Enemy.prototype.update = function() {
-    // this.drawX -= 5; // ~ скорость объекта ("-" слева-направо)
+    // this.drawX -= 5; // ~ скорость объекта ("-" справа-налево)
     this.drawX -= this.speed;
     if(this.drawX + this.width < 10) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
         // возвращаем его на начальную позицию со случайными координатами X и Y
@@ -563,6 +599,10 @@ function clearCtxPlayer() {
 
 function clearCtxBear() {
     ctxBearCanvas.clearRect(0, 0, gameWidth, gameHeight);
+}
+
+function clearCtxAx() {
+    ctxAxCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
 
 function clearCtxEnemy() {
