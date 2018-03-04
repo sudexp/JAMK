@@ -45,8 +45,14 @@ playerImg1.src = 'images/folke1.png';
 var playerImg2 = new Image();
 playerImg2.src = 'images/folke2.png';
 
-var bearImg = new Image();
-bearImg.src = 'images/bear.png';
+var bearImg1 = new Image();
+bearImg1.src = 'images/bear2.png';
+
+var bearImg2 = new Image();
+bearImg2.src = 'images/bear6.png';
+
+var treeImg = new Image();
+treeImg.src = 'images/tree.png';
 
 var axImg = new Image();
 axImg.src = 'images/ax.jpg';
@@ -378,7 +384,7 @@ function Enemy() {
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
     this.drawY = Math.floor(Math.random() * gameHeight); // появление объекта по оси Y на случайной позиции
     this.width = 100;
-    this.height = 100;
+    this.height = 125;
 
     // Коррекция положения, если появляется ниже экрана
     // двойная высота в случае, если друной враг перекрывается настоящим, так что оставляем пространство для него 
@@ -400,23 +406,30 @@ function Enemy() {
 }
 
 var playerImgNum = 1; // значение либо 1, либо 2
-var count = 1;
+var countPl = 1;
 // эта функция вызывается каждый раз из цикла loop
 Player.prototype.draw = function() {
     clearCtxPlayer(); // удаление предыдущих кадров (изображений) при движении
     var playerImgCurrent = (playerImgNum === 1 ? playerImg1 : playerImg2); // до знака вопроса условие, если это условие true, то подставляется первое значение (после "?""), если false, то второе (после ":") 
     ctxPlayerCanvas.drawImage(playerImgCurrent, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
         this.drawX, this.drawY, this.width, this.height);
-    if (count % 10 === 0) {
+    if (countPl % 10 === 0) {
         playerImgNum = (playerImgNum === 1 ? 2 : 1); // переключает между 1 и 2 (если 1 то 2, если не один то 1)
     }
-    count++;
+    countPl++;
 }
 
+var bearImgNum = 1; // значение либо 1, либо 2
+var countBear = 1;
 Bear.prototype.draw = function() {
     clearCtxBear();
-    ctxBearCanvas.drawImage(bearImg, this.srcX, this.srcY, this.width, this.height,
+    var bearImgCurrent = (bearImgNum === 1 ? bearImg1 : bearImg2);
+    ctxBearCanvas.drawImage(bearImgCurrent, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
+    if (countBear % 10 === 0) {
+        bearImgNum = (bearImgNum === 1 ? 2 : 1);
+    }
+    countBear++;
 }
 
 Ax.prototype.draw = function() {
@@ -510,7 +523,7 @@ Bear.prototype.update = function() {
     // } else {
     //   this.drawX -= 0.5 * this.speed;
     // }
-    this.drawX = player.drawX - 0.8 * player.width - health;
+    this.drawX = player.drawX - 0.6 * player.width - health;
     
     // this.speed = player.speed * 0.9;
 
@@ -536,7 +549,7 @@ Enemy.prototype.draw = function() {
     // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
-    ctxEnemyCanvas.drawImage(bearImg, this.srcX, this.srcY, this.width, this.height,
+    ctxEnemyCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
 }
 
