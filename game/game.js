@@ -450,10 +450,15 @@ Player.prototype.update = function() {
     if(this.drawY > gameHeight - this.height) {
         this.drawY = gameHeight - this.height; // необходимо вычесть, так как начало координат объекта в левой верхней точке
     }
-    // !!! на будущее: чтобы ограничить объект по перемещению вперед
-    // if(this.drawX > gameWidth - this.width - 300) {
-    //     this.drawX = gameWidth - this.width - 300;
-    // }
+    // ограничение объекта по перемещению вперед
+    if(this.drawX > gameWidth - this.width - 900) {
+        this.drawX = gameWidth - this.width - 900;
+    }
+
+      // ограничение объекта по перемещению назад
+      if(this.drawX < gameWidth - this.width - 1000) {
+        this.drawX = gameWidth - this.width - 1000;
+    }
     
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
     for(var i = 0; i < enemies.length; i++) {
