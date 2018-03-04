@@ -71,7 +71,7 @@ window.enemies = enemies; // to access enemies from console for debugging
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 var health; // переменная, отвечающая за здоровье игрока
-var timer = 20000; // переменная, отвечающая за время игры
+var timer = 5000; // переменная, отвечающая за время игры
 
 // инициализация переменных движения фона по оси Х
 var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
@@ -293,7 +293,8 @@ function update() {
     if(health <= 0) {
         stopLoop();
         stopCreatingEnemies();
-        gameOver.draw();
+        // gameOver.draw();
+        document.getElementById('gameName').innerHTML = 'GAME OVER';
     }
 }
 
@@ -472,12 +473,16 @@ Player.prototype.update = function() {
           enemy.destroy();
         }
 
-        // if (this.drawX >= enemy.drawX && // ограничение игрока слева
-        //     this.drawY >= enemy.drawY && // ограничение игрока сверху
-        //     this.drawX <= enemy.drawX + enemy.width && // ограничение игрока справа
-        //     this.drawY <= enemy.drawY + enemy.height) {// ограничение игрока справа
-        //     health--;
-        // }
+        if (this.drawX >= ax.drawX && // ограничение игрока слева
+            this.drawY >= ax.drawY && // ограничение игрока сверху
+            this.drawX <= ax.drawX + ax.width && // ограничение игрока справа
+            this.drawY <= ax.drawY + ax.height) {// ограничение игрока справа
+            // win.draw();
+            document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
+            stopLoop();
+            stopCreatingEnemies();
+            ax.destroy();
+        }
     }        
 }
 
@@ -548,6 +553,10 @@ Enemy.prototype.destroy = function() {
     // первый папаметр splice - это та позиция, с которой начинается удаление
     // второй параметр - количество элементов, которое нужно удалить из массива
     // конструкция с indexOf(this) позволяет удалять именно тот объект, который уходит со сцены
+}
+
+Ax.prototype.destroy = function() {
+    axCanvas.remove();
 }
 
 // функция, отвечающая за нажатие клавиши клавиатуры
