@@ -19,11 +19,11 @@ var ctxStatsCanvas;
 var axCanvas;
 var ctxAxCanvas;
 
-var winCanvas;
-var ctxWinCanvas;
+// var winCanvas;
+// var ctxWinCanvas;
 
-var gameOverCanvas;
-var ctxGameOverCanvas;
+// var gameOverCanvas;
+// var ctxGameOverCanvas;
 
 var drawButton; // переменная для кнопки draw
 var clearButton; // переменная для кнопки clear
@@ -57,18 +57,17 @@ treeImg.src = 'images/tree.png';
 var axImg = new Image();
 axImg.src = 'images/ax.jpg';
 
-var winImg = new Image();
-winImg.src = 'images/win.jpg';
+// var winImg = new Image();
+// winImg.src = 'images/win.jpg';
 
-
-var gameOverImg = new Image();
-gameOverImg.src = 'images/gameover.jpeg';
+// var gameOverImg = new Image();
+// gameOverImg.src = 'images/gameover.jpeg';
 
 var player;
 var bear;
 var ax;
-var win;
-var gameOver;
+// var win;
+// var gameOver;
 
 var enemies = []; // массив переменных enemy
 window.enemies = enemies; // to access enemies from console for debugging
@@ -124,11 +123,11 @@ function init() {
     axCanvas = document.getElementById('ax');
     ctxAxCanvas = axCanvas.getContext('2d');
 
-    winCanvas = document.getElementById('win');
-    ctxWinCanvas = winCanvas.getContext('2d');
+    // winCanvas = document.getElementById('win');
+    // ctxWinCanvas = winCanvas.getContext('2d');
 
-    gameOverCanvas = document.getElementById('gameOver');
-    ctxGameOverCanvas = gameOverCanvas.getContext('2d');
+    // gameOverCanvas = document.getElementById('gameOver');
+    // ctxGameOverCanvas = gameOverCanvas.getContext('2d');
 
     map.width = gameWidth;
     map.height = gameHeight;
@@ -142,10 +141,10 @@ function init() {
     statsCanvas.height = gameHeight;
     axCanvas.width = gameWidth;
     axCanvas.height = gameHeight;
-    winCanvas.width = gameWidth;
-    winCanvas.height = gameHeight;
-    gameOverCanvas.width = gameWidth;
-    gameOverCanvas.height = gameHeight;
+    // winCanvas.width = gameWidth;
+    // winCanvas.height = gameHeight;
+    // gameOverCanvas.width = gameWidth;
+    // gameOverCanvas.height = gameHeight;
     
     ctxStatsCanvas.fillStyle = '#3d3d3d'; // задаем стиль для отображения надписей с помощью встроенной переменной fillStyle
     ctxStatsCanvas.font = 'bold 24px Arial'; // задаем шрифт надписей с помощью встроенной переменной font
@@ -165,8 +164,9 @@ function init() {
     player = new Player();
     bear = new Bear();
     ax = new Ax();
-    win = new Win();
-    gameOver = new GameOver();
+    // win = new Win();
+    // gameOver = new GameOver();
+    
     // enemy = new Enemy();
     // enemy2 = new Enemy();
 
@@ -190,7 +190,7 @@ function mouseMove(e) { // здесь передается объект event, �
     // !!! Сделать изменения координат игрока со временем (8:56)
     if(!mouseControl)
         return;
-    mouseX = e.pageX - map.offsetLeft; // каждый раз обновляем координату Х, которая будет считавается по оси Х со всей вэб-страцницы (канвас не имеет определенных координат), даже когда мышь за пределами канваса
+    mouseX = e.pageX - map.offsetLeft; // каждый раз обновляем координату Х, которая будет считавается по оси Х со всей вэб-страницы (канвас не имеет определенных координат), даже когда мышь за пределами канваса
     mouseY = e.pageY - map.offsetTop; // при этом необходимо компенсировать расстояние, на которое смещен канвас от левого верхнего угла вэб-страцницы
     // добавляем координаты мыши в название игры (изменяем последнее)
     document.getElementById('gameName').innerHTML = 'X: '+mouseX+' Y: '+mouseY;
@@ -341,7 +341,7 @@ function Bear() {
 function Ax() {
     this.startPosition = 1180;
     this.randomPosition = Math.floor(Math.random() * gameHeight);
-    this.timerValue = 5000
+    this.timerValue = 5000 // время появления топора - изменить
 
     this.srcX = 0;
     this.srcY = 0;
@@ -364,23 +364,23 @@ function Ax() {
     }, 1000);
 }
 
-function Win() { 
-    this.srcX = 0; 
-    this.srcY = 0;
-    this.drawX = 0;
-    this.drawY = 0;
-    this.width = 500; 
-    this.height = 500;
-}
+// function Win() { 
+//     this.srcX = 0; 
+//     this.srcY = 0;
+//     this.drawX = 0;
+//     this.drawY = 0;
+//     this.width = 500; 
+//     this.height = 500;
+// }
 
-function GameOver() { 
-    this.srcX = 0; 
-    this.srcY = 0;
-    this.drawX = 0;
-    this.drawY = 0;
-    this.width = 1000; 
-    this.height = 900;
-}
+// function GameOver() { 
+//     this.srcX = 0; 
+//     this.srcY = 0;
+//     this.drawX = 0;
+//     this.drawY = 0;
+//     this.width = 1000; 
+//     this.height = 900;
+// }
 
 function Enemy() {
     this.srcX = 0;
@@ -447,15 +447,15 @@ Ax.prototype.draw = function() {
     }
 }
 
-Win.prototype.draw = function() {
-    ctxWinCanvas.drawImage(winImg, this.srcX, this.srcY, this.width, this.height,
-        this.drawX, this.drawY, this.width, this.height);
-}
+// Win.prototype.draw = function() {
+//     ctxWinCanvas.drawImage(winImg, this.srcX, this.srcY, this.width, this.height,
+//         this.drawX, this.drawY, this.width, this.height);
+// }
 
-GameOver.prototype.draw = function() {
-    ctxGameOverCanvas.drawImage(gameOverImg, this.srcX, this.srcY, this.width, this.height,
-        this.drawX, this.drawY, this.width, this.height);
-}
+// GameOver.prototype.draw = function() {
+//     ctxGameOverCanvas.drawImage(gameOverImg, this.srcX, this.srcY, this.width, this.height,
+//         this.drawX, this.drawY, this.width, this.height);
+// }
 
 // функция для перемещения объекта-игрока по сцене (взаимодейтсвует с координатами объекта по сцене drawX и drawY)
 Player.prototype.update = function() {
@@ -493,7 +493,8 @@ Player.prototype.update = function() {
             (this.drawX + this.width >= enemy.drawX && this.drawX <= enemy.drawX + enemy.width)
         ) {
           health = health - 10;
-          // Remove the enemy from the scene:
+        //   enemy.change();
+          // Удалить enemy со сцены:
           enemy.destroy();
         }
 
@@ -584,10 +585,15 @@ Enemy.prototype.update = function() {
 Enemy.prototype.destroy = function() {
     // console.log(`- destroying ${enemies.indexOf(this)} of ${enemies.length}`)
     enemies.splice(enemies.indexOf(this),1);// splice - встроенный в js метод (функция), который позволяет удалять любую переменную из массива
-    // первый папаметр splice - это та позиция, с которой начинается удаление
+    // первый параметр splice - это та позиция, с которой начинается удаление
     // второй параметр - количество элементов, которое нужно удалить из массива
     // конструкция с indexOf(this) позволяет удалять именно тот объект, который уходит со сцены
 }
+// https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+// замена объекта enemy
+// Enemy.prototype.change = function() {
+//     enemies.splice(enemies.indexOf(this),1[player.draw]);
+// }
 
 Ax.prototype.destroy = function() {
     axCanvas.remove();
