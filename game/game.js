@@ -307,9 +307,9 @@ function update() {
 }
 
  function moveBackground() {
-     var vel = 4; // переменнная, отвечающая за скорость движения фона
-     map1X -= 4;
-     map2X -=4;
+     var vel = 5; // переменнная, отвечающая за скорость движения фона
+     map1X -= 5;
+     map2X -= 5;
      if(map1X + gameWidth < 0) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
         map1X = gameWidth - 5; // вычитаем 5px, чтобы не было видно полос при соединии бэкграундов
      }
@@ -538,7 +538,8 @@ Bear.prototype.update = function() {
 Ax.prototype.update = function() {
     this.drawX -= this.speed;
     if(this.drawX + this.width < 10) { 
-        this.destroy();
+        // this.destroy();
+        timer = 20000;
         // ax.draw(); не работает?!
     }
 }
