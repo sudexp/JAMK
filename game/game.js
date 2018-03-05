@@ -77,7 +77,7 @@ window.enemies = enemies; // to access enemies from console for debugging
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 var health; // переменная, отвечающая за здоровье игрока
-var timer = 5000; // переменная, отвечающая за время игры
+// var timer = 5000; // переменная, отвечающая за время игры
 
 // инициализация переменных движения фона по оси Х
 var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
@@ -183,13 +183,6 @@ function init() {
     document.addEventListener("keyup", checkKeyUp, false);
     document.addEventListener("mousemove", mouseMove, false);
     document.addEventListener("click", mouseClick, false); // "mouseclick" уже работать не будет!
-
-    // setinterval запускает функцию через 1000 мс постоянно
-    setInterval(function(){
-        if (timer > 0) {
-            timer -= 1000;
-        }
-    }, 1000)
 }
 
 // функции управления мышью
@@ -252,10 +245,6 @@ function loop() {
         draw();
         update();
         requestAnimationFrame(loop);
-        if (timer <= 0) {
-            ax.draw();
-            ax.update();
-        }
     }
 }
 
@@ -273,6 +262,7 @@ function stopLoop() {
 function draw() {
     player.draw();
     bear.draw();
+    ax.draw();
 
     clearCtxEnemy();
     for(var i = 0; i < enemies.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
@@ -289,6 +279,7 @@ function update() {
     updateStats();
     player.update();
     bear.update();
+    ax.update();
 
     // по аналогии с draw():
     for(var i = 0; i < enemies.length; i++) {
@@ -347,14 +338,29 @@ function Bear() {
     this.speed = player.speed * 0.9;
 }
 
-function Ax() { 
-    this.srcX = 0; 
+function Ax() {
+    this.startPosition = 1180;
+    this.timerValue = 5000
+
+    this.srcX = 0;
     this.srcY = 0;
-    this.drawX = 1180;
+    this.drawX = this.startPosition;
     this.drawY = Math.floor(Math.random() * gameHeight);
     this.width = 100; 
     this.height = 100;
     this.speed = 5;
+    // Когда переменная isActive равна false, то топор не двигается.
+    this.isActive = false;
+    this.timer = this.timerValue;
+
+    // setinterval запускает функцию через 1000 мс постоянно
+    setInterval(function(){
+        if (ax.timer > 0) {
+            ax.timer -= 1000;
+        } else {
+            ax.isActive = true;
+        }
+    }, 1000);
 }
 
 function Win() { 
@@ -434,8 +440,10 @@ Bear.prototype.draw = function() {
 
 Ax.prototype.draw = function() {
     clearCtxAx();
-    ctxAxCanvas.drawImage(axImg, this.srcX, this.srcY, this.width, this.height,
-        this.drawX, this.drawY, this.width, this.height);
+    if (this.isActive) {
+        ctxAxCanvas.drawImage(axImg, this.srcX, this.srcY, this.width, this.height,
+            this.drawX, this.drawY, this.width, this.height);
+    }
 }
 
 Win.prototype.draw = function() {
@@ -488,10 +496,10 @@ Player.prototype.update = function() {
           enemy.destroy();
         }
 
-        if (this.drawX >= ax.drawX && // ограничение игрока слева
-            this.drawY >= ax.drawY && // ограничение игрока сверху
-            this.drawX <= ax.drawX + ax.width && // ограничение игрока справа
-            this.drawY <= ax.drawY + ax.height) {// ограничение игрока справа
+        if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
+            this.drawY + this.height >= ax.drawY && // игрок касается топора сверху
+            this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
+            this.drawY <= ax.drawY + ax.height) {   // игрок касается топора снизу
             // win.draw();
             document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
             stopLoop();
@@ -535,12 +543,16 @@ Bear.prototype.update = function() {
     // this.drawY = player.drawY;
 }
 
-Ax.prototype.update = function() {
-    this.drawX -= this.speed;
-    if(this.drawX + this.width < 10) { 
-        // this.destroy();
-        timer = 20000;
-        // ax.draw(); не работает?!
+Ax.prototype.update = function () {
+    if (this.isActive) {
+        this.drawX -= this.speed;
+        if (this.drawX + this.width < 0) {
+            // this.destroy();
+            this.isActive = false;
+            this.timer = this.timerValue;
+            this.drawX = this.startPosition;
+            // ax.draw(); не работает?!
+        }
     }
 }
 
@@ -647,7 +659,7 @@ function clearCtxEnemy() {
 function updateStats() {
     ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
     ctxStatsCanvas.fillText("Health: " + health + "%", 30, 40);
-    ctxStatsCanvas.fillText("Time: " + timer/1000 + "s", 200, 40);
+    ctxStatsCanvas.fillText("Time: " + ax.timer/1000 + "s", 200, 40);
 }
 
 function drawBackground() {
