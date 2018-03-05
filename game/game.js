@@ -340,12 +340,13 @@ function Bear() {
 
 function Ax() {
     this.startPosition = 1180;
+    this.randomPosition = Math.floor(Math.random() * gameHeight);
     this.timerValue = 5000
 
     this.srcX = 0;
     this.srcY = 0;
     this.drawX = this.startPosition;
-    this.drawY = Math.floor(Math.random() * gameHeight);
+    this.drawY = this.randomPosition;
     this.width = 100; 
     this.height = 100;
     this.speed = 5;
@@ -551,6 +552,7 @@ Ax.prototype.update = function () {
             this.isActive = false;
             this.timer = this.timerValue;
             this.drawX = this.startPosition;
+            this.drawY = this.randomPosition;
             // ax.draw(); не работает?!
         }
     }
