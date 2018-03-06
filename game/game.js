@@ -77,6 +77,7 @@ window.trees = trees; // to access trees from console for debugging
 var isPlaying; // переменная типа boolean (играем или нет?!)
 var health; // переменная, отвечающая за здоровье игрока
 // var timer = 5000; // переменная, отвечающая за время игры
+var collision = false; // переменная столкновений
 
 // инициализация переменных движения фона по оси Х
 var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
@@ -493,6 +494,7 @@ Player.prototype.update = function() {
             (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
         ) {
           health = health - 10;
+          collision = true;
         //   tree.change();
           // Удалить tree со сцены:
           tree.destroy();
@@ -565,14 +567,20 @@ Tree.prototype.draw = function() {
     // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
-    ctxTreeCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
+    if (collision == false) {
+        ctxTreeCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
+    }
+    else {
+        ctxTreeCanvas.drawImage(bearImg2, this.srcX, this.srcY, this.width, this.height,
+        this.drawX, this.drawY, this.width, this.height);
+    }
 }
 
 Tree.prototype.update = function() {
     // this.drawX -= 5; // ~ скорость объекта ("-" справа-налево)
     this.drawX -= this.speed;
-    if(this.drawX + this.width < 10) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
+    if(this.drawX + this.width < 0) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
         // возвращаем его на начальную позицию со случайными координатами X и Y
         // this.drawX = Math.floor(Math.random() * gameWidth) + gameWidth; 
         // this.drawY = Math.floor(Math.random() * gameHeight);
