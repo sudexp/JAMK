@@ -10,8 +10,8 @@ var ctxPlayerCanvas; // context Player
 var bearCanvas;
 var ctxBearCanvas; // context Bear
 
-var enemyCanvas;
-var ctxEnemyCanvas; // context Enemy
+var treeCanvas;
+var ctxtreeCanvas; // context tree
 
 var statsCanvas;
 var ctxStatsCanvas;
@@ -69,10 +69,10 @@ var ax;
 // var win;
 // var gameOver;
 
-var enemies = []; // массив переменных enemy
-window.enemies = enemies; // to access enemies from console for debugging
-// var enemy;
-// var enemy2;
+var trees = []; // массив переменных tree
+window.trees = trees; // to access trees from console for debugging
+// var tree;
+// var tree2;
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 var health; // переменная, отвечающая за здоровье игрока
@@ -84,7 +84,7 @@ var map2X = gameWidth; // второй background появится справа 
 
 // переменные для создания объектов-врагов
 var createInterval; // интервал создания объектов
-var createTime = 1000; // время, через которое вызывается функция startCreatingEnemies() (задается в милисекундах, 1с = 1000мс)
+var createTime = 1000; // время, через которое вызывается функция startCreatingtrees() (задается в милисекундах, 1с = 1000мс)
 var createAmount = 8; // количество объектов, которое будет появляться, когда проходит определенное время
 
 // переменные для использования мыши
@@ -114,8 +114,8 @@ function init() {
     bearCanvas = document.getElementById('bear'); // переменная, отвечающая за канвас должна иметь в себе тег
     ctxBearCanvas = bearCanvas.getContext('2d');
 
-    enemyCanvas = document.getElementById('enemy');
-    ctxEnemyCanvas = enemyCanvas.getContext('2d');
+    treeCanvas = document.getElementById('trees');
+    ctxtreeCanvas = treeCanvas.getContext('2d');
 
     statsCanvas = document.getElementById('stats');
     ctxStatsCanvas = statsCanvas.getContext('2d');
@@ -135,8 +135,8 @@ function init() {
     playerCanvas.height = gameHeight;
     bearCanvas.width = gameWidth;
     bearCanvas.height = gameHeight;
-    enemyCanvas.width = gameWidth;
-    enemyCanvas.height = gameHeight;
+    treeCanvas.width = gameWidth;
+    treeCanvas.height = gameHeight;
     statsCanvas.width = gameWidth;
     statsCanvas.height = gameHeight;
     axCanvas.width = gameWidth;
@@ -167,8 +167,8 @@ function init() {
     // win = new Win();
     // gameOver = new GameOver();
     
-    // enemy = new Enemy();
-    // enemy2 = new Enemy();
+    // tree = new tree();
+    // tree2 = new tree();
 
     // health = 100; // статичное здоровье
     setHealth();
@@ -213,29 +213,29 @@ function setHealth() {
     health = 100;
 }
 
-// функция создания объектов enemy (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
-// объекты содержатся на канвасе Enemy
-function createEnemy(count) {
+// функция создания объектов tree (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
+// объекты содержатся на канвасе tree
+function createtree(count) {
     // чтобы иметь количество объектов не более чем в "createAmount"
-    var newCount = count - enemies.length;
+    var newCount = count - trees.length;
     for(var i = 0; i < newCount; i++) {
-        // каждый раз, когда мы вызываем эту функцию, мы добавляем новые элементы в конец массива enemies
+        // каждый раз, когда мы вызываем эту функцию, мы добавляем новые элементы в конец массива trees
         // (и сохраняем все существующие)
-        var newEnemy = new Enemy()
-        enemies.push(newEnemy); // для каждого элемента массива enemies[] создается новый объект Enemy
+        var newtree = new tree()
+        trees.push(newtree); // для каждого элемента массива trees[] создается новый объект tree
     }
 }
 
-function startCreatingEnemies() {
-    stopCreatingEnemies(); // вызывается для того, чтобы удалить все предыдущие объекты со сцены каждые 1с (createTime) 
+function startCreatingtrees() {
+    stopCreatingtrees(); // вызывается для того, чтобы удалить все предыдущие объекты со сцены каждые 1с (createTime) 
                             // иначе будет создано слишком много объектов --> сказывается на производительности
-    createInterval = setInterval(function(){createEnemy(createAmount)}, createTime); // инициализация переменной createInterval с помощью встроенной функции js 
+    createInterval = setInterval(function(){createtree(createAmount)}, createTime); // инициализация переменной createInterval с помощью встроенной функции js 
     // первый параметр (аргумент) setInterval - это функция, которая должна вызываться через определенный отрезок времени
-    // createEnemy - это та самая функция, которую нужно вызвать, чтобы создать определенное количество объектов
+    // createtree - это та самая функция, которую нужно вызвать, чтобы создать определенное количество объектов
     // второй парамент createAmount - время, через которое будет все это вызываться
 }
 
-function stopCreatingEnemies() {
+function stopCreatingtrees() {
     clearInterval(createInterval); // очищаем интервал - с помощью этой функции удаляются все объекты на сцене 
 }
 
@@ -251,7 +251,7 @@ function loop() {
 function startLoop() {
     isPlaying = true;
     loop(); // запускаем цикл
-    startCreatingEnemies(); // вызываем функцию создания врагов (можно вызвать в init или в цикле игры)
+    startCreatingtrees(); // вызываем функцию создания врагов (можно вызвать в init или в цикле игры)
 }
 
 function stopLoop() {
@@ -264,12 +264,12 @@ function draw() {
     bear.draw();
     ax.draw();
 
-    clearCtxEnemy();
-    for(var i = 0; i < enemies.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
-        enemies[i].draw(); // для каждого элемента массива enemies[] создается новый объект Enemy
+    clearCtxtree();
+    for(var i = 0; i < trees.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
+        trees[i].draw(); // для каждого элемента массива trees[] создается новый объект tree
     }
-    // enemy.draw();
-    // enemy2.draw();
+    // tree.draw();
+    // tree2.draw();
 }
 
 function update() {
@@ -282,16 +282,16 @@ function update() {
     ax.update();
 
     // по аналогии с draw():
-    for(var i = 0; i < enemies.length; i++) {
-        enemies[i].update();
+    for(var i = 0; i < trees.length; i++) {
+        trees[i].update();
     }
-    // enemy.update();
+    // tree.update();
 
     if(health <= 0) {
         // player.drawX = bear.drawX; почему-то не рисует
         // player.drawY = bear.drawY;
         stopLoop();
-        stopCreatingEnemies();
+        stopCreatingtrees();
         // gameOver.draw();
         document.getElementById('gameName').innerHTML = 'GAME OVER';
     }
@@ -341,7 +341,7 @@ function Bear() {
 function Ax() {
     this.startPosition = 1180;
     this.randomPosition = Math.floor(Math.random() * gameHeight);
-    this.timerValue = 5000 // время появления топора - изменить
+    this.timerValue = 90000 // время появления топора - изменить
 
     this.srcX = 0;
     this.srcY = 0;
@@ -382,7 +382,7 @@ function Ax() {
 //     this.height = 900;
 // }
 
-function Enemy() {
+function tree() {
     this.srcX = 0;
     this.srcY = 0;
     this.drawX = Math.floor(Math.random() * gameWidth / 2) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
@@ -403,13 +403,13 @@ function Enemy() {
         this.drawY = 67;  // не уверен, что это 67px
     }
 
-    checkOtherEnemies(this)
+    checkOthertrees(this)
 
     this.speed = 5;
     // сделать скорость слечайным образом (5 to 7)
     // this.speed = Math.floor(3 * Math.random()) + 5;
 
-    // console.log(`New enemy: ${this.drawY}`);
+    // console.log(`New tree: ${this.drawY}`);
 }
 
 var playerImgNum = 1; // значение либо 1, либо 2
@@ -486,16 +486,16 @@ Player.prototype.update = function() {
     }
     
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
-    for(var i = 0; i < enemies.length; i++) {
-        var enemy = enemies[i]
+    for(var i = 0; i < trees.length; i++) {
+        var tree = trees[i]
         if (
-            (this.drawY + this.height >= enemy.drawY && this.drawY <= enemy.drawY + enemy.height) &&
-            (this.drawX + this.width >= enemy.drawX && this.drawX <= enemy.drawX + enemy.width)
+            (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
+            (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
         ) {
           health = health - 10;
-        //   enemy.change();
-          // Удалить enemy со сцены:
-          enemy.destroy();
+        //   tree.change();
+          // Удалить tree со сцены:
+          tree.destroy();
         }
 
         if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
@@ -505,7 +505,7 @@ Player.prototype.update = function() {
             // win.draw();
             document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
             stopLoop();
-            stopCreatingEnemies();
+            stopCreatingtrees();
             ax.destroy();
         }
     }        
@@ -559,17 +559,17 @@ Ax.prototype.update = function () {
     }
 }
 
-Enemy.prototype.draw = function() {
-    // clearCtxEnemy(); // удаление предыдущих кадров (изображений) при движении
+tree.prototype.draw = function() {
+    // clearCtxtree(); // удаление предыдущих кадров (изображений) при движении
     // ctxMap. - отрисовка объекта на карте
     // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
-    ctxEnemyCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
+    ctxtreeCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
 }
 
-Enemy.prototype.update = function() {
+tree.prototype.update = function() {
     // this.drawX -= 5; // ~ скорость объекта ("-" справа-налево)
     this.drawX -= this.speed;
     if(this.drawX + this.width < 10) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
@@ -582,17 +582,17 @@ Enemy.prototype.update = function() {
 }
 
 // функция, которая будет удалять объект с массива
-Enemy.prototype.destroy = function() {
-    // console.log(`- destroying ${enemies.indexOf(this)} of ${enemies.length}`)
-    enemies.splice(enemies.indexOf(this),1);// splice - встроенный в js метод (функция), который позволяет удалять любую переменную из массива
+tree.prototype.destroy = function() {
+    // console.log(`- destroying ${trees.indexOf(this)} of ${trees.length}`)
+    trees.splice(trees.indexOf(this),1);// splice - встроенный в js метод (функция), который позволяет удалять любую переменную из массива
     // первый параметр splice - это та позиция, с которой начинается удаление
     // второй параметр - количество элементов, которое нужно удалить из массива
     // конструкция с indexOf(this) позволяет удалять именно тот объект, который уходит со сцены
 }
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-// замена объекта enemy
-// Enemy.prototype.change = function() {
-//     enemies.splice(enemies.indexOf(this),1[player.draw]);
+// замена объекта tree
+// tree.prototype.change = function() {
+//     trees.splice(trees.indexOf(this),1[player.draw]);
 // }
 
 Ax.prototype.destroy = function() {
@@ -659,8 +659,8 @@ function clearCtxAx() {
     ctxAxCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
 
-function clearCtxEnemy() {
-    ctxEnemyCanvas.clearRect(0, 0, gameWidth, gameHeight);
+function clearCtxtree() {
+    ctxtreeCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
 
 // ~ функция обновления информации
@@ -693,16 +693,16 @@ function clearRectangle() {
     ctxMap.clearRect(0, 0, gameWidth, gameHeight);
 }
 
-function checkOtherEnemies (enemy) {
-    // Сортировка enemies по Y позиции:
-    var sorted = enemies.sort(function (a, b) {
+function checkOthertrees (tree) {
+    // Сортировка trees по Y позиции:
+    var sorted = trees.sort(function (a, b) {
         return a.drawY >= b.drawY;
     });
-    // Если текущий enemy накладывается на любого из существующих противников, то перемещаем его вниз
+    // Если текущий tree накладывается на любого из существующих противников, то перемещаем его вниз
     for (var i = 0; i < sorted.length; i++) {
-        if ((enemy.drawY >= sorted[i].drawY && enemy.drawY <= sorted[i].drawY + enemy.height)
-          || (enemy.drawY <= sorted[i].drawY && enemy.drawY >= sorted[i].drawY - enemy.height)) {
-            enemy.drawY = sorted[i].drawY + enemy.height + 1
+        if ((tree.drawY >= sorted[i].drawY && tree.drawY <= sorted[i].drawY + tree.height)
+          || (tree.drawY <= sorted[i].drawY && tree.drawY >= sorted[i].drawY - tree.height)) {
+            tree.drawY = sorted[i].drawY + tree.height + 1
         }
     }
 }
