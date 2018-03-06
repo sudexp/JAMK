@@ -315,7 +315,7 @@ function Player() { // this --> Player
     this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
     this.srcY = 0;
     this.drawX = 250; // рисование объекта
-    this.drawY = 000;
+    this.drawY = Math.floor(Math.random() * gameHeight);
     this.width = 100; // проверить после смены рисунка
     this.height = 94;
     // часть, связанная с апдэйтом
@@ -332,7 +332,7 @@ function Bear() {
     this.srcX = 0; 
     this.srcY = 0;
     this.drawX = 0;
-    this.drawY = 0;
+    this.drawY = Math.floor(Math.random() * gameHeight);
     this.width = 150; 
     this.height = 100;
     this.speed = player.speed * 0.9;
