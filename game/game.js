@@ -11,7 +11,7 @@ var bearCanvas;
 var ctxBearCanvas; // context Bear
 
 var treeCanvas;
-var ctxtreeCanvas; // context tree
+var ctxTreeCanvas; // context Tree
 
 var statsCanvas;
 var ctxStatsCanvas;
@@ -84,7 +84,7 @@ var map2X = gameWidth; // второй background появится справа 
 
 // переменные для создания объектов-врагов
 var createInterval; // интервал создания объектов
-var createTime = 1000; // время, через которое вызывается функция startCreatingtrees() (задается в милисекундах, 1с = 1000мс)
+var createTime = 1000; // время, через которое вызывается функция startCreatingTrees() (задается в милисекундах, 1с = 1000мс)
 var createAmount = 8; // количество объектов, которое будет появляться, когда проходит определенное время
 
 // переменные для использования мыши
@@ -115,7 +115,7 @@ function init() {
     ctxBearCanvas = bearCanvas.getContext('2d');
 
     treeCanvas = document.getElementById('trees');
-    ctxtreeCanvas = treeCanvas.getContext('2d');
+    ctxTreeCanvas = treeCanvas.getContext('2d');
 
     statsCanvas = document.getElementById('stats');
     ctxStatsCanvas = statsCanvas.getContext('2d');
@@ -167,8 +167,8 @@ function init() {
     // win = new Win();
     // gameOver = new GameOver();
     
-    // tree = new tree();
-    // tree2 = new tree();
+    // tree = new Tree();
+    // tree2 = new Tree();
 
     // health = 100; // статичное здоровье
     setHealth();
@@ -214,28 +214,28 @@ function setHealth() {
 }
 
 // функция создания объектов tree (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
-// объекты содержатся на канвасе tree
-function createtree(count) {
+// объекты содержатся на канвасе Tree
+function createTree(count) {
     // чтобы иметь количество объектов не более чем в "createAmount"
     var newCount = count - trees.length;
     for(var i = 0; i < newCount; i++) {
         // каждый раз, когда мы вызываем эту функцию, мы добавляем новые элементы в конец массива trees
         // (и сохраняем все существующие)
-        var newtree = new tree()
-        trees.push(newtree); // для каждого элемента массива trees[] создается новый объект tree
+        var newTree = new Tree()
+        trees.push(newTree); // для каждого элемента массива trees[] создается новый объект Tree
     }
 }
 
-function startCreatingtrees() {
-    stopCreatingtrees(); // вызывается для того, чтобы удалить все предыдущие объекты со сцены каждые 1с (createTime) 
+function startCreatingTrees() {
+    stopCreatingTrees(); // вызывается для того, чтобы удалить все предыдущие объекты со сцены каждые 1с (createTime) 
                             // иначе будет создано слишком много объектов --> сказывается на производительности
-    createInterval = setInterval(function(){createtree(createAmount)}, createTime); // инициализация переменной createInterval с помощью встроенной функции js 
+    createInterval = setInterval(function(){createTree(createAmount)}, createTime); // инициализация переменной createInterval с помощью встроенной функции js 
     // первый параметр (аргумент) setInterval - это функция, которая должна вызываться через определенный отрезок времени
-    // createtree - это та самая функция, которую нужно вызвать, чтобы создать определенное количество объектов
+    // createTree - это та самая функция, которую нужно вызвать, чтобы создать определенное количество объектов
     // второй парамент createAmount - время, через которое будет все это вызываться
 }
 
-function stopCreatingtrees() {
+function stopCreatingTrees() {
     clearInterval(createInterval); // очищаем интервал - с помощью этой функции удаляются все объекты на сцене 
 }
 
@@ -251,7 +251,7 @@ function loop() {
 function startLoop() {
     isPlaying = true;
     loop(); // запускаем цикл
-    startCreatingtrees(); // вызываем функцию создания врагов (можно вызвать в init или в цикле игры)
+    startCreatingTrees(); // вызываем функцию создания врагов (можно вызвать в init или в цикле игры)
 }
 
 function stopLoop() {
@@ -264,9 +264,9 @@ function draw() {
     bear.draw();
     ax.draw();
 
-    clearCtxtree();
+    clearCtxTree();
     for(var i = 0; i < trees.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
-        trees[i].draw(); // для каждого элемента массива trees[] создается новый объект tree
+        trees[i].draw(); // для каждого элемента массива trees[] создается новый объект Tree
     }
     // tree.draw();
     // tree2.draw();
@@ -291,7 +291,7 @@ function update() {
         // player.drawX = bear.drawX; почему-то не рисует
         // player.drawY = bear.drawY;
         stopLoop();
-        stopCreatingtrees();
+        stopCreatingTrees();
         // gameOver.draw();
         document.getElementById('gameName').innerHTML = 'GAME OVER';
     }
@@ -341,7 +341,7 @@ function Bear() {
 function Ax() {
     this.startPosition = 1180;
     this.randomPosition = Math.floor(Math.random() * gameHeight);
-    this.timerValue = 90000 // время появления топора - изменить
+    this.timerValue = 5000 // время появления топора - изменить
 
     this.srcX = 0;
     this.srcY = 0;
@@ -382,7 +382,7 @@ function Ax() {
 //     this.height = 900;
 // }
 
-function tree() {
+function Tree() {
     this.srcX = 0;
     this.srcY = 0;
     this.drawX = Math.floor(Math.random() * gameWidth / 2) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
@@ -403,7 +403,7 @@ function tree() {
         this.drawY = 67;  // не уверен, что это 67px
     }
 
-    checkOthertrees(this)
+    checkOtherTrees(this)
 
     this.speed = 5;
     // сделать скорость слечайным образом (5 to 7)
@@ -505,7 +505,7 @@ Player.prototype.update = function() {
             // win.draw();
             document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
             stopLoop();
-            stopCreatingtrees();
+            stopCreatingTrees();
             ax.destroy();
         }
     }        
@@ -559,17 +559,17 @@ Ax.prototype.update = function () {
     }
 }
 
-tree.prototype.draw = function() {
-    // clearCtxtree(); // удаление предыдущих кадров (изображений) при движении
+Tree.prototype.draw = function() {
+    // clearCtxTree(); // удаление предыдущих кадров (изображений) при движении
     // ctxMap. - отрисовка объекта на карте
     // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
-    ctxtreeCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
+    ctxTreeCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
 }
 
-tree.prototype.update = function() {
+Tree.prototype.update = function() {
     // this.drawX -= 5; // ~ скорость объекта ("-" справа-налево)
     this.drawX -= this.speed;
     if(this.drawX + this.width < 10) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
@@ -582,7 +582,7 @@ tree.prototype.update = function() {
 }
 
 // функция, которая будет удалять объект с массива
-tree.prototype.destroy = function() {
+Tree.prototype.destroy = function() {
     // console.log(`- destroying ${trees.indexOf(this)} of ${trees.length}`)
     trees.splice(trees.indexOf(this),1);// splice - встроенный в js метод (функция), который позволяет удалять любую переменную из массива
     // первый параметр splice - это та позиция, с которой начинается удаление
@@ -591,7 +591,7 @@ tree.prototype.destroy = function() {
 }
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
 // замена объекта tree
-// tree.prototype.change = function() {
+// Tree.prototype.change = function() {
 //     trees.splice(trees.indexOf(this),1[player.draw]);
 // }
 
@@ -659,8 +659,8 @@ function clearCtxAx() {
     ctxAxCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
 
-function clearCtxtree() {
-    ctxtreeCanvas.clearRect(0, 0, gameWidth, gameHeight);
+function clearCtxTree() {
+    ctxTreeCanvas.clearRect(0, 0, gameWidth, gameHeight);
 }
 
 // ~ функция обновления информации
@@ -693,7 +693,7 @@ function clearRectangle() {
     ctxMap.clearRect(0, 0, gameWidth, gameHeight);
 }
 
-function checkOthertrees (tree) {
+function checkOtherTrees (tree) {
     // Сортировка trees по Y позиции:
     var sorted = trees.sort(function (a, b) {
         return a.drawY >= b.drawY;
