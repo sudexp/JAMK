@@ -4,8 +4,6 @@ window.onload = init; // метод, который будет вызывать�
 var map; // переменная для карты map
 var ctxMap; // переменная, через которую взаимодействуем с полотном игры
 
-var playerCanvas;
-var ctxPlayerCanvas; // context Player
 
 var bearCanvas;
 var ctxBearCanvas; // context Bear
@@ -37,13 +35,7 @@ var background1 = new Image(); // переменная, отвечающая з�
 background1.src = 'images/background.png'; // путь к этому изображению
 
 var background2 = new Image(); // 
-background2.src = 'images/background.png'; // 
-
-var playerImg1 = new Image();
-playerImg1.src = 'images/folke1.png';
-
-var playerImg2 = new Image();
-playerImg2.src = 'images/folke2.png';
+background2.src = 'images/background.png'; //
 
 var bearImg1 = new Image();
 bearImg1.src = 'images/bear1.png';
@@ -108,9 +100,6 @@ function init() {
     // https://professorweb.ru/my/html/html5/level4/4_1.php - canvas
     map = document.getElementById('map'); // первым делом сценарий должен получить объект холста, для чего используется метод document.getElementById.
     ctxMap = map.getContext('2d'); // затем метод getContext() генерирует двумерный контекст рисования, который будет связан с указанным холстом.
-    
-    playerCanvas = document.getElementById('player'); // переменная, отвечающая за канвас должна иметь в себе тег
-    ctxPlayerCanvas = playerCanvas.getContext('2d');
 
     bearCanvas = document.getElementById('bear'); // переменная, отвечающая за канвас должна иметь в себе тег
     ctxBearCanvas = bearCanvas.getContext('2d');
@@ -132,8 +121,6 @@ function init() {
 
     map.width = gameWidth;
     map.height = gameHeight;
-    playerCanvas.width = gameWidth;
-    playerCanvas.height = gameHeight;
     bearCanvas.width = gameWidth;
     bearCanvas.height = gameHeight;
     treeCanvas.width = gameWidth;
@@ -162,7 +149,7 @@ function init() {
     // drawRect.onclick = 
     clearButton.addEventListener('click', clearRectangle, false);
 
-    player = new Player();
+    player = new Player(gameHeight, gameWidth);
     bear = new Bear();
     ax = new Ax();
     // win = new Win();
@@ -170,9 +157,6 @@ function init() {
     
     // tree = new Tree();
     // tree2 = new Tree();
-
-    // health = 100; // статичное здоровье
-    setHealth();
 
     // drawBackground(); // статическая функция: загружается и не повторяется
     // drawPlayer();
@@ -208,10 +192,6 @@ function mouseClick(e) { // здесь в параметрах передает�
     // player.drawY = mouseY - player.height/2;
     // добавляем клик в название игры (изменяем последнее)
     document.getElementById('gameName').innerHTML = 'Clicked';
-}
-
-function setHealth() {
-    health = 100;
 }
 
 // функция создания объектов tree (не инициализируется в init() - вызывается во время того, как цикл игры продолжается)
@@ -278,7 +258,7 @@ function update() {
     moveBackground();
     drawBackground();
     updateStats();
-    player.update();
+    player.update(ax, trees);
     bear.update();
     ax.update();
 
@@ -310,24 +290,6 @@ function update() {
      }
  }
 
-// Объекты:
-function Player() { // this --> Player
-    // часть, связанная с рисованием
-    this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
-    this.srcY = 0;
-    this.drawX = 250; // рисование объекта
-    this.drawY = Math.floor(Math.random() * gameHeight);
-    this.width = 100; // проверить после смены рисунка
-    this.height = 105;
-    // часть, связанная с апдэйтом
-    this.speed = 5;
-    // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
-    // важно установить их значения на false, так как объект не должен перемещаться без воздействия на него
-    this.isUp = false;
-    this.isDown = false;
-    this.isRight = false;
-    this.isLeft = false;
-}
 
 function Bear() { 
     this.srcX = 0; 
@@ -413,20 +375,6 @@ function Tree() {
     // console.log(`New tree: ${this.drawY}`);
 }
 
-var playerImgNum = 1; // значение либо 1, либо 2
-var countPl = 1;
-// эта функция вызывается каждый раз из цикла loop
-Player.prototype.draw = function() {
-    clearCtxPlayer(); // удаление предыдущих кадров (изображений) при движении
-    var playerImgCurrent = (playerImgNum === 1 ? playerImg1 : playerImg2); // до знака вопроса условие, если это условие true, то подставляется первое значение (после "?""), если false, то второе (после ":") 
-    ctxPlayerCanvas.drawImage(playerImgCurrent, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
-        this.drawX, this.drawY, this.width, this.height);
-    if (countPl % 10 === 0) {
-        playerImgNum = (playerImgNum === 1 ? 2 : 1); // переключает между 1 и 2 (если 1 то 2, если не один то 1)
-    }
-    countPl++;
-}
-
 var bearImgNum = 1; // значение либо 1, либо 2
 var countBear = 1;
 Bear.prototype.draw = function() {
@@ -458,75 +406,6 @@ Ax.prototype.draw = function() {
 //         this.drawX, this.drawY, this.width, this.height);
 // }
 
-// функция для перемещения объекта-игрока по сцене (взаимодейтсвует с координатами объекта по сцене drawX и drawY)
-Player.prototype.update = function() {
-    // this.drawX += 1;
-    // this.drawY += 3; // движение по вертикали
-    this.chooseDirection();
-    if(this.drawX < 0) { // если координата X объекта меньше нуля (объект выходит за рамки канваса с левой стороны)
-        this.drawX = 0; // устанавливаем эту координату равной нулю (объект после этого не переместить влево за канвас)
-    }
-    // аналогично вышеизложенному для других координат:
-    if(this.drawX > gameWidth - this.width) {
-        this.drawX = gameWidth - this.width; // необходимо вычесть, так как начало координат объекта в левой верхней точке
-    } 
-    if(this.drawY < 0) {
-        this.drawY = 0;
-    } 
-    if(this.drawY > gameHeight - this.height) {
-        this.drawY = gameHeight - this.height; // необходимо вычесть, так как начало координат объекта в левой верхней точке
-    }
-    // ограничение объекта по перемещению вперед
-    if(this.drawX > gameWidth - this.width - 900) {
-        this.drawX = gameWidth - this.width - 900;
-    }
-
-      // ограничение объекта по перемещению назад
-      if(this.drawX < gameWidth - this.width - 1000) {
-        this.drawX = gameWidth - this.width - 1000;
-    }
-    
-    // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
-    for(var i = 0; i < trees.length; i++) {
-        var tree = trees[i]
-        if (
-            (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
-            (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
-        ) {
-          health = health - 10;
-          collision = true;
-        //   tree.change();
-          // Удалить tree со сцены:
-          tree.destroy();
-        }
-
-        if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
-            this.drawY + this.height >= ax.drawY && // игрок касается топора сверху
-            this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
-            this.drawY <= ax.drawY + ax.height) {   // игрок касается топора снизу
-            // win.draw();
-            document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
-            stopLoop();
-            stopCreatingTrees();
-            ax.destroy();
-        }
-    }        
-}
-
-Player.prototype.chooseDirection = function() {
-    if(this.isUp) {
-        this.drawY -= this.speed; // при перемещении вверх уменьшается координата Y
-    }
-    if(this.isDown) {
-        this.drawY += this.speed;
-    }
-    if(this.isRight) {
-        this.drawX += this.speed;
-    }
-    if(this.isLeft) {
-        this.drawX -= this.speed;
-    }
-}
 
 Bear.prototype.update = function() {
     // Сравнить координаты медведя и игрока и вычислить новые относительно игрока:
@@ -535,7 +414,7 @@ Bear.prototype.update = function() {
     // } else {
     //   this.drawX -= 0.5 * this.speed;
     // }
-    this.drawX = player.drawX - 0.6 * player.width - health;
+    this.drawX = player.drawX - 0.6 * player.width - player.health;
     
     // this.speed = player.speed * 0.9;
 
@@ -567,7 +446,7 @@ Tree.prototype.draw = function() {
     // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
-    if (collision == false) {
+    if (collision === false) {
         ctxTreeCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
     }
@@ -653,11 +532,6 @@ function checkKeyUp(e){
     }
 }
 
-// очищаем прямоугольную область в координатах 0, 0, gameWidth, gameHeight
-// метод вызывается перед передвижением изображения в Player.prototype.draw
-function clearCtxPlayer() {
-    ctxPlayerCanvas.clearRect(0, 0, gameWidth, gameHeight);
-}
 
 function clearCtxBear() {
     ctxBearCanvas.clearRect(0, 0, gameWidth, gameHeight);
@@ -674,7 +548,7 @@ function clearCtxTree() {
 // ~ функция обновления информации
 function updateStats() {
     ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
-    ctxStatsCanvas.fillText("Health: " + health + "%", 30, 40);
+    ctxStatsCanvas.fillText("Health: " + player.health + "%", 30, 40);
     ctxStatsCanvas.fillText("Time: " + ax.timer/1000 + "s", 200, 40);
 }
 
