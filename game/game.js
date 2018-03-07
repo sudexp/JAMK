@@ -55,7 +55,7 @@ var treeImg = new Image();
 treeImg.src = 'images/tree.png';
 
 var axImg = new Image();
-axImg.src = 'images/ax.jpg';
+axImg.src = 'images/ax.png';
 
 // var winImg = new Image();
 // winImg.src = 'images/win.jpg';
@@ -434,7 +434,7 @@ Bear.prototype.draw = function() {
     var bearImgCurrent = (bearImgNum === 1 ? bearImg1 : bearImg2);
     ctxBearCanvas.drawImage(bearImgCurrent, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
-    if (countBear % 10 === 0) {
+    if (countBear % 20 === 0) {
         bearImgNum = (bearImgNum === 1 ? 2 : 1);
     }
     countBear++;
