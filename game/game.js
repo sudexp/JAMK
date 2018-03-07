@@ -318,7 +318,7 @@ function Player() { // this --> Player
     this.drawX = 250; // рисование объекта
     this.drawY = Math.floor(Math.random() * gameHeight);
     this.width = 100; // проверить после смены рисунка
-    this.height = 94;
+    this.height = 105;
     // часть, связанная с апдэйтом
     this.speed = 5;
     // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
