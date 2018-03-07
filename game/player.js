@@ -93,26 +93,29 @@ Player.prototype.update = function(ax, trees) {
 
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
     for(var i = 0; i < trees.length; i++) {
-        var tree = trees[i]
-        if (
-            (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
-            (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
-        ) {
-            this.health -= 10;
-            // collision = true;
-            //   tree.change();
-            // Удалить tree со сцены:
-            tree.destroy();
+        var tree = trees[i];
+        // Проверяем только деревья, с которыми еще не столкнулись:
+        if (tree.collision === false){
+            if (
+                (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
+                (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
+            ) {
+                this.health -= 10;
+                tree.collision = true;
+                // Удалить tree со сцены:
+                // tree.destroy();
+            }
+
+            if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
+                this.drawY + this.height >= ax.drawY && // игрок касается топора сверху
+                this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
+                this.drawY <= ax.drawY + ax.height) {   // игрок касается топора снизу
+                // win.draw();
+                document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
+                this.win = true;
+            }
         }
 
-        if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
-            this.drawY + this.height >= ax.drawY && // игрок касается топора сверху
-            this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
-            this.drawY <= ax.drawY + ax.height) {   // игрок касается топора снизу
-            // win.draw();
-            document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
-            this.win = true
-        }
     }
 }
 

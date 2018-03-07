@@ -68,7 +68,6 @@ window.trees = trees; // to access trees from console for debugging
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
 // var timer = 5000; // переменная, отвечающая за время игры
-var collision = false; // переменная столкновений
 
 // инициализация переменных движения фона по оси Х
 var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
@@ -349,6 +348,7 @@ function Ax() {
 //     this.height = 900;
 // }
 
+// Класс Tree. Экземпляр класса создается: var tree1 = new Tree()
 function Tree() {
     this.srcX = 0;
     this.srcY = 0;
@@ -357,8 +357,12 @@ function Tree() {
     // gameWidth=1280 - появление объекта по координате X
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
     this.drawY = Math.floor(Math.random() * gameHeight); // появление объекта по оси Y на случайной позиции
+
+    // todo: сделать random.
     this.width = 94;
     this.height = 148;
+
+    this.collision = false; // флаг-переменная столкновений (у каждого дерева своя)
 
     // Коррекция положения, если появляется ниже экрана
     // двойная высота в случае, если друной враг перекрывается настоящим, так что оставляем пространство для него 
@@ -450,7 +454,7 @@ Tree.prototype.draw = function() {
     // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
-    if (collision === false) {
+    if (this.collision === false) {
         ctxTreeCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
     }
