@@ -67,7 +67,6 @@ window.trees = trees; // to access trees from console for debugging
 // var tree2;
 
 var isPlaying; // переменная типа boolean (играем или нет?!)
-var health; // переменная, отвечающая за здоровье игрока
 // var timer = 5000; // переменная, отвечающая за время игры
 var collision = false; // переменная столкновений
 
@@ -268,13 +267,18 @@ function update() {
     }
     // tree.update();
 
-    if(health <= 0) {
+    if(player.health <= 0) {
         // player.drawX = bear.drawX; почему-то не рисует
         // player.drawY = bear.drawY;
         stopLoop();
         stopCreatingTrees();
         // gameOver.draw();
         document.getElementById('gameName').innerHTML = 'GAME OVER';
+    }
+    if (player.win) {
+        stopLoop();
+        stopCreatingTrees();
+        ax.destroy();
     }
 }
 

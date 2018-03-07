@@ -2,7 +2,8 @@
 // Чтобы создать экземпляр класса: var player = new Player()
 function Player(gameHeight, gameWidth) { // this --> Player
     // Инициализируем свойства экземпляра:
-    this.health = 100;
+    this.health = 100;  // переменная, отвечающая за здоровье игрока
+    this.win = false
 
     // часть, связанная с рисованием
     this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
@@ -110,9 +111,7 @@ Player.prototype.update = function(ax, trees) {
             this.drawY <= ax.drawY + ax.height) {   // игрок касается топора снизу
             // win.draw();
             document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
-            // stopLoop();
-            // stopCreatingTrees();
-            ax.destroy();
+            this.win = true
         }
     }
 }
