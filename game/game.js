@@ -46,10 +46,10 @@ var playerImg2 = new Image();
 playerImg2.src = 'images/folke2.png';
 
 var bearImg1 = new Image();
-bearImg1.src = 'images/bear2.png';
+bearImg1.src = 'images/bear1.png';
 
 var bearImg2 = new Image();
-bearImg2.src = 'images/bear6.png';
+bearImg2.src = 'images/bear2.png';
 
 var treeImg = new Image();
 treeImg.src = 'images/tree.png';
@@ -334,8 +334,8 @@ function Bear() {
     this.srcY = 0;
     this.drawX = 0;
     this.drawY = Math.floor(Math.random() * gameHeight);
-    this.width = 150; 
-    this.height = 100;
+    this.width = 105; 
+    this.height = 75;
     this.speed = player.speed * 0.9;
 }
 
