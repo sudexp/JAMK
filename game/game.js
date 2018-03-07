@@ -34,10 +34,10 @@ var gameHeight = 720;
 // var gameHeight = document.documentElement.clientHeight - 34;
 
 var background1 = new Image(); // переменная, отвечающая за фон
-background1.src = 'images/forest.png'; // путь к этому изображению
+background1.src = 'images/background.png'; // путь к этому изображению
 
 var background2 = new Image(); // 
-background2.src = 'images/forest.png'; // 
+background2.src = 'images/background.png'; // 
 
 var playerImg1 = new Image();
 playerImg1.src = 'images/folke1.png';
@@ -391,8 +391,8 @@ function Tree() {
     // gameWidth=1280 - появление объекта по координате X
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
     this.drawY = Math.floor(Math.random() * gameHeight); // появление объекта по оси Y на случайной позиции
-    this.width = 100;
-    this.height = 125;
+    this.width = 94;
+    this.height = 148;
 
     // Коррекция положения, если появляется ниже экрана
     // двойная высота в случае, если друной враг перекрывается настоящим, так что оставляем пространство для него 
