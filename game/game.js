@@ -299,8 +299,8 @@ function Bear() {
     this.srcY = 0;
     this.drawX = 0;
     this.drawY = Math.floor(Math.random() * gameHeight);
-    this.width = 105; 
-    this.height = 83;
+    this.width = 110; 
+    this.height = 80;
     this.speed = player.speed * 0.9;
 }
 

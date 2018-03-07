@@ -10,8 +10,8 @@ function Player(gameHeight, gameWidth) { // this --> Player
     this.srcY = 0;
     this.drawX = 250; // рисование объекта
     this.drawY = Math.floor(Math.random() * gameHeight);
-    this.width = 100; // проверить после смены рисунка
-    this.height = 105;
+    this.width = 75; // проверить после смены рисунка
+    this.height = 77;
     // часть, связанная с апдэйтом
     this.speed = 5;
     // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
@@ -31,7 +31,7 @@ function Player(gameHeight, gameWidth) { // this --> Player
     this.playerImg2 = new Image();
     this.playerImg2.src = 'images/folke2.png';
     this.playerImgNum = 1; // значение либо 1, либо 2
-    this.countPl = 1;
+    this.countPl = 1; // счетчик, который увеличивается каждый раз при вызове функции draw (loop вызывает draw)
 
     this.init();
 }
