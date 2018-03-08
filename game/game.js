@@ -434,9 +434,13 @@ Bear.prototype.update = function() {
     // this.speed = player.speed * 0.9;
 
     if (this.drawY < player.drawY) {
-        this.drawY += 0.5 * this.speed;
-    } else {
-        this.drawY -= 0.5 * this.speed;
+        this.drawY += Math.floor(0.5 * this.speed);
+    }
+    else if (this.drawY > player.drawY) {
+        this.drawY -= Math.floor(0.5 * this.speed);
+    }
+    else {
+
     }
     // this.drawY = player.drawY;
 }
