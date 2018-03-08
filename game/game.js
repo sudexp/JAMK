@@ -43,8 +43,11 @@ bearImg1.src = 'images/bear1.png';
 var bearImg2 = new Image();
 bearImg2.src = 'images/bear2.png';
 
-var treeImg = new Image();
-treeImg.src = 'images/tree.png';
+var treeImg1 = new Image();
+treeImg1.src = 'images/tree1.png';
+
+var treeImg2 = new Image();
+treeImg2.src = 'images/tree2.png';
 
 var axImg = new Image();
 axImg.src = 'images/ax.png';
@@ -247,7 +250,7 @@ function draw() {
     for(var i = 0; i < trees.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
         trees[i].draw(); // для каждого элемента массива trees[] создается новый объект Tree
     }
-    // tree.draw();
+    // tree1.draw();
     // tree2.draw();
 }
 
@@ -300,7 +303,7 @@ function Bear() {
     this.drawX = 0;
     this.drawY = Math.floor(Math.random() * gameHeight);
     this.width = 110; 
-    this.height = 80;
+    this.height = 82;
     this.speed = player.speed * 0.9;
 }
 
@@ -313,8 +316,8 @@ function Ax() {
     this.srcY = 0;
     this.drawX = this.startPosition;
     this.drawY = this.randomPosition;
-    this.width = 100; 
-    this.height = 100;
+    this.width = 120; 
+    this.height = 79;
     this.speed = 5;
     // Когда переменная isActive равна false, то топор не двигается.
     this.isActive = false;
@@ -358,9 +361,13 @@ function Tree() {
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
     this.drawY = Math.floor(Math.random() * gameHeight); // появление объекта по оси Y на случайной позиции
 
-    // todo: сделать random.
+    // размеры tree1.png; todo: сделать random!?
     this.width = 94;
     this.height = 148;
+
+    // с учетом размеров падающих деревьев tree.2:
+    // this.width = 121;
+    // this.height = 148;
 
     this.collision = false; // флаг-переменная столкновений (у каждого дерева своя)
 
@@ -390,7 +397,7 @@ Bear.prototype.draw = function() {
     var bearImgCurrent = (bearImgNum === 1 ? bearImg1 : bearImg2);
     ctxBearCanvas.drawImage(bearImgCurrent, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
-    if (countBear % 20 === 0) {
+    if (countBear % 15 === 0) {
         bearImgNum = (bearImgNum === 1 ? 2 : 1);
     }
     countBear++;
@@ -455,11 +462,11 @@ Tree.prototype.draw = function() {
     //     this.drawX, this.drawY, this.width, this.height);
     // так как объект должен будет двигаться по сцене, его нужно отрисовать на другом канвасе
     if (this.collision === false) {
-        ctxTreeCanvas.drawImage(treeImg, this.srcX, this.srcY, this.width, this.height,
+        ctxTreeCanvas.drawImage(treeImg1, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
     }
     else {
-        ctxTreeCanvas.drawImage(bearImg2, this.srcX, this.srcY, this.width, this.height,
+        ctxTreeCanvas.drawImage(treeImg2, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
     }
 }
