@@ -3,9 +3,9 @@
 function Player(gameHeight, gameWidth) { // this --> Player
     // Инициализируем свойства экземпляра:
     this.health = 100;  // переменная, отвечающая за здоровье игрока
-    this.win = false
+    this.win = false;
 
-    // часть, связанная с рисованием
+    // часть, связанная с рисованием:
     this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
     this.srcY = 0;
     this.drawX = 250; // рисование объекта
@@ -31,7 +31,7 @@ function Player(gameHeight, gameWidth) { // this --> Player
     this.playerImg2 = new Image();
     this.playerImg2.src = 'images/folke2.png';
     this.playerImgNum = 1; // значение либо 1, либо 2
-    this.countPl = 1; // счетчик, который увеличивается каждый раз при вызове функции draw (loop вызывает draw)
+    this.countPlayer = 1; // счетчик, который увеличивается каждый раз при вызове функции draw (loop вызывает draw)
 
     this.init();
 }
@@ -57,10 +57,10 @@ Player.prototype.draw = function() {
     var playerImgCurrent = (this.playerImgNum === 1 ? this.playerImg1 : this.playerImg2); // до знака вопроса условие, если это условие true, то подставляется первое значение (после "?""), если false, то второе (после ":")
     this.ctxPlayerCanvas.drawImage(playerImgCurrent, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
         this.drawX, this.drawY, this.width, this.height);
-    if (this.countPl % 10 === 0) {
+    if (this.countPlayer % 10 === 0) {
         this.playerImgNum = (this.playerImgNum === 1 ? 2 : 1); // переключает между 1 и 2 (если 1 то 2, если не один то 1)
     }
-    this.countPl++;
+    this.countPlayer++;
 }
 
 // функция для перемещения объекта-игрока по сцене (взаимодейтсвует с координатами объекта по сцене drawX и drawY)
@@ -115,7 +115,6 @@ Player.prototype.update = function(ax, trees) {
                 this.win = true;
             }
         }
-
     }
 }
 
