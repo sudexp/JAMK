@@ -97,7 +97,7 @@ Player.prototype.update = function(ax, trees) {
         // Проверяем только деревья, с которыми еще не столкнулись:
         if (tree.collision === false){
             if (
-                (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
+                (this.drawY + this.height >= tree.drawY + 105 && this.drawY + 45 <= tree.drawY + tree.height) &&
                 (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
             ) {
                 this.health -= 10;
@@ -107,9 +107,9 @@ Player.prototype.update = function(ax, trees) {
             }
 
             if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
-                this.drawY + this.height >= ax.drawY && // игрок касается топора сверху
+                this.drawY + this.height >= ax.drawY + 45 && // игрок касается топора сверху
                 this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
-                this.drawY <= ax.drawY + ax.height) {   // игрок касается топора снизу
+                this.drawY + 45 <= ax.drawY + ax.height) {   // игрок касается топора снизу
                 // win.draw();
                 document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
                 this.win = true;

@@ -12,7 +12,7 @@ function Ax(gameHeight, gameWidth) {
     this.drawX = this.startPosition;
     this.drawY = this.randomPosition;
     this.width = 120; 
-    this.height = 79;
+    this.height = 83;
     this.speed = 5;
 
     // Добавляем свойства игры для доступа из методов Ax:
