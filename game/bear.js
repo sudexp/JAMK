@@ -68,10 +68,14 @@ Bear.prototype.update = function(player) {
         this.drawY += Math.floor(0.5 * this.speed);
     }
     else if (this.drawY > player.drawY) {
-        this.drawY -= Math.floor(0.5 * this.speed);
+        this.drawY -= Math.ceil(0.5 * this.speed);
     }
     else {
 
     }
+    // this.drawY = Math.round(this.drawY - Math.round(0.5 * this.speed));
+    // this.drawY += Math.floor(0.5 * this.speed);
+    // this.drawY.toFixed(0);
+    // this.drawY^0;
     // this.drawY = player.drawY;
 }
