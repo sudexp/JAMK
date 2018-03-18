@@ -4,9 +4,9 @@ function Ax(gameHeight, gameWidth) {
     // Инициализируем свойства экземпляра:
 
     // часть, связанная с рисованием
-    this.startPosition = 1180;
+    this.startPosition = 1200;
     this.randomPosition = Math.floor(Math.random() * gameHeight);
-    this.timerValue = 5000 // время появления топора - изменить
+    this.timerValue = 10000 // время появления топора - изменить
     this.srcX = 0;
     this.srcY = 0;
     this.drawX = this.startPosition;
@@ -69,7 +69,6 @@ Ax.prototype.update = function () {
             this.timer = this.timerValue;
             this.drawX = this.startPosition;
             this.drawY = this.randomPosition;
-            // ax.draw(); не работает?!
         }
     }
 }

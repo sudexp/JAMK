@@ -13,8 +13,9 @@ var ctxStatsCanvas;
 // var gameOverCanvas;
 // var ctxGameOverCanvas;
 
-var drawButton; // переменная для кнопки draw
-var clearButton; // переменная для кнопки clear
+// var drawButton; // переменная для кнопки draw
+// var clearButton; // переменная для кнопки clear
+var pauseButton;
 
 var gameWidth = 1280;
 var gameHeight = 720;
@@ -50,6 +51,7 @@ var isPlaying; // переменная типа boolean (играем или н�
 // инициализация переменных движения фона по оси Х
 var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
 var map2X = gameWidth; // второй background появится справа от канваса (не будет виден)
+var speed = 5;
 
 // переменные для создания объектов-врагов
 var treeMaxCount = 15; // количество объектов, которое будет появляться, когда проходит определенное время
@@ -98,17 +100,20 @@ function init() {
     ctxStatsCanvas.fillStyle = '#3d3d3d'; // задаем стиль для отображения надписей с помощью встроенной переменной fillStyle
     ctxStatsCanvas.font = 'bold 24px Arial'; // задаем шрифт надписей с помощью встроенной переменной font
 
-    drawButton = document.getElementById('drawButton');
-    clearButton = document.getElementById('clearButton');
+    // drawButton = document.getElementById('drawButton');
+    // clearButton = document.getElementById('clearButton');
 
-    drawButton.addEventListener('click', drawRectangle, false); // методы addEventListener и removeEventListener являются современным способом назначить или удалить обработчик, 
+    // drawButton.addEventListener('click', drawRectangle, false); // методы addEventListener и removeEventListener являются современным способом назначить или удалить обработчик, 
     // и при этом позволяют использовать сколько угодно любых обработчиков.
     // event - имя события, например click
     // handler - ссылка на функцию, которую надо поставить обработчиком.
     // phase - необязательный аргумент, «фаза», на которой обработчик должен сработать. 
     // jQuery --> drawButton.click(drawRectangle)
     // drawRect.onclick = 
-    clearButton.addEventListener('click', clearRectangle, false);
+    // clearButton.addEventListener('click', clearRectangle, false);
+
+    pauseButton = document.getElementById('pauseButton');
+    pauseButton.addEventListener('click', pauseGame, false);
 
     player = new Player(gameHeight, gameWidth);
     bear = new Bear(gameHeight, gameWidth, player);
@@ -210,10 +215,13 @@ function update() {
     if(player.health <= 0) {
         // player.drawX = bear.drawX; почему-то не рисует
         // player.drawY = bear.drawY;
+        
+        // player.health = 0;
+        updateStats();
         stopLoop();
         stopCreatingTrees();
         // gameOver.draw();
-        document.getElementById('gameName').innerHTML = 'GAME OVER';
+        document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
     }
     if (player.win) {
         stopLoop();
@@ -223,9 +231,9 @@ function update() {
 }
 
  function moveBackground() {
-     var vel = 5; // переменнная, отвечающая за скорость движения фона
-     map1X -= 5;
-     map2X -= 5;
+    //  var vel = 5; // переменнная, отвечающая за скорость движения фона
+     map1X -= speed;
+     map2X -= speed;
      if(map1X + gameWidth < 0) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
         map1X = gameWidth - 5; // вычитаем 5px, чтобы не было видно полос при соединии бэкграундов
      }
@@ -329,11 +337,37 @@ function drawBackground() {
 //         0, 0, 150, 175);
 // }
 
-function drawRectangle() {
-    ctxMap.fillStyle = '#3D3D3D';
-    ctxMap.fillRect(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
-}
+// function drawRectangle() {
+//     ctxMap.fillStyle = '#3D3D3D';
+//     ctxMap.fillRect(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
+// }
 
-function clearRectangle() {
-    ctxMap.clearRect(0, 0, gameWidth, gameHeight);
-}
+// function clearRectangle() {
+//     ctxMap.clearRect(0, 0, gameWidth, gameHeight);
+// }
+
+var pause = false;
+function pauseGame() {
+    if (pause == false) {
+        pause = true;
+        stopLoop();
+    }
+    else {
+        pause = false;
+        startLoop();
+    }
+};
+
+// var pauseButton = document.getElementById('pauseButton');
+// pauseButton.onclick = function() {
+//     if (this.innerHTML == 'Pause') {
+//         this.innerHTML = 'Go!';
+//         startLoop();
+//     }
+//     else {
+//         this.innerHTML = 'Pause';
+//         stopLoop();
+//     }
+//     //предотвращаем переход по ссылке href
+//     return false;
+// };

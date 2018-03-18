@@ -90,7 +90,7 @@ Player.prototype.update = function(ax, trees) {
     if(this.drawX < this.gameWidth - this.width - 1000) {
         this.drawX = this.gameWidth - this.width - 1000;
     }
-
+    // Реализация механизма столновения игрока с деревьями:
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
     for(var i = 0; i < trees.length; i++) {
         var tree = trees[i];
@@ -105,13 +105,13 @@ Player.prototype.update = function(ax, trees) {
                 // Удалить tree со сцены:
                 // tree.destroy();
             }
-
+            // Реализация столкновения с топором (победа в игре)
             if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
                 this.drawY + this.height >= ax.drawY + 45 && // игрок касается топора сверху
                 this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
                 this.drawY + 45 <= ax.drawY + ax.height) {   // игрок касается топора снизу
                 // win.draw();
-                document.getElementById('gameName').innerHTML = 'Congratulations! You win!';
+                document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
                 this.win = true;
             }
         }
