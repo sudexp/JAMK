@@ -99,6 +99,7 @@ function stopCreatingTrees() {
     clearInterval(treeCreationInterval); // очищаем интервал - с помощью этой функции удаляются все объекты на сцене
 }
 
+// var collisionTime;
 Tree.prototype.draw = function() {
     // clearCtxTree(); // удаление предыдущих кадров (изображений) при движении
     // ctxMap. - отрисовка объекта на карте
@@ -110,6 +111,10 @@ Tree.prototype.draw = function() {
         this.drawX, this.drawY, this.width, this.height);
     }
     else {
+        // stopLoop();
+        // startLoop();
+        // collisionTime = setTimeout(startLoop(), 500);
+        // clearTimeout(collisionTime);
         Tree.ctxTreeCanvas.drawImage(treeImg2, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
     }

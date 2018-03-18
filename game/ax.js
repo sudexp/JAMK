@@ -60,16 +60,16 @@ Ax.prototype.draw = function() {
     }
 }
 
-Ax.prototype.update = function () {
+Ax.prototype.update = function (bear, player, trees) {
     if (this.isActive) {
         this.drawX -= this.speed;
-        if (this.drawX + this.width < 0) {
-            // this.destroy();
-            this.isActive = false;
-            this.timer = this.timerValue;
-            this.drawX = this.startPosition;
-            this.drawY = this.randomPosition;
-        }
+        // if (this.drawX + this.width < 0) {
+        //     // this.destroy();
+        //     this.isActive = false;
+        //     this.timer = this.timerValue;
+        //     this.drawX = this.startPosition;
+        //     this.drawY = this.randomPosition;
+        // }
     }
 }
 

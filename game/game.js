@@ -62,6 +62,7 @@ var createInterval; // интервал создания объектов
 var mouseX;
 var mouseY;
 var mouseControl = false;
+var keyboardControl = true;
 
 // поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
 // window.requestAnimationFrame указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации.
@@ -275,21 +276,26 @@ function checkKeyDown(e){ // переменная e отвечает за: ка�
     var keyID = e.keyCode || e.which; // переменная поддержки старых браузеров
     var keyChar = String.fromCharCode(keyID); // преобразуем значение в стринг для облечения оперирования данными
 
-    if(keyChar == "W") {
-        player.isUp = true;
-        e.preventDefault();// функция устанавливает значение нажатой клавиши в состояние, в котором она была до этого
+    if (keyboardControl) {
+        if(keyChar == "W") {
+            player.isUp = true;
+            e.preventDefault();// функция устанавливает значение нажатой клавиши в состояние, в котором она была до этого
+        }
+        if(keyChar == "S") {
+            player.isDown = true;
+            e.preventDefault();
+        }
+        if(keyChar == "D") {
+            player.isRight = true;
+            e.preventDefault();
+        }
+        if(keyChar == "A") {
+            player.isLeft = true;
+            e.preventDefault();
+        }
     }
-    if(keyChar == "S") {
-        player.isDown = true;
-        e.preventDefault();
-    }
-    if(keyChar == "D") {
-        player.isRight = true;
-        e.preventDefault();
-    }
-    if(keyChar == "A") {
-        player.isLeft = true;
-        e.preventDefault();
+    else {
+
     }
 }
 
@@ -298,21 +304,26 @@ function checkKeyUp(e){
     var keyID = e.keyCode || e.which;
     var keyChar = String.fromCharCode(keyID);
 
-    if(keyChar == "W") {
-        player.isUp = false;
-        e.preventDefault();
+    if (keyboardControl) {
+        if(keyChar == "W") {
+            player.isUp = false;
+            e.preventDefault();
+        }
+        if(keyChar == "S") {
+            player.isDown = false;
+            e.preventDefault();
+        }
+        if(keyChar == "D") {
+            player.isRight = false;
+            e.preventDefault();
+        }
+        if(keyChar == "A") {
+            player.isLeft = false;
+            e.preventDefault();
+        }
     }
-    if(keyChar == "S") {
-        player.isDown = false;
-        e.preventDefault();
-    }
-    if(keyChar == "D") {
-        player.isRight = false;
-        e.preventDefault();
-    }
-    if(keyChar == "A") {
-        player.isLeft = false;
-        e.preventDefault();
+    else {
+
     }
 }
 

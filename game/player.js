@@ -106,6 +106,24 @@ Player.prototype.update = function(ax, trees) {
                 // tree.destroy();
             }
             // Реализация столкновения с топором (победа в игре)
+            if (ax.drawX + ax.width == 1000) {
+                keyboardControl = false;
+                // this.drawY = ax.drawY;
+                if (this.drawY < ax.drawY) {
+                    this.drawY += Math.floor(0.5 * this.speed);
+                }
+                else if (this.drawY > ax.drawY) {
+                    this.drawY -= Math.ceil(0.5 * this.speed);
+                }
+                else {
+            
+                }
+                // youWon = function() {
+                //     document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
+                //     this.win = true;
+                // }
+                // setTimeout(youWon, 3000);
+            }
             if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
                 this.drawY + this.height >= ax.drawY + 45 && // игрок касается топора сверху
                 this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
