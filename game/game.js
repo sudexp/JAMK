@@ -64,6 +64,8 @@ var mouseY;
 var mouseControl = false;
 var keyboardControl = true;
 
+var audio;
+
 // поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
 // window.requestAnimationFrame указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации.
 // В качестве параметра метод получает функцию, которая будет вызвана перед перерисовкой.
@@ -139,6 +141,10 @@ function init() {
     document.addEventListener("keyup", checkKeyUp, false);
     document.addEventListener("mousemove", mouseMove, false);
     document.addEventListener("click", mouseClick, false); // "mouseclick" уже работать не будет!
+
+    // audio = document.getElementById('audio');
+    audio = new Audio('track.mp3'); // cоздание объекта Audio в javascript
+    audio.play(); //воспроизведение звука
 }
 
 // функции управления мышью
@@ -362,10 +368,12 @@ function pauseGame() {
     if (pause == false) {
         pause = true;
         stopLoop();
+        audio.pause();
     }
     else {
         pause = false;
         startLoop();
+        audio.play(); //воспроизведение звука
     }
 };
 
@@ -382,3 +390,11 @@ function pauseGame() {
 //     //предотвращаем переход по ссылке href
 //     return false;
 // };
+
+// Функция stop для Audio:
+// HTMLAudioElement.prototype.stop = function()
+// {
+// this.pause();
+// this.currentTime = 0.0;
+// }
+// myaudio.stop(); // использование
