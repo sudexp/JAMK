@@ -228,6 +228,7 @@ function update() {
         stopLoop();
         stopCreatingTrees();
         // gameOver.draw();
+        audio.pause();
         document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
     }
     if (player.win) {

@@ -130,6 +130,7 @@ Player.prototype.update = function(ax, trees) {
                 this.drawY + 45 <= ax.drawY + ax.height) {   // игрок касается топора снизу
                 // win.draw();
                 document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
+                audio.stop();
                 this.win = true;
             }
         }
