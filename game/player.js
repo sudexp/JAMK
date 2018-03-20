@@ -64,7 +64,7 @@ Player.prototype.draw = function() {
 }
 
 // функция для перемещения объекта-игрока по сцене (взаимодейтсвует с координатами объекта по сцене drawX и drawY)
-Player.prototype.update = function(ax, trees) {
+Player.prototype.update = function(ax, trees, audio) {
     // this.drawX += 1;
     // this.drawY += 3; // движение по вертикали
     this.chooseDirection();
@@ -132,7 +132,7 @@ Player.prototype.update = function(ax, trees) {
                 this.drawY + 45 <= ax.drawY + ax.height) {   // игрок касается топора снизу
                 // win.draw();
                 document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
-                audio.stop();
+                audio.pause();
                 this.win = true;
             }
         }
