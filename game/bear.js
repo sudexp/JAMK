@@ -60,7 +60,7 @@ Bear.prototype.update = function(player) {
     // } else {
     //   this.drawX -= 0.5 * this.speed;
     // }
-    this.drawX = player.drawX - 0.6 * player.width - player.health;
+    this.drawX = player.drawX - 0.7 * player.width - player.health;
     
     // this.speed = player.speed * 0.9;
 
