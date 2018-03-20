@@ -3,6 +3,8 @@ var treeImg1 = new Image();
 treeImg1.src = 'images/tree1.png';
 var treeImg2 = new Image();
 treeImg2.src = 'images/tree2.png';
+var treeImg3 = new Image();
+treeImg3.src = 'images/tree3.png';
 
 // Функция-конструктор класса (объекта) Tree:
 // Чтобы создать экземпляр класса: var tree = new Tree()
@@ -117,7 +119,7 @@ Tree.prototype.draw = function(stopLoop, startLoop) {
         // clearTimeout(collisionTime);
         if (!this.usedForPause) {
             // рисуем все еще стоящее дерево:
-            Tree.ctxTreeCanvas.drawImage(treeImg1, this.srcX, this.srcY, this.width, this.height,
+            Tree.ctxTreeCanvas.drawImage(treeImg3, this.srcX, this.srcY, this.width, this.height,
             this.drawX, this.drawY, this.width, this.height);
             // Делаем паузу:
             stopLoop();
