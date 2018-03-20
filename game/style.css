@@ -26,5 +26,6 @@ canvas {
 #win,
 #gameOver */ {
     display: block;
+    position: relative;
     margin: -720px auto 0;
 }

@@ -14,6 +14,7 @@ function Player(gameHeight, gameWidth) { // this --> Player
     this.height = 77;
     // часть, связанная с апдэйтом
     this.speed = 5;
+    var treeOverlaps = false; // переменная, отвечающая за перекрытие
     // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
     // важно установить их значения на false, так как объект не должен перемещаться без воздействия на него
     this.isUp = false;
@@ -105,38 +106,41 @@ Player.prototype.update = function(ax, trees, audio) {
                 // Удалить tree со сцены:
                 // tree.destroy();
             }
-            // Реализация столкновения с топором (победа в игре)
-            if (ax.drawX + ax.width <= 1000) {
-                keyboardControl = false;
-                // this.drawY = ax.drawY;
-                if (this.drawY < ax.drawY) {
-                    this.drawY += Math.floor(0.2 * this.speed);
-                }
-                else if (this.drawY > ax.drawY) {
-                    this.drawY -= Math.ceil(0.2 * this.speed);
-                }
-                else {
-            
-                }
-
-                // youWon = function() {
-                //     document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
-                //     this.win = true;
-                // }
-                // setTimeout(youWon, 3000);
-            }
-
-            if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
-                this.drawY + this.height >= ax.drawY + 45 && // игрок касается топора сверху
-                this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
-                this.drawY + 45 <= ax.drawY + ax.height) {   // игрок касается топора снизу
-                // win.draw();
-                document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
-                audio.pause();
-                this.win = true;
-            }
         }
+        // Реализация столкновения с топором (победа в игре)
+        if (ax.drawX + ax.width <= 1000) {
+            keyboardControl = false;
+            // this.drawY = ax.drawY;
+            if (this.drawY < ax.drawY) {
+                this.drawY += Math.floor(0.2 * this.speed);
+            }
+            else if (this.drawY > ax.drawY) {
+                this.drawY -= Math.ceil(0.2 * this.speed);
+            }
+            else {
+        
+            }
+            // youWon = function() {
+            //     document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
+            //     this.win = true;
+            // }
+            // setTimeout(youWon, 3000);
+        }
+        if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
+            this.drawY + this.height >= ax.drawY + 45 && // игрок касается топора сверху
+            this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
+            this.drawY + 45 <= ax.drawY + ax.height) {   // игрок касается топора снизу
+            // win.draw();
+            document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
+            audio.pause();
+            this.win = true;
+        }
+    // todo:
+    // проверить пересекается ли игрок с конкретным деревом -> treeOverlaps = true
+    // сравнить значения координат Y?!
     }
+// todo:
+// установить дереву z-index больше,  чем у игрока, если treeOverlaps = true и его Y больше, в противном случае установить меньше.
 }
 
 Player.prototype.chooseDirection = function() {
