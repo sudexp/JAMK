@@ -29,3 +29,7 @@ canvas {
     position: relative;
     margin: -720px auto 0;
 }
+
+#player {
+    z-index: 1;
+}
