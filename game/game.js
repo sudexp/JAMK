@@ -196,10 +196,9 @@ function draw() {
     player.draw();
     bear.draw();
     ax.draw();
-
     Tree.clearCtx();
     for(var i = 0; i < Tree.trees.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
-        Tree.trees[i].draw(); // для каждого элемента массива trees[] создается новый объект Tree
+        Tree.trees[i].draw(stopLoop, startLoop); // для каждого элемента массива trees[] создается новый объект Tree
     }
     // tree1.draw();
     // tree2.draw();

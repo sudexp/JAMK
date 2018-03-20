@@ -27,6 +27,7 @@ function Tree(gameHeight, gameWidth) {
     // this.height = 148;
 
     this.collision = false; // флаг-переменная столкновений (у каждого дерева своя)
+    this.usedForPause = false; // будет использована для паузы во время столкновения
 
     // Коррекция положения, если появляется ниже экрана
     // двойная высота в случае, если друной враг перекрывается настоящим, так что оставляем пространство для него 
@@ -100,7 +101,7 @@ function stopCreatingTrees() {
 }
 
 // var collisionTime;
-Tree.prototype.draw = function() {
+Tree.prototype.draw = function(stopLoop, startLoop) {
     // clearCtxTree(); // удаление предыдущих кадров (изображений) при движении
     // ctxMap. - отрисовка объекта на карте
     // ctxMap.drawImage(playerImg, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
@@ -111,12 +112,26 @@ Tree.prototype.draw = function() {
         this.drawX, this.drawY, this.width, this.height);
     }
     else {
-        // stopLoop();
         // startLoop();
         // collisionTime = setTimeout(startLoop(), 500);
         // clearTimeout(collisionTime);
-        Tree.ctxTreeCanvas.drawImage(treeImg2, this.srcX, this.srcY, this.width, this.height,
-        this.drawX, this.drawY, this.width, this.height);
+        if (!this.usedForPause) {
+            // рисуем все еще стоящее дерево:
+            Tree.ctxTreeCanvas.drawImage(treeImg1, this.srcX, this.srcY, this.width, this.height,
+            this.drawX, this.drawY, this.width, this.height);
+            // Делаем паузу:
+            stopLoop();
+            setTimeout(function () {
+                startLoop();
+            }, 500);
+            // фиксируем флаг, что мы выполнили паузу:
+            this.usedForPause = true;
+        } 
+        else {
+            // рисуем упавшее дерево:
+            Tree.ctxTreeCanvas.drawImage(treeImg2, this.srcX, this.srcY, this.width, this.height,
+            this.drawX, this.drawY, this.width, this.height);
+        }
     }
 }
 
