@@ -144,6 +144,7 @@ function init() {
 
     // audio = document.getElementById('audio');
     audio = new Audio('track.mp3'); // cоздание объекта Audio в javascript
+    audio.loop = true; // воспроизведение по циклу
     audio.play(); //воспроизведение звука
 }
 

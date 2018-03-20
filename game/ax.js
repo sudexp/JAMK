@@ -6,7 +6,7 @@ function Ax(gameHeight, gameWidth) {
     // часть, связанная с рисованием
     this.startPosition = 1200;
     this.randomPosition = Math.floor(Math.random() * gameHeight);
-    this.timerValue = 10000 // время появления топора - изменить
+    this.timerValue = 30000 // время появления топора - изменить
     this.srcX = 0;
     this.srcY = 0;
     this.drawX = this.startPosition;
@@ -30,7 +30,7 @@ function Ax(gameHeight, gameWidth) {
     // setinterval запускает функцию через 1000 мс постоянно
     setInterval(function(){
         if (ax.timer > 0) {
-            ax.timer -= 1000;
+            ax.timer -= 5000;
         } else {
             ax.isActive = true;
         }
