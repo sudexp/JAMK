@@ -54,7 +54,7 @@ var map2X = gameWidth; // второй background появится справа 
 var speed = 5;
 
 // переменные для создания объектов-врагов
-var treeMaxCount = 15; // количество объектов, которое будет появляться, когда проходит определенное время
+var treeMaxCount = 10; // количество объектов, которое будет появляться, когда проходит определенное время
 var treeCreateTime = 1000; // время, через которое вызывается функция startCreatingTrees() (задается в милисекундах, 1с = 1000мс)
 var createInterval; // интервал создания объектов
 
@@ -366,7 +366,7 @@ function drawBackground() {
 
 var pause = false;
 function pauseGame() {
-    if (pause == false) {
+    if (pause === false) {
         pause = true;
         stopLoop();
         audio.pause();
