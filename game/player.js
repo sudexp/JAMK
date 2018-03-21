@@ -109,6 +109,7 @@ Player.prototype.update = function(ax, trees, audio) {
         }
         // Проверка на перекрытие
         if (
+            // (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
             ((this.drawY < tree.drawY + tree.height && this.drawY + 45 > tree.drawY + tree.height) || 
             (this.drawY + this.height > tree.drawY && this.drawY + this.height < tree.drawY + 105)) &&
             (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
