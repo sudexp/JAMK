@@ -14,7 +14,6 @@ function Player(gameHeight, gameWidth) { // this --> Player
     this.height = 77;
     // часть, связанная с апдэйтом
     this.speed = 5;
-    var treeOverlaps = false; // переменная, отвечающая за перекрытие
     // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
     // важно установить их значения на false, так как объект не должен перемещаться без воздействия на него
     this.isUp = false;
@@ -93,6 +92,10 @@ Player.prototype.update = function(ax, trees, audio) {
     }
     // Реализация механизма столновения игрока с деревьями:
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
+
+     // Переменная, отвечающая за перекрытие, в которое положим дерево, с которым произойдет перекрытие:
+    var overlapTree; 
+
     for(var i = 0; i < trees.length; i++) {
         var tree = trees[i];
         // Проверяем только деревья, с которыми еще не столкнулись:
@@ -110,15 +113,16 @@ Player.prototype.update = function(ax, trees, audio) {
         // Проверка на перекрытие
         if (
             // (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
-            ((this.drawY < tree.drawY + tree.height && this.drawY + 45 > tree.drawY + tree.height) || 
+            ((this.drawY < tree.drawY + tree.height && this.drawY + 45 > tree.drawY + tree.height) ||
             (this.drawY + this.height > tree.drawY && this.drawY + this.height < tree.drawY + 105)) &&
             (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
         ) {
-            this.treeOverlaps = true;
+            // Фиксируем факт перекрытия и запоминаем дерево, с которым игрок перекрылся:
+            overlapTree = tree;
         }
-        else {
-            this.treeOverlaps = false;
-        }
+        // else {
+        //     this.treeOverlaps = false;
+        // }
         // if (
         //     (this.drawY + this.height < tree.drawY + 105 && this.drawY + this.height >= tree.drawY) &&
         //     (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
@@ -133,12 +137,12 @@ Player.prototype.update = function(ax, trees, audio) {
         //     this.treeOverlaps = false;
         // } 
     }
-    if (this.treeOverlaps === true) {
-        if (this.drawY + this.height < tree.drawY + tree.height) {
+    if (overlapTree) {
+        if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
             Tree.treeCanvas.style.zIndex = 2;
         }
         // this.playerCanvas.style.zIndex = 1;
-        else if (this.drawY + this.height > tree.drawY + tree.height) {
+        else if (this.drawY + this.height > overlapTree.drawY + overlapTree.height) {
             Tree.treeCanvas.style.zIndex = 0;
         }
     }
