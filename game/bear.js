@@ -53,7 +53,7 @@ Bear.prototype.draw = function() {
     this.countBear++;
 }
 
-Bear.prototype.update = function(player) {
+Bear.prototype.update = function(player, trees) {
     // Сравнить координаты медведя и игрока и вычислить новые относительно игрока:
     // if (this.drawX < player.drawX) {
     //   this.drawX += 0.5 * this.speed;
@@ -78,4 +78,30 @@ Bear.prototype.update = function(player) {
     // this.drawY.toFixed(0);
     // this.drawY^0;
     // this.drawY = player.drawY;
+
+    // Реализация механизма перекрытия медведя с деревьями:
+    var overlapTree; // Переменная, отвечающая за перекрытие, в которое положим дерево, с которым произойдет перекрытие:
+
+    for(var i = 0; i < trees.length; i++) {
+        var tree = trees[i];
+        // Проверка на перекрытие
+        if (
+            (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
+            (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
+        ) {
+            // Фиксируем факт перекрытия и запоминаем дерево, с которым медведь перекрылся:
+            overlapTree = tree;
+        }
+    }
+    if (overlapTree) {
+        if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
+            // Tree.treeCanvas.style.zIndex = 2;
+            this.bearCanvas.style.zIndex = 0;
+        }
+        else if (this.drawY + this.height > overlapTree.drawY + overlapTree.height) {
+            // Tree.treeCanvas.style.zIndex = 0;
+            this.bearCanvas.style.zIndex = 3;
+        }
+    }
+    else this.bearCanvas.style.zIndex = 3;
 }

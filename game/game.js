@@ -210,7 +210,7 @@ function update() {
     drawBackground();
     updateStats();
     player.update(ax, Tree.trees, audio);
-    bear.update(player);
+    bear.update(player, Tree.trees);
     ax.update();
 
     // по аналогии с draw():

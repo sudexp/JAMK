@@ -90,11 +90,10 @@ Player.prototype.update = function(ax, trees, audio) {
     if(this.drawX < this.gameWidth - this.width - 1000) {
         this.drawX = this.gameWidth - this.width - 1000;
     }
-    // Реализация механизма столновения игрока с деревьями:
+    // Реализация механизма столновения и перекрытия игрока с деревьями:
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
 
-     // Переменная, отвечающая за перекрытие, в которое положим дерево, с которым произойдет перекрытие:
-    var overlapTree; 
+    var overlapTree; // Переменная, отвечающая за перекрытие, в которое положим дерево, с которым произойдет перекрытие:
 
     for(var i = 0; i < trees.length; i++) {
         var tree = trees[i];
@@ -139,14 +138,14 @@ Player.prototype.update = function(ax, trees, audio) {
     }
     if (overlapTree) {
         if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
-            Tree.treeCanvas.style.zIndex = 2;
+            Tree.treeCanvas.style.zIndex = 3;
         }
         // this.playerCanvas.style.zIndex = 1;
         else if (this.drawY + this.height > overlapTree.drawY + overlapTree.height) {
-            Tree.treeCanvas.style.zIndex = 0;
+            Tree.treeCanvas.style.zIndex = 1;
         }
     }
-    else Tree.treeCanvas.style.zIndex = 0;
+    else Tree.treeCanvas.style.zIndex = 1;
 
     // Реализация столкновения с топором (победа в игре)
     if (ax.drawX + ax.width <= 1000) {

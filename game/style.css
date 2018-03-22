@@ -30,6 +30,8 @@ canvas {
     margin: -720px auto 0;
 }
 
-#player {
-    z-index: 1;
+#player,
+#bear,
+#trees {
+    z-index: 2;
 }
