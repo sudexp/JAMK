@@ -6,9 +6,13 @@ body {
 }
 
 #intro {
-    height: 500;
-    background: red;
+    background-image: url(images/black_box.png);
+    height: 257px;
+    width: 450px;
     color: white;
+    margin: 0 auto;
+    position: relative;
+    top: 231,5px;
 }
 .instruction {
     display: none;
