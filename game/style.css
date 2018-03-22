@@ -5,6 +5,18 @@ body {
     cursor: pointer;
 }
 
+#intro {
+    height: 500;
+    background: red;
+    color: white;
+}
+.instruction {
+    display: none;
+}
+.instruction.active {
+    display: block;
+}
+
 #gameName {
     color: #fff;
     font-family: Courier New, Courier, monospace;

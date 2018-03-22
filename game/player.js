@@ -105,6 +105,7 @@ Player.prototype.update = function(ax, trees, audio) {
             ) {
                 this.health -= 10;
                 tree.collision = true;
+                // Tree.treeCanvas.style.zIndex = 0
                 // Удалить tree со сцены:
                 // tree.destroy();
             }

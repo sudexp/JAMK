@@ -5,6 +5,8 @@
         <title>Web-project Game</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="intro.js"></script>
         <script src="player.js"></script>
         <script src="bear.js"></script>
         <script src="trees.js"></script>
@@ -12,6 +14,21 @@
         <script src="game.js"></script>
     </head>
     <body>
+        <div id="intro">
+            Instructions here
+            <div id="instruction-1" class="instruction active">
+                One
+                <button onclick="next(2)">Next</button>
+            </div>
+            <div id="instruction-2" class="instruction">
+                Two
+                <button onclick="next(3)">Next</button>
+            </div>
+            <div id="instruction-3" class="instruction">
+                Three
+                <button onclick="start()">Next</button>
+            </div>
+        </div>
         <div id="gameName">Vikings new clothes: bears game</div>
         <!-- Canvas — это элемент HTML5, который позволяет рисовать графику на JavaScript. Сanvas можно использовать для текста, изображений, графики, видео, аудио, нарисовать прямоугольники, линии, градиенты и другие эффекты -->
         <canvas id="map"></canvas>
