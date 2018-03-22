@@ -115,8 +115,13 @@ function init() {
     // drawRect.onclick = 
     // clearButton.addEventListener('click', clearRectangle, false);
 
-    pauseButton = document.getElementById('pauseButton');
+    // Пауза в игре
+    pauseButton = document.getElementById('stats');
     pauseButton.addEventListener('click', pauseGame, false);
+    addEventListener("keydown", function(event) {
+        if (event.keyCode == 32)
+        pauseGame();
+    });
 
     player = new Player(gameHeight, gameWidth);
     bear = new Bear(gameHeight, gameWidth, player);
