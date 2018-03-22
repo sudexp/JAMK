@@ -5,6 +5,7 @@ function next (number) {
 }
 function start() {
     // document.getElementById('instructions').style.display = 'none'
+    $('#background').hide();
     $('#intro').hide();
     init();
 }

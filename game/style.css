@@ -5,14 +5,25 @@ body {
     cursor: pointer;
 }
 
+#background {
+    background-image: url(images/background_intro.png);
+    height: 720px;
+    width: 1280px;
+    margin: 0 auto;
+    position: relative;
+}
+
 #intro {
     background-image: url(images/black_box.png);
     height: 257px;
     width: 450px;
     color: white;
-    margin: 0 auto;
-    position: relative;
-    top: 231,5px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 .instruction {
     display: none;
