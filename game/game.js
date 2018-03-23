@@ -216,7 +216,7 @@ function update() {
     updateStats();
     player.update(ax, Tree.trees, audio);
     bear.update(player, Tree.trees);
-    ax.update();
+    ax.update(Tree.trees);
 
     // по аналогии с draw():
     for(var i = 0; i < Tree.trees.length; i++) {

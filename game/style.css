@@ -71,7 +71,8 @@ canvas {
 
 #player,
 #bear,
-#trees {
+#trees,
+#ax {
     z-index: 2;
 }
 

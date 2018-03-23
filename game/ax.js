@@ -60,7 +60,7 @@ Ax.prototype.draw = function() {
     }
 }
 
-Ax.prototype.update = function (bear, player, trees) {
+Ax.prototype.update = function (trees) {
     if (this.isActive) {
         this.drawX -= this.speed;
         // if (this.drawX + this.width < 0) {
@@ -70,6 +70,34 @@ Ax.prototype.update = function (bear, player, trees) {
         //     this.drawX = this.startPosition;
         //     this.drawY = this.randomPosition;
         // }
+        // Реализация механизма перекрытия топора с деревьями:
+        var overlapTree; // Переменная, отвечающая за перекрытие, в которое положим дерево, с которым произойдет перекрытие:
+        
+        for(var i = 0; i < trees.length; i++) {
+            var tree = trees[i];
+            // Проверка на перекрытие
+            if (
+                (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
+                (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
+            ) {
+                // Фиксируем факт перекрытия и запоминаем дерево, с которым топор перекрылся:
+                overlapTree = tree;
+            }
+        }
+        // window.bearOverlapTree = overlapTree;
+        if (overlapTree) {
+            if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
+                // Tree.treeCanvas.style.zIndex = 2;
+                this.axCanvas.style.zIndex = 0;
+            }
+            else if (this.drawY + this.height > overlapTree.drawY + overlapTree.height) {
+                // Tree.treeCanvas.style.zIndex = 0;
+                this.axCanvas.style.zIndex = 3;
+            }
+        }
+        else {
+            this.axCanvas.style.zIndex = 3;
+        }
     }
 }
 
