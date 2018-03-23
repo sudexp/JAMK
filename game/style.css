@@ -10,6 +10,11 @@ body {
     font-family: 'Norse Regular';
 }
 
+video  {
+    display: block;
+    margin: 0 auto;
+}
+
 #background_intro {
     background-image: url(images/background_intro.png);
     height: 720px;
