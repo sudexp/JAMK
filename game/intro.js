@@ -6,12 +6,17 @@
 window.onload = function() {
     var video = document.getElementById('animation');
     var skip = document.getElementById('skip_button');
+    skip.addEventListener('click', function () {
+        video.onended();
+    }, false);
     video.onended = function() {
         video.remove();
         skip.remove();
         document.getElementById('background_intro').style.display = 'block';
     };
 };
+
+
 
 function next (number) {
     // document.getElementById('instructions').style.display = 'none'

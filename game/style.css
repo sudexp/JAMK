@@ -18,11 +18,12 @@ video  {
 
 #skip_button {
     background-image: url(images/skip_button.png);
-    height: 114px;
-    width: 114px;
+    height: 100px;
+    width: 100px;
     position: absolute;
     bottom: 100px;
-    right: 100px;
+    right: 60px;
+    opacity: 0.4;
 }
 
 #background_intro {
