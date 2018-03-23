@@ -16,6 +16,7 @@ video  {
 }
 
 #background_intro {
+    display: none;
     background-image: url(images/background_intro.png);
     height: 720px;
     width: 1280px;
