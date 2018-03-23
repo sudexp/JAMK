@@ -5,8 +5,10 @@
 
 window.onload = function() {
     var video = document.getElementById('animation');
+    var skip = document.getElementById('skip_button');
     video.onended = function() {
         video.remove();
+        skip.remove();
         document.getElementById('background_intro').style.display = 'block';
     };
 };
