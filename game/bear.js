@@ -81,7 +81,7 @@ Bear.prototype.update = function(player, trees) {
 
     // Реализация механизма перекрытия медведя с деревьями:
     var overlapTree; // Переменная, отвечающая за перекрытие, в которое положим дерево, с которым произойдет перекрытие:
-
+    
     for(var i = 0; i < trees.length; i++) {
         var tree = trees[i];
         // Проверка на перекрытие
@@ -93,15 +93,20 @@ Bear.prototype.update = function(player, trees) {
             overlapTree = tree;
         }
     }
+    // window.bearOverlapTree = overlapTree;
     if (overlapTree) {
-        if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
-            // Tree.treeCanvas.style.zIndex = 2;
-            this.bearCanvas.style.zIndex = 0;
-        }
-        else if (this.drawY + this.height > overlapTree.drawY + overlapTree.height) {
-            // Tree.treeCanvas.style.zIndex = 0;
-            this.bearCanvas.style.zIndex = 3;
-        }
+        if (overlapTree.collision) {
+            this.bearCanvas.style.zIndex = 3;
+        } else if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
+            // Tree.treeCanvas.style.zIndex = 2;
+            this.bearCanvas.style.zIndex = 0;
+        }
+        else if (this.drawY + this.height > overlapTree.drawY + overlapTree.height) {
+            // Tree.treeCanvas.style.zIndex = 0;
+            this.bearCanvas.style.zIndex = 3;
+        }
     }
-    else this.bearCanvas.style.zIndex = 3;
+    else {
+        this.bearCanvas.style.zIndex = 3;
+    }
 }
