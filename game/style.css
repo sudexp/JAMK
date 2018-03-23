@@ -13,6 +13,16 @@ body {
 video  {
     display: block;
     margin: 0 auto;
+    position: relative;
+}
+
+#skip_button {
+    background-image: url(images/skip_button.png);
+    height: 114px;
+    width: 114px;
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
 }
 
 #background_intro {
