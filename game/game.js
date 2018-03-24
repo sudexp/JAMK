@@ -101,7 +101,7 @@ function init() {
     // gameOverCanvas.height = gameHeight;
     
     ctxStatsCanvas.fillStyle = '#3d3d3d'; // задаем стиль для отображения надписей с помощью встроенной переменной fillStyle
-    ctxStatsCanvas.font = 'bold 24px Arial'; // задаем шрифт надписей с помощью встроенной переменной font
+    ctxStatsCanvas.font = 'bold 28px Norse Regular'; // задаем шрифт надписей с помощью встроенной переменной font
 
     // drawButton = document.getElementById('drawButton');
     // clearButton = document.getElementById('clearButton');
