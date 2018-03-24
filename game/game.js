@@ -343,7 +343,7 @@ function checkKeyUp(e){
 function updateStats() {
     ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
     ctxStatsCanvas.fillText("Health: " + player.health + "%", 30, 40);
-    ctxStatsCanvas.fillText("Time: " + ax.timer/1000 + "s", 200, 40);
+    ctxStatsCanvas.fillText("Time: " + ax.timer/1000 + "s", 180, 40);
 }
 
 function drawBackground() {
