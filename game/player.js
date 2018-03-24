@@ -9,7 +9,7 @@ function Player(gameHeight, gameWidth) { // this --> Player
     this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
     this.srcY = 0;
     this.drawX = 250; // рисование объекта
-    this.drawY = randomFive(Math.floor(Math.random() * (gameHeight-100)));
+    this.drawY = roundToFive(Math.floor(Math.random() * (gameHeight-100)));
     this.width = 73; // проверить после смены рисунка
     this.height = 75;
     // часть, связанная с апдэйтом
@@ -199,10 +199,3 @@ Player.prototype.chooseDirection = function() {
         this.drawX -= this.speed;
     }
 }
-
-// функция округления до 5
-function randomFive(a) {
-    var b = a % 5;
-    b && (a = a - b + 5);
-    return a
-};

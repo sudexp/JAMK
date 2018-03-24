@@ -433,3 +433,10 @@ function loseGame() {
 // function playVideo() { 
 //     video.play(); 
 // }
+
+// функция округления до 5
+function roundToFive(a) {
+    var b = a % 5;
+    b && (a = a - b + 5);
+    return a
+};

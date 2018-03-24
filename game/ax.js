@@ -5,7 +5,7 @@ function Ax(gameHeight, gameWidth) {
 
     // часть, связанная с рисованием
     this.startPosition = 1200;
-    this.randomPosition = randomFive(Math.floor(Math.random() * (gameHeight-75)));
+    this.randomPosition = roundToFive(Math.floor(Math.random() * (gameHeight-75)));
     this.timerValue = 5000 // время появления топора - изменить
     this.srcX = 0;
     this.srcY = 0;
@@ -38,13 +38,6 @@ function Ax(gameHeight, gameWidth) {
 
     this.init();
 }
-
-// функция округления до 5
-function randomFive(a) {
-        var b = a % 5;
-        b && (a = a - b + 5);
-        return a
-    };
     
 // Объявляем методы класса:
 Ax.prototype.init = function () {
