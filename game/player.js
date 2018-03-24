@@ -9,9 +9,9 @@ function Player(gameHeight, gameWidth) { // this --> Player
     this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
     this.srcY = 0;
     this.drawX = 250; // рисование объекта
-    this.drawY = Math.floor(Math.random() * gameHeight);
-    this.width = 75; // проверить после смены рисунка
-    this.height = 77;
+    this.drawY = randomFive(Math.floor(Math.random() * (gameHeight-100)));
+    this.width = 73; // проверить после смены рисунка
+    this.height = 75;
     // часть, связанная с апдэйтом
     this.speed = 5;
     // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
@@ -152,16 +152,18 @@ Player.prototype.update = function(ax, trees, audio) {
     else {
         Tree.treeCanvas.style.zIndex = 1;
     }
-    
+
     // Реализация столкновения с топором (победа в игре)
-    if (ax.drawX + ax.width <= 1000) {
+    if (ax.drawX + ax.width <= 1200) {
         keyboardControl = false;
+    }
+    if (ax.drawX + ax.width <= 1190) {
         // this.drawY = ax.drawY;
         if (this.drawY < ax.drawY) {
-            this.drawY += Math.floor(0.2 * this.speed);
+            this.drawY += this.speed;
         }
         else if (this.drawY > ax.drawY) {
-            this.drawY -= Math.ceil(0.2 * this.speed);
+            this.drawY -= this.speed;
         }
         else {
     
@@ -197,3 +199,10 @@ Player.prototype.chooseDirection = function() {
         this.drawX -= this.speed;
     }
 }
+
+// функция округления до 5
+function randomFive(a) {
+    var b = a % 5;
+    b && (a = a - b + 5);
+    return a
+};
