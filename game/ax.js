@@ -4,7 +4,7 @@ function Ax(gameHeight, gameWidth) {
     // Инициализируем свойства экземпляра:
 
     // часть, связанная с рисованием
-    this.startPosition = 1200;
+    this.startPosition = 2000;
     this.randomPosition = Math.floor(Math.random() * gameHeight);
     this.timerValue = 5000 // время появления топора - изменить
     this.srcX = 0;
@@ -63,6 +63,7 @@ Ax.prototype.draw = function() {
 Ax.prototype.update = function (trees) {
     if (this.isActive) {
         this.drawX -= this.speed;
+        Tree.prototype.destroy();
         // if (this.drawX + this.width < 0) {
         //     // this.destroy();
         //     this.isActive = false;

@@ -242,11 +242,10 @@ function update() {
         // stopLoop();
         map1X = 0;
         map2X = 0;
-        Tree.prototype.destroy();
         player.speed = 0; 
-        player.playerImg2 = new Image();
         player.playerImg2.src = 'images/folke1.png';
         stopCreatingTrees();
+        Tree.prototype.destroy();
         ax.destroy();
     }
 }

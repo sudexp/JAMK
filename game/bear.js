@@ -60,6 +60,7 @@ Bear.prototype.update = function(player, trees) {
     // } else {
     //   this.drawX -= 0.5 * this.speed;
     // }
+    var x = this.drawX + 1;
     this.drawX = player.drawX - 0.7 * player.width - player.health;
     
     // this.speed = player.speed * 0.9;
@@ -110,8 +111,14 @@ Bear.prototype.update = function(player, trees) {
         this.bearCanvas.style.zIndex = 3;
     }
 
-    if(player.win === true) {
-        this.drawX -= 4;
-        this.drawY -= 2;
+    if (player.win === true) {
+        if (ax.drawY > 360 - 0.5 * ax.width) {
+            this.drawX = x + 4;
+            this.drawY -= 5;
+        }
+        else {
+            this.drawX = x + 4;
+            this.drawY += 5;
+        }   
     }
 }
