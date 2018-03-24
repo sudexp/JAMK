@@ -109,4 +109,9 @@ Bear.prototype.update = function(player, trees) {
     else {
         this.bearCanvas.style.zIndex = 3;
     }
+
+    if(player.win === true) {
+        this.drawX -= 4;
+        this.drawY -= 2;
+    }
 }
