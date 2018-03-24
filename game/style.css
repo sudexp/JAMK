@@ -48,21 +48,24 @@ video  {
     background-image: url(images/black_box.png);
     height: 257px;
     width: 450px;
-    color: white;
     position: absolute;
     margin: auto;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    color: white;
+    text-align: center;
 }
 
 .instruction {
     display: none;
+    margin-top: 10px; 
 }
 
 .instruction.active {
     display: block;
+    margin-top: 10px; 
 }
 
 .right_button{
