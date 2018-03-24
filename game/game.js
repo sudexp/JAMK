@@ -233,9 +233,10 @@ function update() {
         stopLoop();
         stopCreatingTrees();
         // gameOver.draw();
-        audio.pause();
-        // document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
-        loseGame();
+        // audio.pause();
+        document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
+        // loseGame();
+        doPause();
     }
     if (player.win) {
         stopLoop();
@@ -406,6 +407,11 @@ function pauseGame() {
 // }
 // myaudio.stop(); // использование
 
+function doPause() {
+    setTimeout(function(){ 
+        loseGame(); 
+    }, 1000);
+}
 
 function loseGame() {
     $('#map').hide();
