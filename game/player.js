@@ -138,7 +138,10 @@ Player.prototype.update = function(ax, trees, audio) {
         // } 
     }
     if (overlapTree) {
-        if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
+        if (overlapTree.collision) {
+                    Tree.treeCanvas.style.zIndex = 1;
+        }
+        else if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
             Tree.treeCanvas.style.zIndex = 3;
         }
         // this.playerCanvas.style.zIndex = 1;
@@ -146,8 +149,10 @@ Player.prototype.update = function(ax, trees, audio) {
             Tree.treeCanvas.style.zIndex = 1;
         }
     }
-    else Tree.treeCanvas.style.zIndex = 1;
-
+    else {
+        Tree.treeCanvas.style.zIndex = 1;
+    }
+    
     // Реализация столкновения с топором (победа в игре)
     if (ax.drawX + ax.width <= 1000) {
         keyboardControl = false;
