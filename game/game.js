@@ -234,7 +234,8 @@ function update() {
         stopCreatingTrees();
         // gameOver.draw();
         audio.pause();
-        document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
+        // document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
+        loseGame();
     }
     if (player.win) {
         stopLoop();
@@ -404,3 +405,20 @@ function pauseGame() {
 // this.currentTime = 0.0;
 // }
 // myaudio.stop(); // использование
+
+
+function loseGame() {
+    $('#map').hide();
+    $('#trees').hide();
+    $('#ax').hide();
+    $('#player').hide();
+    $('#bear').hide();
+    $('#stats').hide();
+    $('#losing').show();
+    $('#losing').get(0).play();
+}
+
+// var video = document.getElementById('losing');
+// function playVideo() { 
+//     video.play(); 
+// }

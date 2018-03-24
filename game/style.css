@@ -121,3 +121,8 @@ canvas {
 #stats {
     z-index: 4;
 }
+
+#losing {
+    display: none;
+    margin: 0 auto;
+}
