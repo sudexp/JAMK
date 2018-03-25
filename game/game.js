@@ -242,6 +242,7 @@ function update() {
         // stopLoop();
         map1X = 0;
         map2X = 0;
+        ax.speed = 0;
         player.speed = 0;
         player.width = 67; 
         player.height = 100;
@@ -249,7 +250,8 @@ function update() {
         player.playerImg2.src = 'images/folke3.png';
         stopCreatingTrees();
         Tree.prototype.destroy();
-        ax.destroy();
+        // ax.destroy();
+        ax.axImg.src = 'images/stump.png';
     }
 }
 
