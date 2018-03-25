@@ -187,8 +187,7 @@ Player.prototype.update = function(ax, trees, audio) {
         this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
         this.drawY + 45 <= ax.drawY + ax.height) {   // игрок касается топора снизу
         // win.draw();
-        document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
-        audio.pause();
+        // audio.pause();
         this.win = true;
     }
 }

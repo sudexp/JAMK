@@ -236,10 +236,10 @@ function update() {
         // audio.pause();
         document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
         // loseGame();
-        doPause();
+        doPause1s();
     }
     if (player.win) {
-        // stopLoop();
+        document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
         map1X = 0;
         map2X = 0;
         ax.speed = 0;
@@ -252,6 +252,7 @@ function update() {
         Tree.prototype.destroy();
         // ax.destroy();
         ax.axImg.src = 'images/stump.png';
+        doPause3s();
     }
 }
 
@@ -417,11 +418,19 @@ function pauseGame() {
 // }
 // myaudio.stop(); // использование
 
-// Пауза перед вызовом функции loseGame()
-function doPause() {
+// Пауза 1 секунда перед вызовом функции loseGame()
+function doPause1s() {
     setTimeout(function(){ 
         loseGame(); 
     }, 1000);
+}
+
+// Пауза 3 секунды перед вызовом функции winGame()
+function doPause3s() {
+    setTimeout(function(){
+        stopLoop();
+        winGame(); 
+    }, 3000);
 }
 
 // Функция проигрыша
@@ -434,6 +443,18 @@ function loseGame() {
     $('#stats').hide();
     $('#losing').show();
     $('#losing').get(0).play();
+}
+
+// Функция выигрыша
+function winGame() {
+    $('#map').hide();
+    $('#trees').hide();
+    $('#ax').hide();
+    $('#player').hide();
+    $('#bear').hide();
+    $('#stats').hide();
+    $('#winning').show();
+    $('#winning').get(0).play();
 }
 
 // var video = document.getElementById('losing');
