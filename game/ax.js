@@ -28,13 +28,17 @@ function Ax(gameHeight, gameWidth) {
     this.axImg.src = 'images/ax.png';
 
     // setinterval запускает функцию через 1000 мс постоянно
-    setInterval(function(){
+    var setTimer = setInterval(function(){
         if (ax.timer > 0) {
             ax.timer -= 1000;
         } else {
             ax.isActive = true;
         }
     }, 1000);
+
+    function stopTimer() {
+        clearInterval(setTimer);
+    }
 
     this.init();
 }
