@@ -113,6 +113,7 @@ Player.prototype.update = function(ax, trees, audio) {
         if (tree.collision === true) {
             // выводим надпись
             document.getElementById('gameName').innerHTML = 'Boom!';
+            // getRandomWord();
             // и меняем ее обратно на начальную
             setInterval(function(){ document.getElementById('gameName').innerHTML = 'Vikings new clothes: bears game'; }, 1000);
         }
@@ -205,4 +206,10 @@ Player.prototype.chooseDirection = function() {
     if(this.isLeft) {
         this.drawX -= this.speed;
     }
+}
+
+function getRandomWord() {
+    var words = ['Boom!', 'Be carefull!', "Don't hurry!", 'Pay attention!'];
+    var randomWord = Math.floor(Math.random() * words.length);
+    document.getElementById('gameName').innerHTML = words[randomWord];
 }
