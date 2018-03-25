@@ -103,13 +103,20 @@ Player.prototype.update = function(ax, trees, audio) {
                 (this.drawY + this.height >= tree.drawY + 105 && this.drawY + 45 <= tree.drawY + tree.height) &&
                 (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
             ) {
-                this.health -= 10;
                 tree.collision = true;
+                this.health -= 10;
                 // Tree.treeCanvas.style.zIndex = 0
                 // Удалить tree со сцены:
                 // tree.destroy();
             }
         }
+        if (tree.collision === true) {
+            // выводим надпись
+            document.getElementById('gameName').innerHTML = 'Boom!';
+            // и меняем ее обратно на начальную
+            setInterval(function(){ document.getElementById('gameName').innerHTML = 'Vikings new clothes: bears game'; }, 1000);
+        }
+
         // Проверка на перекрытие
         if (
             // (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&

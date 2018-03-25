@@ -412,12 +412,14 @@ function pauseGame() {
 // }
 // myaudio.stop(); // использование
 
+// Пауза перед вызовом функции loseGame()
 function doPause() {
     setTimeout(function(){ 
         loseGame(); 
     }, 1000);
 }
 
+// Функция проигрыша
 function loseGame() {
     $('#map').hide();
     $('#trees').hide();
