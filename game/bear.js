@@ -9,7 +9,7 @@ function Bear(gameHeight, gameWidth, player) {
     this.drawX = 0;
     this.drawY = Math.floor(Math.random() * gameHeight);
     this.width = 110; 
-    this.height = 82;
+    this.height = 80;
     this.speed = player.speed * 0.9;
 
     // Добавляем свойства игры для доступа из методов Bear:
