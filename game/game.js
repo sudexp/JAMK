@@ -242,8 +242,11 @@ function update() {
         // stopLoop();
         map1X = 0;
         map2X = 0;
-        player.speed = 0; 
-        player.playerImg2.src = 'images/folke1.png';
+        player.speed = 0;
+        player.width = 67; 
+        player.height = 100;
+        player.playerImg1.src = 'images/folke3.png';
+        player.playerImg2.src = 'images/folke3.png';
         stopCreatingTrees();
         Tree.prototype.destroy();
         ax.destroy();
