@@ -37,7 +37,7 @@ function Player(gameHeight, gameWidth) { // this --> Player
 }
 
 // Объявляем методы класса:
-Player.prototype.init = function () {
+Player.prototype.init = function() {
     this.playerCanvas = document.getElementById('player'); // переменная, отвечающая за канвас должна иметь в себе тег
     this.ctxPlayerCanvas = this.playerCanvas.getContext('2d');
 
@@ -68,26 +68,26 @@ Player.prototype.update = function(ax, trees, audio) {
     // this.drawX += 1;
     // this.drawY += 3; // движение по вертикали
     this.chooseDirection();
-    if(this.drawX < 0) { // если координата X объекта меньше нуля (объект выходит за рамки канваса с левой стороны)
+    if (this.drawX < 0) { // если координата X объекта меньше нуля (объект выходит за рамки канваса с левой стороны)
         this.drawX = 0; // устанавливаем эту координату равной нулю (объект после этого не переместить влево за канвас)
     }
     // аналогично вышеизложенному для других координат:
-    if(this.drawX > this.gameWidth - this.width) {
+    if (this.drawX > this.gameWidth - this.width) {
         this.drawX = this.gameWidth - this.width; // необходимо вычесть, так как начало координат объекта в левой верхней точке
     }
-    if(this.drawY < 0) {
+    if (this.drawY < 0) {
         this.drawY = 0;
     }
-    if(this.drawY > this.gameHeight - this.height) {
+    if (this.drawY > this.gameHeight - this.height) {
         this.drawY = this.gameHeight - this.height; // необходимо вычесть, так как начало координат объекта в левой верхней точке
     }
     // ограничение объекта по перемещению вперед
-    if(this.drawX > this.gameWidth - this.width - 900) {
+    if ((this.drawX > this.gameWidth - this.width - 900) && (mouseControl === false)) {
         this.drawX = this.gameWidth - this.width - 900;
     }
 
     // ограничение объекта по перемещению назад
-    if(this.drawX < this.gameWidth - this.width - 1000) {
+    if ((this.drawX < this.gameWidth - this.width - 1000) && (mouseControl === false)) {
         this.drawX = this.gameWidth - this.width - 1000;
     }
     // Реализация механизма столновения и перекрытия игрока с деревьями:

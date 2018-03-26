@@ -36,11 +36,7 @@ function Tree(gameHeight, gameWidth) {
     if (this.drawY + this.height > gameHeight) {
         this.drawY = gameHeight - this.height;
     }
-    // Коррекция положения, если появляется выше экрана
-    if (this.drawY < 67) {
-        this.drawY = 67;  // не уверен, что это 67px
-    }
-
+  
     // checkOtherTrees(this)
 
     this.speed = 5;
