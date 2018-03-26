@@ -89,10 +89,11 @@ video  {
 }
 
 #gameName {
+    height: 41px;
     color: #fff;
     font-weight: bold;
-    font-size: 48px;
-    letter-spacing: 5px;
+    font-size: 36px;
+    letter-spacing: 4px;
     text-align: center;
 }
 

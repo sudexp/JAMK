@@ -115,7 +115,7 @@ Player.prototype.update = function(ax, trees, audio) {
             document.getElementById('gameName').innerHTML = 'Boom!';
             // getRandomWord();
             // и меняем ее обратно на начальную
-            setInterval(function(){ document.getElementById('gameName').innerHTML = 'Vikings new clothes: bears game'; }, 1000);
+            setInterval(function(){ document.getElementById('gameName').innerHTML = ''; }, 1000);
         }
 
         // Проверка на перекрытие

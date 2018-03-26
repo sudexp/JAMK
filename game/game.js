@@ -234,12 +234,12 @@ function update() {
         stopCreatingTrees();
         // gameOver.draw();
         // audio.pause();
-        document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
+        // document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
         // loseGame();
         doPause1s();
     }
     if (player.win) {
-        document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
+        // document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
         map1X = 0;
         map2X = 0;
         ax.speed = 0;
