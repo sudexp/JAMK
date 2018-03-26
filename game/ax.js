@@ -6,7 +6,7 @@ function Ax(gameHeight, gameWidth) {
     // часть, связанная с рисованием
     this.startPosition = 1200;
     this.randomPosition = roundToFive(Math.floor(Math.random() * (gameHeight-75)));
-    this.timerValue = 30000 // время появления топора - изменить
+    this.timerValue = 60000 // время появления топора - изменить
     this.srcX = 0;
     this.srcY = 0;
     this.drawX = this.startPosition;
@@ -103,11 +103,11 @@ Ax.prototype.startTimer = function startTimer() {
     var ax = this;
     this.setTimer = setInterval(function(){
         if (ax.timer > 0) {
-            ax.timer -= 1000;
+            ax.timer -= 100;
         } else {
             ax.isActive = true;
         }
-    }, 1000);
+    }, 100);
 }
 
 Ax.prototype.stopTimer = function stopTimer() {

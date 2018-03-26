@@ -214,5 +214,5 @@ function showRandomMessage() {
     var randomWord = Math.floor(Math.random() * words.length);
     document.getElementById('gameName').innerHTML = words[randomWord];
     // и меняем ее обратно на начальную
-    setInterval(function(){ document.getElementById('gameName').innerHTML = ''; }, 1000);
+    setTimeout(function(){ document.getElementById('gameName').innerHTML = ''; }, 1000);
 }
