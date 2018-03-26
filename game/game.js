@@ -219,6 +219,10 @@ function update() {
     drawBackground();
     updateStats();
     ax.update(Tree.trees);
+    if (ax.timer % 35100 === 0) {
+        document.getElementById('gameName').innerHTML = 'After five seconds, the speed will increase';
+        setTimeout(function(){ document.getElementById('gameName').innerHTML = ''; }, 5000);
+    }
     if (ax.timer % 30100 === 0) {
         // debugger
         increaseSpeed = true;
