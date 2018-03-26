@@ -90,6 +90,12 @@ Player.prototype.update = function(ax, trees, audio) {
     if ((this.drawX < this.gameWidth - this.width - 1000) && (mouseControl === false)) {
         this.drawX = this.gameWidth - this.width - 1000;
     }
+    
+    // ограничение объекта по перемещению вверх
+    if ((this.drawY < 45) && (mouseControl === false)) {
+        this.drawY = 45;
+    }
+
     // Реализация механизма столновения и перекрытия игрока с деревьями:
     // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
 
