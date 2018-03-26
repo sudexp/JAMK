@@ -98,7 +98,7 @@ Ax.prototype.destroy = function() {
     this.axCanvas.remove();
 }
 
-Ax.prototype.startTimer = function stopTimer() {
+Ax.prototype.startTimer = function startTimer() {
     // setinterval запускает функцию через 1000 мс постоянно
     var ax = this;
     this.setTimer = setInterval(function(){
