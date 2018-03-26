@@ -61,7 +61,7 @@ Bear.prototype.update = function(player, trees) {
     //   this.drawX -= 0.5 * this.speed;
     // }
     var x = this.drawX + 1;
-    this.drawX = player.drawX - 0.7 * player.width - player.health;
+    this.drawX = player.drawX - 0.79 * this.width - player.health;
     
     // this.speed = player.speed * 0.9;
 
