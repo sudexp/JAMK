@@ -26,20 +26,7 @@ function Ax(gameHeight, gameWidth) {
     // Картинки:
     this.axImg = new Image();
     this.axImg.src = 'images/ax.png';
-
-    // setinterval запускает функцию через 1000 мс постоянно
-    var setTimer = setInterval(function(){
-        if (ax.timer > 0) {
-            ax.timer -= 1000;
-        } else {
-            ax.isActive = true;
-        }
-    }, 1000);
-
-    function stopTimer() {
-        clearInterval(setTimer);
-    }
-
+    this.startTimer();
     this.init();
 }
     
@@ -108,4 +95,20 @@ Ax.prototype.update = function (trees) {
 
 Ax.prototype.destroy = function() {
     this.axCanvas.remove();
+}
+
+Ax.prototype.startTimer = function stopTimer() {
+    // setinterval запускает функцию через 1000 мс постоянно
+    var ax = this;
+    this.setTimer = setInterval(function(){
+        if (ax.timer > 0) {
+            ax.timer -= 1000;
+        } else {
+            ax.isActive = true;
+        }
+    }, 1000);
+}
+
+Ax.prototype.stopTimer = function stopTimer() {
+    clearInterval(this.setTimer);
 }

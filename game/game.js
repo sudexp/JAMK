@@ -386,11 +386,13 @@ var pause = false;
 function pauseGame() {
     if (pause === false) {
         pause = true;
+        ax.stopTimer();
         stopLoop();
         audio.pause();
     }
     else {
         pause = false;
+        ax.startTimer();
         startLoop();
         audio.play(); //воспроизведение звука
     }

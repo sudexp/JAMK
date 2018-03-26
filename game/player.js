@@ -103,6 +103,9 @@ Player.prototype.update = function(ax, trees, audio) {
                 (this.drawY + this.height >= tree.drawY + 105 && this.drawY + 45 <= tree.drawY + tree.height) &&
                 (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
             ) {
+                // выводим надпись
+                // document.getElementById('gameName').innerHTML = 'Boom!';
+                showRandomMessage();
                 tree.collision = true;
                 this.health -= 10;
                 // Tree.treeCanvas.style.zIndex = 0
@@ -110,14 +113,6 @@ Player.prototype.update = function(ax, trees, audio) {
                 // tree.destroy();
             }
         }
-        if (tree.collision === true) {
-            // выводим надпись
-            document.getElementById('gameName').innerHTML = 'Boom!';
-            // getRandomWord();
-            // и меняем ее обратно на начальную
-            setInterval(function(){ document.getElementById('gameName').innerHTML = ''; }, 1000);
-        }
-
         // Проверка на перекрытие
         if (
             // (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
@@ -207,8 +202,10 @@ Player.prototype.chooseDirection = function() {
     }
 }
 
-function getRandomWord() {
+function showRandomMessage() {
     var words = ['Boom!', 'Be carefull!', "Don't hurry!", 'Pay attention!'];
     var randomWord = Math.floor(Math.random() * words.length);
     document.getElementById('gameName').innerHTML = words[randomWord];
+    // и меняем ее обратно на начальную
+    setInterval(function(){ document.getElementById('gameName').innerHTML = ''; }, 1000);
 }
