@@ -39,7 +39,7 @@ function Tree(gameHeight, gameWidth) {
   
     // checkOtherTrees(this)
 
-    this.speed = 5;
+    // this.speed = 5;
     // сделать скорость слечайным образом (5 to 7)
     // this.speed = Math.floor(3 * Math.random()) + 5;
 
@@ -144,6 +144,9 @@ Tree.prototype.update = function() {
         this.destroy(); // вместо верхних строк - теперь функция удаляется объекты из массива
     }
 }
+
+// для всех деревьев одна скорость:
+Tree.prototype.speed = 5;
 
 // функция, которая будет удалять объект с массива
 Tree.prototype.destroy = function() {
