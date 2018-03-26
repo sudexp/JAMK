@@ -105,8 +105,9 @@ canvas {
 #player,
 #bear,
 #trees,
+#ax,
 #stats,
-#ax /*,
+#info /*,
 #win,
 #gameOver */ {
     display: block;
@@ -119,6 +120,10 @@ canvas {
 #trees,
 #ax {
     z-index: 2;
+}
+
+#info {
+    z-index: 3;
 }
 
 #stats {

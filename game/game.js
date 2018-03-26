@@ -37,6 +37,7 @@ background2.src = 'images/background.png'; //
 var player;
 var bear;
 var ax;
+var info;
 // var win;
 // var gameOver;
 
@@ -126,6 +127,7 @@ function init() {
     player = new Player(gameHeight, gameWidth);
     bear = new Bear(gameHeight, gameWidth, player);
     ax = new Ax(gameHeight, gameWidth);
+    info = new Info(gameHeight, gameWidth);
 
     // Все деревья используют один канвас, поэтому инициализировать его нужно только один раз (не для каждого дерева в отдельности).
     Tree.initCanvas(gameHeight, gameWidth, treeMaxCount, treeCreateTime)
@@ -201,6 +203,7 @@ function draw() {
     player.draw();
     bear.draw();
     ax.draw();
+    info.draw();
     Tree.clearCtx();
     for(var i = 0; i < Tree.trees.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
         Tree.trees[i].draw(stopLoop, startLoop); // для каждого элемента массива trees[] создается новый объект Tree
@@ -217,6 +220,7 @@ function update() {
     player.update(ax, Tree.trees, audio);
     bear.update(player, Tree.trees);
     ax.update(Tree.trees);
+    info.update();
 
     // по аналогии с draw():
     for(var i = 0; i < Tree.trees.length; i++) {
@@ -442,6 +446,7 @@ function loseGame() {
     $('#ax').hide();
     $('#player').hide();
     $('#bear').hide();
+    $('#info').hide();
     $('#stats').hide();
     $('#losing').show();
     $('#losing').get(0).play();
@@ -454,6 +459,7 @@ function winGame() {
     $('#ax').hide();
     $('#player').hide();
     $('#bear').hide();
+    $('#info').hide();
     $('#stats').hide();
     $('#winning').show();
     $('#winning').get(0).play();

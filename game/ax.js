@@ -26,6 +26,7 @@ function Ax(gameHeight, gameWidth) {
     // Картинки:
     this.axImg = new Image();
     this.axImg.src = 'images/ax.png';
+    
     this.startTimer();
     this.init();
 }
