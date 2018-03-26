@@ -90,7 +90,7 @@ Player.prototype.update = function(ax, trees, audio) {
     if ((this.drawX < this.gameWidth - this.width - 1000) && (mouseControl === false)) {
         this.drawX = this.gameWidth - this.width - 1000;
     }
-    
+
     // ограничение объекта по перемещению вверх
     if ((this.drawY < 45) && (mouseControl === false)) {
         this.drawY = 45;
@@ -163,11 +163,12 @@ Player.prototype.update = function(ax, trees, audio) {
     }
 
     // Реализация столкновения с топором (победа в игре)
-    if (ax.drawX + ax.width <= 1200) {
+    if (ax.drawX + ax.width < 1200) {
         keyboardControl = false;
+        stopCreatingTrees();
     }
-    if (ax.drawX + ax.width <= 1190) {
-        // this.drawY = ax.drawY;
+    if (ax.drawX + ax.width <= 1150) {
+        Tree.prototype.destroy();
         if (this.drawY < ax.drawY) {
             this.drawY += this.speed;
         }

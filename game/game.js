@@ -252,8 +252,8 @@ function update() {
         player.height = 100;
         player.playerImg1.src = 'images/folke3.png';
         player.playerImg2.src = 'images/folke3.png';
-        stopCreatingTrees();
-        Tree.prototype.destroy();
+        // stopCreatingTrees();
+        // Tree.prototype.destroy();
         // ax.destroy();
         ax.axImg.src = 'images/stump.png';
         doPause3s();
