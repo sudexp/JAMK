@@ -14,7 +14,7 @@ function Tree(gameHeight, gameWidth) {
     // часть, связанная с рисованием:
     this.srcX = 0;
     this.srcY = 0;
-    this.drawX = Math.floor(Math.random() * gameWidth / 2) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
+    this.drawX = Math.floor(Math.random() * gameWidth) + gameWidth; // появление объекта за правой частью канваса (ось X) на случайном расстоянии
     // this.drawX = gameWidth;
     // gameWidth=1280 - появление объекта по координате X
     // Math.random() = от 0 (включая) до 1 (не включая), Math.floor - округление
