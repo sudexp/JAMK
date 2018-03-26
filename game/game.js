@@ -226,9 +226,9 @@ function update() {
     if (ax.timer % 30100 === 0) {
         // debugger
         increaseSpeed = true;
-        speed = 7;
-        Tree.prototype.speed = 7;
-        ax.speed = 7;
+        speed = 8;
+        Tree.prototype.speed = 8;
+        ax.speed = 8;
     }
     player.update(ax, Tree.trees, audio);
     bear.update(player, Tree.trees);
@@ -276,16 +276,16 @@ function update() {
      map1X -= speed;
      map2X -= speed;
      if (map1X + gameWidth < 0 && increaseSpeed === false) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
-        map1X = gameWidth - speed; // вычитаем 5px, чтобы не было видно полос при соединии бэкграундов
+        map1X = gameWidth - 5; // вычитаем 5px, чтобы не было видно полос при соединении бэкграундов
      }
      if (map2X + gameWidth < 0 && increaseSpeed === false) { // аналогично первому фону
-        map2X = gameWidth - speed;
+        map2X = gameWidth - 5;
      }
      if (map1X + gameWidth < 0 && increaseSpeed === true) {
-        map1X = gameWidth - (2 * speed);
+        map1X = gameWidth - 7;
      }
-     if (map2X + gameWidth < 0 && increaseSpeed === true) { // аналогично первому фону
-        map2X = gameWidth - (2 * speed);
+     if (map2X + gameWidth < 0 && increaseSpeed === true) {
+        map2X = gameWidth - 7;
      }
  }
 
