@@ -359,8 +359,8 @@ function checkKeyUp(e){
 // ~ функция обновления информации
 function updateStats() {
     ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
-    ctxStatsCanvas.fillText("Health: " + player.health + "%", 30, 40);
-    ctxStatsCanvas.fillText("Time: " + ax.timer/1000 + "s", 180, 40);
+    ctxStatsCanvas.fillText(player.health/10 + "m", 575, 50);
+    ctxStatsCanvas.fillText(ax.timer/100 + "m", 675, 50);
 }
 
 function drawBackground() {
