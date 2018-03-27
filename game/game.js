@@ -225,10 +225,10 @@ function update() {
     }
     if (ax.timer % 30100 === 0) {
         // debugger
-        increaseSpeed = true;
-        speed = 8;
-        Tree.prototype.speed = 8;
-        ax.speed = 8;
+        // increaseSpeed = true;
+        speed = 7;
+        Tree.prototype.speed = 7;
+        ax.speed = 7;
     }
     player.update(ax, Tree.trees, audio);
     bear.update(player, Tree.trees);
