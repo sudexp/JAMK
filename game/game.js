@@ -275,18 +275,18 @@ function update() {
     //  var vel = 5; // переменнная, отвечающая за скорость движения фона
      map1X -= speed;
      map2X -= speed;
-     if (map1X + gameWidth <= 0 && increaseSpeed === false) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
-        map1X = gameWidth;
+     if (map1X + gameWidth <= 0) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
+        map1X = gameWidth + (map1X + gameWidth);
      }
-     if (map2X + gameWidth <= 0 && increaseSpeed === false) { // аналогично первому фону
-        map2X = gameWidth;
+     if (map2X + gameWidth <= 0) { // аналогично первому фону
+        map2X = gameWidth + (map2X + gameWidth);
      }
-     if (map1X + gameWidth < 0 && increaseSpeed === true) {
-        map1X = gameWidth - 7; // вычитаем 7px, чтобы не было видно полос при соединении бэкграундов
-     }
-     if (map2X + gameWidth < 0 && increaseSpeed === true) {
-        map2X = gameWidth - 7;
-     }
+    //  if (map1X + gameWidth < 0 && increaseSpeed === true) {
+    //     map1X = gameWidth - 7; // вычитаем 7px, чтобы не было видно полос при соединении бэкграундов
+    //  }
+    //  if (map2X + gameWidth < 0 && increaseSpeed === true) {
+    //     map2X = gameWidth - 7;
+    //  }
  }
 
 // function Win() { 
