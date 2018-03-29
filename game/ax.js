@@ -55,6 +55,8 @@ Ax.prototype.draw = function() {
 Ax.prototype.update = function (trees) {
     if (this.isActive) {
         this.drawX -= this.speed;
+        player.keyboardControl = false;
+        stopCreatingTrees();
         Tree.prototype.destroy();
         // if (this.drawX + this.width < 0) {
         //     // this.destroy();

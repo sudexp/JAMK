@@ -33,7 +33,7 @@ function Player(gameHeight, gameWidth) { // this --> Player
     this.playerImgNum = 1; // значение либо 1, либо 2
     this.countPlayer = 1; // счетчик, который увеличивается каждый раз при вызове функции draw (loop вызывает draw)
 
-    this.init();
+    this.init(); // инициализация канваса
 }
 
 // Объявляем методы класса:
@@ -163,12 +163,13 @@ Player.prototype.update = function(ax, trees, audio) {
     }
 
     // Реализация столкновения с топором (победа в игре)
-    if (ax.drawX + ax.width < 1200) {
-        keyboardControl = false;
-        stopCreatingTrees();
-    }
+    // if (ax.drawX + ax.width <= 1200) {
+    //     keyboardControl = false;
+    //     stopCreatingTrees();
+    //     Tree.prototype.destroy();
+    // }
     if (ax.drawX + ax.width <= 1150) {
-        Tree.prototype.destroy();
+        // Tree.prototype.destroy();
         if (this.drawY < ax.drawY) {
             this.drawY += this.speed;
         }

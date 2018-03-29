@@ -53,10 +53,10 @@ var isPlaying; // переменная типа boolean (играем или н�
 var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
 var map2X = gameWidth; // второй background появится справа от канваса (не будет виден)
 var speed = 5;
-var increaseSpeed = false;
+// var increaseSpeed = false;
 
 // переменные для создания объектов-врагов
-var treeMaxCount = 25; // количество объектов, которое будет появляться, когда проходит определенное время
+var treeMaxCount = 50; // количество объектов, которое будет появляться, когда проходит определенное время
 var treeCreateTime = 500; // время, через которое вызывается функция startCreatingTrees() (задается в милисекундах, 1с = 1000мс)
 // var createInterval; // интервал создания объектов
 
@@ -71,6 +71,7 @@ var audio;
 // поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
 // window.requestAnimationFrame указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации.
 // В качестве параметра метод получает функцию, которая будет вызвана перед перерисовкой.
+// API для прорисовки/ оптимизации более плавной анимации браузерами
 var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.webkitRequestAnimationFrame || // chrome, safari, yandex...
                             window.mozRequestAnimationFrame || // mozilla
@@ -121,17 +122,18 @@ function init() {
     pauseButton = document.getElementById('stats');
     pauseButton.addEventListener('click', pauseGame, false);
     addEventListener("keydown", function(event) {
-        if (event.keyCode == 32)
+        if (event.keyCode === 32)
         pauseGame();
     });
 
+    // Инициализируем (создаем) объекты
     player = new Player(gameHeight, gameWidth);
     bear = new Bear(gameHeight, gameWidth, player);
     ax = new Ax(gameHeight, gameWidth);
     info = new Info(gameHeight, gameWidth);
 
     // Все деревья используют один канвас, поэтому инициализировать его нужно только один раз (не для каждого дерева в отдельности).
-    Tree.initCanvas(gameHeight, gameWidth, treeMaxCount, treeCreateTime)
+    Tree.init(gameHeight, gameWidth, treeMaxCount, treeCreateTime) // инициализируем канвас деревьев
 
     // win = new Win();
     // gameOver = new GameOver();
@@ -159,7 +161,7 @@ function init() {
 // функции управления мышью
 function mouseMove(e) { // здесь передается объект event, который будет отвечать за движение мыши
     // !!! Сделать изменения координат игрока со временем (8:56)
-    if(!mouseControl)
+    if (!mouseControl)
         return;
     mouseX = e.pageX - map.offsetLeft; // каждый раз обновляем координату Х, которая будет считавается по оси Х со всей вэб-страницы (канвас не имеет определенных координат), даже когда мышь за пределами канваса
     mouseY = e.pageY - map.offsetTop; // при этом необходимо компенсировать расстояние, на которое смещен канвас от левого верхнего угла вэб-страцницы
@@ -172,7 +174,7 @@ function mouseMove(e) { // здесь передается объект event, �
 }
 
 function mouseClick(e) { // здесь в параметрах передается объект event, который будет отвечать за клик мыши
-    if(!mouseControl)
+    if (!mouseControl)
         return;
     // player.drawX = mouseX - player.width/2; // присваиваем значение координате игрока по Х
     // player.drawY = mouseY - player.height/2;
@@ -181,22 +183,24 @@ function mouseClick(e) { // здесь в параметрах передает�
 }
 
 // вызывает себя рекурсивно, запрашивая браузер всякий раз, когда он готов к анимации (requestAnimationFrame)
+var loopTimeout;
 function loop() {
-    if(isPlaying) {
+    if (isPlaying) {
         draw();
         update();
-        requestAnimationFrame(loop);
+        loopTimeout = requestAnimationFrame(loop); // планирует запуск функции loop для следующего AnimationFrame
     }
 }
 
 function startLoop() {
     isPlaying = true;
-    loop(); // запускаем цикл
-    startCreatingTrees(); // вызываем функцию создания врагов (можно вызвать в init или в цикле игры)
+    loop(); // запускаем цикл в первый раз
+    startCreatingTrees(); // вызываем функцию создания деревьев (можно вызвать в init или в цикле игры)
 }
 
 function stopLoop() {
     isPlaying = false;
+    cancelAnimationFrame(loopTimeout); // отменить запланированный requestAnimationFrame
 }
 
 // draw() и update() взаимодлействуют с основным циклом игры и выполняются последовательно
@@ -205,8 +209,8 @@ function draw() {
     bear.draw();
     ax.draw();
     info.draw();
-    Tree.clearCtx();
-    for(var i = 0; i < Tree.trees.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
+    Tree.clearCtx(); // очищаем контекст со всеми деревьями (стираем их), прежде, чем нарисовать их на новой позиции
+    for (var i = 0; i < Tree.trees.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
         Tree.trees[i].draw(stopLoop, startLoop); // для каждого элемента массива trees[] создается новый объект Tree
     }
     // tree1.draw();
@@ -220,7 +224,7 @@ function update() {
     updateStats();
     ax.update(Tree.trees);
     if (ax.timer % 35100 === 0) {
-        document.getElementById('gameName').innerHTML = 'After five seconds, the speed will increase';
+        document.getElementById('gameName').innerHTML = 'Attention! Speed will increase after five seconds.';
         setTimeout(function(){ document.getElementById('gameName').innerHTML = ''; }, 5000);
     }
     if (ax.timer % 30100 === 0) {
@@ -235,12 +239,12 @@ function update() {
     info.update();
 
     // по аналогии с draw():
-    for(var i = 0; i < Tree.trees.length; i++) {
+    for (var i = 0; i < Tree.trees.length; i++) {
         Tree.trees[i].update();
     }
     // tree.update();
 
-    if(player.health <= 0) {
+    if (player.health <= 0) {
         // player.drawX = bear.drawX; почему-то не рисует
         // player.drawY = bear.drawY;
         

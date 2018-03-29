@@ -8,7 +8,7 @@ treeImg3.src = 'images/tree3.png';
 
 // Функция-конструктор класса (объекта) Tree:
 // Чтобы создать экземпляр класса: var tree = new Tree()
-function Tree(gameHeight, gameWidth) {
+function Tree (gameHeight, gameWidth) {
     // Инициализируем свойства экземпляра:
 
     // часть, связанная с рисованием:
@@ -37,7 +37,7 @@ function Tree(gameHeight, gameWidth) {
         this.drawY = gameHeight - this.height;
     }
   
-    // checkOtherTrees(this)
+    this.checkOtherTrees();
 
     // this.speed = 5;
     // сделать скорость слечайным образом (5 to 7)
@@ -47,7 +47,7 @@ function Tree(gameHeight, gameWidth) {
 }
 
 // Ф-и, которые мы прикрепляем к самому классу Tree, будут использоваться для всех деревьев (не для конкретного дерева).
-Tree.initCanvas = function (gameHeight, gameWidth, maxCount, createTime) {
+Tree.init = function (gameHeight, gameWidth, maxCount, createTime) {
     // Сообщили конфигурации игры:
     Tree.gameHeight = gameHeight;
     Tree.gameWidth = gameWidth;
@@ -85,7 +85,7 @@ function createTree(count) {
 var treeCreationInterval;
 function startCreatingTrees() {
     stopCreatingTrees(); // вызывается для того, чтобы удалить все предыдущие объекты со сцены каждые 1с (createTime) 
-                            // иначе будет создано слишком много объектов --> сказывается на производительности
+                         // иначе будет создано слишком много объектов --> сказывается на производительности
     treeCreationInterval = setInterval(function(){
         createTree(Tree.maxCount);
     }, Tree.createTime); // инициализация переменной createInterval с помощью встроенной функции js
@@ -136,7 +136,7 @@ Tree.prototype.draw = function(stopLoop, startLoop) {
 Tree.prototype.update = function() {
     // this.drawX -= 5; // ~ скорость объекта ("-" справа-налево)
     this.drawX -= this.speed;
-    if(this.drawX + this.width < 0) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
+    if (this.drawX + this.width < 0) { // т.е. если объект вышел за рамки канваса с левой стороны (+ this.width - нужно прибавить ширину объекта, чтоб он полностью вышел за пределы канваса)
         // возвращаем его на начальную позицию со случайными координатами X и Y
         // this.drawX = Math.floor(Math.random() * gameWidth) + gameWidth; 
         // this.drawY = Math.floor(Math.random() * gameHeight);
@@ -162,16 +162,17 @@ Tree.prototype.destroy = function() {
 //     trees.splice(trees.indexOf(this),1[player.draw]);
 // }
 
-// function checkOtherTrees (tree) {
-//     // Сортировка trees по Y позиции:
-//     var sorted = Tree.trees.sort(function (a, b) {
-//         return a.drawY >= b.drawY;
-//     });
-//     // Если текущий tree накладывается на любого из существующих противников, то перемещаем его вниз
-//     for (var i = 0; i < sorted.length; i++) {
-//         if ((tree.drawY >= sorted[i].drawY && tree.drawY <= sorted[i].drawY + tree.height)
-//           || (tree.drawY <= sorted[i].drawY && tree.drawY >= sorted[i].drawY - tree.height)) {
-//             tree.drawY = sorted[i].drawY + tree.height + 1
-//         }
-//     }
-// }
+// Метод сортировки Array.prototype.sort
+Tree.prototype.checkOtherTrees = function() {
+    // Сортировка trees по Y позиции:
+    var sortedX = Tree.trees.sort(function (a, b) {
+        return a.drawX - b.drawX;
+    });
+    // Если текущий tree накладывается на любого из существующих tree, то перемещаем его вниз
+    for (var i = 0; i < sortedX.length; i++) {
+        if ((this.drawX >= sortedX[i].drawX && this.drawX <= sortedX[i].drawX + this.width)
+          || (this.drawX <= sortedX[i].drawX && this.drawX >= sortedX[i].drawX - this.width)) {
+            this.drawX = sortedX[i].drawX + 0.65 * this.width;
+        }
+    }
+}
