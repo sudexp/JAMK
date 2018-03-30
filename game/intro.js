@@ -1,3 +1,4 @@
+// intro.js - javascript file related to the loading of animation and menu before starting the game
 // script execution after page load
 window.onload = function() {
     var video = document.getElementById('animation');
