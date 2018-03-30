@@ -107,9 +107,7 @@ canvas {
 #trees,
 #ax,
 #stats,
-#info /*,
-#win,
-#gameOver */ {
+#info {
     display: block;
     position: relative;
     margin: -720px auto 0;
