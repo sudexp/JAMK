@@ -58,6 +58,7 @@ Ax.prototype.update = function (trees) {
     if (this.isActive) {
         this.drawX -= this.speed;
         player.keyboardControl = false;
+        mouseControl = false;
         stopCreatingTrees();
         Tree.prototype.destroy();
         // implementation of overlapping ax with trees:
