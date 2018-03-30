@@ -266,8 +266,8 @@ function mouseMove(e) { // here is passed the event, which will be responsible f
     // display the mouse coordinates in #gameName:
     document.getElementById('gameName').innerHTML = 'X: '+mouseX+' Y: '+mouseY;
     // player constantly follows the cursor:
-    player.drawX = mouseX - player.width/2;
-    player.drawY = mouseY - player.height/2;
+    player.drawX = roundToFive(mouseX - player.width/2);
+    player.drawY = roundToFive(mouseY - player.height/2);
 }
 // mouse click function:
 function mouseClick(e) { // here in the parameters is passed the event, which will be responsible for the click of the mouse
