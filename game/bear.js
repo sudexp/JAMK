@@ -35,7 +35,6 @@ Bear.prototype.init = function () {
     this.bearCanvas.width = this.gameWidth;
     this.bearCanvas.height = this.gameHeight;
 }
-
 // clear the rectangular area in coordinates 0, 0, gameWidth, gameHeight before moving the image in Bear.prototype.draw:
 Bear.prototype.clearCtxBear = function() {
     this.ctxBearCanvas.clearRect(0, 0, this.gameWidth, this.gameHeight);

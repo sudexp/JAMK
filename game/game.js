@@ -1,235 +1,147 @@
-// window.onload = init; // метод, который будет вызываться при запуске игры 
-// cобытие window.onload JavaScript запускается после полной загрузки страницы, включая стили, изображения и другие ресурсы.
+// game.js - main game javascript file
+// start the game (function init) after the page is loaded:
+    // window.onload = init;
 
-var map; // переменная для карты map
-var ctxMap; // переменная, через которую взаимодействуем с полотном игры
-
+// variable of type boolean (play or not ?!)
+var isPlaying; 
+// variables for map:
+var map;
+var ctxMap; // variable through which we interact with the game's canvas:
+// variables for canvas:
 var statsCanvas;
 var ctxStatsCanvas;
-
-// var winCanvas;
-// var ctxWinCanvas;
-
-// var gameOverCanvas;
-// var ctxGameOverCanvas;
-
-// var drawButton; // переменная для кнопки draw
-// var clearButton; // переменная для кнопки clear
-var pauseButton;
-
+// game sizes:
 var gameWidth = 1280;
 var gameHeight = 720;
-// Take the size of the viewport minus the top div with we show mouse coordinates (#gameName):
-// var gameHeight = document.documentElement.clientHeight - 34;
-
-var background1 = new Image(); // переменная, отвечающая за фон
-background1.src = 'images/background.png'; // путь к этому изображению
-
+// variables responsible for the background:
+var background1 = new Image();
 var background2 = new Image(); // 
-background2.src = 'images/background.png'; //
-
-// var winImg = new Image();
-// winImg.src = 'images/win.jpg';
-
-// var gameOverImg = new Image();
-// gameOverImg.src = 'images/gameover.jpeg';
-
+// pathes to this image:
+background1.src = 'images/background.png';
+background2.src = 'images/background.png';
+// variables for pause:
+var pauseButton;
+// variables for objects:
 var player;
 var bear;
 var ax;
 var info;
-// var win;
-// var gameOver;
-
-// var trees = []; // массив переменных tree
-// window.trees = trees; // для доступа к деревьям из консоли для отладки
-// var tree;
-// var tree2;
-
-var isPlaying; // переменная типа boolean (играем или нет?!)
-// var timer = 5000; // переменная, отвечающая за время игры
-
-// инициализация переменных движения фона по оси Х
-var map1X = 0; // первый background должен появляться в левом верхнем углу (мы должны его видеть) 
-var map2X = gameWidth; // второй background появится справа от канваса (не будет виден)
+// initialization of the background moving variables on the X axis:
+var map1X = 0;
+var map2X = gameWidth;
 var speed = 5;
-// var increaseSpeed = false;
-
-// переменные для создания объектов-врагов
-var treeMaxCount = 50; // количество объектов, которое будет появляться, когда проходит определенное время
-var treeCreateTime = 500; // время, через которое вызывается функция startCreatingTrees() (задается в милисекундах, 1с = 1000мс)
-// var createInterval; // интервал создания объектов
-
-// переменные для использования мыши
+// variables for creating tree objects:
+var treeMaxCount = 30;
+var treeCreateTime = 500;
+// variables to use the mouse:
 var mouseX;
 var mouseY;
-var mouseControl = false;
+var mouseControl = false; // by default, mouse control is disabled
 var keyboardControl = true;
-
+// variable to control audio:
 var audio;
-
-// поддержка браузеров - переменная отвечает за обновление игры (в ней находится основной цикл игры)
-// window.requestAnimationFrame указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре анимации.
-// В качестве параметра метод получает функцию, которая будет вызвана перед перерисовкой.
-// API для прорисовки/ оптимизации более плавной анимации браузерами
+// API for drawing / optimizing smoother browsing animation (asks the browser to schedule repainting on the next animation frame):
 var requestAnimationFrame = window.requestAnimationFrame || // unknown
                             window.webkitRequestAnimationFrame || // chrome, safari, yandex...
                             window.mozRequestAnimationFrame || // mozilla
                             window.oRequestAnimationFrame || // opera
                             window.msRequestAnimationFrame; // IE
 
-// функция инициализации переменных / вызова функций
+// function for initializing variables / invocation of functions
 function init() {
     // console.log('init');
-    // https://professorweb.ru/my/html/html5/level4/4_1.php - canvas
-    map = document.getElementById('map'); // первым делом сценарий должен получить объект холста, для чего используется метод document.getElementById.
-    ctxMap = map.getContext('2d'); // затем метод getContext() генерирует двумерный контекст рисования, который будет связан с указанным холстом.
-
+    // get the canvas object using the document.getElementById method:
+    map = document.getElementById('map');
+    // getContext() method generates a two-dimensional drawing context that will be associated with the specified canvas:
+    ctxMap = map.getContext('2d');
     statsCanvas = document.getElementById('stats');
     ctxStatsCanvas = statsCanvas.getContext('2d');
-
-    // winCanvas = document.getElementById('win');
-    // ctxWinCanvas = winCanvas.getContext('2d');
-
-    // gameOverCanvas = document.getElementById('gameOver');
-    // ctxGameOverCanvas = gameOverCanvas.getContext('2d');
-
+    // sizes:
     map.width = gameWidth;
     map.height = gameHeight;
     statsCanvas.width = gameWidth;
     statsCanvas.height = gameHeight;
-    // winCanvas.width = gameWidth;
-    // winCanvas.height = gameHeight;
-    // gameOverCanvas.width = gameWidth;
-    // gameOverCanvas.height = gameHeight;
-    
-    ctxStatsCanvas.fillStyle = '#3d3d3d'; // задаем стиль для отображения надписей с помощью встроенной переменной fillStyle
-    ctxStatsCanvas.font = 'bold 28px Norse Regular'; // задаем шрифт надписей с помощью встроенной переменной font
-
-    // drawButton = document.getElementById('drawButton');
-    // clearButton = document.getElementById('clearButton');
-
-    // drawButton.addEventListener('click', drawRectangle, false); // методы addEventListener и removeEventListener являются современным способом назначить или удалить обработчик, 
-    // и при этом позволяют использовать сколько угодно любых обработчиков.
-    // event - имя события, например click
-    // handler - ссылка на функцию, которую надо поставить обработчиком.
-    // phase - необязательный аргумент, «фаза», на которой обработчик должен сработать. 
-    // jQuery --> drawButton.click(drawRectangle)
-    // drawRect.onclick = 
-    // clearButton.addEventListener('click', clearRectangle, false);
-
-    // Пауза в игре
+    // set the style for displaying using the embedded variable fillStyle:
+    ctxStatsCanvas.fillStyle = '#3d3d3d';
+    // set the font of the inscriptions with the built-in variable font:
+    ctxStatsCanvas.font = 'bold 28px Norse Regular';
+    // initialize (create) objects:
+    player = new Player(gameHeight, gameWidth);
+    bear = new Bear(gameHeight, gameWidth, player);
+    ax = new Ax(gameHeight, gameWidth);
+    info = new Info(gameHeight, gameWidth);
+    // all trees use one canvas, so initialize only it (not for each tree individually):
+    Tree.init(gameHeight, gameWidth, treeMaxCount, treeCreateTime);
+    // invocation of start loop:
+    startLoop();
+    // attach event handlers to the document for control from the keyboard and mouse:
+    document.addEventListener("keydown", checkKeyDown, false);
+    document.addEventListener("keyup", checkKeyUp, false);
+    document.addEventListener("mousemove", mouseMove, false);
+    document.addEventListener("click", mouseClick, false);
+    // implementation of audio playback:
+    audio = new Audio('track.mp3');
+    audio.loop = true;
+    audio.play();
+    // implementation of pause in the game:
     pauseButton = document.getElementById('stats');
     pauseButton.addEventListener('click', pauseGame, false);
     addEventListener("keydown", function(event) {
         if (event.keyCode === 32)
         pauseGame();
     });
-
-    // Инициализируем (создаем) объекты
-    player = new Player(gameHeight, gameWidth);
-    bear = new Bear(gameHeight, gameWidth, player);
-    ax = new Ax(gameHeight, gameWidth);
-    info = new Info(gameHeight, gameWidth);
-
-    // Все деревья используют один канвас, поэтому инициализировать его нужно только один раз (не для каждого дерева в отдельности).
-    Tree.init(gameHeight, gameWidth, treeMaxCount, treeCreateTime) // инициализируем канвас деревьев
-
-    // win = new Win();
-    // gameOver = new GameOver();
-    
-    // tree = new Tree();
-    // tree2 = new Tree();
-
-    // drawBackground(); // статическая функция: загружается и не повторяется
-    // drawPlayer();
-    // draw();
-
-    startLoop();
-    // как правило, эвенты добавляются в самый конец, чтобы остальные переменные были уже инициализированы
-    document.addEventListener("keydown", checkKeyDown, false);
-    document.addEventListener("keyup", checkKeyUp, false);
-    document.addEventListener("mousemove", mouseMove, false);
-    document.addEventListener("click", mouseClick, false); // "mouseclick" уже работать не будет!
-
-    // audio = document.getElementById('audio');
-    audio = new Audio('track.mp3'); // cоздание объекта Audio в javascript
-    audio.loop = true; // воспроизведение по циклу
-    audio.play(); //воспроизведение звука
 }
-
-// функции управления мышью
-function mouseMove(e) { // здесь передается объект event, который будет отвечать за движение мыши
-    // !!! Сделать изменения координат игрока со временем (8:56)
-    if (!mouseControl)
-        return;
-    mouseX = e.pageX - map.offsetLeft; // каждый раз обновляем координату Х, которая будет считавается по оси Х со всей вэб-страницы (канвас не имеет определенных координат), даже когда мышь за пределами канваса
-    mouseY = e.pageY - map.offsetTop; // при этом необходимо компенсировать расстояние, на которое смещен канвас от левого верхнего угла вэб-страцницы
-    // добавляем координаты мыши в название игры (изменяем последнее)
-    document.getElementById('gameName').innerHTML = 'X: '+mouseX+' Y: '+mouseY;
-
-    // при перемещении из function mouseClick(e) в данную функцию игрок постоянно "следит за курсором"
-    player.drawX = mouseX - player.width/2;
-    player.drawY = mouseY - player.height/2;
-}
-
-function mouseClick(e) { // здесь в параметрах передается объект event, который будет отвечать за клик мыши
-    if (!mouseControl)
-        return;
-    // player.drawX = mouseX - player.width/2; // присваиваем значение координате игрока по Х
-    // player.drawY = mouseY - player.height/2;
-    // добавляем клик в название игры (изменяем последнее)
-    document.getElementById('gameName').innerHTML = 'Clicked';
-}
-
-// вызывает себя рекурсивно, запрашивая браузер всякий раз, когда он готов к анимации (requestAnimationFrame)
+// function loop - calls itself recursively, requesting the browser whenever it is ready for animation (requestAnimationFrame):
 var loopTimeout;
 function loop() {
     if (isPlaying) {
         draw();
         update();
-        loopTimeout = requestAnimationFrame(loop); // планирует запуск функции loop для следующего AnimationFrame
+        // plans the loop function for the next AnimationFrame
+        loopTimeout = requestAnimationFrame(loop);
     }
 }
-
+// function start loop:
 function startLoop() {
     isPlaying = true;
-    loop(); // запускаем цикл в первый раз
-    startCreatingTrees(); // вызываем функцию создания деревьев (можно вызвать в init или в цикле игры)
+    // run the loop for the first time:
+    loop();
+    startCreatingTrees(); // may to call it in init
 }
-
+// function stop loop:
 function stopLoop() {
     isPlaying = false;
-    cancelAnimationFrame(loopTimeout); // отменить запланированный requestAnimationFrame
+    // should to cancel the scheduled requestAnimationFrame:
+    cancelAnimationFrame(loopTimeout);
 }
-
-// draw() и update() взаимодлействуют с основным циклом игры и выполняются последовательно
+// drawing function:
 function draw() {
     player.draw();
     bear.draw();
     ax.draw();
     info.draw();
-    Tree.clearCtx(); // очищаем контекст со всеми деревьями (стираем их), прежде, чем нарисовать их на новой позиции
-    for (var i = 0; i < Tree.trees.length; i++) { // .length передает вес массива, т.е. все переменные, которые содержатся в нем
-        Tree.trees[i].draw(stopLoop, startLoop); // для каждого элемента массива trees[] создается новый объект Tree
+    // clear the context with all trees (erase them), before drawing them in a new position:
+    Tree.clearCtx();
+    for (var i = 0; i < Tree.trees.length; i++) {
+        // for each element of the trees[] array, create a new Tree object:
+        Tree.trees[i].draw(stopLoop, startLoop);
     }
-    // tree1.draw();
-    // tree2.draw();
 }
-
+// update function:
 function update() {
     // console.log('loop');
+    // debugger
     moveBackground();
     drawBackground();
     updateStats();
     ax.update(Tree.trees);
+    // warning message 5 seconds before the speed increase:
     if (ax.timer % 35100 === 0) {
         document.getElementById('gameName').innerHTML = 'Attention! Speed will increase after five seconds.';
         setTimeout(function(){ document.getElementById('gameName').innerHTML = ''; }, 5000);
     }
+    // speed increase:
     if (ax.timer % 30100 === 0) {
-        // debugger
-        // increaseSpeed = true;
         speed = 7;
         Tree.prototype.speed = 7;
         ax.speed = 7;
@@ -237,25 +149,14 @@ function update() {
     player.update(ax, Tree.trees, audio);
     bear.update(player, Tree.trees);
     info.update();
-
-    // по аналогии с draw():
+    // similarly to draw ():
     for (var i = 0; i < Tree.trees.length; i++) {
         Tree.trees[i].update();
     }
-    // tree.update();
-
     if (player.health <= 0) {
-        // player.drawX = bear.drawX; почему-то не рисует
-        // player.drawY = bear.drawY;
-        
-        // player.health = 0;
         updateStats();
         stopLoop();
         stopCreatingTrees();
-        // gameOver.draw();
-        // audio.pause();
-        // document.getElementById('gameName').innerHTML = 'GAME OVER. YOU LOSE!';
-        // loseGame();
         doPause1s();
     }
     if (player.win) {
@@ -267,69 +168,49 @@ function update() {
         player.height = 100;
         player.playerImg1.src = 'images/folke3.png';
         player.playerImg2.src = 'images/folke3.png';
-        // stopCreatingTrees();
-        // Tree.prototype.destroy();
-        // ax.destroy();
         ax.axImg.src = 'images/stump.png';
         doPause3s();
     }
 }
-
- function moveBackground() {
-    //  var vel = 5; // переменнная, отвечающая за скорость движения фона
+// background drawing:
+function drawBackground() {
+    // erase the previous frame that was the previous image:
+    ctxMap.clearRect(0, 0, gameWidth, gameHeight);
+    ctxMap.drawImage(background1, 0, 0, gameWidth, gameHeight, // the size of the picture
+        map1X, 0, gameWidth, gameHeight); // size on the screen
+    ctxMap.drawImage(background2, 0, 0, gameWidth, gameHeight,
+        map2X, 0, gameWidth, gameHeight);
+}
+// background moving:
+function moveBackground() {
      map1X -= speed;
      map2X -= speed;
-     if (map1X + gameWidth <= 0) { // background при прохождении левой границы кансваса перемещается в правую часть канваса и снова движется влево (иначе фон уйдет с экрана влево за границы канваса (закончится))
+    // background when passing the left border of the canvas moves to the right side of the canvas and again moves to the left:
+    if (map1X + gameWidth <= 0) {
         map1X = gameWidth + (map1X + gameWidth);
      }
-     if (map2X + gameWidth <= 0) { // аналогично первому фону
+    // similarly to the first:
+    if (map2X + gameWidth <= 0) {
         map2X = gameWidth + (map2X + gameWidth);
      }
-    //  if (map1X + gameWidth < 0 && increaseSpeed === true) {
-    //     map1X = gameWidth - 7; // вычитаем 7px, чтобы не было видно полос при соединении бэкграундов
-    //  }
-    //  if (map2X + gameWidth < 0 && increaseSpeed === true) {
-    //     map2X = gameWidth - 7;
-    //  }
- }
-
-// function Win() { 
-//     this.srcX = 0; 
-//     this.srcY = 0;
-//     this.drawX = 0;
-//     this.drawY = 0;
-//     this.width = 500; 
-//     this.height = 500;
-// }
-
-// function GameOver() { 
-//     this.srcX = 0; 
-//     this.srcY = 0;
-//     this.drawX = 0;
-//     this.drawY = 0;
-//     this.width = 1000; 
-//     this.height = 900;
-// }
-
-// Win.prototype.draw = function() {
-//     ctxWinCanvas.drawImage(winImg, this.srcX, this.srcY, this.width, this.height,
-//         this.drawX, this.drawY, this.width, this.height);
-// }
-
-// GameOver.prototype.draw = function() {
-//     ctxGameOverCanvas.drawImage(gameOverImg, this.srcX, this.srcY, this.width, this.height,
-//         this.drawX, this.drawY, this.width, this.height);
-// }
-
-// функция, отвечающая за нажатие клавиши клавиатуры
-function checkKeyDown(e){ // переменная e отвечает за: какая клавиша была нажата
-    var keyID = e.keyCode || e.which; // переменная поддержки старых браузеров
-    var keyChar = String.fromCharCode(keyID); // преобразуем значение в стринг для облечения оперирования данными
-
+}
+// function of updating information (statistics):
+function updateStats() {
+    ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
+    ctxStatsCanvas.fillText(player.health/10 + "m", 575, 50);
+    ctxStatsCanvas.fillText(ax.timer/100 + "m", 675, 50);
+}
+// function responsible for pressing a key of the keyboard:
+function checkKeyDown(e){ // the event e is responsible for: what key was pressed
+    // variable of support for old browsers:
+    var keyID = e.keyCode || e.which;
+    // convert the value into strings to facilitate data manipulation:
+    var keyChar = String.fromCharCode(keyID);
     if (keyboardControl) {
         if(keyChar == "W") {
             player.isUp = true;
-            e.preventDefault();// функция устанавливает значение нажатой клавиши в состояние, в котором она была до этого
+            // function sets the value of the pressed key to the state it was in before:
+            e.preventDefault();
         }
         if(keyChar == "S") {
             player.isDown = true;
@@ -348,12 +229,10 @@ function checkKeyDown(e){ // переменная e отвечает за: ка�
 
     }
 }
-
-// функция, отвечающая за отпускание клавиши клавиатуры
+// the function responsible for releasing the key of the keyboard:
 function checkKeyUp(e){
     var keyID = e.keyCode || e.which;
     var keyChar = String.fromCharCode(keyID);
-
     if (keyboardControl) {
         if(keyChar == "W") {
             player.isUp = false;
@@ -376,37 +255,28 @@ function checkKeyUp(e){
 
     }
 }
-
-// ~ функция обновления информации
-function updateStats() {
-    ctxStatsCanvas.clearRect(0, 0, gameWidth, gameHeight);
-    ctxStatsCanvas.fillText(player.health/10 + "m", 575, 50);
-    ctxStatsCanvas.fillText(ax.timer/100 + "m", 675, 50);
+// mouse control function:
+function mouseMove(e) { // here is passed the event, which will be responsible for the movement of the mouse
+    if (!mouseControl)
+        return;
+    // each time update the X coordinate, which will be counted along the X axis from the entire web page (canvas does not have certain coordinates), even when the mouse is outside the canvas:
+    mouseX = e.pageX - map.offsetLeft;
+    // at the same time it is necessary to compensate the distance to which the canvas is shifted from the upper-left corner of the web-page:
+    mouseY = e.pageY - map.offsetTop;
+    // display the mouse coordinates in #gameName:
+    document.getElementById('gameName').innerHTML = 'X: '+mouseX+' Y: '+mouseY;
+    // player constantly follows the cursor:
+    player.drawX = mouseX - player.width/2;
+    player.drawY = mouseY - player.height/2;
 }
-
-function drawBackground() {
-    ctxMap.clearRect(0, 0, gameWidth, gameHeight); // стираем предыдущий кадр, которым было прошлое изображение
-    ctxMap.drawImage(background1, 0, 0, gameWidth, gameHeight, // размер именно картинки
-        map1X, 0, gameWidth, gameHeight); // 0, 0, gameWidth, gameHeight - размер на экране
-    ctxMap.drawImage(background2, 0, 0, gameWidth, gameHeight,
-        map2X, 0, gameWidth, gameHeight); // map1X (map2X), 0, gameWidth, gameHeight - для того, чтобы была возможность перемещать по Х координате (по Y движение фона не нужно)
-
+// mouse click function:
+function mouseClick(e) { // here in the parameters is passed the event, which will be responsible for the click of the mouse
+    if (!mouseControl)
+        return;
+    // display the mouse click (it's a pause) in #gameName:
+    document.getElementById('gameName').innerHTML = 'Pause';
 }
-
-// function drawPlayer() {
-//     ctxMap.drawImage(playerImg, 0, 0, 150, 175, // размер c ajust_size (mac)
-//         0, 0, 150, 175);
-// }
-
-// function drawRectangle() {
-//     ctxMap.fillStyle = '#3D3D3D';
-//     ctxMap.fillRect(10, 10, 100, 100); // координаты, ширина и высота прямоугольника
-// }
-
-// function clearRectangle() {
-//     ctxMap.clearRect(0, 0, gameWidth, gameHeight);
-// }
-
+// function to implement a pause in the game:
 var pause = false;
 function pauseGame() {
     if (pause === false) {
@@ -419,48 +289,23 @@ function pauseGame() {
         pause = false;
         ax.startTimer();
         startLoop();
-        audio.play(); //воспроизведение звука
+        audio.play();
     }
 };
-
-// var pauseButton = document.getElementById('pauseButton');
-// pauseButton.onclick = function() {
-//     if (this.innerHTML == 'Pause') {
-//         this.innerHTML = 'Go!';
-//         startLoop();
-//     }
-//     else {
-//         this.innerHTML = 'Pause';
-//         stopLoop();
-//     }
-//     //предотвращаем переход по ссылке href
-//     return false;
-// };
-
-// Функция stop для Audio:
-// HTMLAudioElement.prototype.stop = function()
-// {
-// this.pause();
-// this.currentTime = 0.0;
-// }
-// myaudio.stop(); // использование
-
-// Пауза 1 секунда перед вызовом функции loseGame()
+// function to implement a pause before invocation of loseGame function:
 function doPause1s() {
     setTimeout(function(){ 
         loseGame(); 
     }, 1000);
 }
-
-// Пауза 3 секунды перед вызовом функции winGame()
+// function to implement a pause before invocation of winGame function:
 function doPause3s() {
     setTimeout(function(){
         stopLoop();
         winGame(); 
     }, 3000);
 }
-
-// Функция проигрыша
+// loseGame function:
 function loseGame() {
     $('#map').hide();
     $('#trees').hide();
@@ -471,9 +316,9 @@ function loseGame() {
     $('#stats').hide();
     $('#losing').show();
     $('#losing').get(0).play();
+    document.getElementById('gameName').innerHTML = '';
 }
-
-// Функция выигрыша
+// winGame function:
 function winGame() {
     $('#map').hide();
     $('#trees').hide();
@@ -485,15 +330,14 @@ function winGame() {
     $('#winning').show();
     $('#winning').get(0).play();
 }
-
-// var video = document.getElementById('losing');
-// function playVideo() { 
-//     video.play(); 
-// }
-
-// функция округления до 5
+// rounding function up to 5:
 function roundToFive(a) {
     var b = a % 5;
     b && (a = a - b + 5);
-    return a
+    return a;
 };
+// ability to switch on mouse control from the game:
+addEventListener("keydown", function(event) {
+    if (event.keyCode === 77)
+    mouseControl = true;
+});
