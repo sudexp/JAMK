@@ -68,7 +68,7 @@ Bear.prototype.update = function(player, trees) {
     else {
 
     }
-    // implementation of overlapping ax with trees:
+    // implementation of overlapping bear with trees:
     // variable that is responsible for the overlap (in which we put the tree with which the overlap occurs):
     var overlapTree;
     // check all trees from the array:

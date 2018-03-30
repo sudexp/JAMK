@@ -1,150 +1,127 @@
-// Функция-конструктор класса (объекта) Player:
-// Чтобы создать экземпляр класса: var player = new Player()
+// player.js - javascript file associated with the display of player (folke) on the screen
+// the constructor of the class (object) Player:
 function Player(gameHeight, gameWidth) { // this --> Player
-    // Инициализируем свойства экземпляра:
-    this.health = 100;  // переменная, отвечающая за здоровье игрока
+    // initialize the instance properties:
+    // variable responsible for the health of player (distance to the bear):
+    this.health = 100;
+    // variable responsible for ax capture (winning in the game):
     this.win = false;
-
-    // часть, связанная с рисованием:
-    this.srcX = 0; // переменные, которые используются для задания координат в графическом файле
+    // drawing part:
+    // variables used to specify coordinates in a graphic file:
+    this.srcX = 0;
     this.srcY = 0;
-    this.drawX = 250; // рисование объекта
+    // initial coordinates X and Y:
+    this.drawX = 250;
     this.drawY = roundToFive(Math.floor(Math.random() * (gameHeight-100)));
-    this.width = 73; // проверить после смены рисунка
+    // image sizes:
+    this.width = 73;
     this.height = 75;
-    // часть, связанная с апдэйтом
+    // speed (the part associated with update):
     this.speed = 5;
-    // для управления с клавиатуры - переменные, отвечающие за перемещение объекта
-    // важно установить их значения на false, так как объект не должен перемещаться без воздействия на него
-    this.isUp = false;
+    // for control from the keyboard - the variables responsible for moving the object
+    this.isUp = false; // it's important to set their values to false, since the object should not move without affecting it
     this.isDown = false;
     this.isRight = false;
     this.isLeft = false;
-
-    // Добавляем свойства игры для доступа из методов Player:
+    // adding game properties for access from the Player methods:
     this.gameHeight = gameHeight;
     this.gameWidth = gameWidth;
-
-    // Картинки и переключение между ними:
+    // images and switching between them:
     this.playerImg1 = new Image();
     this.playerImg1.src = 'images/folke1.png';
     this.playerImg2 = new Image();
     this.playerImg2.src = 'images/folke2.png';
-    this.playerImgNum = 1; // значение либо 1, либо 2
-    this.countPlayer = 1; // счетчик, который увеличивается каждый раз при вызове функции draw (loop вызывает draw)
-
-    this.init(); // инициализация канваса
+    this.playerImgNum = 1; // value is either 1 or 2
+    this.countPlayer = 1; // a counter that is incremented every time when the function draw invoking (loop calls draw)
+    // invocation of init function:
+    this.init();
 }
-
-// Объявляем методы класса:
+// declare class methods:
+// initialization function:
 Player.prototype.init = function() {
-    this.playerCanvas = document.getElementById('player'); // переменная, отвечающая за канвас должна иметь в себе тег
-    this.ctxPlayerCanvas = this.playerCanvas.getContext('2d');
-
+    this.playerCanvas = document.getElementById('player'); // the variable responsible for canvas (must have a tag)
+    this.ctxPlayerCanvas = this.playerCanvas.getContext('2d'); // method returns a drawing context on the canvas
     this.playerCanvas.width = this.gameWidth;
     this.playerCanvas.height = this.gameHeight;
 }
-
-// очищаем прямоугольную область в координатах 0, 0, gameWidth, gameHeight
-// метод вызывается перед передвижением изображения в Player.prototype.draw
+// clear the rectangular area in coordinates 0, 0, gameWidth, gameHeight before moving the image in Player.prototype.draw:
 Player.prototype.clearCtxPlayer = function() {
     this.ctxPlayerCanvas.clearRect(0, 0, this.gameWidth, this.gameHeight);
 }
-
-// эта функция вызывается каждый раз из цикла loop
+// drawing function (this function is called every time from loop)
 Player.prototype.draw = function() {
-    this.clearCtxPlayer(); // удаление предыдущих кадров (изображений) при движении
-    var playerImgCurrent = (this.playerImgNum === 1 ? this.playerImg1 : this.playerImg2); // до знака вопроса условие, если это условие true, то подставляется первое значение (после "?""), если false, то второе (после ":")
-    this.ctxPlayerCanvas.drawImage(playerImgCurrent, this.srcX, this.srcY, this.width, this.height, // размер c ajust_size (mac)
+    // delete previous frames (images) when updating:
+    this.clearCtxPlayer();
+    // before the question mark is condition
+    // if this condition is true, insert the first value (after "?"), if its false, insert the second (after the":"):    
+    var playerImgCurrent = (this.playerImgNum === 1 ? this.playerImg1 : this.playerImg2);
+    // drawing image onto the canvas:  
+    this.ctxPlayerCanvas.drawImage(playerImgCurrent, this.srcX, this.srcY, this.width, this.height,
         this.drawX, this.drawY, this.width, this.height);
-    if (this.countPlayer % 10 === 0) {
-        this.playerImgNum = (this.playerImgNum === 1 ? 2 : 1); // переключает между 1 и 2 (если 1 то 2, если не один то 1)
+    // switch between 1 and 2 (if 1 then 2, if not 1 then 1)
+    if (this.countPlayer % 10 === 0) { // % 10 is like a switching speed
+        this.playerImgNum = (this.playerImgNum === 1 ? 2 : 1);
     }
     this.countPlayer++;
 }
 
-// функция для перемещения объекта-игрока по сцене (взаимодейтсвует с координатами объекта по сцене drawX и drawY)
+// update function of moving player-object on the scene (interacts with the coordinates of the object on the scene drawX and drawY)
 Player.prototype.update = function(ax, trees, audio) {
-    // this.drawX += 1;
-    // this.drawY += 3; // движение по вертикали
     this.chooseDirection();
-    if (this.drawX < 0) { // если координата X объекта меньше нуля (объект выходит за рамки канваса с левой стороны)
-        this.drawX = 0; // устанавливаем эту координату равной нулю (объект после этого не переместить влево за канвас)
+    if (this.drawX < 0) { // if the X coordinate of the object is less than zero (the object is outside the canvas on the left side)
+        this.drawX = 0; // set this coordinate to zero (the object after that does not move to the left for the canvas)
     }
-    // аналогично вышеизложенному для других координат:
+    // similarly to the above for other coordinates:
     if (this.drawX > this.gameWidth - this.width) {
-        this.drawX = this.gameWidth - this.width; // необходимо вычесть, так как начало координат объекта в левой верхней точке
+        this.drawX = this.gameWidth - this.width; // must be subtracted, since the origin of the object in the left upper point
     }
     if (this.drawY < 0) {
         this.drawY = 0;
     }
     if (this.drawY > this.gameHeight - this.height) {
-        this.drawY = this.gameHeight - this.height; // необходимо вычесть, так как начало координат объекта в левой верхней точке
+        this.drawY = this.gameHeight - this.height;
     }
-    // ограничение объекта по перемещению вперед
+    // limit the object to move forward:
     if ((this.drawX > this.gameWidth - this.width - 900) && (mouseControl === false)) {
         this.drawX = this.gameWidth - this.width - 900;
     }
-
-    // ограничение объекта по перемещению назад
+    // limit the object to move back:
     if ((this.drawX < this.gameWidth - this.width - 1000) && (mouseControl === false)) {
         this.drawX = this.gameWidth - this.width - 1000;
     }
-
-    // ограничение объекта по перемещению вверх
-    if ((this.drawY < 45) && (mouseControl === false)) {
-        this.drawY = 45;
+    // limit the object to move up:
+    if ((this.drawY < 50) && (mouseControl === false)) {
+        this.drawY = 50;
     }
-
-    // Реализация механизма столновения и перекрытия игрока с деревьями:
-    // необходимо пробежаться по элементам массива, чтобы иметь возможность сталкиваться со всеми объектами, а не с одним
-
-    var overlapTree; // Переменная, отвечающая за перекрытие, в которое положим дерево, с которым произойдет перекрытие:
-
+    // implementation of collision and overlapping player with trees:
+    // variable that is responsible for the overlap (in which we put the tree with which the overlap occurs):
+    var overlapTree;
+    // it is necessary to go through the elements of the array in order to be able to collide with all objects, and not with one
     for(var i = 0; i < trees.length; i++) {
         var tree = trees[i];
-        // Проверяем только деревья, с которыми еще не столкнулись:
+        // check only the trees we have not encountered yet:
         if (tree.collision === false) {
             if (
                 (this.drawY + this.height >= tree.drawY + 105 && this.drawY + 45 <= tree.drawY + tree.height) &&
                 (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
             ) {
-                // выводим надпись
-                // document.getElementById('gameName').innerHTML = 'Boom!';
+                // display of a collision random messages:
                 showRandomMessage();
+                // assign a flag to collisions:
                 tree.collision = true;
+                // reduce the health of the player (distance to bear)
                 this.health -= 10;
-                // Tree.treeCanvas.style.zIndex = 0
-                // Удалить tree со сцены:
-                // tree.destroy();
             }
         }
-        // Проверка на перекрытие
+        // implementation of overlapping player with trees:
         if (
-            // (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
-            ((this.drawY < tree.drawY + tree.height && this.drawY + 45 > tree.drawY + tree.height) ||
-            (this.drawY + this.height > tree.drawY && this.drawY + this.height < tree.drawY + 105)) &&
+            ((this.drawY < tree.drawY + tree.height && this.drawY + 45 > tree.drawY + tree.height) || // 45px - distance to the shadow of player
+            (this.drawY + this.height > tree.drawY && this.drawY + this.height < tree.drawY + 105)) && // 105px - distance to the shadow of tree
             (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
         ) {
-            // Фиксируем факт перекрытия и запоминаем дерево, с которым игрок перекрылся:
+            // fix the fact of overlap and remember the tree with which bear was overlapped:
             overlapTree = tree;
         }
-        // else {
-        //     this.treeOverlaps = false;
-        // }
-        // if (
-        //     (this.drawY + this.height < tree.drawY + 105 && this.drawY + this.height >= tree.drawY) &&
-        //     (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
-        //     // (this.drawY + this.height < tree.drawY + tree.height)
-        // ) {
-        //     this.treeOverlaps = true;
-        // }
-        // else if (
-        //     (this.drawY + 45 > tree.drawY + tree.height && this.drawY <= tree.drawY + tree.height) &&
-        //     (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
-        // ) {
-        //     this.treeOverlaps = false;
-        // } 
     }
     if (overlapTree) {
         if (overlapTree.collision) {
@@ -153,7 +130,6 @@ Player.prototype.update = function(ax, trees, audio) {
         else if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
             Tree.treeCanvas.style.zIndex = 3;
         }
-        // this.playerCanvas.style.zIndex = 1;
         else if (this.drawY + this.height > overlapTree.drawY + overlapTree.height) {
             Tree.treeCanvas.style.zIndex = 1;
         }
@@ -161,15 +137,8 @@ Player.prototype.update = function(ax, trees, audio) {
     else {
         Tree.treeCanvas.style.zIndex = 1;
     }
-
-    // Реализация столкновения с топором (победа в игре)
-    // if (ax.drawX + ax.width <= 1200) {
-    //     keyboardControl = false;
-    //     stopCreatingTrees();
-    //     Tree.prototype.destroy();
-    // }
+    // implementation of collision player with trees: (winning in the game):
     if (ax.drawX + ax.width <= 1150) {
-        // Tree.prototype.destroy();
         if (this.drawY < ax.drawY) {
             this.drawY += this.speed;
         }
@@ -179,41 +148,35 @@ Player.prototype.update = function(ax, trees, audio) {
         else {
     
         }
-        // youWon = function() {
-        //     document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
-        //     this.win = true;
-        // }
-        // setTimeout(youWon, 3000);
     }
-    if (this.drawX + this.width >= ax.drawX &&  // игрок касается топора слева
-        this.drawY + this.height >= ax.drawY + 45 && // игрок касается топора сверху
-        this.drawX <= ax.drawX + ax.width &&    // игрок касается топора справа
-        this.drawY + 45 <= ax.drawY + ax.height) {   // игрок касается топора снизу
-        // win.draw();
-        // audio.pause();
+    if (this.drawX + this.width >= ax.drawX &&  // player touches the ax from left
+        this.drawY + this.height >= ax.drawY + 45 && // player touches the ax from above
+        this.drawX <= ax.drawX + ax.width &&  // player touches the ax from right
+        this.drawY + 45 <= ax.drawY + ax.height) {  // player touches the ax from below
         this.win = true;
     }
 }
-
+// choose direction function:
 Player.prototype.chooseDirection = function() {
-    if(this.isUp) {
-        this.drawY -= this.speed; // при перемещении вверх уменьшается координата Y
+    if (this.isUp) {
+        this.drawY -= this.speed; // when moving up, Y coordinate decreases
     }
-    if(this.isDown) {
-        this.drawY += this.speed;
+    if (this.isDown) {
+        this.drawY += this.speed; // when moving up, Y coordinate increases
     }
-    if(this.isRight) {
-        this.drawX += this.speed;
+    if (this.isRight) {
+        this.drawX += this.speed; // when moving right, X coordinate increases
     }
-    if(this.isLeft) {
-        this.drawX -= this.speed;
+    if (this.isLeft) {
+        this.drawX -= this.speed; // when moving left, X coordinate decreases
     }
 }
-
+// random mesage function (show message when is collision):
 function showRandomMessage() {
     var words = ['Boom!', 'Be carefull!', "Don't hurry!", 'Pay attention!'];
     var randomWord = Math.floor(Math.random() * words.length);
+    // display random message on the screen:
     document.getElementById('gameName').innerHTML = words[randomWord];
-    // и меняем ее обратно на начальную
+    // change (remove) message to empty after 1 second:
     setTimeout(function(){ document.getElementById('gameName').innerHTML = ''; }, 1000);
 }
