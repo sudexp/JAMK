@@ -1,92 +1,87 @@
-// Функция-конструктор класса (объекта) Ax:
-// Чтобы создать экземпляр класса: var ax = new Ax()
+// ax.js - javascript file associated with the display of ax on the screen
+// the constructor of the class (object) Ax:
 function Ax(gameHeight, gameWidth) {
-    // Инициализируем свойства экземпляра:
-
-    // часть, связанная с рисованием
+    // initialize the instance properties:
+    // drawing:
     this.startPosition = 1200;
     this.randomPosition = roundToFive(Math.floor(Math.random() * (gameHeight-75)));
-    this.timerValue = 60000 // время появления топора - изменить
+    // variables used to specify coordinates in a graphic file:
     this.srcX = 0;
     this.srcY = 0;
+    // initial coordinates X and Y:
     this.drawX = this.startPosition;
     this.drawY = this.randomPosition;
+    // image sizes:
     this.width = 120; 
     this.height = 85;
+    // speed:
     this.speed = 5;
-
-    // Добавляем свойства игры для доступа из методов Ax:
+    // adding game properties for access from the Info methods:
     this.gameHeight = gameHeight;
     this.gameWidth = gameWidth;
-
     // Когда переменная isActive равна false, то топор не двигается.
     this.isActive = false;
     this.timer = this.timerValue;
-    
-    // Картинки:
+    // image creation:
     this.axImg = new Image();
     this.axImg.src = 'images/ax.png';
-    
+    // time through which the ax is created
+    this.timerValue = 60000;
+    // invocation of startTimer and init function:
     this.startTimer();
     this.init();
 }
-    
-// Объявляем методы класса:
+   
+// declare class methods:
+// initialization function:
 Ax.prototype.init = function () {
     this.axCanvas = document.getElementById('ax');
     this.ctxAxCanvas = this.axCanvas.getContext('2d');
-
     this.axCanvas.width = gameWidth;
     this.axCanvas.height = gameHeight;
 }
-
+// clear the rectangular area in coordinates 0, 0, gameWidth, gameHeight before moving the image in Ax.prototype.draw:
 Ax.prototype.clearCtxAx = function() {
     this.ctxAxCanvas.clearRect(0, 0, this.gameWidth, this.gameHeight);
 }
-
+// drawing function
 Ax.prototype.draw = function() {
+    // delete previous frames (images) when updating:
     this.clearCtxAx();
+    // drawing image onto the canvas:
     if (this.isActive) {
-        this.ctxAxCanvas.drawImage(this.axImg, this.srcX, this.srcY, this.width, this.height,
-            this.drawX, this.drawY, this.width, this.height);
+        this.ctxAxCanvas.drawImage(this.axImg, this.srcX, this.srcY, this.width, this.height, // image and parameters on the source image
+            this.drawX, this.drawY, this.width, this.height); // coordinates on the canvas
     }
 }
-
+// update function:
 Ax.prototype.update = function (trees) {
     if (this.isActive) {
         this.drawX -= this.speed;
         player.keyboardControl = false;
         stopCreatingTrees();
         Tree.prototype.destroy();
-        // if (this.drawX + this.width < 0) {
-        //     // this.destroy();
-        //     this.isActive = false;
-        //     this.timer = this.timerValue;
-        //     this.drawX = this.startPosition;
-        //     this.drawY = this.randomPosition;
-        // }
-        // Реализация механизма перекрытия топора с деревьями:
-        var overlapTree; // Переменная, отвечающая за перекрытие, в которое положим дерево, с которым произойдет перекрытие:
-        
+        // implementation of overlapping ax with trees:
+        // variable that is responsible for the overlap (in which we put the tree with which the overlap occurs):
+        var overlapTree;
+        // check all trees from the array:
         for(var i = 0; i < trees.length; i++) {
             var tree = trees[i];
-            // Проверка на перекрытие
+            // obverlap cheking:
             if (
                 (this.drawY + this.height >= tree.drawY && this.drawY <= tree.drawY + tree.height) &&
                 (this.drawX + this.width >= tree.drawX && this.drawX <= tree.drawX + tree.width)
             ) {
-                // Фиксируем факт перекрытия и запоминаем дерево, с которым топор перекрылся:
+                // fix the fact of overlap and remember the tree with which ax was overlapped:
                 overlapTree = tree;
             }
         }
-        // window.bearOverlapTree = overlapTree;
+        // window.bearOverlapTree = overlapTree; - for testing in a browser console
         if (overlapTree) {
             if (this.drawY + this.height < overlapTree.drawY + overlapTree.height) {
-                // Tree.treeCanvas.style.zIndex = 2;
                 this.axCanvas.style.zIndex = 0;
             }
             else if (this.drawY + this.height > overlapTree.drawY + overlapTree.height) {
-                // Tree.treeCanvas.style.zIndex = 0;
                 this.axCanvas.style.zIndex = 3;
             }
         }
@@ -95,13 +90,13 @@ Ax.prototype.update = function (trees) {
         }
     }
 }
-
+// destroy function (use when necessary):
 Ax.prototype.destroy = function() {
     this.axCanvas.remove();
 }
-
+// starttimer function:
 Ax.prototype.startTimer = function startTimer() {
-    // setinterval запускает функцию через 1000 мс постоянно
+    // setinterval starts the function after 1000 ms continuously:
     var ax = this;
     this.setTimer = setInterval(function(){
         if (ax.timer > 0) {
@@ -111,7 +106,7 @@ Ax.prototype.startTimer = function startTimer() {
         }
     }, 100);
 }
-
+// stoptimer function:
 Ax.prototype.stopTimer = function stopTimer() {
     clearInterval(this.setTimer);
 }
