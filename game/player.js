@@ -48,7 +48,7 @@ Player.prototype.init = function() {
 Player.prototype.clearCtxPlayer = function() {
     this.ctxPlayerCanvas.clearRect(0, 0, this.gameWidth, this.gameHeight);
 }
-// drawing function (this function is called every time from loop)
+// drawing function (this function is called every time from loop):
 Player.prototype.draw = function() {
     // delete previous frames (images) when updating:
     this.clearCtxPlayer();
@@ -64,7 +64,6 @@ Player.prototype.draw = function() {
     }
     this.countPlayer++;
 }
-
 // update function of moving player-object on the scene (interacts with the coordinates of the object on the scene drawX and drawY)
 Player.prototype.update = function(ax, trees, audio) {
     this.chooseDirection();
