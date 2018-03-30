@@ -16,10 +16,10 @@ function Ax(gameHeight, gameWidth) {
     this.height = 85;
     // speed:
     this.speed = 5;
-    // adding game properties for access from the Info methods:
+    // adding game properties for access from the Ax methods:
     this.gameHeight = gameHeight;
     this.gameWidth = gameWidth;
-    // Когда переменная isActive равна false, то топор не двигается.
+    // when the variable isActive is false, the ax does not move.
     this.isActive = false;
     this.timer = this.timerValue;
     // image creation:
@@ -30,8 +30,7 @@ function Ax(gameHeight, gameWidth) {
     // invocation of startTimer and init function:
     this.startTimer();
     this.init();
-}
-   
+}   
 // declare class methods:
 // initialization function:
 Ax.prototype.init = function () {
