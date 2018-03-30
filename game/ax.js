@@ -5,6 +5,8 @@ function Ax(gameHeight, gameWidth) {
     // drawing:
     this.startPosition = 1200;
     this.randomPosition = roundToFive(Math.floor(Math.random() * (gameHeight-75)));
+    // time through which the ax is created
+    this.timerValue = 60000;
     // variables used to specify coordinates in a graphic file:
     this.srcX = 0;
     this.srcY = 0;
@@ -25,8 +27,6 @@ function Ax(gameHeight, gameWidth) {
     // image creation:
     this.axImg = new Image();
     this.axImg.src = 'images/ax.png';
-    // time through which the ax is created
-    this.timerValue = 60000;
     // invocation of startTimer and init function:
     this.startTimer();
     this.init();
