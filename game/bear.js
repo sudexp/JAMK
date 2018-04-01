@@ -57,6 +57,7 @@ Bear.prototype.draw = function() {
 }
 // update function:
 Bear.prototype.update = function(player, trees) {
+    var x = this.drawX + 1;
     this.drawX = player.drawX - 0.79 * this.width - player.health;
     if (this.drawY < player.drawY) {
         this.drawY += Math.floor(0.5 * this.speed);
@@ -97,7 +98,6 @@ Bear.prototype.update = function(player, trees) {
         this.bearCanvas.style.zIndex = 3;
     }
     // bear movement if player won:
-    var x = this.drawX + 1;
     if (player.win === true) {
         if (ax.drawY > 360 - 0.5 * ax.width) {
             this.drawX = x + 4;
