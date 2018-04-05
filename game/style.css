@@ -126,7 +126,7 @@ canvas {
 #info {
     display: block;
     position: relative;
-    cursor: pointer;
+    /* cursor: pointer; */
     margin: -720px auto 0;
 }
 
