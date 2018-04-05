@@ -32,6 +32,10 @@ video  {
     opacity: 0.4;
 }
 
+#skip_button:hover {
+    cursor: pointer;
+}
+
 #background_intro {
     display: none;
     background-image: url(images/background_intro.png);
