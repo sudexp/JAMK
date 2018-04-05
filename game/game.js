@@ -90,6 +90,11 @@ function init() {
         if (event.keyCode === 32)
         pauseGame();
     });
+    // implementation of exit the game:
+    addEventListener("keydown", function(event) {
+        if (event.keyCode === 80)
+        loseGame();
+    });
 }
 // function loop - calls itself recursively, requesting the browser whenever it is ready for animation (requestAnimationFrame):
 var loopTimeout;
