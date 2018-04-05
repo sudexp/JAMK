@@ -6,7 +6,6 @@
 
 body {
     background: #333;
-    cursor: pointer;
     font-family: 'Norse Regular';
 }
 
@@ -40,7 +39,7 @@ video  {
     width: 1280px;
     margin: 0 auto;
     position: relative;
-    font-size: 32px;
+    font-size: 24px;
     letter-spacing: 2px;
 }
 
@@ -70,13 +69,23 @@ video  {
     margin: auto;
 }
 
-.right_button{
+.header {
+    font-size: 48px;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+p {
+    margin: 10px auto;
+}
+
+.right_button {
     background-image: url(images/right_button.png);
     height: 28px;
     width: 49px;
     position: absolute;
     bottom: 20px;
-    right: 25px;
+    right: 35px;
 }
 
 .left_button{
@@ -85,7 +94,14 @@ video  {
     width: 49px;
     position: absolute;
     bottom: 20px;
-    left: 25px;
+    left: 35px;
+}
+
+.right_button:hover,
+.left_button:hover {
+   cursor: pointer;
+   transform: scale(1.15);
+   transition: 100ms ease;
 }
 
 #gameName {
@@ -110,6 +126,7 @@ canvas {
 #info {
     display: block;
     position: relative;
+    cursor: pointer;
     margin: -720px auto 0;
 }
 
