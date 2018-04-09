@@ -16,7 +16,7 @@ body {
     width: 1280px;
 }
 
-video  {
+video {
     display: block;
     margin: 0 auto;
     position: relative;
@@ -92,7 +92,7 @@ p {
     right: 35px;
 }
 
-.left_button{
+.left_button {
     background-image: url(images/left_button.png);
     height: 28px;
     width: 49px;
