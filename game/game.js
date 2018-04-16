@@ -38,6 +38,8 @@ var mouseX;
 var mouseY;
 var mouseControl = false; // by default, mouse control is disabled
 var keyboardControl = true;
+// to capture the moment when user wins to run loop just one time
+var winHappened = false;
 // variable to control audio:
 var audio;
 // API for drawing / optimizing smoother browsing animation (asks the browser to schedule repainting on the next animation frame):
@@ -167,16 +169,19 @@ function update() {
         doPause1s();
     }
     if (player.win) {
-        // document.getElementById('gameName').innerHTML = 'Congratulations! You won!';
         speed = 0;
         ax.speed = 0;
-        player.speed = 0;
-        player.width = 67; 
-        player.height = 100;
-        player.playerImg1.src = 'images/folke3.png';
-        player.playerImg2.src = 'images/folke3.png';
-        ax.axImg.src = 'images/stump.png';
-        doPause3s();
+        document.getElementById('gameName').innerHTML = '';
+        if (!winHappened) {
+            player.speed = 0;
+            player.width = 67; 
+            player.height = 100;
+            player.playerImg1.src = 'images/folke3.png';
+            player.playerImg2.src = 'images/folke3.png';
+            ax.axImg.src = 'images/stump.png';
+            doPause3s();
+            winHappened = true;
+        }
     }
 }
 // background drawing:
@@ -323,7 +328,6 @@ function loseGame() {
     $('#stats').hide();
     $('#losing').show();
     $('#losing').get(0).play();
-    document.getElementById('gameName').innerHTML = '';
 }
 // winGame function:
 function winGame() {
@@ -336,6 +340,7 @@ function winGame() {
     $('#stats').hide();
     $('#winning').show();
     $('#winning').get(0).play();
+    // console.log("Testi!");
 }
 // rounding function up to 5:
 function roundToFive(a) {
