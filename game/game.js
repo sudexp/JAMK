@@ -148,7 +148,7 @@ function update() {
     updateStats();
     ax.update(Tree.trees);
     // warning message 5 seconds before the speed increase:
-    if (ax.timer % 35100 === 0) {
+    if (ax.timer % 35100 === 0 && ax.timer > 0) {
         document.getElementById('gameName').innerHTML = 'Attention! Speed will increase after five seconds.';
         setTimeout(function(){ document.getElementById('gameName').innerHTML = ''; }, 5000);
     }
