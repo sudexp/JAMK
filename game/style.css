@@ -108,6 +108,34 @@ p {
    transition: 100ms ease;
 }
 
+.wrap {
+    margin: 0 auto;
+    position: relative;
+    /* height: 720px;
+    width: 1280px; */
+    z-index: 5;
+}
+
+#sound {
+    background-image: url(images/sound_off.png);
+    height: 30px;
+    width: 27px;
+    position: absolute;
+    top: 20px;
+    right: 130px;
+    display: none;
+}
+
+#exit {
+    background-image: url(images/exit.png);
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    display: none;
+}
+
 #gameName {
     height: 41px;
     color: #fff;

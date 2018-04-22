@@ -99,6 +99,8 @@ function init() {
         if (event.keyCode === 80)
         loseGame();
     });
+    document.getElementById('sound').style.display = 'block';
+    document.getElementById('exit').style.display = 'block';
 }
 // function loop - calls itself recursively, requesting the browser whenever it is ready for animation (requestAnimationFrame):
 var loopTimeout;
@@ -329,6 +331,7 @@ function loseGame() {
     $('#bear').hide();
     $('#info').hide();
     $('#stats').hide();
+    $('.wrap').hide();
     $('#losing').show();
     $('#losing').get(0).play();
 }
@@ -341,6 +344,7 @@ function winGame() {
     $('#bear').hide();
     $('#info').hide();
     $('#stats').hide();
+    $('.wrap').hide();
     $('#winning').show();
     $('#winning').get(0).play();
     // console.log("Testi!");
