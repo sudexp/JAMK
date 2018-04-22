@@ -99,8 +99,14 @@ function init() {
         if (event.keyCode === 80)
         loseGame();
     });
+    addEventListener("keydown", function(event) {
+        if (event.keyCode === 80)
+        loseGame();
+    });
     document.getElementById('sound').style.display = 'block';
     document.getElementById('exit').style.display = 'block';
+    document.addEventListener("click", switchSound, false);
+    document.addEventListener("click", exitGame, false);
 }
 // function loop - calls itself recursively, requesting the browser whenever it is ready for animation (requestAnimationFrame):
 var loopTimeout;
@@ -361,3 +367,24 @@ addEventListener("keydown", function(event) {
     mouseControl = true;
     // document.getElementById('stats').style.cursor = 'pointer';
 });
+// exit the game
+function exitGame() {
+    var exit = document.getElementById('exit');
+        exit.addEventListener('click', function () {
+            location.reload();
+        }, false);
+};
+// change sound and sound icons:
+function switchSound($) {
+    var wrapElements = document.getElementById('wrapSE');
+    var wrap = wrapElements[0];
+    document.getElementById('sound').onclick = function switchOnOff(){
+        if (wrap.className == 'on') {
+            audio.pause();
+            wrap.className = 'off';
+        } else {
+            audio.play();
+            wrap.className = 'on';
+        }
+    }            
+};

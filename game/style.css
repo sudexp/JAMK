@@ -108,7 +108,7 @@ p {
    transition: 100ms ease;
 }
 
-.wrap {
+#wrapSE {
     margin: 0 auto;
     position: relative;
     z-index: 5;
@@ -125,6 +125,10 @@ p {
     display: none;
 }
 
+/* #wrapSE.off #sound {
+    background-image: url(images/sound_on.png);
+}  */
+
 #exit {
     background-image: url(images/exit.png);
     height: 30px;
@@ -134,6 +138,14 @@ p {
     left: calc(50% + 575px);
     cursor: pointer;
     display: none;
+}
+
+#sound:hover,
+#sound.off:hover,
+#exit:hover {
+   cursor: pointer;
+   transform: scale(1.15);
+   transition: 100ms ease;
 }
 
 #gameName {
