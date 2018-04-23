@@ -105,8 +105,6 @@ function init() {
     });
     document.getElementById('sound').style.display = 'block';
     document.getElementById('exit').style.display = 'block';
-    document.addEventListener("click", switchSound, false);
-    document.addEventListener("click", exitGame, false);
 }
 // function loop - calls itself recursively, requesting the browser whenever it is ready for animation (requestAnimationFrame):
 var loopTimeout;
@@ -360,7 +358,7 @@ function roundToFive(a) {
     var b = a % 5;
     b && (a = a - b + 5);
     return a;
-};
+}
 // ability to switch on mouse control from the game:
 addEventListener("keydown", function(event) {
     if (event.keyCode === 77)
@@ -369,22 +367,17 @@ addEventListener("keydown", function(event) {
 });
 // exit the game
 function exitGame() {
-    var exit = document.getElementById('exit');
-        exit.addEventListener('click', function () {
-            location.reload();
-        }, false);
-};
+    window.location.reload();
+}
 // change sound and sound icons:
-function switchSound($) {
-    var wrapElements = document.getElementById('wrapSE');
-    var wrap = wrapElements[0];
-    document.getElementById('sound').onclick = function switchOnOff(){
-        if (wrap.className == 'on') {
-            audio.pause();
-            wrap.className = 'off';
-        } else {
-            audio.play();
-            wrap.className = 'on';
-        }
-    }            
-};
+function switchSound() {
+    var wrapElement = document.getElementById('wrapSE');
+    var wrap = wrapElement;
+    if (wrap.className === 'on') {
+        audio.pause();
+        wrap.className = 'off';
+    } else {
+        audio.play();
+        wrap.className = 'on';
+    }
+}

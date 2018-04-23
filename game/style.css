@@ -115,7 +115,7 @@ p {
 }
 
 #sound {
-    background-image: url(images/sound_off.png);
+    background-image: url(images/sound_on.png);
     height: 30px;
     width: 27px;
     position: absolute;
@@ -125,9 +125,9 @@ p {
     display: none;
 }
 
-/* #wrapSE.off #sound {
-    background-image: url(images/sound_on.png);
-}  */
+#wrapSE.off #sound {
+    background-image: url(images/sound_off.png);
+} 
 
 #exit {
     background-image: url(images/exit.png);
