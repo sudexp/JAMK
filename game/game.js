@@ -75,7 +75,7 @@ function init() {
     // all trees use one canvas, so initialize only it (not for each tree individually):
     Tree.init(gameHeight, gameWidth, treeMaxCount, treeCreateTime);
     // hide the mouse cursor:
-    document.getElementById('stats').style.cursor = 'none';
+    // document.getElementById('stats').style.cursor = 'none';
     // invocation of start loop:
     startLoop();
     // attach event handlers to the document for control from the keyboard and mouse:
