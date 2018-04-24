@@ -108,15 +108,15 @@ function init() {
 }
 // function loop - calls itself recursively, requesting the browser whenever it is ready for animation (requestAnimationFrame):
 var loopTimeout;
-var fps = 60; // controlling the frame rate
+// var fps = 60; // controlling the frame rate
 function loop() {
     if (isPlaying) {
         draw();
         update();
         // plans the loop function for the next AnimationFrame
-        setTimeout(function() {
+        // setTimeout(function() {
             loopTimeout = requestAnimationFrame(loop);
-        }, 1000 / fps);
+        // }, 1000 / fps);
     }
 }
 // function start loop:
