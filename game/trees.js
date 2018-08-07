@@ -136,8 +136,8 @@ Tree.prototype.overlapXTrees = function() {
     // if the current tree is overlapped on any existing tree, move it to the right:
     for (var i = 0; i < sortedX.length; i++) {
         if ((this.drawX >= sortedX[i].drawX && this.drawX <= sortedX[i].drawX + this.width)
-          || (this.drawX <= sortedX[i].drawX && this.drawX >= sortedX[i].drawX - this.width)) {
+        || (this.drawX <= sortedX[i].drawX && this.drawX >= sortedX[i].drawX - this.width)) {
             this.drawX = sortedX[i].drawX + 0.6 * this.width;
         }
     }
-}
+}  
