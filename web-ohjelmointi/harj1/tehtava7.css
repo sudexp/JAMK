@@ -95,8 +95,7 @@ input[list='area']:invalid {
   border-color: initial;
 }
 
-
-input[type='submit']:valid ,
+input[type='submit']:valid,
 input[type='submit']:invalid {
   border-color: #000;
 }

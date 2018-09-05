@@ -19,16 +19,16 @@
     <fieldset>
       <legend>Ilmiantaja</legend>
       <p><label for="name">Nimi:</label><br>
-        <input type="text" id="name" pattern="[a-zA-Z\s]+$" placeholder="Kirjoita nimesi tähän" autofocus required></p>
+        <input type="text" id="name" name="name" pattern="[a-zA-Z\s]+$" placeholder="Kirjoita nimesi tähän" autofocus required></p>
       <p><label for="phone">Puhelinnumero</label><br>
-        <input type="phone" id="phone" pattern="\d{3}\s\d{3}\s\d{3}\s\d" placeholder="Puhelinnumero muodossa 040 xxx xxx x" required></p>
+        <input type="phone" id="phone" name="phone" pattern="\d{3}\s\d{3}\s\d{3}\s\d" placeholder="Puhelinnumero muodossa 040 xxx xxx x" required></p>
       <p><label for="email">E-mail</label><br>
-        <input type="email" id="email" placeholder="Kirjoita sähköpostiosoitteesi tähän" required></p>
+        <input type="email" id="email" name="email" placeholder="Kirjoita sähköpostiosoitteesi tähän" required></p>
     </fieldset>
     <fieldset>
       <legend>Ilmaituksen URL</legend>
       <p><label for="sale">Myynti-ilmaituksen URL:</label><br>
-        <input type="url" id="sale" placeholder="Kopioi jakokodin/Etuoven kohdeURL tähän" required></p>
+        <input type="url" id="sale" name="url" placeholder="Kopioi jakokodin/Etuoven kohdeURL tähän" required></p>
     </fieldset>
     <fieldset>
       <legend>Asunnin pyyntihinta</legend>
@@ -46,7 +46,7 @@
     </fieldset>
     <fieldset>
       <legend>Suosikkiasuinalueeni</legend>
-      <p><input list="area">
+      <p><input list="area" name="area">
         <datalist id="area">
           <option value="Aittorinne"></option>
           <option value="Keskusta"></option>
