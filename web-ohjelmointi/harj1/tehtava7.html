@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Dmitry Sklyarov [M0394] Harjoitukset 1 / Tehtävä 7</title>
+  <meta name="keywords" lang="fi" content="Dmitry Sklyarov, Jyväskylän ammattikorkeakoulu"/>
+  <meta name="description" lang="fi" content="Dmitry Sklyarovin tehtava 7"/>
+  <meta name="author" lang="fi" content="Dmitry Sklyarov"/>
+  <link rel="stylesheet" type="text/css" href="tehtava7.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+
+<body>
+  <header>
+    <h1>Nettoasunto - Ilmianna loistokohde</h1>
+  </header>
+  <form action="handler.php" oninput="output1.value=price1.value; output2.value=price2.value">
+    <fieldset>
+      <legend>Ilmiantaja</legend>
+      <p><label for="name">Nimi:</label><br>
+        <input type="text" id="name" pattern="[a-zA-Z\s]+$" placeholder="Kirjoita nimesi tähän" autofocus required></p>
+      <p><label for="phone">Puhelinnumero</label><br>
+        <input type="phone" id="phone" pattern="\d{3}\s\d{3}\s\d{3}\s\d" placeholder="Puhelinnumero muodossa 040 xxx xxx x" required></p>
+      <p><label for="email">E-mail</label><br>
+        <input type="email" id="email" placeholder="Kirjoita sähköpostiosoitteesi tähän" required></p>
+    </fieldset>
+    <fieldset>
+      <legend>Ilmaituksen URL</legend>
+      <p><label for="sale">Myynti-ilmaituksen URL:</label><br>
+        <input type="url" id="sale" placeholder="Kopioi jakokodin/Etuoven kohdeURL tähän" required></p>
+    </fieldset>
+    <fieldset>
+      <legend>Asunnin pyyntihinta</legend>
+      <p class="center">
+        <output for="price1" name="output1">250</output>kEUR<br> 1EUR
+        <input type="range" id="price1" name="price1" value="250" min="1" max="500" step="1">500kEUR
+      </p>
+    </fieldset>
+    <fieldset>
+      <legend>Arvioimani hinta</legend>
+      <p class="center">
+        <output for="price2" name="output2">320</output>kEUR<br> 1kEUR
+        <input type="range" id="price2" name="price2" value="320" min="1" max="500" step="1">500kEUR
+      </p>
+    </fieldset>
+    <fieldset>
+      <legend>Suosikkiasuinalueeni</legend>
+      <p><input list="area">
+        <datalist id="area">
+          <option value="Aittorinne"></option>
+          <option value="Keskusta"></option>
+          <option value="Kortepohja"></option>
+          <option value="Kuokkala"></option>
+          <option value="Roninmäki"></option>
+        </datalist></p>
+    </fieldset>
+    <p><input type="submit" value="Ilmianna asunto!"></p>
+  </form>
+  <footer>
+    <p>© 2014 Q&D Software Ltd. Kaikki oikeudet pidätetään.</p>
+  </footer>
+</body>
+
+</html>
