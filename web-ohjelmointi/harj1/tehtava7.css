@@ -90,13 +90,14 @@ input:valid:not(:placeholder-shown) {
   border-color: #008000;
 }
 
-input[list='area']:invalid,
-input[type='submit']:invalid {
-  border-color: #000;
+input[list='area']:valid,
+input[list='area']:invalid {
+  border-color: initial;
 }
 
-input[list='area']:valid,
-input[type='submit']:valid {
+
+input[type='submit']:valid ,
+input[type='submit']:invalid {
   border-color: #000;
 }
 
