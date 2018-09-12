@@ -2,7 +2,11 @@ window.onload = writeResults;
 
 const arr = [11, 22, 33, 44];
 
-let printArray = function() {
+// Template:
+// let inc = x => x+1;
+// let inc = function(x) { return x + 1; };
+
+let printArray = () => {
   let i;
   let arrContent = '';
   for (i in arr) {
@@ -11,11 +15,10 @@ let printArray = function() {
   return arrContent;
 };
 
-let arrayCount = function() {
-  return arr.length;
-};
+let arrayCount = () => arr.length;
 
-let arraySum = function() {
+
+let arraySum = () => {
   let sum = 0;
   let i;
   for (i of arr) {
@@ -24,7 +27,7 @@ let arraySum = function() {
   return sum;
 };
 
-let arrayAvg = function() {
+let arrayAvg = () => {
   let avg;
   avg = Math.round((sum / arr.length) * 10) / 10;
   return avg;
