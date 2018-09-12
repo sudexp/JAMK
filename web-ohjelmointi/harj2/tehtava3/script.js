@@ -20,14 +20,17 @@ const summa = arraySum(arrData);
 const avg = arrayAvg(count, summa);
 
 function writeResults() {
-  document.getElementById('result').innerHTML = `
+  let sisalto = `
+    <p>Alkiot ovat:</p>
     <p>
       ${print}
       Lukumäärä on ${count}<br>  
       Summa on ${summa}<br>
       Keskiarvo on ${avg}
     </p>
-  `;
+  `
+  let para = document.getElementById('result');
+  para.innerHTML = sisalto;
 }
 
 window.onload = writeResults;
