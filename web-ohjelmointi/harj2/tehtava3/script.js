@@ -1,10 +1,4 @@
-// Template:
-// let inc = x => x+1;
-// let inc = function(x) { return x + 1; };
-
-const arr = [11, 22, 33, 44];
-
-let printArray = arr => {
+const printArray = arr => {
   let i;
   let arrContent = '';
   for (i in arr) {
@@ -13,38 +7,27 @@ let printArray = arr => {
   return arrContent;
 }
 
-let arrayCount = arr => arr.length;
+const arrayCount = arr => arr.length;
 
+const arraySum = arr => arr.reduce((a, b) => a + b)
 
-// let arraySum = arr => {
-//   let sum = arr.reduce((a, b) => a + b)
-//   return sum;
-// }
+const arrayAvg = (len, sum) => Math.round((sum / len) * 10) / 10;
 
-let arraySum = arr => arr.reduce((a, b) => a + b)
-
-let arrayAvg = (len, sum) => {
-  const avg = Math.round((sum / len) * 10) / 10;
-  return avg;
-}
-
-const print = printArray(arr);
-const count = arrayCount(arr);
-const summa = arraySum(arr);
+const arrData = [11, 22, 33, 44];
+const print = printArray(arrData);
+const count = arrayCount(arrData);
+const summa = arraySum(arrData);
 const avg = arrayAvg(count, summa);
 
 function writeResults() {
-  document.getElementById('result').innerHTML =
-    print +
-    '<br>' +
-    'Lukumäärä on ' +
-    count +
-    '<br>' +
-    'Summa on ' +
-    summa +
-    '<br>' +
-    'Keskiarvo on ' +
-    avg;
+  document.getElementById('result').innerHTML = `
+    <p>
+      ${print}
+      Lukumäärä on ${count}<br>  
+      Summa on ${summa}<br>
+      Keskiarvo on ${avg}
+    </p>
+  `;
 }
 
 window.onload = writeResults;
