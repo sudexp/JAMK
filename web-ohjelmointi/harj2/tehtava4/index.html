@@ -14,14 +14,15 @@
     <fieldset>
       <legend>Vauhtilaskin</legend>
       <p><label for="hours">Tunnit:</label></p>
-      <input type="text" id="hours" name="hours" pattern="^\d*\.?\d*$" placeholder="Kirjoita tunnit" autofocus required><br>
+      <input type="text" id="hours" name="hours" pattern="^[0-9]+$" placeholder="Kirjoita tunnit" autofocus required><br>
       <p><label for="minutes">Minuutit:</label></p>
-      <input type="text" id="minutes" name="minutes" pattern="^\d*\.?\d*$" placeholder="Kirjoita minuutit" required><br>
+      <input type="text" id="minutes" name="minutes" pattern="^[0-9]+$" placeholder="Kirjoita minuutit" required><br>
       <p><label for="seconds">Sekunnit:</label></p>
-      <input type="text" id="seconds" name="seconds" pattern="^\d*\.?\d*$" placeholder="Kirjoita sekunnit" autofocus required><br>
+      <input type="text" id="seconds" name="seconds" pattern="^[0-9]+$" placeholder="Kirjoita sekunnit" autofocus
+        required><br>
       <p><label for="distance">Kilometrit:</label></p>
-      <input type="text" id="distance" name="distance" pattern="^\d*\.?\d*$" placeholder="Kirjoita distance (km)" required><br>
-      <p><input type="button" value="Laske vauhdit" onclick="addition()"><p>
+      <input type="text" id="distance" name="distance" pattern="^[0-9]+$" placeholder="Kirjoita distance (km)" required><br>
+      <p><input type="button" value="Laske vauhdit" onclick="outputOnDisplay()"><p>
     </fieldset>
   </form>
   <div id="speed-km-h"></div>
