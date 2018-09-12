@@ -1,32 +1,32 @@
 const arr = [11, 22, 33, 44];
 
-let printArray = function(arr) {
+const printArray = function(arr) {
   let i;
   let arrContent = '';
   for (i in arr) {
     arrContent += `<p>taulukko[${i}]=${arr[i]}</p>`;
   }
   return arrContent;
-};
+}
 
-let arrayCount = function(arr) {
+const arrayCount = function(arr) {
   const len = arr.length;
   return len;
-};
+}
 
-let arraySum = function(arr) {
+const arraySum = function(arr) {
   let sum = 0;
   let i;
   for (i of arr) {
     sum += i;
   }
   return sum;
-};
+}
 
-let arrayAvg = function(len, sum) {
+const arrayAvg = function(len, sum) {
   const avg = Math.round((sum / len) * 10) / 10;
   return avg;
-};
+}
 
 const print = printArray(arr);
 const count = arrayCount(arr);
