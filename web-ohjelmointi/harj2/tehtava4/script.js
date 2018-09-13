@@ -1,3 +1,8 @@
+// Object Oriented concepts:
+// 1. Incaplusation
+// 2. Polimorphism
+// 3. Inheritance
+
 class Calculator {
   constructor(hours, minutes, seconds, distance) {
     this.hours = hours;
@@ -5,7 +10,7 @@ class Calculator {
     this.seconds = seconds;
     this.distance = distance;
   }
-  
+
   get speedKmH() {
     return this.calcSpeedKmH();
   }
@@ -27,24 +32,18 @@ class Calculator {
   calcSpeedMinKm() {
     return (
       Math.round(
-        ((this.hours * 60 + this.minutes + this.seconds / 60) / this.distance) *
-          100
-      ) / 100
+        ((this.hours * 60 + this.minutes + this.seconds / 60) / this.distance) * 100) / 100
     );
   }
 }
 
-//let hours = parseInt(document.getElementById('hours').value);
-//let minutes = parseInt(document.getElementById('minutes').value);
-//let seconds = parseInt(document.getElementById('seconds').value);
-//let distance = parseInt(document.getElementById('seconds').value);
-
-const speed = new Calculator(1, 13, 13, 20);
-//const speed = new Calculator(hours, minutes, seconds, distance);
-
-console.log(speed.speedKmH, speed.speedMinKm);
-
 function outputOnDisplay() {
+  const speed = new Calculator(
+    parseInt(document.getElementById('hours').value),
+    parseInt(document.getElementById('minutes').value),
+    parseInt(document.getElementById('seconds').value),
+    parseInt(document.getElementById('seconds').value)
+  );
   document.getElementById('speed-km-h').innerHTML = speed.speedKmH + ' km/h';
   document.getElementById('speed-km-h').style.display = 'block';
   document.getElementById('speed-min-km').innerHTML = speed.speedMinKm + ' min/km';
