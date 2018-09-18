@@ -33,10 +33,25 @@ legend {
   color: #fff;
 }
 
+table {
+  margin: 0.5em auto;
+}
+
+th {
+  background-color: #66b3ff;
+  border: 0.08em solid #000;
+}
+
 input[type='text'] {
   outline: none;
   height: 2em;
-  width: 90%;
+  width: 97%;
+  border: 0.08em solid #000;
+}
+
+input:focus {
+  background: rgb(235, 252, 139);
+  outline: none;
 }
 
 input:invalid:not(:placeholder-shown) {
