@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dmitry Sklyarov [M0394] Harjoitukset 3 / Tehtävä 1</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <form id="todo">
+    <fieldset>
+      <legend>Simple ToDo</legend>
+      <p><label for="task">ToDo:</label></p>
+      <input type="text" id="task" name="task" pattern="\w*\s" placeholder="Write a task" autofocus required><br>
+      <p></p><input type="button" value="Lisää" onclick="addTask()"></p>
+      <p><input type="button" value="Tyhjää lista" onclick="removeList()"></p>
+    </fieldset>
+  </form>
+</body>
+
+</html>
