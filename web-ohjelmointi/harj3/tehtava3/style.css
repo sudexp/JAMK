@@ -8,6 +8,7 @@ body {
   text-align: center;
 }
 
-nav {
-  margin-bottom: 1em;
+ul {
+  display: table;
+  margin: 10px auto;
 }
