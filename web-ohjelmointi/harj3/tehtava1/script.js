@@ -1,5 +1,15 @@
 function addTask() {
-  document.getElementById('task');
+  var ul = document.getElementById('list');
+  var li = document.createElement('li');
+  var task = document.getElementById('task').value;
+  var text = document.createTextNode(task);
+  ul.appendChild(li);
+  li.appendChild(text);
 }
 
-function removeList() {}
+function removeList() {
+  var list = document.getElementById('list');
+  while (list.hasChildNodes()) {
+    list.removeChild(list.firstChild);
+  }
+}
