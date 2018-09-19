@@ -39,6 +39,10 @@ input[type='text'] {
   width: 98%;
 }
 
+ul {
+  color: #fff;
+}
+
 input:invalid:not(:placeholder-shown) {
   border-color: #b22222;
 }
