@@ -1,4 +1,7 @@
-function addTask() {
+function addTask(event) {
+  if (event) {
+    event.preventDefault();
+  }
   const re = /^\w{1,}$/;
   const ul = document.getElementById('list');
   const li = document.createElement('li');

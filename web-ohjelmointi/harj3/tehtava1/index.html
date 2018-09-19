@@ -10,11 +10,11 @@
 </head>
 
 <body>
-  <form id="todo">
+  <form id="todo" onsubmit="addTask(event)">
     <fieldset>
       <legend>Simple ToDo</legend>
       <p><label for="task">ToDo:</label></p>
-      <input type="text" id="task" name="task" pattern="^\w{1,}$" placeholder="Write a task" autofocus required><br>
+      <input type="text" id="task" name="task" pattern="^\w{1,}$" placeholder="Write a task" autofocus required onblur="addTask()"><br>
       <p><input type="button" value="Lisää" onclick="addTask()"></p>
       <p><input type="button" value="Tyhjää lista" onclick="removeList()"></p>
     </fieldset>
