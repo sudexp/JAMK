@@ -1,5 +1,18 @@
 function getNumber(a, b, c, d) {
-  if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)) {
+  if (
+    isNaN(a) ||
+    isNaN(b) ||
+    isNaN(c) ||
+    isNaN(d) ||
+    a < 0 ||
+    a > 6 ||
+    b < 0 ||
+    b > 6 ||
+    c < 0 ||
+    c > 6 ||
+    d < 0 ||
+    d > 6
+  ) {
     document.getElementById('summa').innerHTML =
       'Pistemäärä (summa): ' + 'VIRHE!';
   } else {
