@@ -1,16 +1,24 @@
 function selectColor(value) {
   const color = document.getElementById('color');
-  color.innerHTML = 'Valittu väri: ' + value;
+  const style = document.getElementById('color-style');
+  const colorStyle = document.getElementById('select-color').value;
+  color.innerHTML = value + ' ';
+  style.innerHTML = colorNameToHex(colorStyle);
 }
 
 function changeColor() {
   const printArea = document.getElementById('print-area');
-  colorStyle = document.getElementById('select-color').value;
-  printArea.style.backgroundColor = colourNameToHex(colorStyle);
+  const colorStyle = document.getElementById('select-color').value;
+  printArea.style.backgroundColor = colorNameToHex(colorStyle);
 }
 
-function colourNameToHex(colour) {
-  var colours = {
+function getColorStyle() {
+  const colorStyle = document.getElementById('select-color').value;
+  return colorStyle;
+}
+
+function colorNameToHex(color) {
+  const colors = {
     beige: '#f5f5dc',
     blue: '#0000ff',
     brown: '#a52a2a',
@@ -21,5 +29,11 @@ function colourNameToHex(colour) {
     red: '#ff0000',
     yellow: '#ffff00'
   };
-  return colours[colour] || '#ffffff';
+  return colors[color];
+}
+
+function addParty(event) {
+  document.getElementById('party').innerHTML = document.getElementById(
+    'party-input'
+  ).value;
 }

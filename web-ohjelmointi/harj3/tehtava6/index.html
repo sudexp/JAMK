@@ -25,11 +25,11 @@
         <option value="gray">Gray</option>
       </select></p>
       <p><label for="party-input">What party?</label></p>
-      <p><input type="text" id="party-input" name="party-input" placeholder="Write an event" required></p>
+      <p><input type="text" id="party-input" name="party-input" placeholder="Write an event" onkeydown="addParty(event)"></p>
       <button id="color-change" type="button" onclick="changeColor()">Change the selected color</button>
     </form>
     <div id="print-area">
-      <p id="color"></p>
+      <p>Valittu väri: <span id="color">yellow</span><span id="color-style"> #ffff00</span></p>
       <p id="party"></p>
     </div>
   </div>
