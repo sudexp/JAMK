@@ -1,7 +1,3 @@
-let react = document.getElementById('react');
-let angular = document.getElementById('angular');
-let vuejs = document.getElementById('vuejs');
-
 function showReact() {
   document.getElementById('image').src = 'images/react.png';
 }
@@ -15,8 +11,11 @@ function showVuejs() {
   document.getElementById('image').src = 'images/vuejs.jpg';
 }
 
-react.addEventListener('click', showReact, false);
-angular.addEventListener('click', showAngular, false);
-react.addEventListener('click', showVuejs, false);
-
-//window.onload = showReact;
+window.onload = function() {
+  const react = document.getElementById('react');
+  const angular = document.getElementById('angular');
+  const vuejs = document.getElementById('vuejs');
+  react.addEventListener('click', showReact, false);
+  angular.addEventListener('click', showAngular, false);
+  vuejs.addEventListener('click', showVuejs, false);
+};
