@@ -1,5 +1,26 @@
+function calc() {
+  getNumber(
+    document.getElementById('input1').value,
+    document.getElementById('input2').value,
+    document.getElementById('input3').value,
+    document.getElementById('input4').value
+  );
+}
+
 function getNumber(a, b, c, d) {
-  if (
+  if (hasError(a, b, c, d)) {
+    document.getElementById('summa').innerHTML = ' VIRHE!';
+    document.getElementById('mark').innerHTML = ' VIRHE!';
+  } else {
+    const summa = countSumma(a, b, c, d);
+    showSum(summa);
+    const mark = countMark(summa);
+    showMark(mark);
+  }
+}
+
+function hasError(a, b, c, d) {
+  return (
     isNaN(a) ||
     isNaN(b) ||
     isNaN(c) ||
@@ -12,17 +33,11 @@ function getNumber(a, b, c, d) {
     c > 6 ||
     d < 0 ||
     d > 6
-  ) {
-    document.getElementById('summa').innerHTML = ' VIRHE!';
-  } else {
-    countSumma(a, b, c, d);
-  }
+  );
 }
 
 function countSumma(a, b, c, d) {
-  let summa = parseInt(a) + parseInt(b) + parseInt(c) + parseInt(d);
-  document.getElementById('summa').innerHTML = summa;
-  countMark(summa);
+  return parseInt(a) + parseInt(b) + parseInt(c) + parseInt(d);
 }
 
 function countMark(summa) {
@@ -40,5 +55,13 @@ function countMark(summa) {
   } else {
     mark = 5;
   }
+  return mark;
+}
+
+function showSum(summa) {
+  document.getElementById('summa').innerHTML = summa;
+}
+
+function showMark(mark) {
   document.getElementById('mark').innerHTML = mark;
 }

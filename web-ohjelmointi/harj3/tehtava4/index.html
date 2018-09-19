@@ -24,20 +24,16 @@
         </thead>
         <tbody>
           <tr>
-            <td><input type="text" id="input1" value="0" pattern="^[0-6]" onblur="getNumber(input1.value, input2.value, input3.value, input4.value)"
-                autofocus required></td>
-            <td><input type="text" id="input2" value="0" pattern="^[0-6]" onblur="getNumber(input1.value, input2.value, input3.value, input4.value)"
-                required></td>
-            <td><input type="text" id="input3" value="0" pattern="^[0-6]" onblur="getNumber(input1.value, input2.value, input3.value, input4.value)"
-                required></td>
-            <td><input type="text" id="input4" value="0" pattern="^[0-6]" onblur="getNumber(input1.value, input2.value, input3.value, input4.value)"
-                required></td>
+            <td><input type="text" id="input1" value="0" pattern="^[0-6]" onblur="calc()" autofocus required></td>
+            <td><input type="text" id="input2" value="0" pattern="^[0-6]" onblur="calc()" required></td>
+            <td><input type="text" id="input3" value="0" pattern="^[0-6]" onblur="calc()" required></td>
+            <td><input type="text" id="input4" value="0" pattern="^[0-6]" onblur="calc()" required></td>
           </tr>
         </tbody>
       </table>
       <div id="result">
-        <p>Pistemäärä (summa):<span id="summa"></span></p>
-        <p>Arvosana:<span id="mark"></span></p>
+        <p>Pistemäärä (summa): <span id="summa"></span></p>
+        <p>Arvosana: <span id="mark"></span></p>
       </div>
     </fieldset>
   </form>
