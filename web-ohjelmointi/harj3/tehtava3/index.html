@@ -13,19 +13,19 @@
       { "name": "Seppo", "hcp": 20 }
     ];
 
-    let count = 0;
+    let isDone = false;
     function printList() {
-      if (count < 1) {
+      if (!isDone) {
         const ul = document.getElementById('hcplist');
         let i;
         const len = hcpdata.length;
         for (i = 0; i < len; i++) {
-          let li = document.createElement('li');
-          let text = document.createTextNode(hcpdata[i].name + " " + hcpdata[i].hcp);
+          const li = document.createElement('li');
+          const text = document.createTextNode(hcpdata[i].name + " " + hcpdata[i].hcp);
           ul.appendChild(li);
           li.appendChild(text);
         }
-        count++;
+        isDone = true;
       }
     }
   </script>

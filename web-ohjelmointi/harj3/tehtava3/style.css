@@ -9,6 +9,11 @@ body {
 }
 
 ul {
-  display: table;
+  width: 100px;
   margin: 10px auto;
+}
+
+li {
+  text-align: left;
+  padding-left: 20px;
 }
