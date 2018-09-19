@@ -13,8 +13,7 @@ function getNumber(a, b, c, d) {
     d < 0 ||
     d > 6
   ) {
-    document.getElementById('summa').innerHTML =
-      'Pistemäärä (summa): ' + 'VIRHE!';
+    document.getElementById('summa').innerHTML = ' VIRHE!';
   } else {
     countSumma(a, b, c, d);
   }
