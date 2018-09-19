@@ -1,1 +1,44 @@
 @charset "utf-8";
+
+body {
+  background-color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  margin: 0 auto;
+}
+
+#color-range {
+  border: 1px dashed black;
+  width: 400px;
+  height: 350px;
+  padding-left: 25px;
+  background-color: #afbcd4;
+  margin: 20px auto;
+}
+
+#color-list {
+  width: 200px;
+}
+
+input {
+  width: 300px;
+  height: 20px;
+  outline: none;
+}
+
+button {
+  background-color: #2b6492;
+  border-radius: 5px;
+  width: 200px;
+  height: 40px;
+  color: #fff;
+}
+
+#print-area {
+  border: 1px dashed black;
+  width: 350px;
+  height: 100px;
+  padding-left: 5px;
+  background-color: #fffd65;
+  margin-top: 20px;
+}

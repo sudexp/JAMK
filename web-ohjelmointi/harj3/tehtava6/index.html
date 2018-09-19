@@ -10,6 +10,32 @@
 </head>
 
 <body>
+  <div id="color-range">
+    <form>
+      <p>Select a party color:</p>
+      <!-- <p><input list="color-list" name="color-list"> -->
+      <select id="color-list">
+        <option value="Yellow">Yellow</option>
+        <option value="Red">Red</option>
+        <option value="Orange">Orange</option>
+        <option value="Green">Green</option>
+        <option value="Blue">Blue</option>
+        <option value="Purple">Purple</option>
+        <option value="Brown">Brown</option>
+        <option value="Beige">Beige</option>
+        <option value="Gray">Gray</option>
+        <option value="Brown">Brown</option>
+      </select></p>
+      <p><label for="party-input">What party?</label></p>
+      <p><input type="text" id="party-input" name="party-input" placeholder="Write an event" required></p>
+      <button id="color-change" type="button" onclick="changeColor()">Change the selected color</button>
+    </form>
+    <div id="print-area">
+      <p id="color"></p>
+      <p id="party"></p>
+    </div>
+  </div>
+
 </body>
 
 </html>
