@@ -1,10 +1,11 @@
 // talot-taulukkoon ladataan talojen tiedot palvelimelta
-var houses = new Array(); //var houses = [];
+// var houses = new Array();
+var houses = [];
 
 // funktiota kutsutaan web-sivulta bodyn onload-tapahtumasta
 function loadJSON() {
   ajax('houses.json', function(response) {
-    //console.log("response = " + response);
+    // console.log("response = " + response);
     // create a json object
     var JSONObject = JSON.parse(response);
     houses = JSONObject.houses;
@@ -23,8 +24,8 @@ function ajax(url, fn) {
     req = new ActiveXObject('Microsoft.XMLHTTP');
   }
   req.onreadystatechange = function() {
-    if (req.readyState == 4 && req.status == 200) {
-      fn(req.responseText);
+    if (this.readyState == 4 && this.status == 200) {
+      fn(this.responseText);
     }
   };
   req.open('GET', url, true);
@@ -35,11 +36,11 @@ function showHouse(index) {
   // new div
   var houseDiv = document.createElement('div');
   houseDiv.setAttribute('class', 'houseContainer');
+
   var img = document.createElement('img');
   img.setAttribute('class', 'houseImage');
   img.setAttribute('src', houses[index].image);
   //console.log("image="+houses[index].image);
-  houseDiv.appendChild(img);
 
   var p1 = document.createElement('p');
   p1.setAttribute('class', 'header');
@@ -59,6 +60,7 @@ function showHouse(index) {
   var text = document.createTextNode(houses[index].price);
   p4.appendChild(text);
 
+  houseDiv.appendChild(img);
   houseDiv.appendChild(p1);
   houseDiv.appendChild(p2);
   houseDiv.appendChild(p3);
@@ -66,7 +68,6 @@ function showHouse(index) {
 
   // houses div
   var housesDiv = document.getElementById('houses');
-
   housesDiv.appendChild(houseDiv);
 }
 
