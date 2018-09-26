@@ -54,3 +54,11 @@ function showName(event) {
       this.textContent
   );
 }
+
+document.onkeydown = function(event) {
+  event = event || window.event;
+  if (evt.keyCode === 27) {
+    document.getElementById('name').value = '';
+    showHint('');
+  }
+};
