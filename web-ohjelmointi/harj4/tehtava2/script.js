@@ -20,16 +20,16 @@ function showHint(str) {
     return;
   } else {
     const url = 'ajax-suggest.php?q=' + str;
-    // ajax('GET', url, showList);
-    ajaxMock('GET', url, showList);
+    ajax('GET', url, showList);
+    // ajaxMock('GET', url, showList);
   }
 }
 
-function ajaxMock(method, url, callback) {
-  setTimeout(function() {
-    callback('Aino	Anna	Anni	Antti	Ari');
-  }, 1000);
-}
+// function ajaxMock(method, url, callback) {
+//   setTimeout(function() {
+//     callback('Aino	Anna	Anni	Antti	Ari');
+//   }, 1000);
+// }
 
 function showList(response) {
   let ul = document.getElementById('txtHint');
@@ -48,9 +48,9 @@ function showList(response) {
   }
 }
 
-function showName(response) {
+function showName(event) {
   window.open(
     'http://student.labranet.jamk.fi/~M0394/ttms0500/harj4/tehtava2/ajax-suggest.php?q=' +
-      response
+      this.textContent
   );
 }
