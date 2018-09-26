@@ -7,10 +7,10 @@ body {
   margin: 0 auto;
 }
 
-div {
+#form {
   border: 0.15em solid #61939b;
   width: 400px;
-  height: 400px;
+  height: 200px;
   padding-left: 1em;
   background-color: #f0f0f0;
   margin: 2em auto;
@@ -26,6 +26,14 @@ input {
   width: 320px;
   height: 20px;
   outline: none;
+}
+
+ul {
+  padding-left: 1em;
+}
+
+li {
+  list-style-type: none;
 }
 
 /* #txtHint {
