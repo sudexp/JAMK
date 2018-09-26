@@ -1,64 +1,65 @@
-// talot-taulukkoon ladataan talojen tiedot palvelimelta
-// var houses = new Array();
-var houses = [];
+// data of houses is loaded from the server into an array
+let houses = [];
 
-// funktiota kutsutaan web-sivulta bodyn onload-tapahtumasta
+// function is called when the body is loaded (onload event)
 function loadJSON() {
-  ajax('houses.json', function(response) {
+  ajax('GET', 'houses.json', function(response) {
     // console.log("response = " + response);
     // create a json object
-    var JSONObject = JSON.parse(response);
+    const JSONObject = JSON.parse(response);
     houses = JSONObject.houses;
     //console.log(houses);
-    for (var i = 0; i < houses.length; i++) {
+    for (let i = 0; i < houses.length; i++) {
       showHouse(i);
     }
   });
 }
 
-function ajax(url, fn) {
-  var req;
+function ajax(method, url, callback) {
+  let request;
   if (window.XMLHttpRequest) {
-    req = new XMLHttpRequest();
+    // code for modern browsers
+    request = new XMLHttpRequest();
   } else {
-    req = new ActiveXObject('Microsoft.XMLHTTP');
+    // code for IE6, IE5
+    request = new ActiveXObject('Microsoft.XMLHTTP');
   }
-  req.onreadystatechange = function() {
+  request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      fn(this.responseText);
+      callback(this.responseText);
     }
   };
-  req.open('GET', url, true);
-  req.send();
+  request.open(method, url, true);
+  request.send();
 }
 
 function showHouse(index) {
   // new div
-  var houseDiv = document.createElement('div');
+  const houseDiv = document.createElement('div');
   houseDiv.setAttribute('class', 'houseContainer');
 
-  var img = document.createElement('img');
+  const img = document.createElement('img');
   img.setAttribute('class', 'houseImage');
   img.setAttribute('src', houses[index].image);
   //console.log("image="+houses[index].image);
 
-  var p1 = document.createElement('p');
+  const p1 = document.createElement('p');
   p1.setAttribute('class', 'header');
-  var text = document.createTextNode(houses[index].address);
-  p1.appendChild(text);
+  const text1 = document.createTextNode(houses[index].address);
+  p1.appendChild(text1);
 
-  var p2 = document.createElement('p');
-  var text = document.createTextNode(houses[index].type);
-  p2.appendChild(text);
+  const p2 = document.createElement('p');
+  const text2 = document.createTextNode(houses[index].type);
+  p2.appendChild(text2);
 
-  var p3 = document.createElement('p');
+  const p3 = document.createElement('p');
   p3.setAttribute('class', 'description');
-  var text = document.createTextNode(houses[index].description);
-  p3.appendChild(text);
+  const text3 = document.createTextNode(houses[index].description);
+  p3.appendChild(text3);
 
-  var p4 = document.createElement('p');
-  var text = document.createTextNode(houses[index].price);
-  p4.appendChild(text);
+  const p4 = document.createElement('p');
+  const text4 = document.createTextNode(houses[index].price);
+  p4.appendChild(text4);
 
   houseDiv.appendChild(img);
   houseDiv.appendChild(p1);
@@ -67,7 +68,7 @@ function showHouse(index) {
   houseDiv.appendChild(p4);
 
   // houses div
-  var housesDiv = document.getElementById('houses');
+  const housesDiv = document.getElementById('houses');
   housesDiv.appendChild(houseDiv);
 }
 
