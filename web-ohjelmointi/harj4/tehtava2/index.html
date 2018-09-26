@@ -10,6 +10,17 @@
 </head>
 
 <body>
+  <div>
+    <form>
+      <fieldset>
+        <legend>Ajax - SearchForm</legend>
+        <label for="name"></label>
+        <input type="text" id="name" name="name" pattern="^\w{1,}$" placeholder="Find by first name..." autofocus
+          required onkeyup="showHint(this.value)">
+      </fieldset>
+    </form>
+    <p>Suggestions: <span id="txtHint"></span></p>
+  </div>
 </body>
 
 </html>
