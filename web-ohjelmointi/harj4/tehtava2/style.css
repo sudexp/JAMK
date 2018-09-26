@@ -23,28 +23,21 @@ fieldset {
 }
 
 input {
-  width: 300px;
+  width: 320px;
   height: 20px;
   outline: none;
 }
 
-input:invalid:not(:placeholder-shown) {
+/* #txtHint {
+} */
+
+/* input:invalid:not(:placeholder-shown) {
   border-color: #b22222;
 }
 
 input:valid:not(:placeholder-shown) {
   border-color: #008000;
-}
-
-input[list='area']:valid,
-input[list='area']:invalid {
-  border-color: initial;
-}
-
-input[type='submit']:valid,
-input[type='submit']:invalid {
-  border-color: #000;
-}
+} */
 
 ::-webkit-input-placeholder {
   color: #61939b;

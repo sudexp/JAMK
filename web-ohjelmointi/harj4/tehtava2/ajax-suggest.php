@@ -14,6 +14,7 @@
 
  */
 
+ // Array with names
 $name[] = "Aino";
 $name[] = "Anna";
 $name[] = "Anni";
@@ -55,23 +56,26 @@ $name[] = "Wilma";
 $name[] = "Xynthia";
 $name[] = "Zeus";
 
-
+// get the q parameter from URL
 $q = $_REQUEST["q"];
-$vihje = "";
 
+$hint = "";
+
+// lookup all hints from array if $q is different from "" 
 if ($q !== "") {
   $q = strtolower($q);
   $len = strlen($q);
-  foreach ($name as $n) {
-    if (stristr($q, substr($n, 0, $len))) {
-      if ($vihje === "") {
-        $vihje = $n;
+  foreach ($a as $name) {
+    if (stristr($q, substr($name, 0, $len))) {
+      if ($hint === "") {
+        $hint = $name;
       } else {
-        $vihje .= "\t" . $n;
+        $hint .= ", $name";
       }
     }
   }
 }
 
-echo $vihje === "" ? "" : $vihje;
+// Output "no suggestion" if no hint was found or output correct values 
+echo $hint === "" ? "no suggestion" : $hint;
 ?>
