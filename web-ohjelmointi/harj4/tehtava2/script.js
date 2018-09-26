@@ -38,7 +38,6 @@ function showList(response) {
   while (ul.hasChildNodes()) {
     ul.removeChild(ul.firstChild);
   }
-  const response = this.responseText;
   const arr = response.split('	');
   let i;
   let len = arr.length;
@@ -47,6 +46,5 @@ function showList(response) {
     let text = document.createTextNode(arr[i]);
     ul.appendChild(li);
     li.appendChild(text);
-    //li.innerHTML = arr[i];
   }
 }
