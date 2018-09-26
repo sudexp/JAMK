@@ -5,7 +5,7 @@ function ajax(method, url, callback) {
   } else {
     request = new ActiveXObject('Microsoft.XMLHTTP');
   }
-  request.onreadystatechange = function () {
+  request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       callback(this.responseText);
     }
@@ -34,10 +34,19 @@ function ajaxMock(method, url, callback) {
 
 function showList(response) {
   // clear ul
-  clearUl()
-  // convert response into array
-  var results = processResponse(response)
-  // for every el of array create li element and append to ul
-  // for(){ 
-    addLi(..)
+  let ul = document.getElementById('txtHint');
+  while (ul.hasChildNodes()) {
+    ul.removeChild(ul.firstChild);
+  }
+  const response = this.responseText;
+  const arr = response.split('	');
+  let i;
+  let len = arr.length;
+  for (i = 0; i < len; i++) {
+    let li = document.createElement('li');
+    let text = document.createTextNode(arr[i]);
+    ul.appendChild(li);
+    li.appendChild(text);
+    //li.innerHTML = arr[i];
+  }
 }
