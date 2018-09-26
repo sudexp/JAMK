@@ -1,16 +1,13 @@
-// data of houses is loaded from the server into an array
-let houses = [];
-
 // function is called when the body is loaded (onload event)
 function loadJSON() {
   ajax('GET', 'houses.json', function(response) {
     // console.log("response = " + response);
     // create a json object
     const JSONObject = JSON.parse(response);
-    houses = JSONObject.houses;
+    const houses = JSONObject.houses;
     //console.log(houses);
     for (let i = 0; i < houses.length; i++) {
-      showHouse(i);
+      showHouse(houses[i]);
     }
   });
 }
@@ -33,32 +30,32 @@ function ajax(method, url, callback) {
   request.send();
 }
 
-function showHouse(index) {
+function showHouse(house) {
   // new div
   const houseDiv = document.createElement('div');
   houseDiv.setAttribute('class', 'houseContainer');
 
   const img = document.createElement('img');
   img.setAttribute('class', 'houseImage');
-  img.setAttribute('src', houses[index].image);
+  img.setAttribute('src', house.image);
   //console.log("image="+houses[index].image);
 
   const p1 = document.createElement('p');
   p1.setAttribute('class', 'header');
-  const text1 = document.createTextNode(houses[index].address);
+  const text1 = document.createTextNode(house.address);
   p1.appendChild(text1);
 
   const p2 = document.createElement('p');
-  const text2 = document.createTextNode(houses[index].type);
+  const text2 = document.createTextNode(house.type);
   p2.appendChild(text2);
 
   const p3 = document.createElement('p');
   p3.setAttribute('class', 'description');
-  const text3 = document.createTextNode(houses[index].description);
+  const text3 = document.createTextNode(house.description);
   p3.appendChild(text3);
 
   const p4 = document.createElement('p');
-  const text4 = document.createTextNode(houses[index].price);
+  const text4 = document.createTextNode(house.price);
   p4.appendChild(text4);
 
   houseDiv.appendChild(img);
