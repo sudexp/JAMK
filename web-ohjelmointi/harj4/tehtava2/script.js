@@ -57,8 +57,10 @@ function showName(event) {
 
 document.onkeydown = function(event) {
   event = event || window.event;
-  if (evt.keyCode === 27) {
+  if (event.keyCode === 27) {
     document.getElementById('name').value = '';
     showHint('');
+  } else if (event.keyCode == 13) {
+    showName(event);
   }
 };
