@@ -5,18 +5,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dmitry Sklyarov [M0394] Harjoitukset 5 / Tehtävä 1</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="script.js"></script>
 </head>
 
 <body>
-  <h3>Calc</h3>
-  <form id="myForm">
-    Number1: <input type="text" id="number1"><br>
-    Number2: <input type="text" id="number2"><br>
-    <input type="submit" value="Add"><br><br>
-    <label id="result">Sum is</label>
+  <form id="calc">
+    <fieldset>
+      <legend>Calculator</legend>
+      <p><label for="number1">Number 1:</label></p>
+      <input type="text" id="number1" name="number1" pattern="^\d*\.?\d*$" placeholder="Write a number 1" autofocus
+        required><br>
+      <p><label for="number2">Number 2:</label><br></p>
+      <input type="text" id="number2" name="number2" pattern="^\d*\.?\d*$" placeholder="Write a numbe 2" required><br>
+      <p><input type="submit" value="Calculate!" onclick="addition()"></p>
+      <div id="result">Summa is </label>
+    </fieldset>
   </form>
+
+
 </body>
 
 </html>

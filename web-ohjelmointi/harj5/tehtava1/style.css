@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+body {
+  background-color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  margin: 1em;
+}
+
+form {
+  background-color: #555;
+  border: 0.08em solid #000;
+  border-radius: 1em;
+  width: 28em;
+  margin: 0 auto;
+  padding: 1em 2em;
+}
+
+fieldset {
+  background-color: #e0e0e0;
+  border: 0.08em solid #000;
+  border-radius: 0.4em;
+  margin: 0 0 1.5em;
+  padding: 0 1em;
+}
+
+legend {
+  background-color: #61939b;
+  border: 0.08em solid #000;
+  border-radius: 0.4em;
+  width: 40%;
+  padding: 0.3em 0.2em 0.2em;
+  color: #fff;
+}
+
+input[type='text'] {
+  outline: none;
+  height: 2em;
+  width: 98%;
+}
+
+input[type='submit'] {
+  outline: none;
+  background: #61939b;
+  border: 0.08em solid #000;
+  border-radius: 0.4em;
+  height: 1.8em;
+  width: 6em;
+  white-space: pre-line;
+  text-align: center;
+  font-size: 1em;
+  color: #fff;
+}
+
+#result {
+  margin: 1em auto;
+}
+
+input:invalid:not(:placeholder-shown) {
+  border-color: #b22222;
+}
+
+input:valid:not(:placeholder-shown) {
+  border-color: #008000;
+}
+
+input[list='area']:valid,
+input[list='area']:invalid {
+  border-color: initial;
+}
+
+input[type='submit']:valid,
+input[type='submit']:invalid {
+  border-color: #000;
+}
+
+::-webkit-input-placeholder {
+  color: #979af8;
+  font-size: 1.25em;
+}
+
+::-moz-placeholder {
+  color: #979af8;
+  font-size: 1.25em;
+}
+
+:-ms-input-placeholder {
+  color: #979af8;
+  font-size: 1.25em;
+}
+
+:-moz-placeholder {
+  color: #979af8;
+  font-size: 1.25em;
+}
