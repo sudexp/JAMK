@@ -6,7 +6,7 @@ $(document).ready(function() {
     let number1 = $('#number1').val();
     let number2 = $('#number2').val();
     let result = $('#result');
-    let sum = parseFloat(number1) + parseFloat(number2);
+    let sum = (parseFloat(number1) + parseFloat(number2)).toFixed(2);
     result.text('Summa is ' + sum);
   });
 });
