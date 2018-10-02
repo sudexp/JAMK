@@ -1,0 +1,24 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dmitry Sklyarov [M0394] Harjoitukset 5 / Tehtävä 2</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <form id="todo" onsubmit="addTask(event)">
+    <fieldset>
+      <legend>Simple ToDo</legend>
+      <p><label for="task">ToDo:</label></p>
+      <input type="text" id="task" name="task" pattern="^\w{1,}$" placeholder="Write a task" onblur="addTask()"
+        autofocus required><br>
+      <p><input type="button" value="Lisää" onclick="addTask()"></p>
+      <p><input type="button" value="Tyhjää lista" onclick="removeList()"></p>
+    </fieldset>
+    <ul id="list"></ul>
+  </form>
+</body>
+
+</html>
