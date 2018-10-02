@@ -27,7 +27,7 @@ $(document).on('click', '.delete', function() {
 
 $(document).ready(function() {
   $('#delete').click(function() {
-    $('#list').remove();
+    $('#list').empty();
     $('#task')
       .val('')
       .focus();

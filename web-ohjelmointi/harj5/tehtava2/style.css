@@ -2,50 +2,60 @@
 
 body {
   background-color: #fff;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 100%;
   margin: 1em;
 }
 
 form {
-  background-color: #555;
-  border: 0.08em solid #000;
-  border-radius: 1em;
-  width: 28em;
-  margin: 0 auto;
-  padding: 1em 2em;
-}
-
-fieldset {
-  background-color: #e0e0e0;
-  border: 0.08em solid #000;
-  border-radius: 0.4em;
-  margin: 0 0 1.5em;
+  width: 450px;
+  background-color: aliceblue;
+  border-radius: 0.2em;
   padding: 0 1em;
+  margin: 0.6em auto;
+  border: 0.08em solid #ddd;
 }
 
-legend {
-  background-color: #61939b;
-  border: 0.08em solid #000;
-  border-radius: 0.4em;
-  width: 40%;
-  padding: 0.3em 0.2em 0.2em;
-  color: #fff;
+h1 {
+  background-color: cadetblue;
+  text-align: center;
+  color: white;
+  padding: 0.3em;
 }
 
 input[type='text'] {
   outline: none;
-  height: 2em;
-  width: 98%;
+  border: 0.08em solid #ccc;
+  padding: 0.3em;
+  width: 250px;
+  font-size: 1em;
 }
 
 ul {
-  color: #fff;
+  list-style-type: square;
+  margin: 1.2em 0;
+  font-size: 1.2em;
 }
 
 .delete {
   color: #b22222;
   font-size: 1.3em;
+}
+
+#add,
+#delete {
+  border: 0.08em solid #ccc;
+  padding: 0.3em 1em;
+  font-size: 1em;
+  width: 10em;
+}
+
+#add {
+  margin-left: 1em;
+}
+
+#delete {
+  margin: 1em 0 0.5em 16.85em;
 }
 
 input:invalid:not(:placeholder-shown) {
@@ -57,7 +67,7 @@ input:valid:not(:placeholder-shown) {
 }
 
 ::-webkit-input-placeholder {
-  color: #979af8;
+  color: cadetblue;
   font-size: 1.25em;
 }
 
