@@ -8,14 +8,13 @@
 </head>
 
 <body>
-  <form id="todo" onsubmit="addTask(event)">
+  <form id="todo">
     <fieldset>
       <legend>Simple ToDo</legend>
       <p><label for="task">ToDo:</label></p>
-      <input type="text" id="task" name="task" pattern="^\w{1,}$" placeholder="Write a task" onblur="addTask()"
-        autofocus required><br>
-      <p><input type="button" value="Lisää" onclick="addTask()"></p>
-      <p><input type="button" value="Tyhjää lista" onclick="removeList()"></p>
+      <input type="text" id="task" name="task" pattern="^\w{1,}$" placeholder="Write a task" autofocus required><br>
+      <p><input type="button" id="add" value="Lisää"></p>
+      <p><input type="button" id="delete" value="Tyhjää lista"></p>
     </fieldset>
     <ul id="list"></ul>
   </form>

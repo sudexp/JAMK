@@ -1,29 +1,43 @@
-function addTask(event) {
-  if (event) {
-    event.preventDefault();
-  }
-  const re = /^\w{1,}$/;
-  const ul = document.getElementById('list');
-  const li = document.createElement('li');
-  li.addEventListener('click', removeLi, false);
-  const task = document.getElementById('task');
-  const text = document.createTextNode(task.value);
-  if (!re.test(task.value)) {
-    return;
-  }
-  ul.appendChild(li);
-  li.appendChild(text);
-  task.value = '';
-}
+$(document).ready(function() {
+  $('#add').click(function() {
+    const task = $('#task').val();
+    const re = /^\w{1,}$/;
+    if (!re.test(task)) {
+      return;
+    }
+    $('#list').append(
+      $('<li>' + task + '<span class="delete"> &times</span></li>')
+    );
+    $('#task')
+      .val('')
+      .focus();
+  });
+});
 
-function removeList() {
-  let list = document.getElementById('list');
-  while (list.hasChildNodes()) {
-    list.removeChild(list.firstChild);
-    // list.firstChild.remove();
-  }
-}
+$(document).on('click', '.delete', function() {
+  $(this)
+    .parent()
+    .remove();
+  $('#task').focus();
+});
 
-function removeLi(event) {
-  event.target.remove();
-}
+// function removeLi(event) {
+//   event.target.remove();
+// }
+
+$(document).ready(function() {
+  $('#delete').click(function() {
+    $('#list').remove();
+    $('#task')
+      .val('')
+      .focus();
+  });
+});
+
+// function removeList() {
+//   let list = document.getElementById('list');
+//   while (list.hasChildNodes()) {
+//     list.removeChild(list.firstChild);
+//     // list.firstChild.remove();
+//   }
+// }
