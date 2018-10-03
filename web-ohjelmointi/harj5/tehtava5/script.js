@@ -1,4 +1,11 @@
 $(document).ready(function() {
+  showHints();
+  $('form').on('submit', ev => {
+    ev.preventDefault();
+  });
+});
+
+function showHints() {
   $('#name').autocomplete({
     source: function(request, response) {
       $.ajax({
@@ -7,10 +14,15 @@ $(document).ready(function() {
           q: request.term
         },
         success: function(data) {
-          var suggestions = data.split('\t');
+          const suggestions = data.split('\t');
           response(suggestions);
         }
       });
     }
   });
-});
+}
+
+function showName() {
+  const name = $('#name').val();
+  alert(name);
+}

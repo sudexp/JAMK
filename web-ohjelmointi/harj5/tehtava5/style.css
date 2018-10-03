@@ -9,7 +9,7 @@ body {
 
 #form {
   border: 0.15em solid #61939b;
-  width: 400px;
+  width: 420px;
   height: 200px;
   padding-left: 1em;
   background-color: #f0f0f0;
@@ -22,27 +22,37 @@ fieldset {
   border-radius: 0.5em;
 }
 
+legend {
+  font-size: 1.5em;
+}
+
 input {
   width: 320px;
+  line-height: 24px;
+  font-size: 1em;
   outline: none;
+}
+
+button {
+  font-size: 1.05em;
 }
 
 ::-webkit-input-placeholder {
   color: #61939b;
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
 
 ::-moz-placeholder {
   color: #61939b;
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
 
 :-ms-input-placeholder {
   color: #61939b;
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
 
 :-moz-placeholder {
   color: #61939b;
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
