@@ -1,7 +1,10 @@
 $(document).ready(function() {
   $.ajax({
     url: 'houses.json',
-    cache: false
+    cache: false,
+    error: function(xhr) {
+      alert('An error occured: ' + xhr.status + ' ' + xhr.statusText);
+    }
   })
     .done(function(data) {
       console.log('done');
