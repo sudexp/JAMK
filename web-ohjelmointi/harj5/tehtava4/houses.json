@@ -1,0 +1,39 @@
+{
+  "houses": [
+    {
+      "image": "images/house1.jpg",
+      "address": "Lönnrotinkatu 3, 00120 , Helsinki",
+      "type": "5h+kt+2kh+s+wc+khh+vh+p",
+      "description": "Granholmin suunnittelema vuonna 1896 valmistunut Kivipalatsi Pyyn korttelissa kuuluu tänäkin päivänä Helsingin kauneimpiin rakennuksiin.",
+      "price": "2 904 000 €"
+    },
+    {
+      "image": "images/house2.jpg",
+      "address": "Telakkakatu 3 A, 00150, Helsinki ",
+      "type": "4h+k+halli+2xkh+wc+p",
+      "description": "Keittiöstä pariovet avaavat parvekkeen osaksi huonetilaa. Kaksi tilavaa kylpyhuonetta, toisessa amme. Joustavasti muunneltavia huonejakoja, paljon ikkunoita.",
+      "price": "1 044 000 €"
+    },
+    {
+      "image": "images/house3.jpg",
+      "address": "Lönnrotinkatu 3, 00120 , Helsinki",
+      "type": "2h+kt+2kh+s+khh",
+      "description": "Tämän rauhallisen, täydellisesti saneeratun ja muuttovalmiin huoneiston sisäänkäynti on suojaisan sisäpihan puolella. Huoneiden ikkunat antavat Yrjönkadulle, avokeittiön ja kodinhoitohuoneen ikkunat ovat sisäpihalle.",
+      "price": "1 144 500 €"
+    },
+    {
+      "image": "images/house4.jpg",
+      "address": "Kunnallisneuvoksentie 8 A, 00930 Helsinki",
+      "type": "6h+k+takkah+kph+sauna+2kph+wc",
+      "description": "Helsingin keskustan upeimmasta arvoyhtiöstö on nyt tarjolla kaupungin parhaimmat keskustanäkymät. Historiallinen Lackmanin talo on täydellisesti saneerattu uuteen loistoonsa rakennusyhti� Hartelan johdolla vuonna 2011 kaunista arkkitehtuuria kunnioittaen.",
+      "price": "1 144 500 €"
+    },
+    {
+      "image": "images/house5.jpg",
+      "address": "Katajaharjuntie 18, 00200 Helsinki",
+      "type": "9h+k+5kh+khh+3wc+s+ph+tk+et+at",
+      "description": "Huikean kaunis ja laadukas kokonaisuus arvostetulla alueella meren läheisyydessä Marjaniemessä. Tämä moitteettomassa kunnossa oleva ja hyvin suunniteltu talokaunotar on rakennettu vuonna 2000 ja kuntotarkastettu elokuussa 2014.",
+      "price": "1 144 500 €"
+    }
+  ]
+}
