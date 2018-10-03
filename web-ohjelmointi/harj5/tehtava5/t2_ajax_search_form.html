@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dmitry Sklyarov [M0394] Harjoitukset 4 / Tehtävä 2</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <div id="form">
+    <form>
+      <fieldset>
+        <legend>Ajax - SearchForm</legend>
+        <label for="name"></label>
+        <input type="search" id="name" name="name" pattern="^\w{1,}$" placeholder="Find by first name..." autofocus
+          required onkeyup="showHint(this.value)">&#128270;
+      </fieldset>
+    </form>
+    <div id="dropDownList">
+      <ul id="txtHint"></ul>
+    </div>
+  </div>
+</body>
+
+</html>
