@@ -1,43 +1,37 @@
 $(document).ready(function() {
-  $('#add').click(function() {
-    const task = $('#task').val();
-    const re = /^\w{1,}$/;
-    if (!re.test(task)) {
-      return;
-    }
-    $('#list').append(
-      $('<li>' + task + '<span class="delete"> &times</span></li>')
-    );
-    $('#task')
-      .val('')
-      .focus();
+  $('#add').click(addTask);
+  $('#delete').click(removeList);
+  $(document).on('click', '.delete', removeTask);
+  $('form').on('submit', event => {
+    event.preventDefault();
+    addTask();
   });
 });
 
-$(document).on('click', '.delete', function() {
+function addTask() {
+  const task = $('#task').val();
+  const re = /^\w{1,}$/;
+  if (!re.test(task)) {
+    return;
+  }
+  $('#list').append(
+    $('<li>' + task + '<span class="delete"> &times</span></li>')
+  );
+  $('#task')
+    .val('')
+    .focus();
+}
+
+function removeTask() {
   $(this)
     .parent()
     .remove();
   $('#task').focus();
-});
+}
 
-// function removeLi(event) {
-//   event.target.remove();
-// }
-
-$(document).ready(function() {
-  $('#delete').click(function() {
-    $('#list').empty();
-    $('#task')
-      .val('')
-      .focus();
-  });
-});
-
-// function removeList() {
-//   let list = document.getElementById('list');
-//   while (list.hasChildNodes()) {
-//     list.removeChild(list.firstChild);
-//     // list.firstChild.remove();
-//   }
-// }
+function removeList() {
+  $('#list').empty();
+  $('#task')
+    .val('')
+    .focus();
+}
