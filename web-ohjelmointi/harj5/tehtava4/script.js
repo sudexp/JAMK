@@ -1,15 +1,16 @@
 $(document).ready(function() {
+  loadData(showHouses);
+});
+
+function loadData(callback) {
   $.ajax({
     url: 'houses.json',
     cache: false,
     error: function(xhr) {
       alert('An error occured: ' + xhr.status + ' ' + xhr.statusText);
     }
-  }).done(function(data) {
-    console.log('done');
-    showHouses(data);
-  });
-});
+  }).done(callback);
+}
 
 function showHouses(data) {
   $.each(data.houses, function(index, value) {
