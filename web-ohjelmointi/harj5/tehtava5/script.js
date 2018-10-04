@@ -5,6 +5,8 @@ $(document).ready(function() {
   });
 });
 
+let suggestions;
+
 function showHints() {
   $('#name').autocomplete({
     source: function(request, response) {
@@ -14,7 +16,7 @@ function showHints() {
           q: request.term
         },
         success: function(data) {
-          const suggestions = data.split('\t');
+          suggestions = data.split('\t');
           response(suggestions);
         }
       });
@@ -25,4 +27,5 @@ function showHints() {
 function showName() {
   const name = $('#name').val();
   alert(name);
+  alert(suggestions.join(', '));
 }
