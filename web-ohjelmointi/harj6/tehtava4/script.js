@@ -7,7 +7,7 @@ function drawToCanvas(depth) {
   depth = depth / 100;
   let h = 1 - depth;
   let r = 1;
-  let vari = '#fed';
+  const vari = '#fed';
   ctx.beginPath();
   let alkukulma = Math.PI / 2 - Math.acos(h / r);
   // let alfa = ((depth / 200) * Math.Pi) / 2;
