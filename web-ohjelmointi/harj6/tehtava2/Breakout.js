@@ -1,5 +1,5 @@
 /**
- *  Pasi Manninen, 28.8.2013
+ *  Pasi Manninen, 28.8.2013 (some changes made by Dmitry Sklyarov)
  *  - simple breakout game in HTML5 canvas with animation using requestrAnimFram
  */
 var canvas; // canvas
@@ -44,6 +44,7 @@ function start_game() {
   // disable start button
   var element = document.getElementById('startButton');
   element.disabled = true;
+  canvas.style.cursor = 'pointer';
   // listen mouse to move paddle
   canvas.addEventListener('mousemove', movePaddle, false);
   // game is on
@@ -113,6 +114,8 @@ function showPlayingTime() {
 
 // check collisions
 function checkCollisions() {
+  document.getElementById('paddleX').innerHTML = Math.round(paddle.x);
+  document.getElementById('ballX').innerHTML = Math.round(ball.x);
   // ball hits to paddle
   if (
     hitTest(
