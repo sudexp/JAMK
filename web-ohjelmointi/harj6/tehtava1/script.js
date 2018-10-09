@@ -34,6 +34,32 @@ function drawGuyanaFlag() {
 
   ctx.fillStyle = colorGreen;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const x = 5;
+
+  ctx.beginPath();
+  ctx.moveTo(0, x / 2);
+  ctx.lineTo(canvas.width - 2 * x, canvas.height / 2);
+  ctx.lineTo(0, canvas.height - x / 2);
+  ctx.closePath();
+  ctx.fillStyle = colorGoldenRod;
+  ctx.fill();
+
+  ctx.lineWidth = x;
+  ctx.strokeStyle = colorWhite;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(0, x / 2);
+  ctx.lineTo((canvas.width - 2 * x) / 2, canvas.height / 2);
+  ctx.lineTo(0, canvas.height - x / 2);
+  ctx.closePath();
+  ctx.fillStyle = colorFireBrick;
+  ctx.fill();
+
+  ctx.lineWidth = x;
+  ctx.strokeStyle = colorBlack;
+  ctx.stroke();
 }
 
 window.onload = init;
