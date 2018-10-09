@@ -9,13 +9,13 @@
   <script src="script.js"></script>
 </head>
 
-<body onload="drawToCanvas">
+<body>
   <form action="." oninput="z.value=a.value; drawToCanvas(a.value)">
     Säädä nestepinnan korkeus<br>
-    <output id="z">100</output> cm<br>
-    0 cm<input type="range" id="a" min="0" max="200" value="100">200 cm<br>
+    <output id="z">0</output> cm<br>
+    0 cm<input type="range" id="a" min="0" max="200" value="0">200 cm<br>
   </form>
-  <canvas id="myCanvas" width="800" height="400" style="border: 1px solid black"></canvas>
+  <canvas id="myCanvas"></canvas>
 </body>
 
 </html>

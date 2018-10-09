@@ -1,10 +1,12 @@
 function drawToCanvas(depth) {
+  let canvas = document.getElementById('myCanvas');
+  let ctx = canvas.getContext('2d');
+  canvas.height = 400;
+  canvas.width = 800;
+  ctx.clearRect(0, 0, canvas.height, canvas.width);
   depth = depth / 100;
   let h = 1 - depth;
   let r = 1;
-  let canvas = document.getElementById('myCanvas');
-  let ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, 800, 400);
   let vari = '#fed';
   ctx.beginPath();
   let alkukulma = Math.PI / 2 - Math.acos(h / r);
@@ -16,3 +18,5 @@ function drawToCanvas(depth) {
   ctx.stroke();
   ctx.closePath();
 }
+
+window.onload = drawToCanvas;
