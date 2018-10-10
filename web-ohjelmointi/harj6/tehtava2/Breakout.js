@@ -39,6 +39,7 @@ function init() {
   // blocks
   createBlocks();
   drawBlocks();
+  document.getElementById('scores').innerHTML = scores;
 }
 
 // start game
@@ -120,6 +121,10 @@ function endGame() {
   // enable start button
   var element = document.getElementById('startButton');
   element.disabled = false;
+  ctx.fillStyle = '#000000';
+  ctx.font = '30px Verdana';
+  ctx.fillText('GAME OVER!', 100, 400);
+  ctx.fillText('Scores: ' + scores, 140, 450);
   audio.pause();
 }
 
