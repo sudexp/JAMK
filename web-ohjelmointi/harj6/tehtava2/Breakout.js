@@ -40,6 +40,13 @@ function init() {
   createBlocks();
   drawBlocks();
   document.getElementById('scores').innerHTML = scores;
+
+  // Init pause handlers:
+  pauseButton = document.getElementById('myCanvas');
+  pauseButton.addEventListener('click', pauseGame, false);
+  addEventListener('keydown', function(event) {
+    if (event.keyCode === 32) pauseGame();
+  });
 }
 
 // start game
@@ -57,6 +64,7 @@ function startGame() {
   gameOver = false;
   // not allDone, there is new blocks to destroy
   allDone = false;
+
   // game starting time
   gameStart = new Date();
   // increase game count
@@ -64,17 +72,19 @@ function startGame() {
   // animate
   requestAnimationFrame(draw);
   audioPlay();
-  pauseButton = document.getElementById('myCanvas');
-  pauseButton.addEventListener('click', pauseGame, false);
-  addEventListener('keydown', function(event) {
-    if (event.keyCode === 32) pauseGame();
-  });
+}
+
+function resumeGame() {
+  isPlaying = true;
+  requestAnimationFrame(draw);
+  audio.play();
 }
 
 // stop game:
 function stopGame() {
   isPlaying = false;
   cancelAnimationFrame(draw);
+  audio.pause();
 }
 
 // move paddle with mouse
@@ -107,9 +117,12 @@ function draw() {
   // show playing time
   showPlayingTime();
   // request new frame
-  if (!gameOver && !allDone) requestAnimFrame(draw);
-  // game over, end game
-  else {
+  if (!gameOver && !allDone) {
+    if (!isPlaying) {
+      requestAnimFrame(draw);
+    }
+    // game over, end game
+  } else {
     endGame();
   }
 }
@@ -265,14 +278,12 @@ function pauseGame() {
   if (pause === false) {
     pause = true;
     stopGame();
-    audio.pause();
     ctx.fillStyle = '#000000';
     ctx.font = '30px Verdana';
     ctx.fillText('Game paused', 70, 400);
   } else {
-    pause = false;
-    startGame();
-    audio.play();
     ctx.clearRect(60, 350, 200, 100);
+    pause = false;
+    resumeGame();
   }
 }
