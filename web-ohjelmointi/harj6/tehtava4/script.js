@@ -32,14 +32,20 @@ function drawToCanvas(d) {
   let v = (Math.PI * r * r * l) / 1000;
   v = v.toFixed(2);
 
-  // const base = h * Math.tan(Math.acos(h/r));
+  let s = 0;
+  s = (((r * r) / 2) * (initialAngle - Math.sin(initialAngle)) * l) / 1000;
+
+  console.log('r= ', r);
+  console.log('initialAngle= ', initialAngle);
+  console.log('Math.sin(initialAngle) ', Math.sin(initialAngle));
+  s = s.toFixed(2);
 
   ctx.fillStyle = '#000000';
   ctx.font = '18px Verdana';
   ctx.fillText(`Tyynyrin pituus: ${100} cm`, 20, 30);
   ctx.fillText(`Tyynyrin halkaisija: ${200} cm`, 20, 50);
   ctx.fillText(`Tyynyrin tilavuus: ${v} litraa`, 20, 70);
-  ctx.fillText(`Nestemäärä: ${100} litraa`, 20, 100);
+  ctx.fillText(`Nestemäärä: ${s} litraa`, 20, 100);
 }
 
 window.onload = drawToCanvas;
