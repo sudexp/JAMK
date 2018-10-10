@@ -14,6 +14,7 @@ var gameCount = 0; // how many games is played
 var isPlaying;
 var pauseButton;
 var audio;
+var scores = 0;
 
 // perform an animation and requests that the browser call a specified
 // function to update an animation before the next repaint
@@ -168,6 +169,8 @@ function checkCollisions() {
     ) {
       ball.ballHitsBlock();
       blocks.splice(i, 1); // Poistaa i:nnen blockin taulukosta
+      scores = scores += 1;
+      document.getElementById('scores').innerHTML = scores;
       // all blocks gone
       if (blocks.length == 0) {
         // next level or something...
