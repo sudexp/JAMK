@@ -11,6 +11,9 @@ var gameOver; // is game over
 var gameStart; // game startting time
 var allDone; // all blocks destroyed
 var gameCount = 0; // how many games is played
+var isPlaying;
+var pauseButton;
+var audio;
 
 // perform an animation and requests that the browser call a specified
 // function to update an animation before the next repaint
@@ -38,7 +41,8 @@ function init() {
 }
 
 // start game
-function start_game() {
+function startGame() {
+  isPlaying = true;
   // if not first game, init again
   if (gameCount > 0) init();
   // disable start button
@@ -57,6 +61,18 @@ function start_game() {
   gameCount++;
   // animate
   requestAnimationFrame(draw);
+  audioPlay();
+  pauseButton = document.getElementById('myCanvas');
+  pauseButton.addEventListener('click', pauseGame, false);
+  addEventListener('keydown', function(event) {
+    if (event.keyCode === 32) pauseGame();
+  });
+}
+
+// stop game:
+function stopGame() {
+  isPlaying = false;
+  cancelAnimationFrame(draw);
 }
 
 // move paddle with mouse
@@ -64,7 +80,7 @@ function movePaddle(event) {
   var rect = canvas.getBoundingClientRect();
   var mouseXpos = event.clientX - rect.left;
   paddle.move(mouseXpos);
-  paddle.draw();
+  if (isPlaying) paddle.draw();
 }
 
 // clear screen
@@ -74,14 +90,16 @@ function clear() {
 
 // draw game
 function draw() {
-  // clear
-  clear();
-  // game objects
-  ball.draw();
-  // if ball is below paddle -> game is over (sorry only one ball here...)
-  gameOver = ball.move();
-  paddle.draw();
-  drawBlocks();
+  if (isPlaying) {
+    // clear
+    clear();
+    // game objects
+    ball.draw();
+    // if ball is below paddle -> game is over (sorry only one ball here...)
+    gameOver = ball.move();
+    paddle.draw();
+    drawBlocks();
+  }
   // collision
   checkCollisions();
   // show playing time
@@ -101,6 +119,7 @@ function endGame() {
   // enable start button
   var element = document.getElementById('startButton');
   element.disabled = false;
+  audio.pause();
 }
 
 // show playing time
@@ -224,5 +243,24 @@ function createBlocks() {
     var block = new Block(ctx, x, y);
     // add to array
     blocks.push(block);
+  }
+}
+
+function audioPlay() {
+  audio = new Audio('track.mp3');
+  audio.loop = true;
+  audio.play();
+}
+
+var pause = false;
+function pauseGame() {
+  if (pause === false) {
+    pause = true;
+    stopGame();
+    audio.pause();
+  } else {
+    pause = false;
+    startGame();
+    audio.play();
   }
 }
