@@ -261,9 +261,13 @@ function pauseGame() {
     pause = true;
     stopGame();
     audio.pause();
+    ctx.fillStyle = '#000000';
+    ctx.font = '30px Verdana';
+    ctx.fillText('Game paused', 70, 400);
   } else {
     pause = false;
     startGame();
     audio.play();
+    ctx.clearRect(60, 350, 200, 100);
   }
 }
