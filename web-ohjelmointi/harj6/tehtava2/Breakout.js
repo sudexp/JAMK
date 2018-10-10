@@ -118,7 +118,7 @@ function draw() {
   showPlayingTime();
   // request new frame
   if (!gameOver && !allDone) {
-    if (!isPlaying) {
+    if (isPlaying) {
       requestAnimFrame(draw);
     }
     // game over, end game
