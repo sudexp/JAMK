@@ -3,9 +3,10 @@
 
 1. cursor style when the game is started
 2. scores calculation (always)
-3. paddle coordinates when the game is started
-4. opportunity to pause the game
-5. pause text to canvas when game is paused
-6. gameover text to canvas when game is ended
-7. scores text to canvas when game is ended
-8. audio when the game is started (but not paused)
+3. paddle x coordinate when the game is started
+4. ball x coordinate when the game is started
+5. opportunity to pause the game
+6. pause text to canvas when game is paused
+7. gameover text to canvas when game is ended
+8. scores text to canvas when game is ended
+9. audio when the game is started (but not paused)

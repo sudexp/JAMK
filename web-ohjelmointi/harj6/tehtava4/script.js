@@ -34,15 +34,24 @@ function drawWater(initialAngle) {
   ctx.closePath();
 }
 
-function showStat(initialAngle) {
+function showStat(initialAngle, d) {
   // Calculate volume of cylinder:
   let v = (Math.PI * r * r * l) / 1000;
   v = v.toFixed(2);
 
   // Draw stats
-  let s = 0;
-  s = (((r * r) / 2) * (initialAngle - Math.sin(initialAngle)) * l) / 1000;
+  let s = (((r * r) / 2) * (initialAngle - Math.sin(initialAngle)) * l) / 1000;
+  
+  // let part1 = r * r * Math.acos((r - d) / r);
+  // let part2 = r - d;
+  // part3 = r * r;
+  // part4 = (a - d) * (a - d);
+  // part5 = a * a;
+  // let s = l * (part1 - part2 * Math.sqrt(part3 * (1 - (part4 / part5))));
+  
   s = s.toFixed(2);
+  // console.log(initialAngle);
+  console.log(s);
 
   ctx.fillStyle = '#000000';
   ctx.font = '18px Verdana';
@@ -55,6 +64,7 @@ function showStat(initialAngle) {
 function init() {
   initCanvas();
   drawCircle();
+  showStat(0);
 }
 
 function drawToCanvas(d) {
