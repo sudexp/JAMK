@@ -1,22 +1,39 @@
-function drawToCanvas(depth) {
+function drawToCanvas(d) {
   let canvas = document.getElementById('myCanvas');
   let ctx = canvas.getContext('2d');
-  canvas.height = 400;
-  canvas.width = 800;
+  canvas.height = 500;
+  canvas.width = 1000;
   ctx.clearRect(0, 0, canvas.height, canvas.width);
-  depth = depth / 100;
-  let h = 1 - depth;
-  let r = 1;
-  const vari = '#fed';
+
+  const r = 100;
   ctx.beginPath();
-  let alkukulma = Math.PI / 2 - Math.acos(h / r);
-  // let alfa = ((depth / 200) * Math.Pi) / 2;
-  ctx.arc(400, 200, 150, alkukulma, Math.PI - alkukulma);
-  // ctx.arc(400, 200, depth, 0, 2 * Math.PI);
+  ctx.arc(canvas.width / 2, canvas.height / 2, 2 * r, 0 * Math.PI, 2 * Math.PI);
+  ctx.stroke();
+  ctx.closePath();
+
+  const h = r - d;
+  const vari = '#00FFFF';
+  const initialAngle = Math.PI / 2 - Math.acos(h / r);
+
+  ctx.beginPath();
+  ctx.arc(
+    canvas.width / 2,
+    canvas.height / 2,
+    2 * r,
+    initialAngle,
+    Math.PI - initialAngle
+  );
   ctx.fillStyle = vari;
   ctx.fill();
   ctx.stroke();
   ctx.closePath();
+
+  ctx.fillStyle = '#000000';
+  ctx.font = '18px Verdana';
+  ctx.fillText(`Tyynyrin pituus: ${100} cm`, 20, 30);
+  ctx.fillText(`Tyynyrin halkaisija: ${200} cm`, 20, 50);
+  ctx.fillText(`Tyynyrin tilavuus: ${100} litraa`, 20, 70);
+  ctx.fillText(`Nestemäärä: ${100} litraa`, 20, 100);
 }
 
 window.onload = drawToCanvas;
