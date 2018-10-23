@@ -1,5 +1,5 @@
 function showMap() {
-  var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+  const mymap = L.map('mapid').setView([62.24, 25.74], 14);
 
   L.tileLayer(
     'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoieXVyaWFoYW5pIiwiYSI6ImNqanljZTFrMTBjMGEza25kMjBlZGZkdXYifQ.gxDr4e24ngDBS2ZmLueSuw',
@@ -11,36 +11,34 @@ function showMap() {
     }
   ).addTo(mymap);
 
-  var marker = L.marker([51.5, -0.09]).addTo(mymap);
+  const marker = L.marker([62.24264, 25.747364]).addTo(mymap);
 
-  var circle = L.circle([51.508, -0.11], {
-    color: 'red',
-    fillColor: '#f03',
+  const circle = L.circle([62.2425, 25.737], {
+    color: 'yellow',
+    fillColor: '#f8f5d4',
     fillOpacity: 0.5,
-    radius: 500
+    radius: 450
   }).addTo(mymap);
 
-  var polygon = L.polygon([
-    [51.509, -0.08],
-    [51.503, -0.06],
-    [51.51, -0.047]
+  const polygon = L.polygon([
+    [62.239, 25.751],
+    [62.239, 25.7565],
+    [62.2375, 25.7565],
+    [62.2375, 25.751]
   ]).addTo(mymap);
 
-  marker.bindPopup('<b>Hello world!</b><br>I am a popup.').openPopup();
-  circle.bindPopup('I am a circle.');
-  polygon.bindPopup('I am a polygon.');
-
-  /* Eka esimerkki klikkauksesta*/
+  marker.bindPopup('<b>Keskusta</b><br>Jyväskylä').openPopup();
+  circle.bindPopup('Harjun EK');
+  polygon.bindPopup('MM-ralli - Kilpailukeskus.');
 
   /*
   function onMapClick(e) {
       alert("You clicked the map at " + e.latlng);
   }
-  
   mymap.on('click', onMapClick);
   */
 
-  var popup = L.popup();
+  const popup = L.popup();
 
   function onMapClick(e) {
     popup
