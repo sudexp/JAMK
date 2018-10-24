@@ -3,7 +3,7 @@ function drawChart() {
   Chart.defaults.global.defaultFontFamily = 'Lato';
   Chart.defaults.global.defaultFontSize = 18;
   Chart.defaults.global.defaultFontColor = 'grey';
-  Chart.defaults.global.animation.duration = '5000';
+  Chart.defaults.global.animation.duration = '3000';
   var chart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -37,6 +37,22 @@ function drawChart() {
       }
     }
   });
+}
+
+function addData(chart, label, data) {
+  chart.data.labels.push(label);
+  chart.data.datasets.forEach(dataset => {
+    dataset.data.push(data);
+  });
+  chart.update();
+}
+
+function removeData(chart) {
+  chart.data.labels.pop();
+  chart.data.datasets.forEach(dataset => {
+    dataset.data.pop();
+  });
+  chart.update();
 }
 
 window.onload = drawChart;
