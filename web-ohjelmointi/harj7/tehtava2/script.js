@@ -1,10 +1,10 @@
 function drawChart() {
-  var ctx = document.getElementById('myChart').getContext('2d');
+  const ctx = document.getElementById('myChart').getContext('2d');
   Chart.defaults.global.defaultFontFamily = 'Lato';
   Chart.defaults.global.defaultFontSize = 18;
   Chart.defaults.global.defaultFontColor = 'grey';
   Chart.defaults.global.animation.duration = '3000';
-  var chart = new Chart(ctx, {
+  const chart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['Ford', 'Opel', 'Toyota'],
