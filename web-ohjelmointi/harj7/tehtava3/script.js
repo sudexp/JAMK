@@ -7,18 +7,42 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mymap);
 
 var yellowIcon = L.icon({
-  iconUrl: 'yellow-dot.png', // Tämä tiedosto sinun pitää itse hakea jostakin ilmaisesta
-  // kokoelmasta esim  https://www.flaticon.com/free-icon/map-marker_33622
+  iconUrl: 'yellow_dot.png', // https://www.flaticon.com/free-icon/map-marker_33622
   iconSize: [32, 32], // size
   iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
   popupAnchor: [-32, -32] // point from which the popup should open relative to the iconAnchor
 });
 
-// ... muun väriset markkerit samoin
+var greenIcon = L.icon({
+  iconUrl: 'green_dot.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [-32, -32]
+});
 
+var blueIcon = L.icon({
+  iconUrl: 'blue_dot.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [-32, -32]
+});
+
+var redIcon = L.icon({
+  iconUrl: 'red_dot.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [-32, -32]
+});
+
+var violetIcon = L.icon({
+  iconUrl: 'violet_dot.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [-32, -32]
+});
 
 $.ajax({
-  url: 'kentat.json'
+  url: 'fields.json'
 }).fail(function () {
   console.log("fail!");
 }).done(function (data) {
