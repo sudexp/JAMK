@@ -11,67 +11,74 @@ function showMap() {
     }
   ).addTo(mymap);
 
-  var yellowIcon = L.icon({
+  const yellowIcon = L.icon({
     iconUrl: 'yellow_dot.png', // https://www.flaticon.com/free-icon/map-marker_33622
     iconSize: [32, 32], // size
     iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
     popupAnchor: [-32, -32] // point from which the popup should open relative to the iconAnchor
   });
 
-  var greenIcon = L.icon({
+  const greenIcon = L.icon({
     iconUrl: 'green_dot.png',
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [-32, -32]
   });
 
-  var blueIcon = L.icon({
+  const blueIcon = L.icon({
     iconUrl: 'blue_dot.png',
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [-32, -32]
   });
 
-  var redIcon = L.icon({
+  const redIcon = L.icon({
     iconUrl: 'red_dot.png',
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [-32, -32]
   });
 
-  var violetIcon = L.icon({
+  const violetIcon = L.icon({
     iconUrl: 'violet_dot.png',
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [-32, -32]
   });
 
-  // $(document).ready(function () {
-  //   $.ajax({
-  //     url: 'fields.json'
-  //   }).fail(function () {
-  //     console.log("fail!");
-  //   }).done(function (data) {
-  //     // loop through all courses
-  //     $.each(data.kentat, function (index, kentta) {
-  //       // marker, get position lat and lng
-
-  //       //console.log(kentta);
-  //       var marker = L.marker([kentta.lat, kentta.lng], { icon: yellowIcon }).addTo(mymap);
-
-  //       // ...
-  //       /* Tähän ohjelmakoodi, jolla JSON-tiedoston perusteella voidaan näyttää oikean värinen markkeri */
-
-  //       /*
-
-  //           Tähän ohjelmakoodi, jossa markkeriin liitetään tapahtumakuuntelija klikkausta varten
-  //           sekä ohjelmoidaan toiminnot sitten popup-ikkunan informaation näyttämiselle JSON-
-  //           tiedostin tietojen perusteella.
-  //       */
-  //     });
-
-  //   }); // each
-  // }); // ajax done
+  $(document).ready(function() {
+    $.ajax({
+      url: 'fields.json',
+      cache: false
+    })
+      .fail(function() {
+        console.log('fail!');
+      })
+      .done(function(data) {
+        // loop through all courses
+        $.each(data.kentat, function(index, kentta) {
+          // marker, get position lat and lng
+          let marker;
+          if (kentta.Tyyppi === 'Kulta') {
+            marker = L.marker([kentta.lat, kentta.lng], {
+              icon: yellowIcon
+            }).addTo(mymap);
+          } else if (kentta.Tyyppi === 'Kulta/Etu') {
+            marker = L.marker([kentta.lat, kentta.lng], {
+              icon: greenIcon
+            }).addTo(mymap);
+          } else if (kentta.Tyyppi === 'Etu') {
+            marker = L.marker([kentta.lat, kentta.lng], {
+              icon: blueIcon
+            }).addTo(mymap);
+          } else {
+            marker = L.marker([kentta.lat, kentta.lng], {
+              icon: redIcon
+            }).addTo(mymap);
+          }
+        });
+      }); // each
+  }); // ajax done
 }
 
 window.onload = showMap;
