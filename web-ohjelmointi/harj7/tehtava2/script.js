@@ -1,10 +1,12 @@
+let chart;
+
 function drawChart() {
   const ctx = document.getElementById('myChart').getContext('2d');
   Chart.defaults.global.defaultFontFamily = 'Lato';
   Chart.defaults.global.defaultFontSize = 18;
   Chart.defaults.global.defaultFontColor = 'grey';
   Chart.defaults.global.animation.duration = '3000';
-  const chart = new Chart(ctx, {
+  chart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['Ford', 'Opel', 'Toyota'],
@@ -39,19 +41,13 @@ function drawChart() {
   });
 }
 
-function addData(chart, label, data) {
-  chart.data.labels.push(label);
-  chart.data.datasets.forEach(dataset => {
-    dataset.data.push(data);
-  });
+function addData(index) {
+  chart.data.datasets[0].data[index] += 1;
   chart.update();
 }
 
-function removeData(chart) {
-  chart.data.labels.pop();
-  chart.data.datasets.forEach(dataset => {
-    dataset.data.pop();
-  });
+function resetData() {
+  chart.data.datasets[0].data = [0, 0, 0];
   chart.update();
 }
 
