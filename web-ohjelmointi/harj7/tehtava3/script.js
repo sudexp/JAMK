@@ -39,13 +39,6 @@ function showMap() {
     popupAnchor: [-32, -32]
   });
 
-  const violetIcon = L.icon({
-    iconUrl: 'violet_dot.png',
-    iconSize: [32, 32],
-    iconAnchor: [16, 32],
-    popupAnchor: [-32, -32]
-  });
-
   $(document).ready(function() {
     $.ajax({
       url: 'fields.json',
