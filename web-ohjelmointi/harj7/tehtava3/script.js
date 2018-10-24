@@ -69,6 +69,14 @@ function showMap() {
               icon: redIcon
             }).addTo(mymap);
           }
+          marker.bindPopup(`
+            <h1>${kentta.Kentta}</h1>
+            <p>${kentta.Kuvaus}</p>
+            <p>${kentta.Osoite}</p>
+            <p>${kentta.Puhelin}</p>
+            <p>${kentta.Sahkoposti}</p>
+            <a href="${kentta.Webbi}">${kentta.Webbi}</a>
+            `);
         });
       }); // each
   }); // ajax done
