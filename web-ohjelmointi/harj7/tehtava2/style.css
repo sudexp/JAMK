@@ -1,1 +1,13 @@
 @charset "utf-8";
+
+.buttons {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#myChart {
+  margin: 0 auto;
+}
