@@ -13,29 +13,54 @@
   <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 </head>
 
+<style>
+  .box {
+	  border: 1px dashed #aaa; padding: 15px;
+	}
+
+	button {
+	  background-color: #069; border-radius: 5px;
+	  color: #fff; margin-bottom: 5px;
+	  padding: 5px 15px; border: none;
+	}
+    </style>
+</head>
+
 <body>
-  <div id="root"></div>
+
+  <h3>Tuota tämä ReactDOM.render()-metodilla:</h3>
+  <div id="malli" class="box">
+    <div>
+      <button>Nappi</button>
+      <p>Mieleni minun tekevi, aivoni ajattelevi</p>
+    </div>
+  </div>
+
+  <h3>Sinun ratkaisu:</h3>
+  <div id="ratkaisu" class="box"></div>
+
   <script type="text/babel">
 
-    let names = ["Arska", "Basso", "Mixu"]
-    let mjono = '';
-    for (let i=0; i<=2; i++) {
-      mjono += "<p>" + names[i] + "</p>";
-    }
+	let kalevalaText = 'Mieleni minun tekevi, aivoni ajattelevi';
 
-    ReactDOM.render(
-      <div>
-        {
-          // names.map((name) => <p>Terve {name}!</p>)
-          names.map((name, index) => <p key={index}>Terve {name}!</p>)
-        }
-        <div dangerouslySetInnerHTML = {{ __html: mjono }} />
-      </div>
-      ,
-      document.getElementById('root')
-    );
+      class BoxComponent extends React.Component {
+          // Kirjoita ohjelmakoodisi tähän
+          render() {
+            return(
+              <div>
+              <button>{this.props.buttontext}</button>
+              <p>{this.props.ptext}</p>
+              </div>
+            );
+          }
+	}
 
-  </script>
+
+	ReactDOM.render(
+  	 <BoxComponent buttontext = "Nappi" ptext = {kalevalaText}/>,
+	  document.getElementById('ratkaisu')
+	);
+    </script>
 </body>
 
 </html>
