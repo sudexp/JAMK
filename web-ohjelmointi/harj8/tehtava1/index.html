@@ -18,12 +18,18 @@
   <script type="text/babel">
 
     let names = ["Arska", "Basso", "Mixu"]
+    let mjono = '';
+    for (let i=0; i<=2; i++) {
+      mjono += "<p>" + names[i] + "</p>";
+    }
 
     ReactDOM.render(
       <div>
         {
-          names.map((name) => <p>Terve {name}!</p>)
+          // names.map((name) => <p>Terve {name}!</p>)
+          names.map((name, index) => <p key={index}>Terve {name}!</p>)
         }
+        <div dangerouslySetInnerHTML = {{ __html: mjono }} />
       </div>
       ,
       document.getElementById('root')
