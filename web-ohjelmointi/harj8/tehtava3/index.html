@@ -40,26 +40,26 @@
 
   <script type="text/babel">
 
-	let kalevalaText = 'Mieleni minun tekevi, aivoni ajattelevi';
+    let kalevalaText = 'Mieleni minun tekevi, aivoni ajattelevi';
 
-      class BoxComponent extends React.Component {
-          // Kirjoita ohjelmakoodisi tähän
-          render() {
-            return(
-              <div>
-              <button>{this.props.buttontext}</button>
-              <p>{this.props.ptext}</p>
-              </div>
-            );
-          }
-	}
+        class BoxComponent extends React.Component {
+            // Kirjoita ohjelmakoodisi tähän
+            render() {
+              return(
+                <div>
+                <button>{this.props.buttontext}</button>
+                <p>{this.props.ptext}</p>
+                </div>
+              );
+            }
+    }
 
 
-	ReactDOM.render(
-  	 <BoxComponent buttontext = "Nappi" ptext = {kalevalaText}/>,
-	  document.getElementById('ratkaisu')
-	);
-    </script>
+    ReactDOM.render(
+      <BoxComponent buttontext = "Nappi" ptext = {kalevalaText}/>,
+      document.getElementById('ratkaisu')
+    );
+  </script>
 </body>
 
 </html>
