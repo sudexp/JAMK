@@ -24,25 +24,35 @@
   <div id="root" class="box"></div>
 
   <script type="text/babel">
+    // initial count
+    let cars = [0, 0];
 
-    // Counter component
+    // counter component
     class Counter extends React.Component {
       constructor(props) {
         super(props);
-        this.state = {count: props.initialCount};
-        this.handleClick = this.handleClick.bind(this);
+        this.state = {count: cars};
       }
 
-      // handle button click event
-      handleClick () {
-          this.setState({count: this.state.count + 1});
+      // handle click event
+      handleClick (index) {
+        if(index === 0){
+          let carAmount = this.state.count;
+          carAmount[0]++;
+          this.setState({carAmount});
+          }
+          else if(index === 1){
+          let carAmount = this.state.count;
+          carAmount[1]++;
+          this.setState({carAmount});
+          }
       }
 
       render() {
         return (
           <div>
-              <p>Count : {this.state.count}</p>
-              <button onClick={this.handleClick}>Click!</button>
+            <p>Escorts: {this.state.count[0]} <img src="images/ford.jpg" onClick={this.handleClick.bind(this, 0)}/></p>
+            <p>Passats: {this.state.count[1]} <img src="images/vw.jpg" onClick={this.handleClick.bind(this, 1)}/></p>
           </div>
         );
       }
@@ -51,7 +61,7 @@
 
     // render
     ReactDOM.render(
-        <Counter initialCount={0}/>,
+        <Counter />,
         document.getElementById("root")
     );
 
