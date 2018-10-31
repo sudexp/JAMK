@@ -42,9 +42,13 @@
   <div id="ratkaisu" class="box"></div>
 
   <script type="text/babel">
-    var kalevalaText = 'Mieleni minun tekevi, aivoni ajattelevi';
-
-    ReactDOM.render(
+    let kalevalaText = 'Mieleni minun tekevi, aivoni ajattelevi';
+	  ReactDOM.render(
+      <div>
+        <button>Nappi</button>  
+        <p>{kalevalaText}</p>
+      </div>,
+      document.getElementById('ratkaisu')
     );
   </script>
 </body>
