@@ -47,21 +47,33 @@
 
   <script type="text/babel">
 
-    class Nelilaskin extends React.Component {
+    const calcFunctions = [
+      (x, y) => x + y,
+      (x, y) => x - y,
+      (x, y) => x * y,
+      (x, y) => x / y,
+    ]
 
+    class Nelilaskin extends React.Component {
       constructor(props) {
-          super(props);
-          this.handleClick = this.handleClick.bind(this);
-        }
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+      }
 
       handleClick (index) {
         // Haetaan kaikki button-elementit
         let myElements = document.querySelectorAll("button");
         // Asetetaan kaikille buttoneille alkuperäinen väri:
         for (let i = 0; i < myElements.length; i++) {
-            myElements[i].style.backgroundColor = "#069";
+          myElements[i].style.backgroundColor = '';
         }
-        // Tähän tulee ohjelmakoodi
+
+        // 1. Set current button active:
+        myElements[index].style.backgroundColor = "#00FF00";
+
+        // 2. Perform operation:
+        const calc = calcFunctions[index]
+        this.refs.n3.value = calc(Number.parseInt(this.refs.n1.value), Number.parseInt(this.refs.n2.value))
       }
 
       render() {
@@ -83,7 +95,12 @@
                 </tr>
                 <tr>
                   <td>Laske</td>
-                  <td>Buttonien paikka on tässä. Poista tämä!</td>
+                  <td>
+                    <button onClick={this.handleClick.bind(this, 0)}>+</button>
+                    <button onClick={this.handleClick.bind(this, 1)}>-</button>
+                    <button onClick={this.handleClick.bind(this, 2)}>*</button>
+                    <button onClick={this.handleClick.bind(this, 3)}>/</button>
+                  </td>
                 </tr>
               </tbody>
             </table>
