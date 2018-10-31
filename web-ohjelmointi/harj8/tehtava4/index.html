@@ -34,39 +34,39 @@
 
   <script type="text/babel">
 
-      class Yhteenlaskin extends React.Component {
+    class Yhteenlaskin extends React.Component {      
+      handleChange(){
+        this.refs.summa.value = Number.parseInt(this.refs.n1.value) + Number.parseInt(this.refs.n2.value);
+      }
+        
+      render() {
+        return (
+          <div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Luku1:</td>
+                  <td><input type="text" ref="n1" onChange={this.handleChange.bind(this)}/></td>
+                </tr>
+                <tr>
+                  <td>Luku2:</td>
+                  <td><input type="text" ref="n2" onChange={this.handleChange.bind(this)}/></td>
+                </tr>
+                <tr>
+                  <td>Tulos:</td>
+                  <td><input type="text" ref="summa"/></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+    }
 
-        // Ohjelmakoodia tähän...
-        // joudut lisäämään määreitä myös input-elementteihin
-
-	  render() {
-	    return (
-	      <div>
-          <table>
-            <tbody>
-              <tr>
-                <td>Luku1:</td>
-                <td><input type="text" /></td>
-              </tr>
-              <tr>
-                <td>Luku2:</td>
-                <td><input type="text" /></td>
-              </tr>
-              <tr>
-                <td>Tulos:</td>
-                <td><input type="text" /></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-	    );
-	  }
-	}
-
-	ReactDOM.render(
-	  <Yhteenlaskin />,
-	  document.getElementById('ratkaisu')
-	);
+    ReactDOM.render(
+      <Yhteenlaskin />,
+      document.getElementById('ratkaisu')
+    );
 
   </script>
 
