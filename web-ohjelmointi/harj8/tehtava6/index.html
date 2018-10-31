@@ -38,9 +38,10 @@
 
       // handle click event
       handleClick(index) {
-        let carAmount = this.state.count;
-        carAmount[index]++;
-        this.setState({carAmount});
+        //console.log('state:', this.state)
+        this.state.count[index]++;
+        this.setState({count: this.state.count});
+        // this.setState(this.state);
       }
 
       render() {
