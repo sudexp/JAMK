@@ -20,32 +20,39 @@
 <body>
 
   <h3>Autolaskuri</h3>
-  <div id="ratkaisu" class="box"></div>
+  <p>Klikkaa mieleistä auton kuvaa</p>
+  <div id="root" class="box"></div>
 
   <script type="text/babel">
 
-    class Autolaskuri extends React.Component {
+    // Counter component
+    class Counter extends React.Component {
       constructor(props) {
         super(props);
+        this.state = {count: props.initialCount};
         this.handleClick = this.handleClick.bind(this);
       }
 
-      handleClick (index) {
-        
+      // handle button click event
+      handleClick () {
+          this.setState({count: this.state.count + 1});
       }
 
       render() {
         return (
           <div>
-            
+              <p>Count : {this.state.count}</p>
+              <button onClick={this.handleClick}>Click!</button>
           </div>
         );
       }
+
     }
 
+    // render
     ReactDOM.render(
-      <Autolaskuri />,
-      document.getElementById('ratkaisu')
+        <Counter initialCount={0}/>,
+        document.getElementById("root")
     );
 
   </script>
