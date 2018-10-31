@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dmitry Sklyarov [M0394] Harjoitukset 2 / Tehtävä 1</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <form id="summa">
+    <fieldset>
+      <legend>Laske luvut yhteen</legend>
+      <p><label for="number1">Luku 1:</label></p>
+      <input type="text" id="number1" name="number1" pattern="^\d*\.?\d*$" placeholder="Kirjoita luku" autofocus required><br>
+      <p><label for="number2">Luku 2:</label><br></p>
+      <input type="text" id="number2" name="number2" pattern="^\d*\.?\d*$" placeholder="Kirjoita luku" required><br>
+      <p><input type="button" value="Laske!" onclick="addition()"><p>
+      <!-- <button type="button" onclick="tulostaSumma(form.number1.value, form.number2.value)">Laske</button> -->
+    </fieldset>
+  </form>
+  <div id="result">Tulos</div>
+</body>
+
+</html>
