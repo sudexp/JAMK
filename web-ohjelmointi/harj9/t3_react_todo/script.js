@@ -14,7 +14,7 @@ class TodoList extends React.Component {
       <ul>
         {this.props.items.map((item, index) => (
           <li key={index}>
-            {item} <img src="delete.jpg" />
+            {item} <img src="delete.jpg" onClick={this.props.removeItem.bind(this, index)} />
           </li>
         ))}
       </ul>
@@ -63,7 +63,7 @@ class App extends React.Component {
     super(props);
     this.state = { items: [] };
     this.addItem = this.addItem.bind(this);
-    this.removeItem = this.removeItem.bind(this);
+    // this.removeItem = this.removeItem.bind(this);
   }
 
   // add a new item
@@ -79,9 +79,9 @@ class App extends React.Component {
   // remove item
   removeItem(index) {
     // remove from items array
-    //???
+    this.state.splice(index, 1);
     // render again
-    //???
+    this.setState({ items: this.state.items });
   }
 
   // render component
