@@ -23,19 +23,22 @@ class TodoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { item: '' };
-    // LISÄÄ TÄHÄN JOS TARVIT MUUTA
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   // add a new item -> call parent
   handleSubmit(e) {
     // prevent normal submit event
     e.preventDefault();
     // call parent to add a new item
-    //????
+    this.props.onFormSubmit(this.refs.item.value);
     // remove new typed item from text input
     this.refs.item.value = '';
-    //????
     // focus text input
-    //????
+    // this.refs.item.focus();
+  }
+
+  componentDidMount() {
+    this.refs.item.focus();
   }
 
   // render component
@@ -43,7 +46,7 @@ class TodoForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <p>Todo:</p>
-        <input type="text" placeholder="Add task" />
+        <input type="text" ref="item" placeholder="Add task" />
         <input type="submit" value="add" />
       </form>
     );
@@ -62,7 +65,7 @@ class App extends React.Component {
   // add a new item
   addItem(newItem) {
     // add new item to items array
-    //???
+    this.state.items.push(newItem);
     // render again
     //???
   }
