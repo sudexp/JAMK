@@ -21,6 +21,24 @@
   <div id="root" class="box"></div>
 
   <script type="text/babel">
+
+  let highscoreData = [
+    { id: 1, name: 'Jason', score: 4000 },
+    { id: 2, name: 'Make', score: 3000 },
+    { id: 3, name: 'Bill', score: 2000 },
+    { id: 4, name: 'Liza', score: 1000 }
+  ];
+
+  constructor(props) {
+    super(props);
+    this.state = {highscores: [], loaded: false};
+    // Mahdollisesti muuta toiminnallisuutta
+  }
+
+  getHighscores () {
+    setTimeout(() => this.setState({highscores: highscoreData, loaded:true}), 3000);
+  }
+
   </script>
 
 </body>
