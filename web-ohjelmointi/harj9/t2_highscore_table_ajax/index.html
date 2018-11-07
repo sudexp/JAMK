@@ -48,7 +48,7 @@
       super(props);
       this.state = {highscores: [], loaded: false};
       this.onLoadClick = this.onLoadClick.bind(this);
-      // this.getHighscores = this.getHighscores.bind(this);
+      this.onCloseClick = this.onCloseClick.bind(this);
     }
 
     getHighscores() {
@@ -63,13 +63,15 @@
       });
     }
 
-    componentDidMount(){
-      this.getHighscores();
-    }
-
     onLoadClick() {
       this.setState({highscores: [], loaded: false});
       this.getHighscores();
+      // setTimeout(() => this.getHighscores(), 3000);
+    }
+
+    onCloseClick() {
+      this.setState({highscores: [], loaded: false});
+      // setTimeout(() => this.getHighscores(), 3000);
     }
 
     render() {
@@ -91,7 +93,7 @@
               )
             }
           </ul>
-          <button onClick={this.onLoadClick}>Load again</button>
+          <button onClick={this.onCloseClick}>Close this</button>
         </div>
       );
 	  }
