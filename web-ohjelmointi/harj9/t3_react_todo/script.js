@@ -10,6 +10,9 @@ class TodoBanner extends React.Component {
 class TodoList extends React.Component {
   // render this component
   render() {
+    if (!this.props.items.length) {
+      return '';
+    }
     return (
       <ul>
         {this.props.items.map((item, index) => (
