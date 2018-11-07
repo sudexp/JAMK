@@ -63,7 +63,7 @@ class App extends React.Component {
     super(props);
     this.state = { items: [] };
     this.addItem = this.addItem.bind(this);
-    // this.removeItem = this.removeItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   // add a new item
@@ -73,15 +73,16 @@ class App extends React.Component {
       this.state.items.push(newItem);
       // render again
       this.setState({ items: this.state.items });
+      console.log(this.state);
     }
   }
 
-  // remove item
   removeItem(index) {
     // remove from items array
-    this.state.splice(index, 1);
+    this.state.items.splice(index, 1);
     // render again
     this.setState({ items: this.state.items });
+    console.log(this.state);
   }
 
   // render component
