@@ -1,80 +1,53 @@
-let initialized = false;
-let canvas, ctx;
-const r = 100;
-const l = 100;
-const color = '#00FFFF';
+function drawToCanvas(depth) {
+  var canvas = document.getElementById('myCanvas');
+  var ctx = canvas.getContext('2d');
+  var colorBottom = '#ebf4fa';
+  var colorTop = '#fff';
 
-function initCanvas() {
-  canvas = document.getElementById('myCanvas');
-  ctx = canvas.getContext('2d');
-  canvas.height = 500;
-  canvas.width = 1000;
-  ctx.clearRect(0, 0, canvas.height, canvas.width);
+  fillsegment(ctx, colorBottom, colorTop, depth);
 }
 
-function drawCircle() {
+function fillsegment(ctx, colorBottom, colorTop, depth) {
+  length = 1.0;
+  depth = depth / 100;
+  var r = 1.0;
+  var h = r - depth;
+  var base = h * Math.tan(Math.acos(h / r));
+  var angleStart = Math.PI / 2 - Math.acos(h / r);
+  var angleEnd = Math.PI - angleStart;
+  var angledeg = angleStart / (Math.PI / 180);
+  ctx.clearRect(0, 0, 800, 400);
+
+  // Ekana ympyrä
+  ctx.fillStyle = colorTop;
   ctx.beginPath();
-  ctx.arc(canvas.width / 2, canvas.height / 2, 2 * r, 0 * Math.PI, 2 * Math.PI);
+  ctx.arc(400, 200, 150, 0, 2 * Math.PI);
   ctx.stroke();
-  ctx.closePath();
-}
 
-function drawWater(initialAngle) {
+  // Tokana segmentti
   ctx.beginPath();
-  ctx.arc(
-    canvas.width / 2,
-    canvas.height / 2,
-    2 * r,
-    initialAngle,
-    Math.PI - initialAngle
-  );
-  ctx.fillStyle = color;
+  ctx.fillStyle = colorBottom;
+  ctx.arc(400, 200, 150, angleStart, angleEnd);
+  ctx.closePath(); // Pintaviiva
   ctx.fill();
   ctx.stroke();
-  ctx.closePath();
-}
 
-function showStat(initialAngle, d) {
-  // Calculate volume of cylinder:
-  let v = (Math.PI * r * r * l) / 1000;
-  v = v.toFixed(2);
+  // Tilavuuden laskenta
+  var relativeAngle = (angleEnd - angleStart) / (2 * Math.PI);
+  var volume = (relativeAngle * Math.PI * r * r - base * h) * length;
+  //var volume = ((relativeAngle * Math.PI * r * r) - (r*h)) * length;
+  var volumeLiter = volume * 1000;
 
-  // Draw stats
-  let s = (((r * r) / 2) * (initialAngle - Math.sin(initialAngle)) * l) / 1000;
-  
-  // let part1 = r * r * Math.acos((r - d) / r);
-  // let part2 = r - d;
-  // part3 = r * r;
-  // part4 = (a - d) * (a - d);
-  // part5 = a * a;
-  // let s = l * (part1 - part2 * Math.sqrt(part3 * (1 - (part4 / part5))));
-  
-  s = s.toFixed(2);
-  // console.log(initialAngle);
-  console.log(s);
-
+  // Tekstit
   ctx.fillStyle = '#000000';
-  ctx.font = '18px Verdana';
-  ctx.fillText(`Tyynyrin pituus: ${100} cm`, 20, 30);
-  ctx.fillText(`Tyynyrin halkaisija: ${200} cm`, 20, 50);
-  ctx.fillText(`Tyynyrin tilavuus: ${v} litraa`, 20, 70);
-  ctx.fillText(`Nestemäärä: ${s} litraa`, 20, 100);
+  ctx.font = '16px Arial';
+  ctx.fillText('Tynnyrin pituus: 100cm', 10, 20);
+  ctx.fillText('Tynnyrin halkaisija: 200cm', 10, 35);
+  //ctx.fillText("Alkukulma: " + angleStart.toFixed(3) ,10,50);
+  //ctx.fillText("Loppukulma: " + angleEnd.toFixed(3) ,10,65);
+  ctx.fillText('Tynnyrin tilavuus 3141.59 litraa', 10, 50);
+  ctx.font = '18px Arial';
+  ctx.fillText('Nestemäärä:', 10, 100);
+  ctx.font = 'bold 18px Arial';
+  ctx.fillText(volumeLiter.toFixed(2) + ' litraa', 10, 125);
 }
-
-function init() {
-  initCanvas();
-  drawCircle();
-  showStat(0);
-}
-
-function drawToCanvas(d) {
-  initCanvas();
-  // Calculate params:
-  const h = r - d;
-  const initialAngle = Math.PI / 2 - Math.acos(h / r);
-  drawWater(initialAngle);
-  drawCircle();
-  showStat(initialAngle);
-}
-
-window.onload = init;
