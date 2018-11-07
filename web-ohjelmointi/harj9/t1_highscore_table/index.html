@@ -56,7 +56,7 @@
       // this.getHighscores = this.getHighscores.bind(this);
     }
 
-    getHighscores () {
+    getHighscores() {
       console.log(highscoreData); 
       setTimeout(() => this.setState({highscores: highscoreData, loaded: true}), 3000);
       this.setState({highscores: [], loaded: false});
@@ -66,7 +66,7 @@
       this.getHighscores();
     }
 
-    onLoadClick () {
+    onLoadClick() {
       // this.setState({highscores: [], loaded: false});
       this.getHighscores();
     }
