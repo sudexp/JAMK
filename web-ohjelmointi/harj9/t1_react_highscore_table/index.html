@@ -54,6 +54,7 @@
       this.state = {highscores: [], loaded: false};
       this.onLoadClick = this.onLoadClick.bind(this);
       // this.getHighscores = this.getHighscores.bind(this);
+      this.getHighscores();
     }
 
     getHighscores() {
@@ -62,9 +63,9 @@
       this.setState({highscores: [], loaded: false});
     }
 
-    componentDidMount(){
-      this.getHighscores();
-    }
+    // componentDidMount(){
+    //   this.getHighscores();
+    // }
 
     onLoadClick() {
       // this.setState({highscores: [], loaded: false});
