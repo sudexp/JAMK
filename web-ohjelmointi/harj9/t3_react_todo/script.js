@@ -12,7 +12,9 @@ class TodoList extends React.Component {
   render() {
     return (
       <ul>
-        <li>KORVAA TÄMÄ OHJELMAKOODILLASI</li>
+        {this.props.items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
       </ul>
     );
   }
@@ -34,7 +36,7 @@ class TodoForm extends React.Component {
     // remove new typed item from text input
     this.refs.item.value = '';
     // focus text input
-    // this.refs.item.focus();
+    this.refs.item.focus();
   }
 
   componentDidMount() {
@@ -59,7 +61,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { items: [] };
-    // LISÄÄ TÄHÄN JOS TARVIT JOTAIN?
+    this.addItem = this.addItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   // add a new item
@@ -67,7 +70,7 @@ class App extends React.Component {
     // add new item to items array
     this.state.items.push(newItem);
     // render again
-    //???
+    this.setState({ items: this.state.items });
   }
 
   // remove item
