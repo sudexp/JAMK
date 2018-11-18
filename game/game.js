@@ -98,8 +98,10 @@ function init() {
   addEventListener('keydown', function(event) {
     if (event.keyCode === 80) loseGame();
   });
+  // ability to switch on mouse control from the game:
   addEventListener('keydown', function(event) {
-    if (event.keyCode === 80) loseGame();
+    if (event.keyCode === 77) mouseControl = true;
+    // document.getElementById('stats').style.cursor = 'pointer';
   });
   document.getElementById('sound').style.display = 'block';
   document.getElementById('exit').style.display = 'block';
@@ -367,11 +369,6 @@ function roundToFive(a) {
   b && (a = a - b + 5);
   return a;
 }
-// ability to switch on mouse control from the game:
-addEventListener('keydown', function(event) {
-  if (event.keyCode === 77) mouseControl = true;
-  // document.getElementById('stats').style.cursor = 'pointer';
-});
 // exit the game
 function exitGame() {
   window.location.reload();
