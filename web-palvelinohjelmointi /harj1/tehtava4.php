@@ -11,7 +11,18 @@
 </head>
 
 <body>
-  
+  <form method="get" action="tehtava4.php">
+  </form>
+
+  <?php
+  $fin = rand(1, 3);
+  $swe = rand(1, 3);
+  $nor = rand(1, 3);
+
+  echo "<img src='$fin.jpg'>"; // paras tapa
+  echo "<img src='$swe.jpg'>";
+  echo "<img src=\"$nor.jpg\">"; // toinen tapa
+  ?>
 </body>
 
 </html>
