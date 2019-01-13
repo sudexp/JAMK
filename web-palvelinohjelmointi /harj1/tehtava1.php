@@ -11,6 +11,18 @@
 </head>
 
 <body>
+  <form method="post" action="tehtava1.php">
+    Mikä painosi kiloina:<br>
+    <input type="text" name="weight"><br>
+    <input type="submit" name="button" value="send">
+  </form>
+
+  <?php
+  if (!isset($_REQUEST['button'])) exit();
+  echo "Sinun painosi on <strong>{$_REQUEST['weight']}</strong><br>";
+  $ika = $_REQUEST['weight'] - 5;
+  echo "Minun painoni on <strong>$ika</strong>, sinulla taitaa olla paino-ongelmia?<p>";
+  ?>
 </body>
 
 </html>
