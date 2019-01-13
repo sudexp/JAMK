@@ -20,8 +20,8 @@
   <?php
   if (!isset($_REQUEST['button'])) exit();
   echo "Sinun painosi on <strong>{$_REQUEST['weight']}</strong><br>";
-  $ika = $_REQUEST['weight'] - 5;
-  echo "Minun painoni on <strong>$ika</strong>, sinulla taitaa olla paino-ongelmia?<p>";
+  $weight = $_REQUEST['weight'] - 5;
+  echo "Minun painoni on <strong>$weight</strong>, sinulla taitaa olla paino-ongelmia?<p>";
   ?>
 </body>
 

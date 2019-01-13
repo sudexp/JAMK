@@ -11,7 +11,17 @@
 </head>
 
 <body>
-  
+  <form method="get" action="tehtava2.php">
+    Enter the euro currency amount:<br>
+    <input type="text" name="euro"><br>
+    <input type="submit" name="button" value="send">
+  </form>
+
+  <?php
+  if (!isset($_REQUEST['button'])) exit();
+  $dollar = $_REQUEST['euro'] * 1.15;
+  echo "In dollars <strong>{$_REQUEST['euro']}</strong> euro is equal <strong>$dollar</strong>.<p>";
+  ?>
 </body>
 
 </html>
