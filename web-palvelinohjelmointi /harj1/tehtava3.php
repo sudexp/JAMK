@@ -11,7 +11,19 @@
 </head>
 
 <body>
+  <form method="get" action="tehtava3.php">
+    Enter the number of stars:<br>
+    <input type="text" name="stars"><br>
+    <input type="submit" name="button" value="send">
+  </form>
 
+  <?php
+  if (!isset($_REQUEST['button'])) exit();
+  $stars = $_REQUEST['stars'];
+  for ($i = 1; $i <= $stars; $i++) {
+    echo "*";
+  }
+  ?>
 </body>
 
 </html>
