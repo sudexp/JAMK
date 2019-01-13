@@ -11,6 +11,33 @@
 </head>
 
 <body>
+  <form method="get" action="tehtava5.php">
+  </form>
+
+  <table>
+    <?php
+    for ($i = 1; $i <= 7; $i++) {
+      $tvari = taustavari();
+      echo "<tr bgcolor='$tvari'><td>Rivi $i</td></tr>";
+    }
+
+    function taustavari()
+    {
+      static $ftvari = '#ffffff';
+
+      if ($ftvari == '#ffffff') {
+        $ftvari = '#ffff00';
+      } else {
+        $ftvari = '#ffffff';
+      }
+
+      return $ftvari;
+    }
+        
+    // % (jakojannos!?)
+    ?>
+  </table>
 </body>
 
 </html>
+
