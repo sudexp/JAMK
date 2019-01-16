@@ -19,10 +19,18 @@
 
   <?php
   if (!isset($_REQUEST['button'])) exit();
-  $stars = $_REQUEST['stars'];
-  for ($i = 1; $i <= $stars; $i++) {
-    echo "*";
+  function printStars($amount) {
+    for ($i = 1; $i <= $amount; $i++) {
+      echo "*";
+    }
+    // echo "<br>";
   }
+  printStars($_REQUEST['stars']);
+
+  // $stars = $_REQUEST['stars'];
+  // for ($i = 1; $i <= $stars; $i++) {
+  //   echo "*";
+  // }
   ?>
 </body>
 
