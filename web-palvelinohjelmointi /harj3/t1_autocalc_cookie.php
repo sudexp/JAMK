@@ -38,28 +38,26 @@
       $opel_lkm = $opel_lkm + 1;
     }
     // Painettiin Nollaa-painiketta tai pyydetään sivua ekaa kertaa
-    elseif ($nappi == "Nolla") {
+    elseif ($nappi == "Nollaa") {
       $vw_lkm = 0;
       $opel_lkm = 0;
     }
   }
 
-  function nayta_tulokset($vw_lkm, $opel_lkm)
-  {
+  function nayta_tulokset($vw_lkm, $opel_lkm) {
     echo "<pre>\n";
     echo "Volkswagenit ... : $vw_lkm kpl.\n";
     echo "Opelit ......... : $opel_lkm kpl.\n";
     echo "</pre>\n";
   }
 
-  function aseta_evasteet($vw_lkm, $opel_lkm)
-  {
+  function aseta_evasteet($vw_lkm, $opel_lkm) {
+    // cookie = 1vuorokausi
     setcookie('vw_lkm', $vw_lkm, time() + 86400);
     setcookie('opel_lkm', $opel_lkm, time() + 86400);
   }
 
-  function tee_lomake()
-  {
+  function tee_lomake() {
     ?>
     <!--
       Oleellista on pitää yllä _samassa_ lomakkeessa
