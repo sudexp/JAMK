@@ -13,36 +13,61 @@
 <body>
 <?php
 
-$taustavarit['Keltainen'] = '#ff0';
-$taustavarit['Punainen'] = '#f00';
-$taustavarit['Sininen'] = '#00f';
-$taustavarit['Harmaa'] = '#ccc';
+$taustavarit['Keltainen'] = '#ffff00';
+$taustavarit['Punainen'] = '#ff0000';
+$taustavarit['Sininen'] = '#0000ff';
+$taustavarit['Harma'] = '##808080';
+$tekstivarit['Violetti'] = '#C71585';
+$tekstivarit['Vihrea'] = '#008000';
+$tekstivarit['Oranssi'] = '#ffa500';
+$tekstivarit['Valkoinen'] = '#ffffff';
 
+$taustavari = '#fceedf';
+$tekstivari = '#000000';
 
-$taustavari = '#fed';
+if (isset($_GET['taustavari'])) {
+  $taustavari = $_GET['taustavari'];
+}
 
-if (isset($_GET['tvari'])) {
-  $taustavari = $_GET['tvari'];
+if (isset($_GET['tekstivari'])) {
+  $tekstivari = $_GET['tekstivari'];
 }
 
 $tyyli = <<<EOTyyli
   <style type="text/css">
     body {
       background-color: $taustavari;
+      color: $tekstivari;
     }
   </style>
 EOTyyli;
 
-$optiot = '';
+$taustaoptio = '';
+$tekstioptio = '';
+
 foreach ($taustavarit as $varinimi => $varikoodi) {
   $valittu = '';
   if ($taustavari == $varikoodi) $valittu = 'checked';
-  $optiot .= "<input type='radio' name='tvari' value='$varikoodi' $valittu>$varinimi<br>\n";
+  $taustaoptio .= "<input type='radio' name='taustavari' value='$varikoodi' $valittu>$varinimi<br>\n";
+}
+
+foreach ($tekstivarit as $varinimi => $varikoodi) {
+  $valittu = '';
+  if ($tekstivari == $varikoodi) $valittu = 'checked';
+  $tekstioptio .= "<input type='radio' name='tekstivari' value='$varikoodi' $valittu>$varinimi<br>\n";
 }
 
 $lomake = <<<EOLomake
   <form method="get" action="{$_SERVER['PHP_SELF']}">
-    $optiot
+    <table>
+      <tr>
+        <td>Taustavari:</td>
+        <td>$taustaoptio</td>
+      </tr>
+        <td>Tekstivari:</td>
+        <td>$tekstioptio</td>
+      </tr>
+    </table>
     <input type="submit" name="nappi" value="Väritä">
   </form>
 EOLomake;
