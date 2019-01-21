@@ -29,8 +29,7 @@
 
   // Alustetaan tai päivitetään autojen lukumääriä:
   // Muodolliset parametrit ovat viittauksia, joten muutetut arvot välittyvät "takaisin" kutsuvaan ohjelmalohkooon
-  function laske_lkm(&$vw_lkm, &$opel_lkm, $nappi)
-  {
+  function laske_lkm(&$vw_lkm, &$opel_lkm, $nappi) {
     // Jotakin autonappia painettu, lisätään kertymää
     if ($nappi == "VW") {
       $vw_lkm = $vw_lkm + 1;
@@ -52,11 +51,12 @@
   }
 
   function aseta_evasteet($vw_lkm, $opel_lkm) {
-    // cookie = 1vuorokausi
+    // cookie = 1 vuorokausi
     setcookie('vw_lkm', $vw_lkm, time() + 86400);
     setcookie('opel_lkm', $opel_lkm, time() + 86400);
   }
 
+  // Tehdään lomake piilokenttineen
   function tee_lomake() {
     ?>
     <!--
