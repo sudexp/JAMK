@@ -1,0 +1,11 @@
+*blogi-lomake.php   --> *blogi-tallenna.php  
+*blogi-listaa.php   --> blogi-merkinta.php
+                           |
+                           |
+			   V
+                     blogi-poista.php    
+
+*config-navbar.php
+*tyyli.css
+
+data-kansio (=data2)
