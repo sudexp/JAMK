@@ -13,10 +13,13 @@
 <body>
 <?php
 
-require_once("Websivu.class.php");
+function __autoload($class_name)
+{
+  require_once $class_name . '.class.php';
+}
 
 $title = "Esimerkkikotisivu";
-$bodynsisalto = "<h1>Esimerkkikotisivu</h1><p>Lorem Ipsum</p>";
+$bodynsisalto = "<h1>Esimerkkikotisivu</h1>\n<p>Lorem Ipsum</p>";
 $avainsanat = "koti, sivu";
 
 $munkotisivu = new Websivu($title, $avainsanat);
