@@ -15,7 +15,6 @@
 
 require_once("Websivu.class.php");
 
-//Datan alustus
 $title = "Esimerkkikotisivu";
 $bodynsisalto = "<h1>Esimerkkikotisivu</h1><p>Lorem Ipsum</p>";
 $avainsanat = "koti, sivu";

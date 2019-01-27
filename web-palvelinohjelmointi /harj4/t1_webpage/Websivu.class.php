@@ -39,11 +39,11 @@
 
     public function naytaSivu()
     {
-      echo "<html><head>\n";
+      echo "<html>\n<head>\n";
       $this->tulostaOtsikkoelementti();
-      echo "</head></body>\n";
+      echo "</head>\n</body>\n";
       echo $this->sisalto;
-      echo "</body></html>\n";
+      echo "</body>\n</html>\n";
 
     }
 
