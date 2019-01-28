@@ -33,7 +33,7 @@ print_r($counters);
 if (isset($_POST['car'])) {
   $car = $_POST['car'];
   $counters[$car]->increaseCount();
-  print_r("<p> car increased counter for ' $car' </p>");
+  print_r("<p> car increased counter for $car</p>");
 }
 
 print("<br><pre>POST:");

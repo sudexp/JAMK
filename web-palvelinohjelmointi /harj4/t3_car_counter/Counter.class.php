@@ -21,11 +21,11 @@
     function __construct($model, $count)
     {
       $this->model = $model;
-      if (isset($_SESSION[$model])) {
+      if (isset($_SESSION[$this->model])) {
         $this->count = $count;
       } else {
         $this->count = 0;
-        $_SESSION[$model] = $this->count;
+        $_SESSION[$this->model] = $this->count;
       }
     }
 
