@@ -18,9 +18,10 @@ function __autoload($class_name)
   require_once $class_name . '.class.php';
 }
 
+// Datan alustus
 $title = "Esimerkkikotisivu";
-$bodynsisalto = "<h1>Esimerkkikotisivu</h1>\n<p>Lorem Ipsum</p>";
-$avainsanat = "koti, sivu";
+$bodynsisalto = "<h1>Esimerkkikotisivu</h1>\n<p>Lorem Ipsum</p>\n";
+$avainsanat = "kotska , sivu";
 
 $munkotisivu = new Websivu($title, $avainsanat);
 $munkotisivu->asetaBodyelementinSisalto($bodynsisalto);

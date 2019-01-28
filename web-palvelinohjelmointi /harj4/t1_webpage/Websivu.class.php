@@ -48,13 +48,13 @@
 
     private function tulostaOtsikkoelementti()
     {
-      echo "<title>$this->otsikko</title>";
+      echo "<title>$this->otsikko</title>\n";
     }
 
     private function tulostaAvainsanaelementti()
     {
-        //return $this->name;
-      echo "<meta name=keywords>$this->avainsanat</meta>\n";
+        // return $this->name;
+        // echo "<meta name=keywords>$this->avainsanat</meta>\n";
     }
   }
 
