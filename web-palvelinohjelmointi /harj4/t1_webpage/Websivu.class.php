@@ -44,7 +44,6 @@
       echo "</head>\n</body>\n";
       echo $this->sisalto;
       echo "</body>\n</html>\n";
-
     }
 
     private function tulostaOtsikkoelementti()
