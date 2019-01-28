@@ -26,27 +26,28 @@ $counters = array(
   'opel' => new Counter('opel', 0),
   'toyota' => new Counter('toyota', 0)
 );
+print_r($counters);
 
 //  2. update car from browser post:
 // POST: car=vw
 if (isset($_POST['car'])) {
   $car = $_POST['car'];
-  $counters[$car] . increaseCount();
-  // print("<p> car increased counter for " . $car);
+  $counters[$car]->increaseCount();
+  print_r("<p> car increased counter for ' $car' </p>");
 }
 
-// print("<br><pre>POST:");
-// print_r($_POST);
-// print("</pre><br>");
+print("<br><pre>POST:");
+print_r($_POST);
+print("</pre><br>");
 
-// print("<br><pre>SESSION:");
-// print_r($_SESSION);
-// print("</pre><br>");
+print("<br><pre>SESSION:");
+print_r($_SESSION);
+print("</pre><br>");
 
 // 3. render HTML with form and buttons:
-echo "<form method='post' action=''";
+echo "<form method='post' action=''>";
 foreach ($counters as $counter) {
-  echo "<input type='submit' name='button' value=$counter->model>";
+  echo "<input type='submit' name='car' value=$counter->model>";
 }
 echo "</form>";
 
