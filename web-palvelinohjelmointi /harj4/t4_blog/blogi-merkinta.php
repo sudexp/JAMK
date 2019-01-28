@@ -18,8 +18,8 @@
     <h2>Blogimerkintä</h2>
     <?php
 
-    if (!isset($_GET['id'])) exit();
-    $filename = $_GET['id'];
+    if (!isset($_POST['id'])) exit();
+    $filename = $_POST['id'];
     include($filename);
     echo "<a href='blogi-poista.php?id=$filename'>Poista</a>";
     echo "<hr>";

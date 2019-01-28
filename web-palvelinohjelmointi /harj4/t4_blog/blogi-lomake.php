@@ -17,11 +17,13 @@
 
     <h2>Lisää blogimerkintä</h2>
     <div class="form-box">
-      <form action="blogi-tallenna.php" method="get">
+      <form action="blogi-tallenna.php" method="post" enctype="multipart/form-data">
         Otsikko:<br>
         <input type="text" name="otsikko"><br>
         Merkintä:<br>
         <textarea cols="30" rows="4" name="merkinta"></textarea><br>
+        File upload:<br>
+        <input type="file" name="file"><br><br>
         <input type="submit" name="nappi" value="Tallenna">
       </form>
     </div>

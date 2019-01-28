@@ -18,8 +18,8 @@
     <h2>Blogimerkinnän poistaminen</h2>
     <?php
 
-    if (!isset($_GET['id'])) exit();
-    $filename = $_GET['id'];
+    if (!isset($_POST['id'])) exit();
+    $filename = $_POST['id'];
     unlink($filename);
     echo "<p>Poistit blogimekinnän:</p>$filename";
 
