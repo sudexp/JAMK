@@ -15,10 +15,10 @@
 
   class Counter
   {
-    protected $model;
-    protected $count;
+    public $model;
+    public $count;
 
-    function __construct($model)
+    function __construct($model, $count)
     {
       $this->model = $model;
       if (isset($_SESSION[$model])) {

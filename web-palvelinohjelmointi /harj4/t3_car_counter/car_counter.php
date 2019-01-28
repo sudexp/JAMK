@@ -22,9 +22,9 @@ function __autoload($class_name)
 
 // 1. instantiate array of cars (which also reads value of counters from session):
 $counters = array(
-  'vw' => new Counter('vw'),
-  'opel' => new Counter('opel'),
-  'toyota' => new Counter('toyota')
+  'vw' => new Counter('vw', 0),
+  'opel' => new Counter('opel', 0),
+  'toyota' => new Counter('toyota', 0)
 );
 
 //  2. update car from browser post:
@@ -32,27 +32,29 @@ $counters = array(
 if (isset($_POST['car'])) {
   $car = $_POST['car'];
   $counters[$car] . increaseCount();
-  print("<p> car increased counter for " . $car);
+  // print("<p> car increased counter for " . $car);
 }
 
-print("<br><pre>POST:");
-print_r($_POST);
-print("</pre><br>");
+// print("<br><pre>POST:");
+// print_r($_POST);
+// print("</pre><br>");
 
-print("<br><pre>SESSION:");
-print_r($_SESSION);
-print("</pre><br>");
+// print("<br><pre>SESSION:");
+// print_r($_SESSION);
+// print("</pre><br>");
 
 // 3. render HTML with form and buttons:
-echo "<form method='post'>";
+echo "<form method='post' action=''";
 foreach ($counters as $counter) {
-  echo "<button type='submit' name='car' value =' . $counter->model . '> ' . $counter->model . ' </button>";
-  echo "</form>";
+  echo "<input type='submit' name='button' value=$counter->model>";
 }
+echo "</form>";
 
 // 4. render HTML with the list of cars and their counters:
 foreach ($counters as $counter) {
-  echo "<p>' . $counter->model . ' : ' . $counter->count . ' </p>";
+  echo "<pre>\n";
+  echo "<p>$counter->model: $counter->count kpl</p>";
+  echo "</pre>\n";
 }
 
 ?>
