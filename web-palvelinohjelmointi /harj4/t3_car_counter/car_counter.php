@@ -22,9 +22,9 @@ function __autoload($class_name)
 
 // 1. instantiate array of cars (which also reads value of counters from session):
 $counters = array(
-  'vw' => new Counter('vw', 0),
-  'opel' => new Counter('opel', 0),
-  'toyota' => new Counter('toyota', 0)
+  'vw' => new Counter('vw'),
+  'opel' => new Counter('opel'),
+  'toyota' => new Counter('toyota')
 );
 print_r($counters);
 

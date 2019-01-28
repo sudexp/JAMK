@@ -16,13 +16,12 @@
   class Counter
   {
     public $model;
-    public $count;
 
-    function __construct($model, $count)
+    function __construct($model)
     {
       $this->model = $model;
       if (isset($_SESSION[$this->model])) {
-        $this->count = $count;
+        $this->count = $_SESSION[$this->model];
       } else {
         $this->count = 0;
         $_SESSION[$this->model] = $this->count;
