@@ -15,6 +15,10 @@
 
 session_start();
 
+if (isset($_POST['reset'])) {
+  $_SESSION = array();
+}
+
 function __autoload($class_name)
 {
   require_once $class_name . '.class.php';
@@ -49,6 +53,7 @@ echo "<form method='post' action=''>";
 foreach ($counters as $counter) {
   echo "<input type='submit' name='car' value=$counter->model>";
 }
+echo "<input type='submit' name='reset' value='reset'>";
 echo "</form>";
 
 // 4. render HTML with the list of cars and their counters:
