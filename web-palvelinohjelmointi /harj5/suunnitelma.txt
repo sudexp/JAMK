@@ -1,0 +1,32 @@
+Harjoitukset 6 / Osoitekirja      
+Sovelluksen rakenne:
+
+	  -----------abook-listaa.php-------------
+      |                                      |
+      |                                      |
+  abook-tyhjalomake.php  --------abook-muokkauslomake.php-------
+      |                  |                                     |
+  abook-lisaa.php   abook-poista.php                     abook-muokkaa.php 
+  
+Lisäksi tarvitaan:
+
+db-init.php
+navbar.php
+-- --- ---- --- ----
+1. tehtävä: A) Luo "osoitteet" tietokanta esim tunnus_2
+			   Luku 31b: create table ja insert into -laatikot.
+			   Luo tarvittaessa mysql-salasana:
+			   https://mysql.labranet.jamk.fi/
+			   
+			   sitten puttyllä studentille ja sitten
+			   
+			   mysql -y tunnus -pXXXXXXXXsalaXXXXXX -h mysql.labranet.jamk.fi
+			   create database tunnus_2
+			   use tunnus_2
+			   Copypastea se createTable (luvusta 31b)
+			   Copypastea se insert into (luvusta 31b)   
+			    
+            B) Kopioi mysql-pdo-search.php -> abook-listaa.php
+            C) Ota db-init.php ja muuta omat asetukset
+
+2. Tee navigointivalikko, mieti mitkä ovat kohteet
