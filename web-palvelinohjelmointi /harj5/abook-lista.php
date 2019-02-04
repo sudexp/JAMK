@@ -22,7 +22,7 @@ function haeHenkilot($db, $hakuehto)
   $sql = <<<SQLEND
    SELECT tunnus, sukunimi, etunimi, email, osoite, puhnro
    FROM henkilot WHERE sukunimi
-   LIKE :hakuehto
+   LIKE :hakuehto OR osoite LIKE :hakuehto
 SQLEND;
 
   $stmt = $db->prepare($sql);
