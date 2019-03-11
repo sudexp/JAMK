@@ -17,22 +17,22 @@ $pain = '';
 $friday = '';
 
 if (isset($_GET['tired'])) {
-  echo "Väsyttää ankarasti!\n";
-  $tired = 'checked';
+    echo "Väsyttää ankarasti!\n";
+    $tired = 'checked';
 }
 
 if (isset($_GET['pain'])) {
-  echo "Taas on pää kipee!\n";
-  $pain = 'checked';
+    echo "Taas on pää kipee!\n";
+    $pain = 'checked';
 }
 
 if (isset($_GET['friday'])) {
-  echo "Taas on perjantai!\n";
-  $friday = 'checked';
+    echo "Taas on perjantai!\n";
+    $friday = 'checked';
 }
 
 $form = <<<EOForm
-  <form method="get" action="tehtava1.php">
+  <form method="get" action="t1_checkbox.php">
     <input type="checkbox" name="tired" $tired>Väsy<br>
     <input type="checkbox" name="pain" $pain>Perjantai<br>
     <input type="checkbox" name="friday" $friday>Pää pipi<br>
